@@ -6,6 +6,7 @@
 
 // Component
 import Link from 'next/link';
+import Button from '@/components/Button'
 
 export default function NavBar(props) {
 
@@ -34,7 +35,7 @@ export default function NavBar(props) {
           <Link href="/my-profile/:id">Fred</Link>
         </li>
         <li>
-          <h2>Logout</h2>
+          <Button buttonName={"Logout"}/>
         </li>
       </ul>
     </div>
