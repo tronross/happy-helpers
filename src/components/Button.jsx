@@ -10,9 +10,8 @@ export default function Button(props) {
 
 
   return (
-    <button>
-      
+    <button onClick={props.onClick} >
+      {props.buttonName}
     </button>
-
   )
 };
