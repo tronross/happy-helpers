@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import Task from '@/components/Task'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Footer from '@/components/Footer'
@@ -18,8 +18,10 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <NavBar />
+        <Task />
       </main>
       <Footer />
     </>
   )
 }
+
