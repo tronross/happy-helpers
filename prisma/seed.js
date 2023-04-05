@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 // eslint-disable-next-line func-style
 async function main() {
 
-  const tycosDr82 = await prisma.address.create({
+  await prisma.address.create({
     data: {
       address: '82 Tycos Dr',
       city: 'North York',
@@ -19,7 +19,7 @@ async function main() {
           description: 'Expert in mowing grass hills.',
           email: 'Anderson.Khorsandi@gmail.com',
           password: 'alligator',
-          phone: '636-313-2463',
+          phone: '(636)313-2463',
           stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg'
         }
@@ -27,7 +27,7 @@ async function main() {
     }
   });
 
-  const leslie1095 = await prisma.address.create({
+  await prisma.address.create({
     data: {
       address: '1095 Leslie St',
       city: 'North York',
@@ -41,7 +41,7 @@ async function main() {
           description: 'Ex-Formula 1 driver, great at helping people get to places on time.',
           email: 'K.Lunski@ferrari.it',
           password: 'aardvark',
-          phone: '416-500-1413',
+          phone: '(416)500-1413',
           stars: 3,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/7.jpg'
         }
@@ -49,7 +49,7 @@ async function main() {
     }
   });
 
-  const eglinton1880 = await prisma.address.create({
+  await prisma.address.create({
     data: {
       address: '1880 Eglinton Ave E',
       city: 'Scarborough',
@@ -63,7 +63,7 @@ async function main() {
           description: 'Super Chef! Ready to help if you need help with meals or some cookies for your fundraiser.',
           email: 'TianaW@ovengloves.com',
           password: 'burntthetoast',
-          phone: '866-987-6453',
+          phone: '(866)987-6453',
           stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg'
         }
@@ -71,43 +71,72 @@ async function main() {
     }
   });
 
-  /*
-  ------------------------------
-  Street:  4263 Rue King
-  City:  Sherbrooke
-  State/province/area:   Quebec
-  Phone number  819-348-1596
-  Zip code  J1H 1R4
-  Country calling code  +1
-  Country  Canada
-  ------------------------------
-  Street:  950 Hamilton Street
-  City:  Elrose
-  State/province/area:   Saskatchewan
-  Phone number  306-378-0480
-  Zip code  S4P 3Y2
-  Country calling code  +1
-  Country  Canada
-  ------------------------------
-  Street:  4628 Tycos Dr
-  City:  Toronto
-  State/province/area:   Ontario
-  Phone number  416-888-0978
-  Zip code  M5T 1T4
-  Country calling code  +1
-  Country  Canada
-  ------------------------------
-  Street:  3360 Port Washington Road
-  City:  Banff
-  State/province/area:   Alberta
-  Phone number  403-763-9439
-  Zip code  T0L 0C0
-  Country calling code  +1
-  Country  Canada
-  ------------------------------
+  await prisma.address.create({
+    data: {
+      address: '4274 Graham St',
+      city: 'Pierrefonds-Roxboro',
+      postcode: 'H9H 3S5',
+      latitude: '45.47760',
+      longitude: '-73.84980',
+      Users: {
+        create: {
+          firstName: 'Elvis',
+          lastName: 'Jarzynka',
+          description: 'Friendly carpenter... if you need any shelves putting up?!',
+          email: 'elvis@graceland.com',
+          password: 'funnydancer',
+          phone: '(514)347-3653',
+          stars: 11,
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/27.jpg'
+        }
+      }
+    }
+  });
 
-  */
-  console.log({ tycosDr82, leslie1095 });
+  await prisma.address.create({
+    data: {
+      address: '1100 Broad St',
+      city: 'Regina',
+      postcode: 'S4R 1X8',
+      latitude: '50.46124',
+      longitude: '-104.60669',
+      Users: {
+        create: {
+          firstName: 'Javier',
+          lastName: 'Tarczynski',
+          description: 'Wonderful singer if you need a little cheering up, can also move heavy furniture.',
+          email: 'jtarc2010@karaoke.com',
+          password: 'sofaman',
+          phone: '(306)551-8238',
+          stars: 2,
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg'
+        }
+      }
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '1805 Taunton Rd',
+      city: 'Hampton',
+      postcode: 'L0B 1J0',
+      latitude: '43.95273',
+      longitude: '-78.79027',
+      Users: {
+        create: {
+          firstName: 'Lore',
+          lastName: 'Winks',
+          description: 'Great with animals if your dog ever needs a walk.',
+          email: 'l.winks2010@nature.com',
+          password: 'gooddog',
+          phone: '(905)725-6089',
+          stars: 22,
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/21.jpg'
+        }
+      }
+    }
+  });
+
 }
 
 main()

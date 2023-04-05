@@ -11,9 +11,8 @@ datasource db {
 }
 
 enum Status {
-  PENDING
   OPEN
-  MATCHED
+  PENDING
   COMPLETE
 }
 
@@ -77,7 +76,7 @@ model Offer {
   user          User      @relation(fields: [userId], references: [id])
   taskId        Int       @map("task_id")
   task          Task      @relation(fields: [taskId], references: [id])
-  status        Status    @default(PENDING)
+  status        Status    @default(OPEN)
 
   @@map("offers")
 }
