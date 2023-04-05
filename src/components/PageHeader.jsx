@@ -8,12 +8,6 @@ export default function PageHeader() {
       <p className="mx-3">LIST</p>
       <p>|</p>
       <p className="mx-3">MAP</p>
-      <label for="sortTasks" className="ml-5 mr-2">Sort By:</label>
-      <select id="sortTasks">
-      <option value="date">All Tasks</option>
-        <option value="date">Date</option>
-        <option value="location">Location</option>
-      </select>
       </section>
     </div>
 
