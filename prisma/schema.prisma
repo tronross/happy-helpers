@@ -89,7 +89,7 @@ model Task {
   categoryId    Int       @map("category_id")
   category      Category  @relation(fields: [categoryId], references: [id])
   startDate     String    @default("Today") @map("start_date")
-  endDate       String    @map("Tomorrow")
+  endDate       String    @default("Tomorrow") @map("end_date")
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id])
   status        Status    @default(PENDING)
