@@ -38,7 +38,7 @@ model User {
 
 model Skill {
   id            Int       @id @default(autoincrement())
-  name          String
+  name          String    
   Users         User[]
 
   @@map("skills")
@@ -47,8 +47,8 @@ model Skill {
 model Organization {
   id            Int       @id @default(autoincrement())
   name          String
-  avatar        String
-  website       String
+  avatar        String?
+  website       String?
   addressId     Int       @map("address_id")
   address       Address   @relation(fields: [addressId], references: [id])
   Users         User[]
@@ -88,8 +88,8 @@ model Task {
   image         String?   @db.VarChar(255)
   categoryId    Int       @map("category_id")
   category      Category  @relation(fields: [categoryId], references: [id])
-  startDate     DateTime  @map("start_date")
-  endDate       DateTime  @map("end_date")
+  startDate     DateTime  @default(now()) @map("start_date")
+  endDate       DateTime  @default(now()) @map("end_date")
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id])
   status        Status    @default(PENDING)
@@ -103,7 +103,7 @@ model Task {
 
 model Category {
   id            Int       @id @default(autoincrement())
-  name          String
+  name          String    
   Tasks         Task[]
 
   @@map("categories")
