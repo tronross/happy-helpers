@@ -1,14 +1,9 @@
 import Head from 'next/head'
-import TaskList from '@/components/TaskList'
 import { Inter } from 'next/font/google'
-import Footer from '@/components/Footer'
-import NavBar from '@/components/NavBar'
-import { PrismaClient } from '@prisma/client'
-import Sidebar from '@/components/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({tasks}) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -17,24 +12,9 @@ export default function Home({tasks}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gradient-to-b from-teal-400 to-teal-800">
-        <NavBar />
-        <div className="flex">
-        <Sidebar />
-        <TaskList tasks={tasks} />
-        </div>
+      <main>
+        
       </main>
-
-      <Footer />
     </>
   )
-}
-
-export async function getServerSideProps() {
-  const prisma = new PrismaClient();
-  const tasks = await prisma.task.findMany();
-  
-  return {
-    props: { tasks }
-  }
 }
