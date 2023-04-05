@@ -427,6 +427,131 @@ async function main() {
     }
   });
 
+  await prisma.task.create({
+    data: {
+      name: 'Mopper',
+      description: 'The ice-rink in my back yard melted, need help mopping up the garden.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 4,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 10,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Squirrel chaser',
+      description: 'My yard is overrun with squirrels, need help to chase them away.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 4,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 1,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Fence painter',
+      description: 'Need help repainting my fence.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 4,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 2,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Leaf removal',
+      description: 'My beautiful lawn is covered with leaves, if anyone has a leaf blower I would be very appreciative.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 4,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 1,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Need lift to garage',
+      description: 'My car is in the shop, need a lift there so I can pick it up.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 5,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 1,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Astronaut required',
+      description: 'Need co-pilot to take over while I sleep on excursion to Mars and back.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 5,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 3,
+      nbHelpers: 1,
+      addressId: 3
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Boat driver required',
+      description: 'I love to waterski, but have no-one to drive the boat since my husband fell overboard last year.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 5,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 2,
+      nbHelpers: 2,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Cyclist required',
+      description: 'I have a tandem but my boyfriend dumped me.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 5,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Carrying groceries',
+      description: 'Need help to get my groceries from the car into the house.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 6,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 5,
+      nbHelpers: 1,
+      addressId: 5
+    }
+  });
 
 }
 
