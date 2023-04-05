@@ -12,29 +12,29 @@ export default function NavBar(props) {
 
   // Template
   return (
-    <div>
-      <ul>
-        <li>
+    <div className="flex p-5 bg-teal-500">
+      <ul className="flex w-1/2">
+        <li className='px-6 text-lg'>
           Happy Helpers
         </li>
-        <li>
+        <li className='px-6 text-lg'>
           <Link href="/home">Home</Link>
         </li>
-        <li>
+        <li className='px-6 text-lg'>
           <Link href="/new-task">New</Link>
         </li>
       </ul>
-      <ul>
-      <li>
+      <ul className="flex w-1/2 justify-end">
+      <li className='px-6 text-lg'>
           <Link href="/my-help">MyHelp</Link>
         </li>
-        <li>
+        <li className='px-6 text-lg'>
           <h2>Messages</h2>
         </li>
-        <li>
+        <li className='px-6 text-lg'>
           <Link href="/my-profile/:id">Fred</Link>
         </li>
-        <li>
+        <li className='px-6 text-lg'>
           <Button buttonName={"Logout"}/>
         </li>
       </ul>

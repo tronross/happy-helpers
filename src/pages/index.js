@@ -1,13 +1,14 @@
 import Head from 'next/head'
-import Task from '@/components/Task'
+import TaskList from '@/components/TaskList'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
+import { PrismaClient } from '@prisma/client'
+import Sidebar from '@/components/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home(props) {
   return (
     <>
       <Head>
@@ -16,12 +17,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className="{styles.main}">
         <NavBar />
-        <Task />
+        <div className="flex">
+        <Sidebar />
+        <TaskList />
+        </div>
       </main>
+
       <Footer />
     </>
   )
 }
-
