@@ -39,7 +39,7 @@ export default function TaskForm() {
       <label htmlFor="postcode">Postal Code</label>
       <input type="text" id="postcode" name="postcode" className="text-teal-800"  required />
 
-      <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
+      <button type="submit" className="p-4 bg-purple-600 m-2">Submit</button>
     </form>
   )
 }
