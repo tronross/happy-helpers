@@ -29,5 +29,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
 }
