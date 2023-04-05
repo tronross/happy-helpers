@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.15.1",
     "@prisma/client": "^4.12.0",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
@@ -16,6 +17,7 @@
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-geocode": "^0.2.3",
     "react-scripts": "^5.0.1"
   },
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
