@@ -8,37 +8,37 @@ async function main() {
   // Create skills -----------------------------------------------------------
   await prisma.skill.create({
     data: {
-      name: 'Cooking',
+      name: 'Cooking'
     }
   });
   
   await prisma.skill.create({
     data: {
-      name: 'Animal Care',
+      name: 'Animal Care'
     }
   });
 
   await prisma.skill.create({
     data: {
-      name: 'DIY',
+      name: 'DIY'
     }
   });
   
   await prisma.skill.create({
     data: {
-      name: 'Yardwork',
+      name: 'Yardwork'
     }
   });
 
   await prisma.skill.create({
     data: {
-      name: 'Driving',
+      name: 'Driving'
     }
   });
   
   await prisma.skill.create({
     data: {
-      name: 'Heavy Lifting',
+      name: 'Heavy Lifting'
     }
   });
 
@@ -224,37 +224,37 @@ async function main() {
   // Create categories -----------------------------------------------------------
   await prisma.category.create({
     data: {
-      name: 'Cooking',
+      name: 'Cooking'
     }
   });
 
   await prisma.category.create({
     data: {
-      name: 'Animal Care',
+      name: 'Animal Care'
     }
   });
 
   await prisma.category.create({
     data: {
-      name: 'DIY',
+      name: 'DIY'
     }
   });
   
   await prisma.category.create({
     data: {
-      name: 'Yardwork',
+      name: 'Yardwork'
     }
   });
 
   await prisma.category.create({
     data: {
-      name: 'Driving',
+      name: 'Driving'
     }
   });
   
   await prisma.category.create({
     data: {
-      name: 'Heavy Lifting',
+      name: 'Heavy Lifting'
     }
   });
 
@@ -272,6 +272,161 @@ async function main() {
       addressId: 1
     }
   });
+
+  await prisma.task.create({
+    data: {
+      name: 'Move couch',
+      description: 'Heavy couch needs to go up to 23rd floor apartment.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 6,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 2,
+      nbHelpers: 3,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Walk dog',
+      description: 'I have broken my leg, need someone to walk the dog.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 2,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Fix shelf',
+      description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 3,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 4,
+      nbHelpers: 1,
+      addressId: 4
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Change light bulb',
+      description: 'Bulb is too high for me to reach.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 3,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 5,
+      nbHelpers: 1,
+      addressId: 5
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Need ride to airport',
+      description: 'Going on holiday, parking is too expensive at the airport.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 5,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 4,
+      nbHelpers: 1,
+      addressId: 4
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Donations wanted for bake sale',
+      description: 'Any cakes would be welcome, I hate cooking.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 1,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Cookies needed for meeting',
+      description: 'Nobody like my lasagne last time, need a change of menu.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 1,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Supper required on Friday',
+      description: 'My kids get hungry and I have to go out.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 1,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Cat sitter required',
+      description: 'I will be on holiday next week and my cat did not want to come.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 2,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Snake feeder needed',
+      description: 'I will be on holiday next week and am scared my snake will eat my gerbil.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 2,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Frog handler required',
+      description: 'My frog is out of control, need help keeping it on lillypad.',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      categoryId: 2,
+      // startDate: Date.now(),
+      // endDate:
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
 
 }
 
