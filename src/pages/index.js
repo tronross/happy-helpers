@@ -8,7 +8,7 @@ import Sidebar from '@/components/Sidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home(props) {
+export default function Home({tasks}) {
   return (
     <>
       <Head>
@@ -21,11 +21,20 @@ export default function Home(props) {
         <NavBar />
         <div className="flex">
         <Sidebar />
-        <TaskList />
+        <TaskList tasks={tasks} />
         </div>
       </main>
 
       <Footer />
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const prisma = new PrismaClient();
+  const tasks = await prisma.task.findMany();
+  
+  return {
+    props: { tasks }
+  }
 }

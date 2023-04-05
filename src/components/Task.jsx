@@ -1,7 +1,7 @@
 export default function Task(props) {
   return (
   <div className="border-1 p-4 shadow-lg m-4 bg-white rounded">
-    <img src="https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" alt="Lawn Mowing" className="pb-4"></img>
+    <img src={props.image} alt={props.name}></img>
     <h5 className="mb-2 text-xl font-medium leading-tight text-teal-700">
       {props.name}
     </h5>
