@@ -17,7 +17,7 @@ export default function Home(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="{styles.main}">
+      <main className="bg-gradient-to-b from-teal-400 to-teal-800">
         <NavBar />
         <div className="flex">
         <Sidebar />
