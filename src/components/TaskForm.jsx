@@ -1,7 +1,11 @@
-import { PrismaClient } from "@prisma/client"
+import { useState } from "react"
 
-export default function TaskForm({ tasks }) {
-  console.log(tasks)
+export default function TaskForm() {
+  const [formFields, setFields] = useState({
+    
+  });
+
+
   return (
     <form action="/api/form" method="POST" className="flex flex-col text-white caret-black items-center m-4 border-solid border-2 w-[600px]">
       <h1 className="text-[28px]">New Task</h1>
@@ -35,7 +39,7 @@ export default function TaskForm({ tasks }) {
       <label htmlFor="postcode">Postal Code</label>
       <input type="text" id="postcode" name="postcode" className="text-teal-800"  required />
 
-      <button type="submit" className="p-4 bg-purple-600 m-2">Submit</button>
+      <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
     </form>
   )
 }
