@@ -5,6 +5,7 @@ import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
 import { PrismaClient } from '@prisma/client'
 import Sidebar from '@/components/Sidebar'
+import PageHeader from '@/components/PageHeader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +22,11 @@ export default function Home({tasks}) {
         <NavBar />
         <div className="flex">
         <Sidebar />
-        <TaskList tasks={tasks} />
+        <section className='flex flex-col'>
+          <PageHeader />
+          <TaskList tasks={tasks} />
+        </section>
+        
         </div>
       </main>
 
