@@ -47,10 +47,10 @@ console.log(fetchTasks)
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-        <Sidebar />
+        <Sidebar sidebarOptions={sidebar} setSelectedSidebar={setSelectedSidebar} />
         <section className='flex flex-col px-20'>
           <PageHeader />
-          <TaskList tasks={tasks} />
+          <TaskList tasks={fetchTasks} />
         </section>
         
         </div>
