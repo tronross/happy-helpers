@@ -12,7 +12,7 @@ export default function NavBar(props) {
 
   // Template
   return (
-    <div className="flex p-5 bg-teal-500 text-white">
+    <div className="flex p-5 text-teal-700">
       <ul className="flex w-1/2">
         <li className='px-6 text-lg'>
           Happy Helpers

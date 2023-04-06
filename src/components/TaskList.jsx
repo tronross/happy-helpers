@@ -3,6 +3,8 @@ import Task from '../components/Task'
 export default function TaskList(props) {
 
   const tasks = props.tasks.map(task => {
+    
+    
     return (
       <li key={task.id}><Task
           key={task.id}
@@ -11,6 +13,8 @@ export default function TaskList(props) {
           category={task.category}
           user={task.userId}
           image={task.image}
+          status={task.status}
+          // city={task.addressId}
           />
         </li>
     )
