@@ -16,18 +16,18 @@ export default function Home(props) {
   const [tasks, setTasks] = useState(props.tasks);
   // const [category, setCategory] = useState(0);
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    const getTasks = async () => {
-    const prisma = new PrismaClient();
-    const filteredTasks = await prisma.task.findMany();
-    console.log(filteredTasks)
-    setTasks(filteredTasks);
+  //   const getTasks = async () => {
+  //   const prisma = new PrismaClient();
+  //   const filteredTasks = await prisma.task.findMany();
+  //   console.log(filteredTasks)
+  //   setTasks(filteredTasks);
     
-  }
-  getTasks();
+  // }
+  // getTasks();
    
-  }, [])
+  // }, [])
   return (
     <>
       <Head>
@@ -54,19 +54,5 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  const prisma = new PrismaClient();
-  const tasks = await prisma.task.findMany();
-  
-  return {
-    props: { tasks }
-  }
+
 }
-// async function getTasks() {
-//   const prisma = new PrismaClient();
-//   // const filteredTasks = await prisma.task.findMany();
-//   // setTasks(filteredTasks)
-  
-//   return {
-//     props: { tasks }
-//   }
-// }
