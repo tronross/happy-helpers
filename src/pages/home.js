@@ -1,33 +1,45 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Inter } from 'next/font/google';
 
-import TaskList from '@/components/TaskList'
-import { Inter } from 'next/font/google'
-import Footer from '@/components/Footer'
-import NavBar from '@/components/NavBar'
-import Sidebar from '@/components/Sidebar'
-import PageHeader from '@/components/PageHeader'
+// Component dependencies
+import TaskList from '@/components/TaskList';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/NavBar';
+import Sidebar from '@/components/Sidebar';
+import PageHeader from '@/components/PageHeader';
 
-const inter = Inter({ subsets: ['latin'] })
+// Global variables
+const inter = Inter({ subsets: ['latin'] });
+const sidebarOptions = [
+  'All Tasks',
+  'Errands',
+  'Housework',
+  'Personal Care',
+  'Tech Support',
+  'Charity & Causes'
+];
 
-const sidebarOptions = ['All Tasks', 'Errands', 'Housework', 'Personal Care', 'Tech Support', 'Charity & Causes'];
+export default function Home({ tasks }) {
+  console.log(tasks);
 
-export default function Home({tasks}) {
+  // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks.tasks);
-  const [sidebar, setSidebar] = useState(sidebarOptions)
-  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0])
+  const [sidebar, setSidebar] = useState(sidebarOptions);
+  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   // const [category, setCategory] = useState(0);
-console.log(tasks)
+
   useEffect(() => {
     const fetchData = async () => {
-    const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks)
-      return data
-  }
-  const theFetcher = fetchData()
-  console.log(theFetcher)
-  }, [])
-console.log(fetchTasks)
+      const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
+      return data;
+    };
+    const theFetcher = fetchData();
+    console.log(theFetcher);
+  }, []);
+  console.log(fetchTasks);
+
   // useEffect (() => {
   //   setFetchTasks((prev) => {
   //     prev.filter(item => ) 
@@ -35,6 +47,7 @@ console.log(fetchTasks)
 
   // }, [selectedSidebar])
 
+  // Template
   return (
     <>
       <Head>
@@ -46,24 +59,26 @@ console.log(fetchTasks)
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-        <Sidebar sidebarOptions={sidebar} setSelectedSidebar={setSelectedSidebar} />
-        <section className='flex flex-col px-20'>
-          <PageHeader />
-          <TaskList tasks={fetchTasks} />
-        </section>
-        
+          <Sidebar
+            sidebarOptions={sidebar}
+            setSelectedSidebar={setSelectedSidebar}
+          />
+          <section className='flex flex-col px-20'>
+            <PageHeader />
+            <TaskList tasks={fetchTasks} />
+          </section>
         </div>
       </main>
-
       <Footer />
     </>
-  )
+  );
 }
 
+// Data fetching
 export async function getServerSideProps() {
-  const tasks = await axios.get('http://localhost:3000/api/tasks')
+  const tasks = await axios.get('http://localhost:3000/api/tasks');
   // console.log(tasks.data)
   return {
     props: { tasks: tasks.data }
-  }
+  };
 }
