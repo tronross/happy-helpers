@@ -1,15 +1,33 @@
-import Head from 'next/head'
-import TaskList from '@/components/TaskList'
-import { Inter } from 'next/font/google'
-import Footer from '@/components/Footer'
-import NavBar from '@/components/NavBar'
-import { PrismaClient } from '@prisma/client'
-import Sidebar from '@/components/Sidebar'
-import PageHeader from '@/components/PageHeader'
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
+import TaskList from '@/components/TaskList';
+import { Inter } from 'next/font/google';
+import Footer from '@/components/Footer';
+import NavBar from '@/components/NavBar';
+import { PrismaClient } from '@prisma/client';
+import Sidebar from '@/components/Sidebar';
+import PageHeader from '@/components/PageHeader';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({tasks}) {
+
+
+export default function Home(props) {
+  const [tasks, setTasks] = useState(props.tasks);
+  // const [category, setCategory] = useState(0);
+
+  useEffect(() => {
+
+    const getTasks = async () => {
+    const prisma = new PrismaClient();
+    const filteredTasks = await prisma.task.findMany();
+    console.log(filteredTasks)
+    setTasks(filteredTasks);
+    
+  }
+  getTasks();
+   
+  }, [])
   return (
     <>
       <Head>
@@ -43,3 +61,12 @@ export async function getServerSideProps() {
     props: { tasks }
   }
 }
+// async function getTasks() {
+//   const prisma = new PrismaClient();
+//   // const filteredTasks = await prisma.task.findMany();
+//   // setTasks(filteredTasks)
+  
+//   return {
+//     props: { tasks }
+//   }
+// }
