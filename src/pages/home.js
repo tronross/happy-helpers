@@ -8,18 +8,34 @@ import NavBar from '@/components/NavBar';
 import { PrismaClient } from '@prisma/client';
 import Sidebar from '@/components/Sidebar';
 import PageHeader from '@/components/PageHeader';
+import axios from 'axios'
 
 const inter = Inter({ subsets: ['latin'] });
 
+const sidebarOptions = ['All Tasks', 'Errands', 'Housework']
 
-
-export default function Home(props) {
-  const [tasks, setTasks] = useState(props.tasks);
+export default function Home({tasks}) {
+  const [fetchTasks, setFetchTasks] = useState(tasks.tasks);
+  const [sidebar, setSidebar] = useState(sidebarOptions)
+  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0])
   // const [category, setCategory] = useState(0);
-
+console.log(tasks)
   useEffect(() => {
-   
+    const fetchData = async () => {
+    const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks)
+      return data
+  }
+  const theFetcher = fetchData()
+  console.log(theFetcher)
   }, [])
+console.log(fetchTasks)
+  // useEffect (() => {
+  //   setFetchTasks((prev) => {
+  //     prev.filter(item => ) 
+  //   })
+
+  // }, [selectedSidebar])
+
   return (
     <>
       <Head>
@@ -31,12 +47,12 @@ export default function Home(props) {
       <main className="bg-white">
         <NavBar />
         <div className="flex">
-        <Sidebar />
-        <section className='flex flex-col'>
-          <PageHeader />
-          <TaskList tasks={tasks} />
-        </section>
-        
+          <Sidebar sidebarOptions={sidebar} setSelectedSidebar={setSelectedSidebar} />
+          <section className='flex flex-col'>
+            <PageHeader />
+            <TaskList tasks={fetchTasks} />
+          </section>
+
         </div>
       </main>
 
@@ -46,8 +62,9 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
- const tasks = fetch('/api/tasks/index')
- return {
-  props : { tasks }
- } 
+  const tasks = await axios.get('http://localhost:3000/api/tasks')
+  // console.log(tasks.data)
+  return {
+    props: { tasks: tasks.data }
+  }
 }
