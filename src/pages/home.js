@@ -6,13 +6,12 @@ import TaskList from '@/components/TaskList'
 import { Inter } from 'next/font/google'
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
-import { PrismaClient } from '@prisma/client'
 import Sidebar from '@/components/Sidebar'
 import PageHeader from '@/components/PageHeader'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const sidebarOptions = ['All Tasks', 'Errands', 'Housework'];
+const sidebarOptions = ['All Tasks', 'Errands', 'Housework', 'Personal Care', 'Tech Support', 'Charity & Causes'];
 
 export default function Home({tasks}) {
   const [fetchTasks, setFetchTasks] = useState(tasks.tasks);
