@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { getTasks } from './api/tasks/index'
 import Head from 'next/head';
 import TaskList from '@/components/TaskList';
 import { Inter } from 'next/font/google';
@@ -16,18 +17,9 @@ export default function Home(props) {
   const [tasks, setTasks] = useState(props.tasks);
   // const [category, setCategory] = useState(0);
 
-  // useEffect(() => {
-
-  //   const getTasks = async () => {
-  //   const prisma = new PrismaClient();
-  //   const filteredTasks = await prisma.task.findMany();
-  //   console.log(filteredTasks)
-  //   setTasks(filteredTasks);
-    
-  // }
-  // getTasks();
+  useEffect(() => {
    
-  // }, [])
+  }, [])
   return (
     <>
       <Head>
@@ -54,5 +46,8 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-
+ const tasks = fetch('/api/tasks/index')
+ return {
+  props : { tasks }
+ } 
 }
