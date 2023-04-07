@@ -12,7 +12,7 @@ export default function NewTask(props) {
     start: "",
     end: "",
     category: "",
-    numHelpers: "",
+    nbHelpers: "",
     image: "",
     address: "",
     city: "",

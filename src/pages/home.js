@@ -30,14 +30,14 @@ export default function Home({ tasks }) {
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   // const [category, setCategory] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
-      return data;
-    };
-    const theFetcher = fetchData();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
+  //     return data;
+  //   };
+  //   const theFetcher = fetchData();
     // console.log(theFetcher);
-  });
+  // });
   // console.log(fetchTasks);
 
   // useEffect (() => {
