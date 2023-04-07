@@ -32,8 +32,14 @@
 
 ## offers
 - Read
+
+`GET api/offers/[offerId]`
 - Edit
+
+`PUT api/offers/[offerId]`
 - Add
+
+`POST api/offers`
 
 ## addresses
 - Browse
