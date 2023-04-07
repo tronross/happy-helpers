@@ -12,10 +12,15 @@ import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import TaskList from "@/components/TaskList";
 
-export default function ProfilePage({ user }) {
+export default function ProfilePage({ user, userAddress }) {
   const [userData, setUserData] = useState(user.user);
-  console.log(userData);
+  // const [uAddress, setUAddress] = useState(userAddress)
+  console.log(user);
+  console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
+  const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
+  const [fullAddress, setFullAddress] = useState(fullAdd)
   // const userData = user.user
+  
   // Template
   return (
     <>
@@ -33,7 +38,7 @@ export default function ProfilePage({ user }) {
             <Button buttonName='Edit Profile' />
             <br></br>
             <h1>Address:</h1>
-            <p>{userData.address}</p><br></br>
+            <p>{fullAddress}</p><br></br>
             <h1>Phone Number:</h1>
             <p>{userData.phone}</p><br></br>
             <h1>Skills:</h1>
@@ -59,10 +64,20 @@ export default function ProfilePage({ user }) {
 }
 
 // Data fetching
+
+// User table profile data
 export async function getServerSideProps() {
   const user = await axios.get(`http://localhost:3000/api/users/${1}`);
-  // console.log(user.data)
+  // console.log(user)
+  const userAddress = await axios.get(`http://localhost:3000/api/addresses/${1}`);
+  console.log(userAddress)
   return {
-    props: { user: user.data }
+    props: { user: user.data, userAddress: userAddress.data}
   };
 }
+
+// Address table profile data
+// export async function getServerSideProps() {
+  
+  
+// }
