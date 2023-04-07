@@ -43,9 +43,17 @@
 
 ## addresses
 - Browse
+
+`GET api/addresses/`
 - Read
+
+`GET api/addresses/[addressId]`
 - Edit
+
+`PUT api/addresses/[addressId]`
 - Add
+
+`POST api/addresses/`
 
 ## tasks
 - Browse
