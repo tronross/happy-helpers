@@ -3,13 +3,19 @@
 //////////////////////
 
 import Head from "next/head";
+import { useState } from 'react';
+import axios from "axios";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
+import TaskList from "@/components/TaskList";
 
-export default function ProfilePage(props) {
+export default function ProfilePage({ user }) {
+  const [userData, setUserData] = useState(user.user);
+  console.log(userData);
+  // const userData = user.user
   // Template
   return (
     <>
@@ -21,27 +27,42 @@ export default function ProfilePage(props) {
       </Head>
       <main className="bg-neutral-100">
         <NavBar />
-        <div>
-          <h1>Fred Frederick</h1><br></br>
-          <Button buttonName='Edit Profile'/>
-          <br></br>
-          <h1>Address:</h1>
-          <p>12 Maple Ave,<br></br>
-            Rockland, ON</p><br></br>
-          <h1>Phone Number:</h1>
-          <p>613.935.2024</p><br></br>
-          <h1>Skills:</h1>
-          <p>Tech support<br></br>
-            Lawn Mowing<br></br>
-            Cooking<br></br>
-            Carpentry</p><br></br>
-          <h1>Organizations:</h1>
-          <p>Meals on Wheels</p><br></br>
-          <h1>Description:</h1>
-          <p>I am a happy helper!</p><br></br>
+        <div className="flex">
+          <section className="w-[1500px] h-screen sticky top-0">
+            <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
+            <Button buttonName='Edit Profile' />
+            <br></br>
+            <h1>Address:</h1>
+            <p>{userData.address}</p><br></br>
+            <h1>Phone Number:</h1>
+            <p>{userData.phone}</p><br></br>
+            <h1>Skills:</h1>
+            <p>Tech support<br></br>
+              Lawn Mowing<br></br>
+              Cooking<br></br>
+              Carpentry</p><br></br>
+            <h1>Organizations:</h1>
+            <p>Meals on Wheels</p><br></br>
+            <h1>Description:</h1>
+            <p>{userData.description}</p><br></br>
+          </section>
+          <section>
+            {/* <h1>Your Upcoming tasks</h1> */}
+            {/* <TaskList tasks={fetchTasks} /> */}
+            {/* <h1>Past Tasks</h1> */}
+          </section>
         </div>
       </main>
       <Footer />
     </>
   );
+}
+
+// Data fetching
+export async function getServerSideProps() {
+  const user = await axios.get(`http://localhost:3000/api/users/${1}`);
+  // console.log(user.data)
+  return {
+    props: { user: user.data }
+  };
 }
