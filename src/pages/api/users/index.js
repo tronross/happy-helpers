@@ -4,6 +4,7 @@ export default async function handler(req, res) {
   const prisma = new PrismaClient();
   if (req.method === 'POST') {
     console.log(req.body)
-    res.send('POST api/users')
+    res.status(200).send('ok');
+    console.log(`Called PUT api/users/`)
   }
 }
