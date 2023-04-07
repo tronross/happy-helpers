@@ -6,8 +6,8 @@ export default async function handler(req, res) {
   const tasks = await prisma.task.findMany()
   console.log(tasks)
   res.json({tasks})
- } if (req.method === 'POST') {
+ } else if (req.method === 'POST') {
   console.log(req.body)
-  res.send('hello')
+  res.send('POST api/tasks')
  }
 }
