@@ -2,9 +2,22 @@ import Head from 'next/head'
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
 import TaskForm from '@/components/TaskForm'
+import { useState } from 'react'
 
 
-export default function Home(props) {
+export default function NewTask(props) {
+  const [formData, setFormData] = useState({
+    name: "",
+    desc: "",
+    start: "",
+    end: "",
+    category: "",
+    numHelpers: "",
+    image: "",
+    address: "",
+    city: "",
+    postcode: ""
+  })
   return (
     <>
       <Head>
@@ -16,7 +29,7 @@ export default function Home(props) {
       <main className="bg-gradient-to-b h-[calc(100vh-23.8px)] from-teal-400 to-teal-800">
         <NavBar />
         <div className="flex justify-center">
-        <TaskForm />
+        <TaskForm formData={formData} setFormData={setFormData}/>
         </div>
       </main>
 

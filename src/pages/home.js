@@ -22,7 +22,7 @@ const sidebarOptions = [
 ];
 
 export default function Home({ tasks }) {
-  console.log(tasks);
+  // console.log(tasks);
 
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks.tasks);
@@ -36,9 +36,9 @@ export default function Home({ tasks }) {
       return data;
     };
     const theFetcher = fetchData();
-    console.log(theFetcher);
-  }, []);
-  console.log(fetchTasks);
+    // console.log(theFetcher);
+  });
+  // console.log(fetchTasks);
 
   // useEffect (() => {
   //   setFetchTasks((prev) => {
