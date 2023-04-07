@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   res.json({task})
  } if (req.method === 'PUT') {
   console.log(req.body)
-  const taskId = (req.params['id']);
-  res.send(`api/task/${taskId}`)
+  const { taskId } = req.query;
+  res.send(`api/tasks/${taskId}`)
  }
 }
