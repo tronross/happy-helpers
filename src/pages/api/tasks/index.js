@@ -36,7 +36,7 @@ export default async function handler(req, res) {
         endDate: end,
         categoryId: categoryData.id,
         nbHelpers: Number(nbHelpers),
-        image: "https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
+        image: image || "https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
         addressId: addressData.id,
         userId: userData.id
       }

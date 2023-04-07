@@ -32,11 +32,11 @@ export default function Home({ tasks }) {
 
   // useEffect(() => {
   //   const fetchData = async () => {
-  //     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
+  //     const data = await axios.put('http://localhost:3000/api/tasks/2', sidebar);
   //     return data;
   //   };
   //   const theFetcher = fetchData();
-    // console.log(theFetcher);
+  //   console.log(theFetcher);
   // });
   // console.log(fetchTasks);
 
