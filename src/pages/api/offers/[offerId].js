@@ -14,6 +14,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'PUT') {
     console.log(req.body)
     const { offerId } = req.query;
-    res.send(`PUT api/offers/${offerId}`)
+    res.status(200).send('ok');
+    console.log(`PUT api/offers/${offerId}`)
   }
 }
