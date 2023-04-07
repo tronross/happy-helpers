@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const prisma = new PrismaClient();
   if (req.method === 'GET') {
     const { addressId } = req.query;
-    const address = await prisma.organization.findUnique({
+    const address = await prisma.address.findUnique({
       where: {
         id: parseInt(addressId)
       }
