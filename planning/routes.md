@@ -1,74 +1,74 @@
 # Routes / BREAD Operations
 
 ## users
-- Read
+#### Read
 
 `GET api/users/[userId]`
-- Edit
+#### Edit
 
 `PUT api/users/[userId]`
-- Add
+#### Add
 
 `POST api/users`
 
 ## skills
-- Browse
+#### Browse
 
 `GET api/skills/`
-- Read
+#### Read
 
 `GET api/skills/[skillId]`
 
 ## organizations
-- Browse
+#### Browse
 
 `GET api/organizations/`
-- Read
+#### Read
 
 `GET api/organizations/[organizationId]`
-- Edit
+#### Edit
 
 `PUT api/organizations/[organizationId]`
 
 ## offers
-- Read
+#### Read
 
 `GET api/offers/[offerId]`
-- Edit
+#### Edit
 
 `PUT api/offers/[offerId]`
-- Add
+#### Add
 
 `POST api/offers`
 
 ## addresses
-- Browse
+#### Browse
 
 `GET api/addresses/`
-- Read
+#### Read
 
 `GET api/addresses/[addressId]`
-- Edit
+#### Edit
 
 `PUT api/addresses/[addressId]`
-- Add
+#### Add
 
 `POST api/addresses/`
 
 ## tasks
-- Browse
+#### Browse
 
 `GET api/tasks/`
-- Read
+#### Read
 
 `GET api/tasks/[taskId]`
-- Edit
+#### Edit
 
 `PUT api/tasks/[taskId]`
-- Add
+#### Add
 
 `POST api/tasks/`
 
 ## categories
-- Browse
-- Read
+#### Browse
+#### Read
