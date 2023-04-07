@@ -10,10 +10,101 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Status {
+  OPEN
+  PENDING
+  COMPLETE
+}
+
 model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
+  id            Int       @id @default(autoincrement())
+  firstName     String?
+  lastName      String
+  description   String?   @db.VarChar(255)
+  email         String    @unique
+  password      String
+  phone         String?
+  addressId     Int       @map("address_id")
+  address       Address   @relation(fields: [addressId], references: [id])
+  stars         Int       @default(0)
+  avatar        String?   @db.VarChar(255)
+  Skills        Skill[]
+  Organizations Organization[]
+  Offers        Offer[]
+  Tasks         Task[]
 
   @@map("users")
+}
+
+model Skill {
+  id            Int       @id @default(autoincrement())
+  name          String    
+  Users         User[]
+
+  @@map("skills")
+}
+
+model Organization {
+  id            Int       @id @default(autoincrement())
+  name          String
+  avatar        String?
+  website       String?
+  addressId     Int       @map("address_id")
+  address       Address   @relation(fields: [addressId], references: [id])
+  Users         User[]
+
+  @@map("organizations")
+}
+
+model Address {
+  id            Int       @id @default(autoincrement())
+  address       String?
+  city          String
+  postcode      String    @db.VarChar(255)
+  latitude      Decimal
+  longitude     Decimal
+  Users         User[]
+  Organizations Organization[]
+  Tasks         Task[]
+
+  @@map("addresses")
+}
+
+model Offer {
+  id            Int       @id @default(autoincrement())
+  userId        Int       @map("user_id")
+  user          User      @relation(fields: [userId], references: [id])
+  taskId        Int       @map("task_id")
+  task          Task      @relation(fields: [taskId], references: [id])
+  status        Status    @default(OPEN)
+
+  @@map("offers")
+}
+
+model Task {
+  id            Int       @id @default(autoincrement())
+  name          String
+  description   String?   @db.VarChar(255)
+  image         String?   @db.VarChar(255)
+  categoryId    Int       @map("category_id")
+  category      Category  @relation(fields: [categoryId], references: [id])
+  startDate     String    @default("Today") @map("start_date")
+  endDate       String    @default("Tomorrow") @map("end_date")
+  userId        Int       @map("user_id")
+  user          User      @relation(fields: [userId], references: [id])
+  status        Status    @default(PENDING)
+  nbHelpers     Int       @map("nb_helpers")
+  addressId     Int       @map("address_id")
+  address       Address   @relation(fields: [addressId], references: [id])
+  Offers        Offer[]
+
+  @@map("tasks")
+}
+
+model Category {
+  id            Int       @id @default(autoincrement())
+  name          String    
+  Tasks         Task[]
+
+  @@map("categories")
 }
