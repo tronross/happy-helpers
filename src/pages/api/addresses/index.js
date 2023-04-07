@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     res.json({ addresses })
   } else if (req.method === 'POST') {
     console.log(req.body)
-    res.send('POST api/addresses')
+    res.status(200).send('ok');
+    console.log('POST api/addresses')
   }
 }
