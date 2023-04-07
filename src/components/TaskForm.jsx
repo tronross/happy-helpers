@@ -13,7 +13,7 @@ export default function TaskForm({formData, setFormData}) {
   }
 
   return (
-    <form className="flex flex-col">
+    <div className="flex flex-col">
       <input type="text" id="name" name="name"placeholder="Name" value={formData.name} onChange={onChange} required />
 
       <input type="text" id="desc" name="desc" placeholder="Description" value={formData.desc} onChange={onChange} required />
@@ -24,7 +24,7 @@ export default function TaskForm({formData, setFormData}) {
 
       <input type="text" id="category" name="category" placeholder="Category" value={formData.category} onChange={onChange} required />
 
-      <input type="text" id="numHelpers" name="numHelpers"placeholder="Helpers Needed" value={formData.numHelpers} onChange={onChange} required />
+      <input type="number" min="1" step="1" id="nbHelpers" name="nbHelpers"placeholder="Helpers Needed" value={formData.nbHelpers} onChange={onChange} required />
 
       <input type="text" id="image" name="image"placeholder="Upload Image" value={formData.image} onChange={onChange} required />
 
@@ -35,6 +35,6 @@ export default function TaskForm({formData, setFormData}) {
       <input type="text" id="postcode" name="postcode"placeholder="Postal Code" value={formData.postcode} onChange={onChange} required />
 
       <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
-      </form>
+      </div>
   )
 }
