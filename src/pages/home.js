@@ -37,7 +37,7 @@ export default function Home({ tasks }) {
   //     return data;
   //   };
   //   const theFetcher = fetchData();
-    // console.log(theFetcher);
+  // console.log(theFetcher);
   // });
   // console.log(fetchTasks);
 
@@ -80,8 +80,8 @@ export async function getServerSideProps() {
   // const tasks = await axios.get('http://localhost:3000/api/tasks');
   // console.log(tasks.data)
   const prisma = new PrismaClient();
-    const tasks = await prisma.task.findMany()
-    console.log(tasks)
+  const tasks = await prisma.task.findMany()
+  console.log(tasks)
   return {
     props: { tasks: tasks }
   };
