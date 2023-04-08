@@ -11,22 +11,33 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import Button from "@/components/Button";
 import TaskList from "@/components/TaskList";
+import EditProfileForm from "@/components/EditProfileForm";
 
 export default function ProfilePage({ user, userAddress }) {
+  // HOOKS
   const [userData, setUserData] = useState(user.user);
   // console.log(user);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd);
-  const [showEditProfileForm, setShowEditProfileForm] = useState(false);
 
-  // Helper functions
+  const [showEditProfileForm, setShowEditProfileForm] = useState(false);
+  const [EditProfileFormData, setEditProfileFormData] = useState({
+    firstName: "",
+    lastName: "",
+    description: "",
+    phone: "",
+    address: "",
+    skills: "",
+    Organizations: ""
+  });
+
+  // HELPER FUNCTIONS
   const toggleEditProfileForm = () => {
     setShowEditProfileForm(!showEditProfileForm);
   };
 
-
-  // Template
+  // TEMPLATE
   return (
     <>
       <Head>
@@ -41,11 +52,12 @@ export default function ProfilePage({ user, userAddress }) {
           <section className="w-[1500px] h-screen sticky top-0">
             <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
             <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
-            {showEditProfileForm && (
-              <form>
-                <input />
-              </form>
-            )}
+            {showEditProfileForm &&
+              <EditProfileForm
+                EditProfileFormData={EditProfileFormData}
+                setEditProfileFormData={setEditProfileFormData}
+              />
+            }
             <br></br>
             <h1>Address:</h1>
             <p>{fullAddress}</p><br></br>
@@ -73,13 +85,13 @@ export default function ProfilePage({ user, userAddress }) {
   );
 }
 
-// Data fetching
-
-// User table profile data
+// DATA FETCHING
 export async function getServerSideProps() {
+  // User table profile data
   const user = await axios.get(`http://localhost:3000/api/users/${1}`);
   // console.log('userAddressId', user.data.user.addressId)
   // console.log('USER:', user.data.user.addressId)
+  // User address data
   const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
   // console.log(userAddress)
   return {
