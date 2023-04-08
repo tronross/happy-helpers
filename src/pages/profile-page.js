@@ -22,14 +22,16 @@ export default function ProfilePage({ user, userAddress }) {
   const [fullAddress, setFullAddress] = useState(fullAdd);
 
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
-  const [EditProfileFormData, setEditProfileFormData] = useState({
+  const [editProfileFormData, setEditProfileFormData] = useState({
     firstName: "",
     lastName: "",
     description: "",
     phone: "",
     address: "",
-    skills: "",
-    Organizations: ""
+    city: "",
+    postcode: "",
+    skills: [],
+    Organizations: []
   });
 
   // HELPER FUNCTIONS
@@ -54,7 +56,7 @@ export default function ProfilePage({ user, userAddress }) {
             <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
             {showEditProfileForm &&
               <EditProfileForm
-                EditProfileFormData={EditProfileFormData}
+                editProfileFormData={editProfileFormData}
                 setEditProfileFormData={setEditProfileFormData}
               />
             }
