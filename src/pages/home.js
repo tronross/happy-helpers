@@ -94,7 +94,7 @@ export async function getServerSideProps() {
 
   const user2 = await prisma.user.findUnique({
     where: {
-      id: 3
+      id: 2
     }
   })
 
@@ -105,8 +105,8 @@ export async function getServerSideProps() {
     }
   })
 
-  const long1 = location1.longitude;
   const lat1 = location1.latitude;
+  const lon1 = location1.longitude;
 
   const user2AddId = user2.addressId;
   const location2 = await prisma.address.findUnique({
@@ -115,10 +115,15 @@ export async function getServerSideProps() {
     }
   })
 
-  const long2 = location2.longitude;
+  const lon2 = location2.longitude;
   const lat2 = location2.latitude;
-  console.log(lat1, long1, lat2, long2);
-  
+  console.log(lat1, lon1, lat2, lon2);
+
+  const distance = getDistance(lat1, lon1, lat2, lon2);
+  console.log(location1)
+  console.log(location2)
+  console.log(` The distance between the two places is ${Math.round(distance)}km`)
+
 
   // console.log(tasks)
   return {
