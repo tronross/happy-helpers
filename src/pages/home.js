@@ -4,6 +4,9 @@ import axios from 'axios';
 import { Inter } from 'next/font/google';
 import { PrismaClient } from '@prisma/client';
 
+// Helper functions
+import getDistance from '../helpers/get-distance';
+
 // Component dependencies
 import TaskList from '@/components/TaskList';
 import Footer from '@/components/Footer';
@@ -81,7 +84,43 @@ export async function getServerSideProps() {
   // console.log(tasks.data)
   const prisma = new PrismaClient();
   const tasks = await prisma.task.findMany()
-  console.log(tasks)
+
+  // distance sandbox
+  const user1 = await prisma.user.findUnique({
+    where: {
+      id: 1
+    }
+  })
+
+  const user2 = await prisma.user.findUnique({
+    where: {
+      id: 3
+    }
+  })
+
+  const user1AddId = user1.addressId;
+  const location1 = await prisma.address.findUnique({
+    where: {
+      id: parseInt(user1AddId)
+    }
+  })
+
+  const long1 = location1.longitude;
+  const lat1 = location1.latitude;
+
+  const user2AddId = user2.addressId;
+  const location2 = await prisma.address.findUnique({
+    where: {
+      id: parseInt(user2AddId)
+    }
+  })
+
+  const long2 = location2.longitude;
+  const lat2 = location2.latitude;
+  console.log(lat1, long1, lat2, long2);
+  
+
+  // console.log(tasks)
   return {
     props: { tasks: tasks }
   };
