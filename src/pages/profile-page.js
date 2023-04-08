@@ -15,8 +15,8 @@ import TaskList from "@/components/TaskList";
 export default function ProfilePage({ user, userAddress }) {
   const [userData, setUserData] = useState(user.user);
   // const [uAddress, setUAddress] = useState(userAddress)
-  console.log(user);
-  console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
+  // console.log(user);
+  // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd)
   // const userData = user.user
@@ -68,16 +68,11 @@ export default function ProfilePage({ user, userAddress }) {
 // User table profile data
 export async function getServerSideProps() {
   const user = await axios.get(`http://localhost:3000/api/users/${1}`);
-  // console.log(user)
-  const userAddress = await axios.get(`http://localhost:3000/api/addresses/${1}`);
-  console.log(userAddress)
+  // console.log('userAddressId', user.data.user.addressId)
+  // console.log('USER:', user.data.user.addressId)
+  const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
+  // console.log(userAddress)
   return {
     props: { user: user.data, userAddress: userAddress.data}
   };
 }
-
-// Address table profile data
-// export async function getServerSideProps() {
-  
-  
-// }
