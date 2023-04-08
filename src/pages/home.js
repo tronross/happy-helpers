@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Inter } from 'next/font/google';
+import { PrismaClient } from '@prisma/client';
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -25,7 +26,7 @@ export default function Home({ tasks }) {
   // console.log(tasks);
 
   // Hooks
-  const [fetchTasks, setFetchTasks] = useState(tasks.tasks);
+  const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   // const [category, setCategory] = useState(0);
@@ -76,9 +77,12 @@ export default function Home({ tasks }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  const tasks = await axios.get('http://localhost:3000/api/tasks');
+  // const tasks = await axios.get('http://localhost:3000/api/tasks');
   // console.log(tasks.data)
+  const prisma = new PrismaClient();
+    const tasks = await prisma.task.findMany()
+    console.log(tasks)
   return {
-    props: { tasks: tasks.data }
+    props: { tasks: tasks }
   };
 }
