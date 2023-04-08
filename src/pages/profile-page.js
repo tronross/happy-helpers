@@ -3,7 +3,7 @@
 //////////////////////
 
 import Head from "next/head";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
 
 // Component dependencies
@@ -14,13 +14,18 @@ import TaskList from "@/components/TaskList";
 
 export default function ProfilePage({ user, userAddress }) {
   const [userData, setUserData] = useState(user.user);
-  // const [uAddress, setUAddress] = useState(userAddress)
   // console.log(user);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
-  const [fullAddress, setFullAddress] = useState(fullAdd)
-  // const userData = user.user
-  
+  const [fullAddress, setFullAddress] = useState(fullAdd);
+  const [showEditProfileForm, setShowEditProfileForm] = useState(false);
+
+  // Helper functions
+  const toggleEditProfileForm = () => {
+    setShowEditProfileForm(!showEditProfileForm);
+  };
+
+
   // Template
   return (
     <>
@@ -35,7 +40,12 @@ export default function ProfilePage({ user, userAddress }) {
         <div className="flex">
           <section className="w-[1500px] h-screen sticky top-0">
             <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
-            <Button buttonName='Edit Profile' />
+            <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
+            {showEditProfileForm && (
+              <form>
+                <input />
+              </form>
+            )}
             <br></br>
             <h1>Address:</h1>
             <p>{fullAddress}</p><br></br>
@@ -52,7 +62,7 @@ export default function ProfilePage({ user, userAddress }) {
             <p>{userData.description}</p><br></br>
           </section>
           <section>
-            {/* <h1>Your Upcoming tasks</h1> */}
+            <h1>Your Upcoming tasks</h1>
             {/* <TaskList tasks={fetchTasks} /> */}
             {/* <h1>Past Tasks</h1> */}
           </section>
@@ -73,6 +83,6 @@ export async function getServerSideProps() {
   const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
   // console.log(userAddress)
   return {
-    props: { user: user.data, userAddress: userAddress.data}
+    props: { user: user.data, userAddress: userAddress.data }
   };
 }
