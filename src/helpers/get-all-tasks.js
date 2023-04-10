@@ -1,17 +1,28 @@
-import axios from "axios";
-import { PrismaClient } from "@prisma/client";
+// import axios from "axios";
+// import { PrismaClient } from "@prisma/client";
 
-export default async function getAllTasks() {
 
-  const tasksCall = await axios.get('http://localhost:3000/api/tasks')
-  const addressesCall = await axios.get('http://localhost:3000/api/addresses')
 
-  const tasks = tasksCall.data.tasks;
-  const addresses = addressesCall.data.addresses[0];
-console.log(`These are the ${addresses}`)
-  const allTasks = {
+export default function getAllTasks(tasks, addresses) {
 
-  }
-  // console.log(tasks.data.tasks[0])
-  return allTasks;
+  // const prisma = new PrismaClient();
+  
+  // const tasks = await prisma.task.findMany()
+  // const addresses = await prisma.address.findMany()
+  
+  
+    for (const task of tasks) {
+      const taskAddress = addresses[task.addressId]
+
+      const latitude = taskAddress.latitude;
+      const longitude = taskAddress.longitude;
+      console.log(latitude, longitude)
+
+      task.latitude = `${latitude}`;
+      task.longitude = `${longitude}`;
+
+      console.log(task)
+    }
+
 }
+
