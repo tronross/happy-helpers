@@ -6,8 +6,8 @@ export default function Sidebar(props) {
   }
   return (
     <>
-    <div className="w-[1500px] h-screen sticky top-0">Filters
-    <form action="/api/tasks" method="get">
+    <div className="h-screen sticky top-0">Filters
+    <form action="/api/tasks" method="get" className="flex flex-col w-[300px]">
         <input type="text" placeholder="Location"/>
         <select onChange={dropdownSelect}>
           {props.sidebarOptions.map((item, idx) => {
