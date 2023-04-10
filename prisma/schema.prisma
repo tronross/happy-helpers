@@ -86,10 +86,12 @@ model Task {
   name          String
   description   String?   @db.VarChar(255)
   image         String?   @db.VarChar(255)
-  categoryId    Int       @map("category_id")
-  category      Category  @relation(fields: [categoryId], references: [id])
-  startDate     String    @default("Today") @map("start_date")
-  endDate       String    @default("Tomorrow") @map("end_date")
+  category      String
+  // startDate     String    @default("Today") @map("start_date")
+  // endDate       String    @default("Tomorrow") @map("end_date")
+  startDate     DateTime  @default(dbgenerated("NOW()")) @map("start_date")
+  endDate       DateTime  @default(dbgenerated("NOW() + interval '1 day'")) @map("end_date")
+
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id])
   status        Status    @default(PENDING)
