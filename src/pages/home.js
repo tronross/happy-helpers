@@ -115,21 +115,21 @@ export async function getServerSideProps() {
   const lat1 = location1.latitude;
   const lon1 = location1.longitude;
 
-  const user2AddId = user2.addressId;
-  const location2 = await prisma.address.findUnique({
-    where: {
-      id: parseInt(user2AddId)
-    }
-  })
+  // const user2AddId = user2.addressId;
+  // const location2 = await prisma.address.findUnique({
+  //   where: {
+  //     id: parseInt(user2AddId)
+  //   }
+  // })
 
-  const lon2 = location2.longitude;
-  const lat2 = location2.latitude;
-  // console.log(lat1, lon1, lat2, lon2);
+  const lon2 = tasks[5].longitude;
+  const lat2 = tasks[5].latitude;
+  console.log(lat1, lon1, lat2, lon2);
 
   const distance = getDistance(lat1, lon1, lat2, lon2);
-  // console.log(location1)
+  console.log(location1)
   // console.log(location2)
-  // console.log(` The distance between the two places is ${Math.round(distance)}km`)
+  console.log(` The distance between the two places is ${Math.round(distance)}km`)
 
 
   // console.log(tasks)
