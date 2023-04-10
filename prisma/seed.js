@@ -184,8 +184,8 @@ async function main() {
       description: 'Move bins to the bottom of the driveway for collection.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-20 16:00+0500'),
+      endDate: new Date('2023-04-20 20:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -198,8 +198,8 @@ async function main() {
       description: 'Heavy couch needs to go up to 23rd floor apartment.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-19 15:00+0500'),
+      endDate: new Date('2023-04-19 15:00+0500'),
       userId: 2,
       nbHelpers: 3,
       addressId: 2
@@ -212,8 +212,8 @@ async function main() {
       description: 'I have broken my leg, need someone to walk the dog.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-21 15:00+0500'),
+      endDate: new Date('2023-04-21 15:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -226,8 +226,8 @@ async function main() {
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-18 12:00+0500'),
+      endDate: new Date('2023-04-18 13:00+0500'),
       userId: 4,
       nbHelpers: 1,
       addressId: 4
@@ -240,8 +240,8 @@ async function main() {
       description: 'Bulb is too high for me to reach.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-22 10:00+0500'),
+      endDate: new Date('2023-04-23 15:00+0500'),
       userId: 5,
       nbHelpers: 1,
       addressId: 5
@@ -254,8 +254,8 @@ async function main() {
       description: 'Going on holiday, parking is too expensive at the airport.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-19 15:00+0500'),
+      endDate: new Date('2023-04-19 15:00+0500'),
       userId: 4,
       nbHelpers: 1,
       addressId: 4
@@ -268,8 +268,8 @@ async function main() {
       description: 'Any cakes would be welcome, I hate cooking.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Cooking',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-16 15:00+0500'),
+      endDate: new Date('2023-04-16 15:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -282,8 +282,8 @@ async function main() {
       description: 'Nobody like my lasagne last time, need a change of menu.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Cooking',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-29 18:00+0500'),
+      endDate: new Date('2023-04-29 19:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
