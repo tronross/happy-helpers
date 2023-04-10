@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 // Helper functions
 import getDistance from '../helpers/get-distance';
-import getAllTasks from '../helpers/get-all-tasks';
+import addCoordsToTasks from '../helpers/add-coords-to-tasks';
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -89,7 +89,7 @@ export async function getServerSideProps() {
   const tasks = await prisma.task.findMany()
   const addresses = await prisma.address.findMany()
   
-  getAllTasks(tasks, addresses);
+  addCoordsToTasks(tasks, addresses);
 
 
   // distance sandbox
