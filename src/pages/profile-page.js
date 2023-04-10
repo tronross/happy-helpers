@@ -5,6 +5,7 @@
 import Head from "next/head";
 import { useEffect, useState } from 'react';
 import axios from "axios";
+import { PrismaClient } from '@prisma/client';
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
@@ -95,8 +96,36 @@ export async function getServerSideProps() {
   // console.log('userAddressId', user.data.user.addressId)
   // console.log('USER:', user.data.user.addressId)
   // User address data
+
+  // Address table profile data
   const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
   // console.log(userAddress)
+
+  // Task table profile data
+  const prisma = new PrismaClient();
+  const userPastOffersComplete = await prisma.offer.findMany({
+    where: {
+      userId: parseInt(user.data.user.id),
+      status: 'COMPLETE'
+    }
+  });
+  console.log('userPastOffersComplete', userPastOffersComplete);
+
+  // const tasksObject = [];
+  const tasksObject = userPastOffersComplete.map(async item => {
+    const data = await axios.get(`http://localhost:3000/api/tasks/${item.taskId}`);
+  
+  })
+  console.log('TASKSOBJECT', tasksObject);
+
+  // const userPastTasksComplete = await prisma.task.findMany({
+  //   where: {
+  //     id: userPastOffersComplete.taskId,
+  //     status: 'COMPLETE'
+  //   }
+  // })
+  // console.log('userPastTasksComplete', userPastTasksComplete);
+
   return {
     props: { user: user.data, userAddress: userAddress.data }
   };
