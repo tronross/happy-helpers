@@ -16,7 +16,7 @@ import EditProfileForm from "@/components/EditProfileForm";
 export default function ProfilePage({ user, userAddress }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
-  // console.log(user);
+  // console.log(user.user);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd);
@@ -30,8 +30,8 @@ export default function ProfilePage({ user, userAddress }) {
     address: "",
     city: "",
     postcode: "",
-    skills: [],
-    Organizations: []
+    // skills: "",
+    // organizations: "",
   });
 
   // HELPER FUNCTIONS
@@ -56,6 +56,7 @@ export default function ProfilePage({ user, userAddress }) {
             <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
             {showEditProfileForm &&
               <EditProfileForm
+                userAddressId={userData.addressId}
                 editProfileFormData={editProfileFormData}
                 setEditProfileFormData={setEditProfileFormData}
               />
