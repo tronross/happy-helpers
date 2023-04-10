@@ -6,6 +6,7 @@ import { PrismaClient } from '@prisma/client';
 
 // Helper functions
 import getDistance from '../helpers/get-distance';
+import getAllTasks from '../helpers/get-all-tasks';
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -28,7 +29,7 @@ const sidebarOptions = [
 
 export default function Home({ tasks }) {
   // console.log(tasks);
-
+getAllTasks();
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
