@@ -10,6 +10,7 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import Sidebar from '@/components/Sidebar';
 import PageHeader from '@/components/PageHeader';
+import Map from '@/components/Map';
 
 // Global variables
 const inter = Inter({ subsets: ['latin'] });
@@ -29,6 +30,7 @@ export default function Home({ tasks }) {
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
+  const [view, setView] = useState("List");
   // const [category, setCategory] = useState(0);
 
   // useEffect(() => {
@@ -48,6 +50,8 @@ export default function Home({ tasks }) {
 
   // }, [selectedSidebar])
 
+  const currentView = (view === "List" ? <TaskList tasks={fetchTasks}/> : <Map />)
+
   // Template
   return (
     <>
@@ -65,8 +69,8 @@ export default function Home({ tasks }) {
             setSelectedSidebar={setSelectedSidebar}
           />
           <section className='flex flex-col px-20'>
-            <PageHeader />
-            <TaskList tasks={fetchTasks} />
+            <PageHeader setView={setView}/>
+            {currentView}
           </section>
         </div>
       </main>
