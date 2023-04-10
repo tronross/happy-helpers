@@ -11,6 +11,7 @@ export default function EditProfileForm({ editProfileFormData, setEditProfileFor
   };
 
   const handleSubmit = async () => {
+    await axios.put('http://localhost:3000/api/addresses/[userId]', editProfileFormData);
     await axios.put('http://localhost:3000/api/users/[userId]', editProfileFormData);
     console.log(editProfileFormData);
   };
