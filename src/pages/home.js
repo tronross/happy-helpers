@@ -68,7 +68,7 @@ export default function Home({ tasks }) {
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
           />
-          <section className='flex flex-col px-20'>
+          <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView}/>
             {currentView}
           </section>
