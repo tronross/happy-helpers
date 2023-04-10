@@ -29,7 +29,7 @@ const sidebarOptions = [
 
 export default function Home({ tasks }) {
   // console.log(tasks);
-getAllTasks();
+  
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
@@ -85,8 +85,12 @@ getAllTasks();
 // Data fetching
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
-
+  
   const tasks = await prisma.task.findMany()
+  const addresses = await prisma.address.findMany()
+  
+  getAllTasks(tasks, addresses);
+
 
   // distance sandbox
   const user1 = await prisma.user.findUnique({
@@ -120,12 +124,12 @@ export async function getServerSideProps() {
 
   const lon2 = location2.longitude;
   const lat2 = location2.latitude;
-  console.log(lat1, lon1, lat2, lon2);
+  // console.log(lat1, lon1, lat2, lon2);
 
   const distance = getDistance(lat1, lon1, lat2, lon2);
-  console.log(location1)
-  console.log(location2)
-  console.log(` The distance between the two places is ${Math.round(distance)}km`)
+  // console.log(location1)
+  // console.log(location2)
+  // console.log(` The distance between the two places is ${Math.round(distance)}km`)
 
 
   // console.log(tasks)
