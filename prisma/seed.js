@@ -5,44 +5,7 @@ const prisma = new PrismaClient();
 // eslint-disable-next-line func-style
 async function main() {
 
-  // Create skills -----------------------------------------------------------
-  await prisma.skill.create({
-    data: {
-      name: 'Cooking'
-    }
-  });
-  
-  await prisma.skill.create({
-    data: {
-      name: 'Animal Care'
-    }
-  });
-
-  await prisma.skill.create({
-    data: {
-      name: 'DIY'
-    }
-  });
-  
-  await prisma.skill.create({
-    data: {
-      name: 'Yardwork'
-    }
-  });
-
-  await prisma.skill.create({
-    data: {
-      name: 'Driving'
-    }
-  });
-  
-  await prisma.skill.create({
-    data: {
-      name: 'Heavy Lifting'
-    }
-  });
-
-  // Create users with addresses and skills ----------------------------------
+  // Create users with addresses ---------------------------------------------
   await prisma.address.create({
     data: {
       address: '82 Tycos Dr',
@@ -60,11 +23,7 @@ async function main() {
           phone: '(636)313-2463',
           stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg',
-          Skills: {
-            create: {
-              name: 'Yardwork'
-            }
-          }
+          skills: 'Yardwork and moving stuff.'
         }
       }
     }
@@ -87,12 +46,7 @@ async function main() {
           phone: '(416)500-1413',
           stars: 3,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/7.jpg',
-          Skills: {
-            create: [
-              { name: 'Driving' },
-              { name: 'Cooking' }
-            ]
-          }
+          skills: 'Safe driver and pretty good baker.'
         }
       }
     }
@@ -114,7 +68,8 @@ async function main() {
           password: 'burntthetoast',
           phone: '(866)987-6453',
           stars: 1,
-          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg'
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg',
+          skills: 'Incredible in the kitchen.'
         }
       }
     }
@@ -136,7 +91,8 @@ async function main() {
           password: 'funnydancer',
           phone: '(514)347-3653',
           stars: 11,
-          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/27.jpg'
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/27.jpg',
+          skills: 'Woodwork and general DIY tasks.'
         }
       }
     }
