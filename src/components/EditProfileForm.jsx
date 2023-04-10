@@ -1,18 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function EditProfileForm({ editProfileFormData, setEditProfileFormData }) {
+export default function EditProfileForm({ editProfileFormData, setEditProfileFormData, userAddressId }) {
 
-
+  // console.log(userAddressId)
   // HELPER FUNCTIONS
   const onChange = (event) => {
     setEditProfileFormData(prev => ({ ...prev, [`${event.target.name}`]: event.target.value }));
     console.log(editProfileFormData);
   };
 
-  // const handleSubmit = async () => {
-  //   await axios.post('http://localhost:3000/api/user')
-  // }
+  const handleSubmit = async () => {
+    await axios.put('http://localhost:3000/api/users/[userId]', editProfileFormData);
+    console.log(editProfileFormData);
+  };
+
   // TEMPLATE
   return (
     <div className="flex flex-col">
@@ -28,13 +30,13 @@ export default function EditProfileForm({ editProfileFormData, setEditProfileFor
 
       <input type="text" id="city" name="city" placeholder="city" value={editProfileFormData.city} onChange={onChange} required />
 
-      <input type="text" id="postcode" name="postcode" placeholder="postcode" value={editProfileFormData.city} onChange={onChange} required />
+      <input type="text" id="postcode" name="postcode" placeholder="postcode" value={editProfileFormData.postcode} onChange={onChange} required />
 
-      <input type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required />
+      {/* <input type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required />
 
-      <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required />
+      <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
-      <button type="submit" className="p-4 bg-purple-600 m-2">Submit</button>
+      <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
     </div >
   );
 }
