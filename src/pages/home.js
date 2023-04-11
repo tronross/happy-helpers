@@ -107,6 +107,6 @@ export async function getServerSideProps() {
 
   // console.log(tasks)
   return {
-    props: { tasks: tasks }
+    props: { tasks: JSON.parse(JSON.stringify(tasks)) }
   };
 }
