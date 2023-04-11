@@ -472,6 +472,55 @@ async function main() {
     }
   });
 
+  // Create offers ---------------------------------------------------------------
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 4,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 5,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 6,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 13,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 14,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 15,
+      status: 'COMPLETE'
+    }
+  });
+
 }
 
 main()
