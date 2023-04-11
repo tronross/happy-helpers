@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Datepicker from "react-tailwindcss-datepicker"
-
+import { useEffect } from "react"
 
 
 export default function WhenForm({formData, setFormData}) {
@@ -14,6 +14,14 @@ export default function WhenForm({formData, setFormData}) {
     minute: "00",
     ampm: "PM"
   })
+
+  useEffect(() => {
+    const startDate = new Date(`2023-04-29 01:00:00`)
+    const endDate = new Date(`2023-04-29 01:00:00`)
+    setFormData(prev => ({...prev, startDate}))
+    setFormData(prev => ({...prev, endDate}))
+  }, [])
+  
   
   const updateTime = async (e) => {
     const value = e.target.value;
