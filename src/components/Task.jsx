@@ -1,4 +1,5 @@
 export default function Task(props) {
+  console.log(props)
   return (
   <div className="border-1 shadow-lg m-4 bg-white rounded-lg">
     <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
@@ -7,7 +8,10 @@ export default function Task(props) {
       {props.name}
     </h5>
     <p className="mb-2 text-base text-teal-700">
-    Rockland, ON
+    {props.city}
+    </p>
+    <p className="mb-2 text-base text-teal-700">
+    {`Distance: ${props.distance}km`}
     </p>
     <p className=" text-base text-teal-700">
     {props.description}

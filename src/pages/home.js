@@ -5,7 +5,10 @@ import { Inter } from 'next/font/google';
 import { PrismaClient } from '@prisma/client';
 
 // Helper functions
-import getDistance from '../helpers/get-distance';
+import addCoordsToTasks from '../helpers/add-coords-to-tasks';
+import addCoordsToUser from '../helpers/add-coords-to-user'
+import addDistanceToTasks from '../helpers/add-distance-to-tasks';
+
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -27,8 +30,8 @@ const sidebarOptions = [
 ];
 
 export default function Home({ tasks }) {
-  // console.log(tasks);
-
+  console.log(tasks);
+  
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
@@ -84,51 +87,26 @@ export default function Home({ tasks }) {
 // Data fetching
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
-
+  // Capture tasks and addresses
   const tasks = await prisma.task.findMany()
+  const addresses = await prisma.address.findMany()
+  
+  // Add latitude, longitude and city to tasks
+  addCoordsToTasks(tasks, addresses);
 
-  // distance sandbox
-  const user1 = await prisma.user.findUnique({
+  // Define current user
+  const user = await prisma.user.findUnique({
     where: {
-      id: 1
+      id: 5
     }
   })
 
-  const user2 = await prisma.user.findUnique({
-    where: {
-      id: 2
-    }
-  })
-
-  const user1AddId = user1.addressId;
-  const location1 = await prisma.address.findUnique({
-    where: {
-      id: parseInt(user1AddId)
-    }
-  })
-
-  const lat1 = location1.latitude;
-  const lon1 = location1.longitude;
-
-  const user2AddId = user2.addressId;
-  const location2 = await prisma.address.findUnique({
-    where: {
-      id: parseInt(user2AddId)
-    }
-  })
-
-  const lon2 = location2.longitude;
-  const lat2 = location2.latitude;
-  console.log(lat1, lon1, lat2, lon2);
-
-  const distance = getDistance(lat1, lon1, lat2, lon2);
-  console.log(location1)
-  console.log(location2)
-  console.log(` The distance between the two places is ${Math.round(distance)}km`)
-
+  // Add latitude, longitude and city to user; add distance between user and task to tasks
+  addCoordsToUser(user, addresses);
+  addDistanceToTasks(tasks, user);
 
   // console.log(tasks)
   return {
-    props: { tasks: tasks }
+    props: { tasks: JSON.parse(JSON.stringify(tasks)) }
   };
 }
