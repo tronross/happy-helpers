@@ -10,7 +10,7 @@ export default function addCoordsToTasks(tasks, addresses) {
 
     task.latitude = `${latitude}`;
     task.longitude = `${longitude}`;
-
     // console.log(task)
   }
 }
+
