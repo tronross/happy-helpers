@@ -38,6 +38,7 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
   // console.log(upcomingData)
   // console.log(pastData)
   const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData)
+  const [pastTasksData, setPastTasksData] = useState(pastData)
 
   // HELPER FUNCTIONS
   const toggleEditProfileForm = () => {
@@ -84,7 +85,8 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
           <section>
             <h1>Your Upcoming tasks</h1>
             <TaskList tasks={upcomingTasksData} />
-            {/* <h1>Past Tasks</h1> */}
+            <h1>Past Tasks</h1>
+            <TaskList tasks={pastTasksData} />
           </section>
         </div>
       </main>
