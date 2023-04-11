@@ -14,7 +14,7 @@ import Button from "@/components/Button";
 import TaskList from "@/components/TaskList";
 import EditProfileForm from "@/components/EditProfileForm";
 
-export default function ProfilePage({ user, userAddress }) {
+export default function ProfilePage({ user, userAddress, upcomingData, pastData }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
   // console.log(user.user);
@@ -137,17 +137,17 @@ export async function getServerSideProps() {
   const pastData = tasksData.filter(item => {
     return item.status === 'COMPLETE';
   });
-  console.log(pastData, 'pastData');
-  
-  // const userPastTasksComplete = await prisma.task.findMany({
-  //   where: {
-  //     id: userPastOffersComplete.taskId,
-  //     status: 'COMPLETE'
-  //   }
-  // })
-  // console.log('userPastTasksComplete', userPastTasksComplete);
+  // console.log(pastData, 'pastData');
+
+  // console.log(user.data, 'USER')
+  console.log(userAddress.data, 'userAddress')
 
   return {
-    props: { user: user.data, userAddress: userAddress.data }
+    props: { 
+      user: user.data, 
+      userAddress: userAddress.data,
+      upcomingData,
+      pastData
+    }
   };
 }
