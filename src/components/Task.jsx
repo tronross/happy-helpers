@@ -16,6 +16,9 @@ export default function Task(props) {
     <p className=" text-base text-teal-700">
     {props.description}
     </p>
+    <p className="mb-2 text-base text-teal-700">
+    {`Date: ${props.startDate}`}
+    </p>
     </section>
     <div className="p-4 text-sm text-gray-700 flex justify-between items-center">
       <span className="inline-block w-[6em] h-[2em] leading-none bg-teal-200 text-teal-700 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center">

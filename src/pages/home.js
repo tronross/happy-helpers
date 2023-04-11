@@ -36,7 +36,7 @@ const sidebarOptions = [
 ];
 
 export default function Home({ tasks, user }) {
-  console.log(tasks);
+  // console.log(tasks);
   
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
@@ -110,7 +110,7 @@ export async function getServerSideProps() {
   addCoordsToUser(user, addresses);
   addDistanceToTasks(tasks, user);
 
-  // console.log(tasks)
+  console.log(tasks)
   return {
     props: { tasks: JSON.parse(JSON.stringify(tasks)),
     user: user }

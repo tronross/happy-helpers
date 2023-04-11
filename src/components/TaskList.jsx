@@ -3,7 +3,8 @@ import Task from '../components/Task'
 export default function TaskList(props) {
 
   const tasks = props.tasks.map(task => {
-    
+    const startDate = task.startDate
+    const startDateString = (new Date(startDate).toLocaleDateString()); 
     
     return (
       <li key={task.id}><Task
@@ -16,6 +17,7 @@ export default function TaskList(props) {
           status={task.status}
           city={task.city}
           distance={task.distance}
+          startDate={startDateString}
           />
         </li>
     )
