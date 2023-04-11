@@ -12,33 +12,33 @@ export default function TaskForm({formData, setFormData}) {
 const [currentStep, setCurrentStep] = useState(1)
   const steps = ["Task Info", "Where", "When", "Confirm"];
 
+  const onChange = (e) => {
+    setFormData(prev => ({...prev, [`${e.target.name}`]: e.target.value}));
+    console.log(formData)
+  };
+
+
   const displayStep =(step) => {
     switch(step) {
       case 1:
-        return <TaskInfoForm />
+        return <TaskInfoForm formData={formData} setFormData={setFormData} onChange={onChange}/>
       case 2:
-        return <WhereForm />
+        return <WhereForm formData={formData} setFormData={setFormData} onChange={onChange}/>
       case 3: 
-        return <WhenForm />
+        return <WhenForm formData={formData} setFormData={setFormData} onChange={onChange} />
       case 4:
-        return <ConfirmForm />
+        return <ConfirmForm formData={formData} setFormData={setFormData} onChange={onChange}/>
 
     }
   }
   
-  // const onChange = (event) => {
-  //   setFormData(prev => ({...prev, [`${event.target.name}`]: event.target.value}));
-  //   console.log(formData)
-  // };
-
-  // const handleSubmit = async () => {
-  //     await axios.post('http://localhost:3000/api/tasks', formData);
-  // }
+  
 
   return (
 
 
-    <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
+    <div className="md:w-1/2 mx-auto shadow-xl rounded-md bg-white border-2 border-teal-600 mt-5">
+      <div className="uppercase font-bold text-teal-600 flex justify-center p-4">New Task</div>
       <div className="container horizontal mt-5">
         <Stepper 
          steps={steps}
@@ -46,7 +46,7 @@ const [currentStep, setCurrentStep] = useState(1)
         />
       </div>
       {displayStep(currentStep)}
-      <StepperControl currentStep={currentStep} setCurrentStep={setCurrentStep}/>
+      <StepperControl currentStep={currentStep} setCurrentStep={setCurrentStep} formData={formData} />
     </div>
 
 

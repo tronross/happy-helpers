@@ -9,8 +9,8 @@ export default function NewTask(props) {
   const [formData, setFormData] = useState({
     name: "",
     desc: "",
-    start: "",
-    end: "",
+    startDate: "",
+    endDate: "",
     category: "",
     nbHelpers: "",
     image: "",
