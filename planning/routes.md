@@ -8,12 +8,6 @@
 #### Add
 `POST api/users`
 
-## skills
-#### Browse
-`GET api/skills/`
-#### Read
-`GET api/skills/[skillId]`
-
 ## organizations
 #### Browse
 `GET api/organizations/`
@@ -50,8 +44,16 @@
 #### Add
 `POST api/tasks/`
 
+
+## DEPRECATED ROUTES
 ## categories
 #### Browse
 `GET api/categories/`
 #### Read
 `GET api/tasks/[categoryId]`
+
+## skills
+#### Browse
+`GET api/skills/`
+#### Read
+`GET api/skills/[skillId]`
