@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Inter } from 'next/font/google';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../prisma/.db';
 
 // Helper functions
 import addCoordsToTasks from '../helpers/add-coords-to-tasks';
@@ -86,7 +86,6 @@ export default function Home({ tasks }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  const prisma = new PrismaClient();
   // Capture tasks and addresses
   const tasks = await prisma.task.findMany()
   const addresses = await prisma.address.findMany()
