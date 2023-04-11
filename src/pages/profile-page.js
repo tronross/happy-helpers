@@ -5,9 +5,11 @@
 import Head from "next/head";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
+import prisma from "../../prisma/.db";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
@@ -45,6 +47,19 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
   // HELPER FUNCTIONS
   const toggleEditProfileForm = () => {
     setShowEditProfileForm(!showEditProfileForm);
+  };
+
+  const slideLeft = function() {
+    const slider = document.getElementById('slider');
+    slider.scrollLeft = slider.scrollLeft - 500;
+    console.log('LEFT');
+  };
+
+  const slideRight = () => {
+    const slider = document.getElementById('slider');
+    slider.scrollLeft = slider.scrollLeft + 500;
+    console.log('RIGHT');
+    console.log(slider);
   };
 
   // TEMPLATE
@@ -87,15 +102,27 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
           <section>
             <h1>Your Upcoming tasks</h1>
             <div className='relative flex items-center'>
-              <MdChevronLeft size={250} />
-              <div className="overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
-                <TaskList tasks={upcomingTasksData} />
+              <MdChevronLeft onClick={slideLeft} size={70} />
+              <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
+                <TaskList
+                  className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
+                  tasks={upcomingTasksData}
+                />
               </div>
-              <MdChevronRight size={250} />
+              <MdChevronRight onClick={slideRight} size={70} />
             </div>
 
             <h1>Past Tasks</h1>
-            <TaskList tasks={pastTasksData} />
+            <div className='relative flex items-center'>
+              <MdChevronLeft onClick={slideLeft} size={70} />
+              <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
+                <TaskList
+                  className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
+                  tasks={pastTasksData}
+                />
+              </div>
+              <MdChevronRight onClick={slideRight} size={70} />
+            </div>
           </section>
         </div>
       </main>
@@ -117,7 +144,7 @@ export async function getServerSideProps() {
   // console.log(userAddress)
 
   // Task table profile data
-  const prisma = new PrismaClient();
+  // const prisma = new PrismaClient();
   // Get tasks where offer is complete for user
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
