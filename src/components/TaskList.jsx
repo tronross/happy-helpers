@@ -14,7 +14,8 @@ export default function TaskList(props) {
           user={task.userId}
           image={task.image}
           status={task.status}
-          // city={task.addressId}
+          city={task.city}
+          distance={task.distance}
           />
         </li>
     )
