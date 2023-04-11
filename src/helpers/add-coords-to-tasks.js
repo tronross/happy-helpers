@@ -5,7 +5,8 @@ export default function addCoordsToTasks(tasks, addresses) {
 
     const latitude = taskAddress.latitude;
     const longitude = taskAddress.longitude;
-    console.log(latitude, longitude)
+    const city = taskAddress.city
+    console.log(latitude, longitude, city)
 
     task.latitude = `${latitude}`;
     task.longitude = `${longitude}`;
