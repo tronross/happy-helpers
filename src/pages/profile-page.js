@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 import { PrismaClient } from '@prisma/client';
 
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
 // Component dependencies
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -37,8 +39,8 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
 
   // console.log(upcomingData)
   // console.log(pastData)
-  const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData)
-  const [pastTasksData, setPastTasksData] = useState(pastData)
+  const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData);
+  const [pastTasksData, setPastTasksData] = useState(pastData);
 
   // HELPER FUNCTIONS
   const toggleEditProfileForm = () => {
@@ -84,7 +86,14 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
           </section>
           <section>
             <h1>Your Upcoming tasks</h1>
-            <TaskList tasks={upcomingTasksData} />
+            <div className='relative flex items-center'>
+              <MdChevronLeft size={250} />
+              <div className="overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
+                <TaskList tasks={upcomingTasksData} />
+              </div>
+              <MdChevronRight size={250} />
+            </div>
+
             <h1>Past Tasks</h1>
             <TaskList tasks={pastTasksData} />
           </section>
@@ -138,7 +147,7 @@ export async function getServerSideProps() {
     return item.status === 'PENDING';
   });
   // console.log(upcomingData, 'upcomingData');
-  
+
   // Extract past tasks data
   const pastData = tasksData.filter(item => {
     return item.status === 'COMPLETE';
@@ -146,11 +155,11 @@ export async function getServerSideProps() {
   // console.log(pastData, 'pastData');
 
   // console.log(user.data, 'USER')
-  console.log(userAddress.data, 'userAddress')
+  console.log(userAddress.data, 'userAddress');
 
   return {
-    props: { 
-      user: user.data, 
+    props: {
+      user: user.data,
       userAddress: userAddress.data,
       upcomingData,
       pastData
