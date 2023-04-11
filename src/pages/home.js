@@ -9,6 +9,7 @@ import addCoordsToTasks from '../helpers/add-coords-to-tasks';
 import addCoordsToUser from '../helpers/add-coords-to-user'
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 
+
 // Component dependencies
 import TaskList from '@/components/TaskList';
 import Footer from '@/components/Footer';
@@ -36,12 +37,13 @@ const sidebarOptions = [
 
 export default function Home({ tasks, user }) {
   console.log(tasks);
-
+  
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
+  // const [category, setCategory] = useState(0);
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -60,7 +62,7 @@ export default function Home({ tasks, user }) {
 
   // }, [selectedSidebar])
 
-  const currentView = (view === "List" ? <TaskList tasks={fetchTasks} /> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={fetchTasks}/> : <Map />)
 
   // Template
   return (
@@ -79,7 +81,7 @@ export default function Home({ tasks, user }) {
           />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.city} />
-            {currentView}
+            {currentView} 
           </section>
         </div>
       </main>
@@ -94,7 +96,7 @@ export async function getServerSideProps() {
   // Capture tasks and addresses
   const tasks = await prisma.task.findMany()
   const addresses = await prisma.address.findMany()
-
+  
   // Add latitude, longitude and city to tasks
   addCoordsToTasks(tasks, addresses);
 
@@ -111,9 +113,7 @@ export async function getServerSideProps() {
 
   // console.log(tasks)
   return {
-    props: {
-      tasks: JSON.parse(JSON.stringify(tasks)),
-      user: user
-    }
+    props: { tasks: JSON.parse(JSON.stringify(tasks)),
+    user: user }
   };
 }
