@@ -131,13 +131,14 @@ export async function getServerSideProps() {
   const upcomingData = tasksData.filter(item => {
     return item.status === 'PENDING';
   });
-  console.log(upcomingData, 'upcomingData');
-  /*
-  const pastData = tasksObject.filter(item => {
-    item.status = 'COMPLETE';
+  // console.log(upcomingData, 'upcomingData');
+  
+  // Extract past tasks data
+  const pastData = tasksData.filter(item => {
+    return item.status === 'COMPLETE';
   });
-  // console.log('TASKSOBJECT', tasksObject);
-  */
+  console.log(pastData, 'pastData');
+  
   // const userPastTasksComplete = await prisma.task.findMany({
   //   where: {
   //     id: userPastOffersComplete.taskId,
