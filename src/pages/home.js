@@ -7,6 +7,9 @@ import { PrismaClient } from '@prisma/client';
 // Helper functions
 import getDistance from '../helpers/get-distance';
 import addCoordsToTasks from '../helpers/add-coords-to-tasks';
+import addCoordsToUser from '../helpers/add-coords-to-user'
+import addDistanceToTasks from '../helpers/add-distance-to-tasks';
+
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -93,27 +96,31 @@ export async function getServerSideProps() {
 
 
   // distance sandbox
-  const user1 = await prisma.user.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
-      id: 1
+      id: 5
     }
   })
 
-  const user2 = await prisma.user.findUnique({
-    where: {
-      id: 2
-    }
-  })
+  addCoordsToUser(user, addresses);
 
-  const user1AddId = user1.addressId;
-  const location1 = await prisma.address.findUnique({
-    where: {
-      id: parseInt(user1AddId)
-    }
-  })
+  addDistanceToTasks(tasks, user);
 
-  const lat1 = location1.latitude;
-  const lon1 = location1.longitude;
+  // const user2 = await prisma.user.findUnique({
+  //   where: {
+  //     id: 2
+  //   }
+  // })
+
+  // const user1AddId = user1.addressId;
+  // const location1 = await prisma.address.findUnique({
+  //   where: {
+  //     id: parseInt(user1AddId)
+  //   }
+  // })
+
+  // const lat1 = location1.latitude;
+  // const lon1 = location1.longitude;
 
   // const user2AddId = user2.addressId;
   // const location2 = await prisma.address.findUnique({
@@ -122,14 +129,14 @@ export async function getServerSideProps() {
   //   }
   // })
 
-  const lon2 = tasks[5].longitude;
-  const lat2 = tasks[5].latitude;
-  console.log(lat1, lon1, lat2, lon2);
+  // const lon2 = tasks[5].longitude;
+  // const lat2 = tasks[5].latitude;
+  // console.log(lat1, lon1, lat2, lon2);
 
-  const distance = getDistance(lat1, lon1, lat2, lon2);
-  console.log(location1)
+  // const distance = getDistance(lat1, lon1, lat2, lon2);
+  // console.log(location1)
   // console.log(location2)
-  console.log(` The distance between the two places is ${Math.round(distance)}km`)
+  // console.log(` The distance between the two places is ${Math.round(distance)}km`)
 
 
   // console.log(tasks)
