@@ -123,18 +123,16 @@ export async function getServerSideProps() {
   // Extract tasks data
   const tasksData = res.map((item) => {
     // console.log(item, 'ITEM');
-    return item.data;
+    return item.data.task;
   });
-  console.log(tasksData, 'TASKS-DATA');
+  // console.log(tasksData, 'TASKS-DATA');
 
-
+  // Extract upcoming tasks data
+  const upcomingData = tasksData.filter(item => {
+    return item.status === 'PENDING';
+  });
+  console.log(upcomingData, 'upcomingData');
   /*
-  const upcomingData = tasksObject.filter(item => {
-    item.status = 'PENDING';
-    return item;
-  });
-  // console.log('upcomingData', upcomingData);
-
   const pastData = tasksObject.filter(item => {
     item.status = 'COMPLETE';
   });
