@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google';
 import { PrismaClient } from '@prisma/client';
 
 // Helper functions
-import getDistance from '../helpers/get-distance';
 import addCoordsToTasks from '../helpers/add-coords-to-tasks';
 import addCoordsToUser from '../helpers/add-coords-to-user'
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
