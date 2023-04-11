@@ -1,5 +1,6 @@
 export default function Task(props) {
   console.log(props)
+  
   return (
   <div className="border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600">
     <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>

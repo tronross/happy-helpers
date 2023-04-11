@@ -58,7 +58,7 @@ export default function TaskInfo({formData, onChange}) {
              Upload Photo
            </label>
            <input
-    className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white  file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded file:text-white file:border-0 file:border-solid file:border-inherit file:bg-teal-600 file:px-3 file:py-[0.32rem] file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] hover:file:cursor-pointer" type="file" id="image" name="image" value={formData.image} onChange={e => onChange(e)}/>
+    className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white  file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded file:text-white file:border-0 file:border-solid file:border-inherit file:bg-teal-600 file:px-3 file:py-[0.32rem] file:transition file:duration-150 file:ease-in-out file:[margin-inline-end:0.75rem] hover:file:cursor-pointer" type="text" id="image" name="image" value={formData.image} onChange={e => onChange(e)}/>
          </div>
        </div>
      </form>
