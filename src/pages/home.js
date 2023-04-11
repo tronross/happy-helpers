@@ -29,9 +29,9 @@ const sidebarOptions = [
   'Charity & Causes'
 ];
 
-export default function Home({ tasks }) {
+export default function Home({ tasks, user }) {
   console.log(tasks);
-  
+
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
@@ -56,7 +56,7 @@ export default function Home({ tasks }) {
 
   // }, [selectedSidebar])
 
-  const currentView = (view === "List" ? <TaskList tasks={fetchTasks}/> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={fetchTasks} /> : <Map />)
 
   // Template
   return (
@@ -74,7 +74,7 @@ export default function Home({ tasks }) {
             setSelectedSidebar={setSelectedSidebar}
           />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView}/>
+            <PageHeader setView={setView} city={user.city} />
             {currentView}
           </section>
         </div>
@@ -90,7 +90,7 @@ export async function getServerSideProps() {
   // Capture tasks and addresses
   const tasks = await prisma.task.findMany()
   const addresses = await prisma.address.findMany()
-  
+
   // Add latitude, longitude and city to tasks
   addCoordsToTasks(tasks, addresses);
 
@@ -107,6 +107,9 @@ export async function getServerSideProps() {
 
   // console.log(tasks)
   return {
-    props: { tasks: JSON.parse(JSON.stringify(tasks)) }
+    props: {
+      tasks: JSON.parse(JSON.stringify(tasks)),
+      user: user
+    }
   };
 }
