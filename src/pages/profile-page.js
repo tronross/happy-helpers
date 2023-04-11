@@ -103,21 +103,43 @@ export async function getServerSideProps() {
 
   // Task table profile data
   const prisma = new PrismaClient();
+  // Get tasks where offer is complete for user
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
       userId: parseInt(user.data.user.id),
       status: 'COMPLETE'
     }
   });
-  console.log('userPastOffersComplete', userPastOffersComplete);
-
+  // console.log('userPastOffersComplete', userPastOffersComplete);
   // const tasksObject = [];
-  const tasksObject = userPastOffersComplete.map(async item => {
-    const data = await axios.get(`http://localhost:3000/api/tasks/${item.taskId}`);
-  
-  })
-  console.log('TASKSOBJECT', tasksObject);
 
+  // Get all tasks data for user based on offers complete for the user
+  // console.log('userPastOffersComplete', userPastOffersComplete);
+  const tasksArr = userPastOffersComplete.map((item) => {
+    return axios.get(`http://localhost:3000/api/tasks/${item.taskId}`);
+  });
+  const res = await Promise.all(tasksArr);
+
+  // Extract tasks data
+  const tasksData = res.map((item) => {
+    // console.log(item, 'ITEM');
+    return item.data;
+  });
+  console.log(tasksData, 'TASKS-DATA');
+
+
+  /*
+  const upcomingData = tasksObject.filter(item => {
+    item.status = 'PENDING';
+    return item;
+  });
+  // console.log('upcomingData', upcomingData);
+
+  const pastData = tasksObject.filter(item => {
+    item.status = 'COMPLETE';
+  });
+  // console.log('TASKSOBJECT', tasksObject);
+  */
   // const userPastTasksComplete = await prisma.task.findMany({
   //   where: {
   //     id: userPastOffersComplete.taskId,
