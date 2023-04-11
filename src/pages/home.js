@@ -9,7 +9,6 @@ import addCoordsToTasks from '../helpers/add-coords-to-tasks';
 import addCoordsToUser from '../helpers/add-coords-to-user'
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 
-
 // Component dependencies
 import TaskList from '@/components/TaskList';
 import Footer from '@/components/Footer';
@@ -22,11 +21,17 @@ import Map from '@/components/Map';
 const inter = Inter({ subsets: ['latin'] });
 const sidebarOptions = [
   'All Tasks',
+  'Animal Care',
+  'Charity & Causes',
+  'Cooking',
+  'DIY',
+  'Driving',
   'Errands',
+  'Heavy Lifting',
   'Housework',
   'Personal Care',
   'Tech Support',
-  'Charity & Causes'
+  'Yardwork'
 ];
 
 export default function Home({ tasks, user }) {
@@ -37,7 +42,6 @@ export default function Home({ tasks, user }) {
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
-  // const [category, setCategory] = useState(0);
 
   // useEffect(() => {
   //   const fetchData = async () => {
