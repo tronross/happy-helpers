@@ -31,7 +31,7 @@ const sidebarOptions = [
 ];
 
 export default function Home({ tasks }) {
-  // console.log(tasks);
+  console.log(tasks);
   
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
@@ -88,56 +88,23 @@ export default function Home({ tasks }) {
 // Data fetching
 export async function getServerSideProps() {
   const prisma = new PrismaClient();
-  
+  // Capture tasks and addresses
   const tasks = await prisma.task.findMany()
   const addresses = await prisma.address.findMany()
   
+  // Add latitude, longitude and city to tasks
   addCoordsToTasks(tasks, addresses);
 
-
-  // distance sandbox
+  // Define current user
   const user = await prisma.user.findUnique({
     where: {
       id: 5
     }
   })
 
+  // Add latitude, longitude and city to user; add distance between user and task to tasks
   addCoordsToUser(user, addresses);
-
   addDistanceToTasks(tasks, user);
-
-  // const user2 = await prisma.user.findUnique({
-  //   where: {
-  //     id: 2
-  //   }
-  // })
-
-  // const user1AddId = user1.addressId;
-  // const location1 = await prisma.address.findUnique({
-  //   where: {
-  //     id: parseInt(user1AddId)
-  //   }
-  // })
-
-  // const lat1 = location1.latitude;
-  // const lon1 = location1.longitude;
-
-  // const user2AddId = user2.addressId;
-  // const location2 = await prisma.address.findUnique({
-  //   where: {
-  //     id: parseInt(user2AddId)
-  //   }
-  // })
-
-  // const lon2 = tasks[5].longitude;
-  // const lat2 = tasks[5].latitude;
-  // console.log(lat1, lon1, lat2, lon2);
-
-  // const distance = getDistance(lat1, lon1, lat2, lon2);
-  // console.log(location1)
-  // console.log(location2)
-  // console.log(` The distance between the two places is ${Math.round(distance)}km`)
-
 
   // console.log(tasks)
   return {
