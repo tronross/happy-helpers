@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from "../../../../prisma/.db";
 
 export default async function handler(req, res) {
-  const prisma = new PrismaClient();
   if (req.method === 'GET') {
     const { organizationId } = req.query;
     const organization = await prisma.organization.findUnique({
