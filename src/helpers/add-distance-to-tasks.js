@@ -9,11 +9,8 @@ export default function addDistanceToTasks(tasks, user) {
     const taskLat = task.latitude;
     const taskLong = task.longitude;
 
-
     const distance = getDistance(userLat, userLong, taskLat, taskLong);
 
     task.distance = Math.round(distance);
-
-    console.log(distance)
   }
 }
