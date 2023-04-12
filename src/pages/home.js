@@ -82,7 +82,7 @@ export default function Home({ tasks, user }) {
             setSelectedSidebar={setSelectedSidebar}
           />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView} city={user.city} />
+            <PageHeader setView={setView} city={user.address.city} />
             {currentView} 
           </section>
         </div>
@@ -94,27 +94,56 @@ export default function Home({ tasks, user }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  // Capture tasks and addresses
-  const tasks = await prisma.task.findMany()
-  const addresses = await prisma.address.findMany()
+  // // Capture tasks and addresses
+  // const tasks = await prisma.task.findMany()
+  // const addresses = await prisma.address.findMany()
   
-  // Add latitude, longitude and city to tasks
-  addCoordsToTasks(tasks, addresses);
+  // // Add latitude, longitude and city to tasks
+  // addCoordsToTasks(tasks, addresses);
+
+/* Capture tasks with addresses:
+    SELECT tasks.*, addresses.* FROM tasks
+    JOIN addresses ON tasks.address_id = addresses.id
+    WHERE tasks.user_id = 1
+    ORDER BY start_date desc;
+  */
+    const tasks = await prisma.task.findMany({
+      // where: {
+      //   userId: true
+      // },
+      include: {
+        address: {
+          select: {
+            addressId =
+      },
+      orderBy: {
+        startDate: 'asc',
+      },
+    });
+  
+
 
   // Define current user
   const user = await prisma.user.findUnique({
     where: {
-      id: 5
+      id: 1
+    },
+    include: {
+      address: true
     }
-  })
+  });
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     id: 5
+  //   }
+  // })
 
   // Add latitude, longitude and city to user; add distance between user and task to tasks
-  addCoordsToUser(user, addresses);
+  // addCoordsToUser(user, addresses);
   addDistanceToTasks(tasks, user);
-  sortTasksByStartTime(tasks)
-  // console.log(tasks)
+  console.log(user)
   return {
     props: { tasks: JSON.parse(JSON.stringify(tasks)),
-    user: user }
+    user: JSON.parse(JSON.stringify(user)) }
   };
 }
