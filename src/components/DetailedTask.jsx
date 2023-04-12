@@ -10,7 +10,7 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`
 
 
-  const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 focus:bg-teal-700";
+  const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 focus:bg-teal-800";
   const disabled = offerSent
 
 
