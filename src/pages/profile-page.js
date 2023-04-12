@@ -138,7 +138,7 @@ export async function getServerSideProps() {
   // User table profile data
   const user = await axios.get(`http://localhost:3000/api/users/${1}`);
   // console.log('userAddressId', user.data.user.addressId)
-  // console.log( user.data.user, 'USER')
+  // console.log( user.data.user.Organization, 'USER')
 
   // User address data
   // Address table profile data
@@ -148,6 +148,17 @@ export async function getServerSideProps() {
   // Organization table profile data
   // const userOrganization = await axios.get(`http://localhost:3000/api/organizations/${user.data.user.organizationId}`);
   // console.log(userOrganization, 'userOrganization');
+
+  const userOrganizations = await prisma.user.findUnique({
+    where: {
+      id: user.data.user.id
+    },
+    include: {
+      Organizations: true
+    }
+  });
+  console.log(userOrganizations, 'userOrganizations')
+  console.log(user.data.user.id, 'user.data.user.id')
 
   // Task table profile data
   // const prisma = new PrismaClient();
