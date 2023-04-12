@@ -40,7 +40,7 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
     address: "",
     city: "",
     postcode: "",
-    // skills: "",
+    skills: "",
     // organizations: "",
   });
 
@@ -95,10 +95,7 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
             <h1>Phone Number:</h1>
             <p>{userData.phone}</p><br></br>
             <h1>Skills:</h1>
-            <p>Tech support<br></br>
-              Lawn Mowing<br></br>
-              Cooking<br></br>
-              Carpentry</p><br></br>
+            <p>{userData.skills}</p><br></br>
             <h1>Organizations:</h1>
             <p>Meals on Wheels</p><br></br>
             <h1>Description:</h1>
@@ -141,12 +138,16 @@ export async function getServerSideProps() {
   // User table profile data
   const user = await axios.get(`http://localhost:3000/api/users/${1}`);
   // console.log('userAddressId', user.data.user.addressId)
-  // console.log('USER:', user.data.user.addressId)
-  // User address data
+  // console.log( user.data.user, 'USER')
 
+  // User address data
   // Address table profile data
   const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
-  // console.log(userAddress)
+  // console.log(userAddress, 'userAddress')
+
+  // Organization table profile data
+  // const userOrganization = await axios.get(`http://localhost:3000/api/organizations/${user.data.user.organizationId}`);
+  // console.log(userOrganization, 'userOrganization');
 
   // Task table profile data
   // const prisma = new PrismaClient();
@@ -172,7 +173,7 @@ export async function getServerSideProps() {
     // console.log(item, 'ITEM');
     return item.data.task;
   });
-  console.log(tasksData, 'TASKS-DATA');
+  // console.log(tasksData, 'TASKS-DATA');
 
   const addressWithAddressIdArr = tasksData.map((task) => {
     // console.log(task.addressId, 'task.addressId')
@@ -200,7 +201,7 @@ export async function getServerSideProps() {
   addCoordsToUser(user.data.user, addresses);
   addDistanceToTasks(tasksData, user.data.user);
 
-  console.log(tasksData, 'TASKS-DATA');
+  // console.log(tasksData, 'TASKS-DATA');
 
   // Extract upcoming tasks data
   const upcomingData = tasksData.filter(item => {
