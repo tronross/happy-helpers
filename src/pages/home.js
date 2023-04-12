@@ -45,6 +45,7 @@ export default function Home({ tasks, user }) {
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
+  const [filteredTasks, setFilteredTasks] = useState(tasks);
   // const [category, setCategory] = useState(0);
 
   // useEffect(() => {
@@ -64,7 +65,7 @@ export default function Home({ tasks, user }) {
 
   // }, [selectedSidebar])
 
-  const currentView = (view === "List" ? <TaskList tasks={fetchTasks} /> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
 
   // Template
   return (
@@ -96,14 +97,12 @@ export default function Home({ tasks, user }) {
 export async function getServerSideProps() {
 
   // Capture tasks with addresses:
-
   const tasks = await prisma.$queryRaw`
     SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
     JOIN addresses ON tasks.address_id = addresses.id
     ORDER BY start_date desc;`
 
   // Define current user
-
   const userFetch = await prisma.$queryRaw`
     SELECT users.*, addresses.city, addresses.latitude, addresses.longitude FROM users
     JOIN addresses ON users.address_id = addresses.id
@@ -111,7 +110,7 @@ export async function getServerSideProps() {
 
   const user = userFetch[0];
 
-  // Calculate distance between user and task, order by ascending distance
+  // Add distance between user and task to tasks, order by ascending distance
   addDistanceToTasks(tasks, user);
   sortTasksByDistance(tasks);
 
