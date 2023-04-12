@@ -39,7 +39,7 @@ const sidebarOptions = [
 
 export default function Home({ tasks, user }) {
   // console.log(tasks);
-  
+
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
   const [sidebar, setSidebar] = useState(sidebarOptions);
@@ -64,7 +64,7 @@ export default function Home({ tasks, user }) {
 
   // }, [selectedSidebar])
 
-  const currentView = (view === "List" ? <TaskList tasks={fetchTasks}/> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={fetchTasks} /> : <Map />)
 
   // Template
   return (
@@ -82,8 +82,8 @@ export default function Home({ tasks, user }) {
             setSelectedSidebar={setSelectedSidebar}
           />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView} city={user.address.city} />
-            {currentView} 
+            <PageHeader setView={setView} city={user.city} />
+            {currentView}
           </section>
         </div>
       </main>
@@ -94,48 +94,31 @@ export default function Home({ tasks, user }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  // // Capture tasks and addresses
-  // const tasks = await prisma.task.findMany()
-  // const addresses = await prisma.address.findMany()
-  
-  // // Add latitude, longitude and city to tasks
-  // addCoordsToTasks(tasks, addresses);
 
-/* Capture tasks with addresses:
-    SELECT tasks.*, addresses.* FROM tasks
-    JOIN addresses ON tasks.address_id = addresses.id
-    WHERE tasks.user_id = 1
-    ORDER BY start_date desc;
-  */
-    const tasks = await prisma.$queryRaw`
-    SELECT tasks.*, addresses.* FROM tasks
+  // Capture tasks with addresses:
+
+  const tasks = await prisma.$queryRaw`
+    SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
     JOIN addresses ON tasks.address_id = addresses.id
     ORDER BY start_date desc;`
-  
-
 
   // Define current user
-  const user = await prisma.user.findUnique({
-    where: {
-      id: 1
-    },
-    include: {
-      address: true
-    }
-  });
-  // const user = await prisma.user.findUnique({
-  //   where: {
-  //     id: 5
-  //   }
-  // })
 
-  // Add latitude, longitude and city to user; add distance between user and task to tasks
-  // addCoordsToUser(user, addresses);
+  const userFetch = await prisma.$queryRaw`
+    SELECT users.*, addresses.city, addresses.latitude, addresses.longitude FROM users
+    JOIN addresses ON users.address_id = addresses.id
+    WHERE users.id = 1`
+
+  const user = userFetch[0];
+
+  // Calculate distance between user and task, order by ascending distance
   addDistanceToTasks(tasks, user);
-  console.log(user)
-  console.log(tasks)
+  sortTasksByDistance(tasks);
+
   return {
-    props: { tasks: JSON.parse(JSON.stringify(tasks)),
-    user: JSON.parse(JSON.stringify(user)) }
+    props: {
+      tasks: JSON.parse(JSON.stringify(tasks)),
+      user: JSON.parse(JSON.stringify(user))
+    }
   };
 }
