@@ -7,11 +7,21 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: rgb(245 245 245);
 }
 #__next {
   height: 100%;
 }
 #map {
   height: 80%;
-  width: 100%;
+  width: 98%;
+  margin: 10px;
+}
+
+.task-container li:first-child.snap-center {
+  padding-left: 4%;
+}
+
+.task-container li:last-child.snap-center {
+  padding-right: 4%;
 }

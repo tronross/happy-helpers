@@ -9,8 +9,8 @@ export default function NewTask(props) {
   const [formData, setFormData] = useState({
     name: "",
     desc: "",
-    start: "",
-    end: "",
+    startDate: "",
+    endDate: "",
     category: "",
     nbHelpers: "",
     image: "",
@@ -25,14 +25,14 @@ export default function NewTask(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-gradient-to-b h-[calc(100vh-23.8px)] from-teal-400 to-teal-800">
+      <main className="h-[100vh-40px]">
         <NavBar />
         <div className="flex justify-center">
         <TaskForm formData={formData} setFormData={setFormData}/>
         </div>
       </main>
 
-      <Footer />
+      <Footer/>
     </>
   )
 }
