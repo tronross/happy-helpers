@@ -9,6 +9,7 @@ import addCoordsToTasks from '../helpers/add-coords-to-tasks';
 import addCoordsToUser from '../helpers/add-coords-to-user'
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 import sortTasksByDistance from '../helpers/sort-tasks-by-distance';
+import sortTasksByStartTime from '../helpers/sort-tasks-by-start-time';
 
 
 // Component dependencies
@@ -110,7 +111,7 @@ export async function getServerSideProps() {
   // Add latitude, longitude and city to user; add distance between user and task to tasks
   addCoordsToUser(user, addresses);
   addDistanceToTasks(tasks, user);
-  // sortTasksByDistance(tasks)
+  sortTasksByStartTime(tasks)
   // console.log(tasks)
   return {
     props: { tasks: JSON.parse(JSON.stringify(tasks)),
