@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "./Button";
-import { useEffect } from "react";
 
 export default function DetailedTask({selectedUser, task, sendOffer, offerTaskIds}) {
 
@@ -9,9 +8,11 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const startDate = new Date(task.startDate);
   const endDate = new Date(task.endDate);
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`
+console.log(offerSent)
+
+  const buttonStyle = offerSent ? "bg-gray-500 cursor-not-allowed" : "bg-teal-600";
 
 
-  const buttonStyle = offerSent ? "bg-gray-500 cursor-not-allowed" : "";
 
 
   return (
