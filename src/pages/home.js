@@ -30,7 +30,6 @@ const sidebarOptions = [
 ];
 
 export default function Home({ tasks, user }) {
-  console.log(tasks);
   
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);

@@ -1,15 +1,18 @@
 import Head from "next/head";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import DetailedTask from "@/components/DetailedTask";
-import { useState } from "react";
+import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
-import { useRouter } from "next/router";
 import prisma from "../../../prisma/.db";
 
 
-export default function TaskPage({selectedTask, selectedUser, userTasks}) {
+export default function TaskPage({selectedTask, selectedUser, userTasks, offers}) {
   const selectedId = selectedTask.id
+
+  const sendOffer = async (taskId, userId, setOffer) => {
+    await axios.post('http://localhost:3000/api/offers', [taskId, userId])
+    .then(setOffer(true))
+  }
 
 
   return (
@@ -23,7 +26,7 @@ export default function TaskPage({selectedTask, selectedUser, userTasks}) {
     <main>
       <h1 className="uppercase text-teal-600 px-10 mb-5 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <div className="">
-        <DetailedTaskRow selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks}/>
+        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers}/>
       </div>
     </main>
 
@@ -57,10 +60,19 @@ export async function getServerSideProps(context) {
     }
   })
 
+  const offers = await prisma.offer.findMany({
+    where: {
+      userId: 2
+    }
+  })
+
 
   return {
     props: { selectedTask: JSON.parse(JSON.stringify(selectedTask)),
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
-             userTasks: JSON.parse(JSON.stringify(userTasks))}
+             userTasks: JSON.parse(JSON.stringify(userTasks)),
+             offers: JSON.parse(JSON.stringify(offers)),
+
+            }
   };
 }

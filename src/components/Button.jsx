@@ -8,9 +8,11 @@
 
 export default function Button(props) {
 
+  const buttonStyle = `${props.buttonStyle} uppercase font-bold px-3 py-1 rounded text-white h-8 text-sm bg-teal-600`;
+
 
   return (
-    <button className='uppercase font-bold bg-teal-600 px-3 py-1 rounded text-white h-8 text-sm' onClick={props.onClick} >
+    <button className={buttonStyle} onClick={props.onClick} >
       {props.buttonName}
     </button>
   )
