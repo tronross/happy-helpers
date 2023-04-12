@@ -18,6 +18,9 @@ import Button from "@/components/Button";
 import TaskList from "@/components/TaskList";
 import EditProfileForm from "@/components/EditProfileForm";
 
+// Helper function dependencies
+import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
+
 export default function ProfilePage({ user, userAddress, upcomingData, pastData }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
@@ -167,8 +170,29 @@ export async function getServerSideProps() {
     // console.log(item, 'ITEM');
     return item.data.task;
   });
-  // console.log(tasksData, 'TASKS-DATA');
+  console.log(tasksData, 'TASKS-DATA');
 
+  const addressWithAddressIdArr = tasksData.map((task) => {
+    // console.log(task.addressId, 'task.addressId')
+    return axios.get(`http://localhost:3000/api/addresses/${task.addressId}`);
+  });
+  const resAddressWithAddressIdArr = await Promise.all(addressWithAddressIdArr);
+
+  const addressWithAddressId = resAddressWithAddressIdArr.map((item) => {
+    return item.data.address;
+  });
+  // console.log(addressWithAddressId, 'addressWithAddressId');
+  // console.log(tasksData);
+
+  tasksData.forEach((task) => {
+    for(let i = 0; i < addressWithAddressId.length; i++){
+      if(task.addressId === addressWithAddressId[i].id){
+        task.city = addressWithAddressId[i].city
+      }
+    }
+  })
+
+  console.log(tasksData, 'TASKS-DATA');
   // Extract upcoming tasks data
   const upcomingData = tasksData.filter(item => {
     return item.status === 'PENDING';
@@ -182,7 +206,7 @@ export async function getServerSideProps() {
   // console.log(pastData, 'pastData');
 
   // console.log(user.data, 'USER')
-  console.log(userAddress.data, 'userAddress');
+  // console.log(userAddress.data, 'userAddress');
 
   return {
     props: {
