@@ -1,7 +1,9 @@
 
 export default function addCoordsToTasks(tasks, addresses) {
+  addresses.sort((a, b) => a.id - b.id);
+
   for (const task of tasks) {
-    const taskAddress = addresses[task.addressId]
+    const taskAddress = addresses[task.addressId - 1]
 
     const latitude = taskAddress.latitude;
     const longitude = taskAddress.longitude;
@@ -12,6 +14,7 @@ export default function addCoordsToTasks(tasks, addresses) {
     task.longitude = `${longitude}`;
     task.city = city;
     // console.log(task)
+    console.log(`Task test: Task Name: ${task.name} ID: ${task.id} city ${task.city}`)
   }
 }
 

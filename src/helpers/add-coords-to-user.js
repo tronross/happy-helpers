@@ -1,14 +1,16 @@
 export default function addCoordsToUser(user, addresses) {
-    const userAddress = addresses[user.addressId]
+  addresses.sort((a, b) => a.id - b.id);
 
-    const latitude = userAddress.latitude;
-    const longitude = userAddress.longitude;
-    const city = userAddress.city
-    console.log(latitude, longitude)
+  const userAddress = addresses[user.addressId - 1]
 
-    user.latitude = `${latitude}`;
-    user.longitude = `${longitude}`;
-    user.city = city;
+  const latitude = userAddress.latitude;
+  const longitude = userAddress.longitude;
+  const city = userAddress.city
+  console.log(latitude, longitude)
 
-    // console.log(user)
-  }
+  user.latitude = `${latitude}`;
+  user.longitude = `${longitude}`;
+  user.city = city;
+
+  // console.log(user)
+}
