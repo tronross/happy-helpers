@@ -5,6 +5,7 @@ import DetailedTask from "@/components/DetailedTask";
 import { useState } from "react";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
 import { useRouter } from "next/router";
+import prisma from "../../../prisma/.db";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks}) {
