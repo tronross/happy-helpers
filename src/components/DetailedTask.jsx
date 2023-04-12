@@ -1,7 +1,7 @@
+import { useState } from "react";
 import Button from "./Button";
-import dayjs from "dayjs";
 
-export default function DetailedTask({selectedTask, selectedUser, task}) {
+export default function DetailedTask({selectedUser, task, changeTask}) {
  
   // const task = selectedTask;
   const user = selectedUser;
@@ -10,10 +10,10 @@ export default function DetailedTask({selectedTask, selectedUser, task}) {
   const buttonName = `Help ${user.firstName}`;
 
   return (
-    <div className=" flex flex-col border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em]">
-      <div className="flex p-3"> 
+    <div className=" flex flex-col border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] border-2 border-teal-600">
+      <div className="flex p-2"> 
         <div className="">
-          {/* <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img> */}
+          <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>
         </div>
         <div>
           <section className="px-4">

@@ -9,7 +9,8 @@ import prisma from "../../../prisma/.db";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks}) {
-  const [getTask, setGetTask] = useState(selectedTask);
+  const selectedId = selectedTask.id
+
 
   return (
     <>
@@ -18,10 +19,11 @@ export default function TaskPage({selectedTask, selectedUser, userTasks}) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main className="h-[100vh-40px]">
-      <NavBar />
-      <div className="flex justify-center">
-        <DetailedTaskRow selectedTask={getTask} selectedUser={selectedUser} userTasks={userTasks}/>
+    <NavBar />
+    <main>
+      <h1 className="uppercase text-teal-600 px-10 mb-5 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
+      <div className="">
+        <DetailedTaskRow selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks}/>
       </div>
     </main>
 
