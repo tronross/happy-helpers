@@ -19,7 +19,7 @@ export default function Request(props) {
         <p className="text-base text-teal-700 font-bold">
           {props.category}
         </p>
-        <p className="text-base text-teal-700 font-bold">
+        <p className="text-sm text-teal-700 font-bold">
           {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}
         </p>
         <p className="text-base text-teal-700 line-clamp-2 h-20">
@@ -49,11 +49,11 @@ export default function Request(props) {
           className="h-9 w-9 stroke-yellow-300 hover:fill-yellow-300 hover:cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="2"
+          strokeWidth="2"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
           />
         </svg>
