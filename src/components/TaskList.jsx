@@ -3,7 +3,7 @@ import Task from '../components/Task'
 export default function TaskList(props) {
 
   const tasks = props.tasks.map(task => {
-    const startDate = task.startDate
+    const startDate = task.startDate || task.start_date
     const startDateString = (new Date(startDate).toLocaleDateString()); 
     
     return (
