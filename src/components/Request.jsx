@@ -3,6 +3,9 @@ export default function Request(props) {
   // test code
   // console.log('props', props);
 
+  // Dates are sent as strings through props, so need to be formatted
+  const startDate = new Date(props.startDate);
+
   return (
     <div className="border-1 shadow-lg m-4 bg-white rounded-lg">
       <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
@@ -12,6 +15,12 @@ export default function Request(props) {
         </h5>
         <p className="mb-2 text-base text-teal-700">
           {props.address.city}
+        </p>
+        <p className="text-base text-teal-700 font-bold">
+          {props.category}
+        </p>
+        <p className="text-base text-teal-700 font-bold">
+          {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}
         </p>
         <p className="text-base text-teal-700">
           {props.description}

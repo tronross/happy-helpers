@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { Inter } from 'next/font/google';
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../prisma/.db';
+
 
 // Component dependencies
 import RequestList from '@/components/RequestList';
@@ -16,21 +17,36 @@ import Sidebar from '@/components/Sidebar';
 
 
 // Global variables
-const sidebarOptions = [
+const categoryOptions = [
   'All Tasks',
-  'Errands',
-  'Housework',
-  'Personal Care',
-  'Tech Support',
-  'Charity & Causes'
+  'Heavy Lifting',
+  'Animal Care',
+  'DIY',
+  'Driving',
+  'Cooking',
+  'Yardwork'
 ];
 
 export default function UserTasks({ userRequests }) {
   // Hooks
-  // do we need to put userRequests into state? can we add them directly as props for RequestList??
   const [fetchRequests, setfetchRequests] = useState(userRequests);
-  const [sidebar, setSidebar] = useState(sidebarOptions);
-  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
+  const [category, setCategory] = useState(categoryOptions);
+  // const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
+
+  // Create dropdown select element to test filter functionality
+  const dropdownSelect = (e) => {
+    const selectedCategory = e.target.value;
+    console.log('selectedCategory', selectedCategory);
+    setCategory(selectedCategory);
+  };
+
+  const categoryFilter = categoryOptions.map((category, index) => {
+    return (
+      <option key={index} value={category}>
+        {category}
+      </option>
+    );
+  });
 
   // Template
   return (
@@ -43,11 +59,19 @@ export default function UserTasks({ userRequests }) {
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-          <Sidebar
+          {/* <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
-          />
+          /> */}
           <section className='flex flex-col p-2 grow'>
+            {/* The header will be different to the PageHeader component in the home page */}
+            <div className="flex justify-between m-4 text-lg text-teal-700">
+              <h1 className="text-[1.5em]">My requests for help</h1>
+              <span>Filter by category</span>
+              <select onChange={dropdownSelect}>
+                {categoryFilter}
+              </select>
+            </div>
             <RequestList requests={fetchRequests} />
           </section>
         </div>
@@ -59,8 +83,6 @@ export default function UserTasks({ userRequests }) {
 
 // Data fetching
 export const getServerSideProps = async function() {
-
-  const prisma = new PrismaClient();
 
   /* Capture tasks with addresses:
     SELECT tasks.*, addresses.* FROM tasks
