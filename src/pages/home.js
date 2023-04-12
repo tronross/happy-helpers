@@ -107,19 +107,10 @@ export async function getServerSideProps() {
     WHERE tasks.user_id = 1
     ORDER BY start_date desc;
   */
-    const tasks = await prisma.task.findMany({
-      // where: {
-      //   userId: true
-      // },
-      include: {
-        address: {
-          select: {
-            addressId =
-      },
-      orderBy: {
-        startDate: 'asc',
-      },
-    });
+    const tasks = await prisma.$queryRaw`
+    SELECT tasks.*, addresses.* FROM tasks
+    JOIN addresses ON tasks.address_id = addresses.id
+    ORDER BY start_date desc;`
   
 
 
@@ -142,6 +133,7 @@ export async function getServerSideProps() {
   // addCoordsToUser(user, addresses);
   addDistanceToTasks(tasks, user);
   console.log(user)
+  console.log(tasks)
   return {
     props: { tasks: JSON.parse(JSON.stringify(tasks)),
     user: JSON.parse(JSON.stringify(user)) }
