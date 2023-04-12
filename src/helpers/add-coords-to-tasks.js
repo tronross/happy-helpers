@@ -1,6 +1,6 @@
 
 export default function addCoordsToTasks(tasks, addresses) {
-  tasks.sort((a, b) => a.id - b.id);
+  addresses.sort((a, b) => a.id - b.id);
   
   for (const task of tasks) {
     const taskAddress = addresses[task.addressId - 1]
