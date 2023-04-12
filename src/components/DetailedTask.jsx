@@ -8,9 +8,10 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const startDate = new Date(task.startDate);
   const endDate = new Date(task.endDate);
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`
-console.log(offerSent)
 
-  const buttonStyle = offerSent ? "bg-gray-500 cursor-not-allowed" : "bg-teal-600";
+
+  const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 focus:bg-teal-800";
+  const disabled = offerSent
 
 
 
@@ -51,7 +52,7 @@ console.log(offerSent)
             </span>
             <svg className="h-7 w-7 text-teal-500 hover:fill-current hover:cursor-pointer mx-5"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
           </div>
-            <Button buttonName={buttonName} buttonStyle={buttonStyle} onClick={() => sendOffer(task.id, 2, setOfferSent)}></Button>          
+            <Button disabled={disabled} buttonName={buttonName} buttonStyle={buttonStyle} onClick={() => sendOffer(task.id, 2, setOfferSent)}></Button>          
         </div>
     </div>
   )
