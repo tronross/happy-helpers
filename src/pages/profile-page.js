@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from "axios";
 // import { PrismaClient } from '@prisma/client';
 
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+// import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 import prisma from "../../prisma/.db";
 
@@ -20,6 +20,8 @@ import EditProfileForm from "@/components/EditProfileForm";
 
 // Helper function dependencies
 import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
+import addCoordsToUser from "@/helpers/add-coords-to-user";
+import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 
 export default function ProfilePage({ user, userAddress, upcomingData, pastData }) {
   // HOOKS
@@ -52,18 +54,18 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
     setShowEditProfileForm(!showEditProfileForm);
   };
 
-  const slideLeft = function() {
-    const slider = document.getElementById('slider');
-    slider.scrollLeft = slider.scrollLeft - 500;
-    console.log('LEFT');
-  };
+  // const slideLeft = function() {
+  //   const slider = document.getElementById('slider');
+  //   slider.scrollLeft = slider.scrollLeft - 500;
+  //   console.log('LEFT');
+  // };
 
-  const slideRight = () => {
-    const slider = document.getElementById('slider');
-    slider.scrollLeft = slider.scrollLeft + 500;
-    console.log('RIGHT');
-    console.log(slider);
-  };
+  // const slideRight = () => {
+  //   const slider = document.getElementById('slider');
+  //   slider.scrollLeft = slider.scrollLeft + 500;
+  //   console.log('RIGHT');
+  //   console.log(slider);
+  // };
 
   // TEMPLATE
   return (
@@ -105,26 +107,26 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
           <section>
             <h1>Your Upcoming tasks</h1>
             <div className='relative flex items-center'>
-              <MdChevronLeft onClick={slideLeft} size={70} />
+              {/* <MdChevronLeft onClick={slideLeft} size={70} /> */}
               <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
                 <TaskList
                   className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
                   tasks={upcomingTasksData}
                 />
               </div>
-              <MdChevronRight onClick={slideRight} size={70} />
+              {/* <MdChevronRight onClick={slideRight} size={70} /> */}
             </div>
 
             <h1>Past Tasks</h1>
             <div className='relative flex items-center'>
-              <MdChevronLeft onClick={slideLeft} size={70} />
+              {/* <MdChevronLeft onClick={slideLeft} size={70} /> */}
               <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
                 <TaskList
                   className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
                   tasks={pastTasksData}
                 />
               </div>
-              <MdChevronRight onClick={slideRight} size={70} />
+              {/* <MdChevronRight onClick={slideRight} size={70} /> */}
             </div>
           </section>
         </div>
@@ -185,14 +187,21 @@ export async function getServerSideProps() {
   // console.log(tasksData);
 
   tasksData.forEach((task) => {
-    for(let i = 0; i < addressWithAddressId.length; i++){
-      if(task.addressId === addressWithAddressId[i].id){
-        task.city = addressWithAddressId[i].city
+    for (let i = 0; i < addressWithAddressId.length; i++) {
+      if (task.addressId === addressWithAddressId[i].id) {
+        task.city = addressWithAddressId[i].city;
       }
     }
-  })
+  });
+
+
+  const addresses = await prisma.address.findMany();
+  addCoordsToTasks(tasksData, addresses);
+  addCoordsToUser(user.data.user, addresses);
+  addDistanceToTasks(tasksData, user.data.user);
 
   console.log(tasksData, 'TASKS-DATA');
+
   // Extract upcoming tasks data
   const upcomingData = tasksData.filter(item => {
     return item.status === 'PENDING';
