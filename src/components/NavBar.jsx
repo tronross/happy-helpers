@@ -12,7 +12,7 @@ export default function NavBar(props) {
 
   // Template
   return (
-    <div className="flex p-5 text-teal-600 block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">
+    <div className="flex items-center p-5 text-teal-600 block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">
       <ul className="flex w-1/2">
         <li className='px-6 '>
           Happy Helpers
@@ -24,7 +24,7 @@ export default function NavBar(props) {
           <Link href="/new-task">New</Link>
         </li>
       </ul>
-      <ul className="flex w-1/2 justify-end">
+      <ul className="flex items-center  w-1/2 justify-end">
       <li className='px-6 '>
           <Link href="/my-help">MyHelp</Link>
         </li>
