@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
 
@@ -15,31 +15,33 @@ import Sidebar from '@/components/Sidebar';
 // import addCoordsToUser from '../helpers/add-coords-to-user'
 // import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 
-
-// Global variables
-const categoryOptions = [
-  'All Tasks',
-  'Heavy Lifting',
-  'Animal Care',
-  'DIY',
-  'Driving',
-  'Cooking',
-  'Yardwork'
-];
-
 export default function UserTasks({ userRequests }) {
-  // Hooks
-  const [fetchRequests, setfetchRequests] = useState(userRequests);
-  const [category, setCategory] = useState(categoryOptions);
-  // const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
 
-  // Create dropdown select element to test filter functionality
-  const dropdownSelect = (e) => {
-    const selectedCategory = e.target.value;
-    console.log('selectedCategory', selectedCategory);
-    setCategory(selectedCategory);
+  // Hooks
+  // const [liveRequests, setLiveRequests] = useState(userRequests);
+  const [category, setCategory] = useState('All Categories');
+  // const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
+  
+  // Build an array of the available categories
+  const categoryOptions = ['All Categories'];
+  for (const request of userRequests) {
+    if (!categoryOptions.includes(request.category)) {
+      categoryOptions.push(request.category);
+    }
+  }
+
+  // This should be a helper function!!!!!!!!!!!!!!!!!!
+  const filterRequestsByCategory = function() {
+    if (category === 'All Categories') {
+      return userRequests;
+    }
+    return userRequests.filter(request => request.category === category);
   };
 
+  // Avoid duplicate function calls with useMemo
+  const filteredRequests = useMemo(filterRequestsByCategory, [category, userRequests]);
+
+  // Create dropdown select element to test filter functionality
   const categoryFilter = categoryOptions.map((category, index) => {
     return (
       <option key={index} value={category}>
@@ -47,6 +49,10 @@ export default function UserTasks({ userRequests }) {
       </option>
     );
   });
+
+  const handleCategoryChange = function(event) {
+    setCategory(event.target.value);
+  };
 
   // Template
   return (
@@ -67,12 +73,18 @@ export default function UserTasks({ userRequests }) {
             {/* The header will be different to the PageHeader component in the home page */}
             <div className="flex justify-between m-4 text-lg text-teal-700">
               <h1 className="text-[1.5em]">My requests for help</h1>
-              <span>Filter by category</span>
-              <select onChange={dropdownSelect}>
-                {categoryFilter}
-              </select>
+              <div>
+                <span>Filter by category: </span>
+                <select
+                  name="selectedCategory"
+                  value={category}
+                  onChange={handleCategoryChange}
+                >
+                  {categoryFilter}
+                </select>
+              </div>
             </div>
-            <RequestList requests={fetchRequests} />
+            <RequestList requests={filteredRequests} />
           </section>
         </div>
       </main>

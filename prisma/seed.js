@@ -188,7 +188,8 @@ async function main() {
       endDate: new Date('2023-04-20 20:00+0500'),
       userId: 1,
       nbHelpers: 1,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 

@@ -17,6 +17,7 @@ export default function RequestList({ requests }) {
           address={request.address}
           startDate={request.startDate}
           endDate={request.endDate}
+          starred={request.starred}
         />
       </li>
     );
