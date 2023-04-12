@@ -1,15 +1,21 @@
 import Button from "./Button";
 import DetailedTask from "./DetailedTask";
 import Task from "./Task";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
 
-export default function DetailedTaskRow({selectedId, selectedUser, userTasks}) {
+export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers}) {
   const [currentTask, setCurrentTask] = useState(selectedId);
 
   const changeTask = (id) => { 
     setCurrentTask(id)
   }
+
+  const offerTaskIds = offers.map(offer => (
+   offer.taskId 
+  ))
+
+
 
   const tasks = userTasks.map(task => {
     if (task.id === currentTask) {
@@ -18,6 +24,8 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks}) {
           task={task}
           startDate={task.startDate}
           selectedUser={selectedUser}
+          sendOffer={sendOffer}
+          offerTaskIds={offerTaskIds}
         />
         </li>
     } else {
@@ -56,7 +64,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks}) {
             <div className="absolute right-[40px] z-10 "> 
             <RowButton svg="next" onClick={scrollRight}/>  
         </div>
-      <div id="scrollbox" className="border-2 mx-10 rounded border-teal-600 flex justify-start items-center list-none overflow-scroll scroll-smooth snap-proximity  snap-x relative">
+      <div id="scrollbox" className=".no-scrollbar border-2 mx-10 rounded border-teal-600 flex justify-start items-center list-none overflow-scroll scroll-smooth scrollbar-hide snap-proximity  snap-x relative shadow-xl">
         <div className="flex p-3 task-container">
           {tasks}
         </div>
@@ -64,20 +72,3 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks}) {
     </div>
   )
 };
-
-// const scrollElement = document.querySelector("#scroll-element");
-//         const scrollTopBtn = document.querySelector(".scroll-top-btn");
-//         const scrollLeftBtn = document.querySelector(".scroll-left-btn");
-//         const outputDiv = document.querySelector(".output");
-  
-//         scrollTopBtn.addEventListener("click", function () {
-//             scrollElement.scrollTop += 25;
-//         });
-//         scrollLeftBtn.addEventListener("click", function () {
-//             scrollElement.scrollLeft += 25;
-//         });
-//         scrollElement.addEventListener("scroll", () => {
-//             outputDiv.innerHTML = 
-//             `scrollTop: ${Math.ceil(scrollElement.scrollTop)}
-//             <br> scrollLeft: ${Math.ceil(scrollElement.scrollLeft)} `;
-//         });
