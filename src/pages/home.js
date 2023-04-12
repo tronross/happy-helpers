@@ -29,8 +29,7 @@ const sidebarOptions = [
   'Charity & Causes'
 ];
 
-export default function Home({ tasks }) {
-  console.log(tasks);
+export default function Home({ tasks, user }) {
   
   // Hooks
   const [fetchTasks, setFetchTasks] = useState(tasks);
@@ -74,7 +73,7 @@ export default function Home({ tasks }) {
             setSelectedSidebar={setSelectedSidebar}
           />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView}/>
+            <PageHeader setView={setView} city={user.city}/>
             {currentView}
           </section>
         </div>
@@ -106,6 +105,7 @@ export async function getServerSideProps() {
 
   // console.log(tasks)
   return {
-    props: { tasks: JSON.parse(JSON.stringify(tasks)) }
+    props: { tasks: JSON.parse(JSON.stringify(tasks)),
+    user: user }
   };
 }
