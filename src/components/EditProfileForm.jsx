@@ -33,9 +33,9 @@ export default function EditProfileForm({ editProfileFormData, setEditProfileFor
 
       <input type="text" id="postcode" name="postcode" placeholder="postcode" value={editProfileFormData.postcode} onChange={onChange} required />
 
-      {/* <input type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required />
+      <input type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required />
 
-      <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
+      {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
       <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
     </div >
