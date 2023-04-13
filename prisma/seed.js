@@ -533,6 +533,22 @@ async function main() {
     }
   });
 
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 10,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 10,
+      status: 'OPEN'
+    }
+  });
+
 }
 
 main()

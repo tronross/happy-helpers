@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useMemo, useEffect } from 'react';
 import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
-
+import axios from "axios"
 
 // Component dependencies
 import RequestList from '@/components/RequestList';
@@ -19,12 +19,31 @@ export default function UserTasks({ userRequests, offers }) {
   const [selectedTask, setSelectedTask] = useState();
   const [selectedOffers, setSelectedOffers] = useState([]);
 
+  /* When user clicks on accept offer from volunteer button:
+   * In tasks table: set task status as pending where id = selectedTask
+   * In offers table: set offer status as pending where id = offer.id
+   */
+  const handleAcceptOffer = async function(offerId) {
 
+    await axios.put(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'PENDING'});
+    await axios.put(`http://localhost:3000/api/tasks/${selectedTask}`, {newStatus: 'PENDING'});
+
+  };
+
+  // const updateTaskStatus = await prisma.task.update({
+  //   where: {
+  //     id: selectedTask
+  //   },
+  //   data: {
+  //     status: 'PENDING'
+  //   }
+  // });
+
+
+  // Create an array of offers received for a task when it is selected
   useEffect(() => {
-    console.log('selectedTask', selectedTask);
     if (selectedTask) {
       const offersReceived = offers.filter((offer) => offer.taskId === selectedTask);
-      console.log('offersReceived', offersReceived);
       setSelectedOffers(offersReceived);
     }
   }, [selectedTask, offers]);
@@ -115,6 +134,7 @@ export default function UserTasks({ userRequests, offers }) {
             handleCategoryChange={handleCategoryChange}
             categoryFilter={categoryFilter}
             selectedOffers={selectedOffers}
+            handleAcceptOffer={handleAcceptOffer}
           />
           <section className='flex flex-col p-2 max-w-6xl'>
             <div className="flex justify-between m-4 text-lg text-teal-700">
