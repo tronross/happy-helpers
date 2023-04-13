@@ -18,30 +18,44 @@ import Sidebar from '@/components/Sidebar';
 export default function UserTasks({ userRequests }) {
 
   // Hooks
-  // const [liveRequests, setLiveRequests] = useState(userRequests);
   const [category, setCategory] = useState('All Categories');
-  // const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
-  
+  const [status, setStatus] = useState('Any Status');
+
+  const filterRequests = function() {
+    if (category === 'All Categories' && status === 'Any Status') {
+      return userRequests;
+    }
+    if (category !== 'All Categories' && status === 'Any Status') {
+      return userRequests.filter(request => request.category === category);
+    }
+    if (category === 'All Categories' && status !== 'Any Status') {
+      return userRequests.filter(request => request.status === status);
+    }
+    if (category !== 'All Categories' && status !== 'Any Status') {
+      return userRequests.filter(request => request.category === category && request.status === status);
+    }
+  };
+
+  // Avoid duplicate function calls with useMemo
+  const filteredRequests = useMemo(filterRequests, [category, status, userRequests]);
+
   // Build an array of the available categories
   const categoryOptions = ['All Categories'];
-  for (const request of userRequests) {
+  for (const request of filteredRequests) {
     if (!categoryOptions.includes(request.category)) {
       categoryOptions.push(request.category);
     }
   }
 
-  // This should be a helper function!!!!!!!!!!!!!!!!!!
-  const filterRequestsByCategory = function() {
-    if (category === 'All Categories') {
-      return userRequests;
+  // Build an array of the available statuses
+  const statusOptions = ['Any Status'];
+  for (const request of filteredRequests) {
+    if (!statusOptions.includes(request.status)) {
+      statusOptions.push(request.status);
     }
-    return userRequests.filter(request => request.category === category);
-  };
+  }
 
-  // Avoid duplicate function calls with useMemo
-  const filteredRequests = useMemo(filterRequestsByCategory, [category, userRequests]);
-
-  // Create dropdown select element to test filter functionality
+  // Create dropdown select element to filter by category
   const categoryFilter = categoryOptions.map((category, index) => {
     return (
       <option key={index} value={category}>
@@ -50,8 +64,26 @@ export default function UserTasks({ userRequests }) {
     );
   });
 
+  // Create dropdown select element to filter by status
+  const statusFilter = statusOptions.map((status, index) => {
+    return (
+      <option key={index} value={status}>
+        {status}
+      </option>
+    );
+  });
+
+  const resetFilters = function() {
+    setCategory('All Categories');
+    setStatus('Any Status');
+  };
+
   const handleCategoryChange = function(event) {
     setCategory(event.target.value);
+  };
+
+  const handleStatusChange = function(event) {
+    setStatus(event.target.value);
   };
 
   // Template
@@ -70,11 +102,24 @@ export default function UserTasks({ userRequests }) {
             setSelectedSidebar={setSelectedSidebar}
           /> */}
           <section className='flex flex-col p-2 grow'>
-            {/* The header will be different to the PageHeader component in the home page */}
             <div className="flex justify-between m-4 text-lg text-teal-700">
               <h1 className="text-[1.5em]">My requests for help</h1>
               <div>
-                <span>Filter by category: </span>
+                <button
+                  className="inline-block w-[8em] h-[3em] leading-none bg-transparent hover:bg-teal-700 text-teal-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center items-center border border-teal-700 hover:border-transparent"
+                  onClick={resetFilters}
+                >
+                  Reset
+                </button>
+                <span> Filter by request status: </span>
+                <select
+                  name="selectedStatus"
+                  value={status}
+                  onChange={handleStatusChange}
+                >
+                  {statusFilter}
+                </select>
+                <span> Filter by category: </span>
                 <select
                   name="selectedCategory"
                   value={category}

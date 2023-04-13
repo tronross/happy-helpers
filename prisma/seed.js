@@ -187,6 +187,7 @@ async function main() {
       startDate: new Date('2023-04-20 16:00+0500'),
       endDate: new Date('2023-04-20 20:00+0500'),
       userId: 1,
+      status: 'OPEN',
       nbHelpers: 1,
       addressId: 1,
       starred: true
@@ -216,6 +217,7 @@ async function main() {
       startDate: new Date('2023-04-21 15:00+0500'),
       endDate: new Date('2023-04-21 15:00+0500'),
       userId: 1,
+      status: 'OPEN',
       nbHelpers: 1,
       addressId: 1
     }
@@ -272,6 +274,7 @@ async function main() {
       startDate: new Date('2023-04-16 15:00+0500'),
       endDate: new Date('2023-04-16 15:00+0500'),
       userId: 1,
+      status: 'COMPLETE',
       nbHelpers: 1,
       addressId: 1
     }
