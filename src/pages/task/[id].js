@@ -3,18 +3,18 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
+import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
 
 
-export default function TaskPage({selectedTask, selectedUser, userTasks, offers}) {
+export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
   const selectedId = selectedTask.id
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
     .then(setOffer(true))
   }
-
-
+  
   return (
     <>
     <Head>
@@ -24,9 +24,15 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers}
     </Head>
     <NavBar />
     <main>
-      <h1 className="uppercase text-teal-600 px-10 mb-5 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
+      <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
+      <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
+      <p></p>
       <div className="">
-        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers}/>
+        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks"/>
+      </div>
+      <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
+      <div className="">
+        <TaskRow userTasks={similarTasks} rowType="similar"/>
       </div>
     </main>
 
@@ -56,10 +62,16 @@ export async function getServerSideProps(context) {
   //Define current users tasks
   const userTasks = await prisma.task.findMany({
     where: {
-      userId: selectedTask.userId
+      userId: selectedTask.userId,
+      status: "OPEN"
+    },
+    include: {
+      address: true,
     }
   })
 
+
+  //all offers of logged in user
   const offers = await prisma.offer.findMany({
     where: {
       userId: 2
@@ -67,12 +79,20 @@ export async function getServerSideProps(context) {
   })
 
 
+  //similar tasks by category
+  const similarTasks = await prisma.task.findMany({
+    where: {
+      category: selectedTask.category,
+      status: "OPEN"
+    }
+  })
+
   return {
     props: { selectedTask: JSON.parse(JSON.stringify(selectedTask)),
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
-
+             similarTasks: JSON.parse(JSON.stringify(similarTasks)),
             }
   };
 }

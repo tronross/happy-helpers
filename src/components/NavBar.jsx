@@ -12,7 +12,7 @@ export default function NavBar(props) {
 
   // Template
   return (
-    <div className="flex items-center p-5 text-teal-600 block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">
+    <div className="flex items-center p-5 text-teal-600 block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2 sticky top-0 bg-neutral-100">
       <ul className="flex w-1/2">
         <li className='px-6 '>
           Happy Helpers
@@ -32,7 +32,7 @@ export default function NavBar(props) {
           <h2>Messages</h2>
         </li>
         <li className='px-6 '>
-          <Link href="/my-profile/:id">Fred</Link>
+          <Link href="/my-profile/:id">{props.name}</Link>
         </li>
         <li className='px-6 '>
           <Button buttonName={"LOGOUT"}/>

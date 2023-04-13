@@ -1,7 +1,7 @@
 import getDistance from './get-distance';
 
 export default function addDistanceToTasks(tasks, user) {
-  console.log(user)
+
   const userLat = user.latitude;
   const userLong = user.longitude;
 

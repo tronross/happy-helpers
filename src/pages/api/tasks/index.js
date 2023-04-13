@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       }
     })
 
-    res.send('POST api/tasks')
+    res.send(createdTask)
   }
 }
 

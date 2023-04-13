@@ -1,7 +1,11 @@
 import { useEffect } from "react"
 import FormButton from "./FormButton"
 import axios from "axios"
+import { useRouter } from "next/router";
+
 export default function StepperControl({currentStep, setCurrentStep, formData}) {
+
+  const router = useRouter();
 
   const onClick = async (name) => {
     if (name === "Next") {
@@ -12,7 +16,10 @@ export default function StepperControl({currentStep, setCurrentStep, formData}) 
     } else if (name === "Back") {
       setCurrentStep((prev) => prev - 1)
     } else if (name === "Add Task") {
-      await axios.post('http://localhost:3000/api/tasks', formData);
+      await axios.post('http://localhost:3000/api/tasks', formData)
+        .then(() => {
+        router.push(`user-tasks`)
+      })
     }
   }
 

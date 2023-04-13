@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 export default function WhenForm({formData, setFormData}) {
   const [startTime, setStartTime] = useState({
-    hour: "1",
+    hour: "01",
     minute: "00",
     ampm: "PM"
   })
@@ -38,7 +38,7 @@ export default function WhenForm({formData, setFormData}) {
     }
     // new Date('2023-04-29 18:00+0500')
     const startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    const endDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
 
     setFormData(prev => ({...prev, startDate}))
     setFormData(prev => ({...prev, endDate}))
@@ -82,15 +82,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={startTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
+                  <option value="01">1</option>
+                  <option value="02">2</option>
+                  <option value="03">3</option>
+                  <option value="04">4</option>
+                  <option value="05">5</option>
+                  <option value="06">6</option>
+                  <option value="07">7</option>
+                  <option value="08">8</option>
+                  <option value="09">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
@@ -132,15 +132,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={endTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
+                  <option value="01">1</option>
+                  <option value="02">2</option>
+                  <option value="03">3</option>
+                  <option value="04">4</option>
+                  <option value="05">5</option>
+                  <option value="06">6</option>
+                  <option value="07">7</option>
+                  <option value="08">8</option>
+                  <option value="09">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
