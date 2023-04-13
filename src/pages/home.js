@@ -95,7 +95,7 @@ export default function Home({ tasks, user }) {
           />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.city} />
-            <TaskList tasks={filteredTasks} /> 
+            {currentView}
           </section>
         </div>
       </main>
