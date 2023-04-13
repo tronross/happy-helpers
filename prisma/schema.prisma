@@ -87,6 +87,7 @@ model Task {
   nbHelpers     Int       @map("nb_helpers")
   addressId     Int       @map("address_id")
   address       Address   @relation(fields: [addressId], references: [id])
+  starred       Boolean   @default(false)
   Offers        Offer[]
 
   @@map("tasks")

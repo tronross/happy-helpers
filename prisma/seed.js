@@ -187,8 +187,10 @@ async function main() {
       startDate: new Date('2023-04-20 16:00+0500'),
       endDate: new Date('2023-04-20 20:00+0500'),
       userId: 1,
+      status: 'OPEN',
       nbHelpers: 1,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 
@@ -215,6 +217,7 @@ async function main() {
       startDate: new Date('2023-04-21 15:00+0500'),
       endDate: new Date('2023-04-21 15:00+0500'),
       userId: 1,
+      status: 'OPEN',
       nbHelpers: 1,
       addressId: 1
     }
@@ -271,6 +274,7 @@ async function main() {
       startDate: new Date('2023-04-16 15:00+0500'),
       endDate: new Date('2023-04-16 15:00+0500'),
       userId: 1,
+      status: 'COMPLETE',
       nbHelpers: 1,
       addressId: 1
     }
@@ -279,7 +283,7 @@ async function main() {
   await prisma.task.create({
     data: {
       name: 'Cookies needed for meeting',
-      description: 'Nobody like my lasagne last time, need a change of menu.',
+      description: 'Nobody liked my lasagne last time, need a change of menu.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Cooking',
       startDate: new Date('2023-04-29 18:00+0500'),
