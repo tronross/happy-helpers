@@ -17,3 +17,27 @@ body {
   width: 98%;
   margin: 10px;
 }
+
+.task-container li:first-child.snap-center {
+  padding-left: 4%;
+}
+
+.task-container li:last-child.snap-center {
+  padding-right: 4%;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.full-height {
+  min-height: calc(100vh - 136px);
+  margin-bottom: 2em ;
+}
