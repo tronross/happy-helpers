@@ -46,27 +46,9 @@ export default function Home({ tasks, user }) {
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState(tasks);
   
-  // const [category, setCategory] = useState(0);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
-  //     return data;
-  //   };
-  //   const theFetcher = fetchData();
-  // console.log(theFetcher);
-  // });
-  // console.log(fetchTasks);
-
-  // useEffect (() => {
-  //   setFetchTasks((prev) => {
-  //     prev.filter(item => ) 
-  //   })
-
-  // }, [selectedSidebar])
-
+  
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
-
+  
   const tasksSortD = function() {
    setFilteredTasks(sortTasksByDistance([...tasks]))
   }
@@ -74,7 +56,7 @@ export default function Home({ tasks, user }) {
   const tasksSortT = function() {
     setFilteredTasks(sortTasksByStartTime([...tasks]))
   }
-
+  
   // Template
   return (
     <>
@@ -84,14 +66,15 @@ export default function Home({ tasks, user }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <NavBar />
+        <NavBar name={user.firstName}
+                id={user.id}/>
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
             sortDistance={tasksSortD}
             sortTime={tasksSortT}
-          />
+            />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.city} />
             {currentView}
@@ -105,22 +88,22 @@ export default function Home({ tasks, user }) {
 
 // Data fetching
 export async function getServerSideProps() {
-
+  
   // Capture tasks with addresses:
   const tasks = await prisma.$queryRaw`
-    SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
-    JOIN addresses ON tasks.address_id = addresses.id
-    ORDER BY start_date desc;`
-
+  SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
+  JOIN addresses ON tasks.address_id = addresses.id
+  ORDER BY start_date desc;`
+  
   // Define current user
   const userFetch = await prisma.$queryRaw`
-    SELECT users.*, addresses.city, addresses.latitude, addresses.longitude FROM users
-    JOIN addresses ON users.address_id = addresses.id
-    WHERE users.id = 1`
-
+  SELECT users.*, addresses.city, addresses.latitude, addresses.longitude FROM users
+  JOIN addresses ON users.address_id = addresses.id
+  WHERE users.id = ${3}`
+  
   const user = userFetch[0];
-
-  // Add distance between user and task to tasks, order by ascending distance
+  
+  // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
   // const sortedTasks = sortTasksByDistance(tasks);
   // console.log(tasks)
@@ -133,3 +116,26 @@ export async function getServerSideProps() {
     }
   };
 }
+
+
+
+
+
+// const [category, setCategory] = useState(0);
+
+// useEffect(() => {
+//   const fetchData = async () => {
+//     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
+//     return data;
+//   };
+//   const theFetcher = fetchData();
+// console.log(theFetcher);
+// });
+// console.log(fetchTasks);
+
+// useEffect (() => {
+//   setFetchTasks((prev) => {
+//     prev.filter(item => ) 
+//   })
+
+// }, [selectedSidebar])
