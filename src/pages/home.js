@@ -23,7 +23,7 @@ import Map from '@/components/Map';
 // Global variables
 const inter = Inter({ subsets: ['latin'] });
 const sidebarOptions = [
-  'All Tasks',
+  'All Categories',
   'Animal Care',
   'Charity & Causes',
   'Cooking',
@@ -45,26 +45,27 @@ export default function Home({ tasks, user }) {
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
-
+  
   const tasksToFilter = fetchTasks;
   const taskFilters = {
-    distance: 5,
-    category: 'All Tasks'
+    distance: 50,
+    category: 'All Categories'
   }
+  const [category, setCategory] = useState(taskFilters.category)
 
   const filterTasks = function(tasks, filters) {
     let unfilteredTasks = [...tasks]
     const distance = filters.distance;
     const category = filters.category;
 
+
     const tasksCloserThan = unfilteredTasks.filter(task => task.distance <= distance);
 
-    if (category === 'All Tasks') {
+    if (category === 'All Categories') {
       setFilteredTasks(tasksCloserThan)
     } else {
       const tasksInCategory = tasksCloserThan.filter(task => task.category === category);
       setFilteredTasks(tasksInCategory)
-
     }
   }
   
@@ -99,9 +100,11 @@ export default function Home({ tasks, user }) {
             sortDistance={tasksSortD}
             sortTime={tasksSortT}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
+            filters={taskFilters}
+            setCategory={setCategory}
             />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView} city={user.city} />
+            <PageHeader setView={setView} city={user.city} category={category} />
             {currentView}
           </section>
         </div>
