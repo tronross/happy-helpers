@@ -1,9 +1,9 @@
-import { useState } from "react"
-import Datepicker from "react-tailwindcss-datepicker"
-import { useEffect } from "react"
-
+import { useState, useEffect } from "react";
 
 export default function WhenForm({formData, setFormData}) {
+
+  const [startDate, setStartDate] = useState(Date)
+
   const [startTime, setStartTime] = useState({
     hour: "01",
     minute: "00",
@@ -53,16 +53,15 @@ export default function WhenForm({formData, setFormData}) {
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
              Start Date
            </label>
-           <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
-
-
+           {/* <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/> */}
+            
 
         </div>
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="grid-first-name">
             End Date
           </label>
-          <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
+          {/* <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/> */}
         </div>
          
        </div>

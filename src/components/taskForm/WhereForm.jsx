@@ -17,7 +17,7 @@ export default function WhereForm({formData, onChange, user, setFormData}) {
     <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
       <div className="mb-2 flex items-center">
         <Checkbox className="mr-2 focus:ring-transparent text-violet-500" name="addressCheck" checked={check} onChange={(e) => handleCheck(e)} />
-        <label htmlFor="addressCheck">Same as Home Address</label>
+        <label htmlFor="addressCheck" onClick={handleCheck}>Same as Home Address</label>
       </div>
        <div className="flex flex-wrap -mx-3 mb-6">
          <div className="w-full md:w-full px-3 mb-6 md:mb-0">
