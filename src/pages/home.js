@@ -40,13 +40,35 @@ const sidebarOptions = [
 export default function Home({ tasks, user }) {
   
   // Hooks
-  const [fetchTasks, setFetchTasks] = useState(tasks);
+  const [fetchTasks, setFetchTasks] = useState([...tasks]);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
-  const [filteredTasks, setFilteredTasks] = useState(tasks);
+  const [filteredTasks, setFilteredTasks] = useState([...tasks]);
+
+  const tasksToFilter = fetchTasks;
+  const taskFilters = {
+    distance: 5,
+    category: 'All Tasks'
+  }
+
+  const filterTasks = function(tasks, filters) {
+    let unfilteredTasks = [...tasks]
+    const distance = filters.distance;
+    const category = filters.category;
+
+    const tasksCloserThan = unfilteredTasks.filter(task => task.distance <= distance);
+
+    if (category === 'All Tasks') {
+      setFilteredTasks(tasksCloserThan)
+    } else {
+      const tasksInCategory = tasksCloserThan.filter(task => task.category === category);
+      setFilteredTasks(tasksInCategory)
+
+    }
+  }
   
-  
+  // filterTasks([...tasks], taskFilters)
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
   
   const tasksSortD = function() {
@@ -56,6 +78,8 @@ export default function Home({ tasks, user }) {
   const tasksSortT = function() {
     setFilteredTasks(sortTasksByStartTime([...tasks]))
   }
+
+
   
   // Template
   return (
@@ -74,6 +98,7 @@ export default function Home({ tasks, user }) {
             setSelectedSidebar={setSelectedSidebar}
             sortDistance={tasksSortD}
             sortTime={tasksSortT}
+            filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.city} />

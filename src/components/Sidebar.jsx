@@ -2,7 +2,8 @@ export default function Sidebar(props) {
   const dropdownSelect = (e) => {
     const select = e.target.value
     console.log(select)
-    
+    props.filterTasks()
+
     // props.setSelectedSidebar(select)
   }
 
