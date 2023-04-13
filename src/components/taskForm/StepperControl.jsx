@@ -17,7 +17,7 @@ export default function StepperControl({currentStep, setCurrentStep, formData}) 
       setCurrentStep((prev) => prev - 1)
     } else if (name === "Add Task") {
       await axios.post('http://localhost:3000/api/tasks', formData)
-        .then((res) => {
+        .then(() => {
         router.push(`user-tasks`)
       })
     }

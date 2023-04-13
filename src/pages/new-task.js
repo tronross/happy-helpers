@@ -26,8 +26,8 @@ export default function NewTask(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-[100vh-40px]">
         <NavBar />
+      <main className="full-height">
         <div className="flex justify-center">
         <TaskForm formData={formData} setFormData={setFormData} user={props.user}/>
         </div>
