@@ -17,12 +17,19 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
     if (type === "fake") {
       return
     } else {
-      () => {
         sendOffer(task.id, 2, setOfferSent)
-      }
-
     }
   }
+
+  const getStyle = (status) => {
+    switch(status) {
+      case 'OPEN':  return "inline-block min-w-[6em] max-w-[8em] h-[2em] leading-none bg-teal-200 text-teal-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+      case 'PENDING': return "inline-block min-w-[6em] max-w-[8em] h-[2em] leading-none bg-violet-200 text-violet-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+      case 'COMPLETE': return "inline-block min-w-[6em] max-w-[8em] h-[2em] leading-none bg-amber-200 text-amber-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+    }
+  }
+  
+  const statusColor = getStyle(task.status)
 
 
   return (
@@ -64,8 +71,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
       </div> 
       <div className="flex mx-4 mb-4 justify-between items-center" >
         <div className="flex items-center">
-            <span className="inline-block w-[6em] h-[2em] leading-none bg-teal-200 text-teal-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center">
-            <p>{task.status || "OPEN"}</p>
+            <span className={statusColor}>
+            <p>{task.status}</p>
             </span>
             <svg className="h-7 w-7 text-teal-500 hover:fill-current hover:cursor-pointer mx-5"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
           </div>
