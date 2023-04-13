@@ -17,6 +17,7 @@ export default function ConfirmForm({formData, user}) {
       offerTaskIds={[]}
       task={formData}
       userAddress={address}
+      type="fake"
     />
     </div>
   )

@@ -1,40 +1,21 @@
 import Button from "./Button";
 import DetailedTask from "./DetailedTask";
 import Task from "./Task";
-import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
+import { useRouter } from "next/router";
 
-export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType}) {
-  const [currentTask, setCurrentTask] = useState(selectedId);
+export default function TaskRow({userTasks, rowType}) {
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
-console.log(currentTask)
-  const changeTask = (id) => { 
-    setCurrentTask(id)
+
+  const router = useRouter();
+
+  const onClick = (id) => {
+    router.push(`/task/${id}`)
   }
-
-  useEffect(() => {
-
-  }, [currentTask])
-
-  const offerTaskIds = offers.map(offer => (
-   offer.taskId 
-  ))
 
 
   const tasks = userTasks.map(task => {
-    if (task.id === currentTask) {
-      return <li key={task.id} className="snap-center">
-        <DetailedTask
-          task={task}
-          startDate={task.startDate}
-          selectedUser={selectedUser}
-          sendOffer={sendOffer}
-          offerTaskIds={offerTaskIds}
-          userAddress={userAddress}
-        />
-        </li>
-    } else {
       return <li key={task.id} className="snap-center"><Task
           id={task.id}
           name={task.name}
@@ -46,12 +27,10 @@ console.log(currentTask)
           city={task.city}
           distance={task.distance}
           row={true}
-          onClick={changeTask}
+          onClick={onClick}
           />
         </li>
-    }
   })
-
  
 
   
