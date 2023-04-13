@@ -64,8 +64,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
         </svg>
         <div className="flex flex-col items-center">
 
-          <p>{userAddress.address}</p>
-          <p>{userAddress.city}</p>
+          <p>{task.address.address}</p>
+          <p>{task.address.city}</p>
         </div>
         </div> 
       </div> 

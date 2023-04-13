@@ -64,9 +64,11 @@ export async function getServerSideProps(context) {
     where: {
       userId: selectedTask.userId,
       status: "OPEN"
+    },
+    include: {
+      address: true,
     }
   })
-
 
 
   //all offers of logged in user
@@ -76,12 +78,6 @@ export async function getServerSideProps(context) {
     }
   })
 
-  //selected user address
-  const userAddress = await prisma.address.findUnique({
-    where: {
-      id: selectedTask.addressId
-    }
-  })
 
   //similar tasks by category
   const similarTasks = await prisma.task.findMany({
@@ -96,7 +92,6 @@ export async function getServerSideProps(context) {
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
-             userAddress: JSON.parse(JSON.stringify(userAddress)),
              similarTasks: JSON.parse(JSON.stringify(similarTasks)),
             }
   };
