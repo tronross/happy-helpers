@@ -525,6 +525,14 @@ async function main() {
     }
   });
 
+  await prisma.offer.create({
+    data: {
+      userId: 2,
+      taskId: 1,
+      status: 'PENDING'
+    }
+  });
+
 }
 
 main()

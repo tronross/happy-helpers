@@ -1,26 +1,55 @@
+import { useState } from 'react';
 import Request from '../components/Request';
 
-export default function RequestList({ requests }) {
+export default function RequestList({ requests, selectedTask, setSelectedTask }) {
+
+  const selectedClass = "outline outline-4 outline-teal-600";
 
   const requestItems = requests.map(request => {
-    return (
-      <li key={request.id}>
-        <Request
-          key={request.id}
-          name={request.name}
-          description={request.description}
-          category={request.category}
-          user={request.userId}
-          image={request.image}
-          status={request.status}
-          city={request.city}
-          address={request.address}
-          startDate={request.startDate}
-          endDate={request.endDate}
-          starred={request.starred}
-        />
-      </li>
-    );
+
+    if (request.id === selectedTask) {
+      return (
+        <li key={request.id}>
+          <Request
+            id={request.id}
+            name={request.name}
+            description={request.description}
+            category={request.category}
+            user={request.userId}
+            image={request.image}
+            status={request.status}
+            city={request.city}
+            address={request.address}
+            startDate={request.startDate}
+            endDate={request.endDate}
+            starred={request.starred}
+            selectedClass={selectedClass}
+            onClick={setSelectedTask}
+          />
+        </li>
+      );
+    } else {
+      return (
+        <li key={request.id}>
+          <Request
+            id={request.id}
+            name={request.name}
+            description={request.description}
+            category={request.category}
+            user={request.userId}
+            image={request.image}
+            status={request.status}
+            city={request.city}
+            address={request.address}
+            startDate={request.startDate}
+            endDate={request.endDate}
+            starred={request.starred}
+            selectedClass=""
+            onClick={setSelectedTask}
+          />
+        </li>
+      );
+    }
   });
 
   return (

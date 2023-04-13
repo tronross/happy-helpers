@@ -1,13 +1,12 @@
 export default function Request(props) {
 
-  // test code
-  // console.log('props', props);
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
+  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg`;
 
   return (
-    <div className="border-1 shadow-lg m-4 bg-white rounded-lg">
+    <div className={className} onClick={() => props.onClick(props.id)}>
       <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
       <section className="px-4">
         <h5 className=" text-xl leading-tight text-teal-700">
@@ -22,19 +21,19 @@ export default function Request(props) {
         <p className="text-sm text-teal-700 font-bold">
           {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}
         </p>
-        <p className="text-base text-teal-700 line-clamp-2 h-20">
+        <p className="text-base text-teal-700 line-clamp-2 h-18">
           {props.description}
         </p>
-        <p className="text-sm text-teal-700">
+        <p className="text-sm text-teal-700 mt-4">
           Status: <span className="font-bold">{props.status}</span>
         </p>
       </section>
       <div className="p-4 text-sm text-gray-700 flex justify-between items-center">
         <button className="inline-block w-[8em] h-[3em] leading-none bg-transparent hover:bg-teal-700 text-teal-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center border border-teal-700 hover:border-transparent">
-          Edit
+          VIEW OFFERS
         </button>
         <button className="inline-block w-[8em] h-[3em] leading-none bg-transparent hover:bg-red-700 text-red-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center border border-red-700 hover:border-transparent">
-          Completed
+          COMPLETED
         </button>
       </div>
       <div className="p-4 text-sm text-gray-700 flex justify-between items-center">
