@@ -43,12 +43,16 @@ export async function getServerSideProps() {
   const user = await prisma.user.findUnique({
     where: {
       id: 1
+    },
+    include: {
+      address: true
     }
   })
+  
 
   return {
-    props: {
-      user
+    props:  { 
+      user: JSON.parse(JSON.stringify(user)),
     }
   }
 }

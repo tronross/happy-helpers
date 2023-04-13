@@ -6,7 +6,7 @@ export default function ConfirmForm({formData, user}) {
     city: formData.city,
     postcode: formData.postcode
   }
-  console.log()
+  console.log(user)
   return (
     <div className="flex flex-col w-1/2 items-center self-center">
     <div className="text-teal-600">Is everything correct?</div>

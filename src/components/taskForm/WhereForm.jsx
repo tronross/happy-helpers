@@ -1,6 +1,23 @@
-export default function WhereForm({formData, onChange}) {
+import { useEffect, useState } from "react"
+
+export default function WhereForm({formData, onChange, user, setFormData}) {
+  const [check, setCheck] = useState(true)
+  console.log(check)
+
+  const handleCheck = async (e) => {
+    await setCheck(prev => !prev)
+  }
+
+  useEffect(() => {
+    check === true ? setFormData(prev => ({...prev, address: user.address.address, city: user.address.city, postcode: user.address.postcode})) : setFormData(prev => ({...prev, address: "", city: "", postcode: ""}))
+  }, [check])
+
   return (
     <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
+      <div className="mb-2">
+        <label htmlFor="addressCheck">Same as Home Address</label>
+        <input name="addressCheck" type="checkbox" className="w-10" checked={check} onChange={(e) => handleCheck(e)}></input>
+      </div>
        <div className="flex flex-wrap -mx-3 mb-6">
          <div className="w-full md:w-full px-3 mb-6 md:mb-0">
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="address">
