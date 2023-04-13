@@ -9,7 +9,6 @@ import prisma from "../../../prisma/.db";
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
   const selectedId = selectedTask.id
-console.log(selectedId)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
@@ -65,24 +64,26 @@ export async function getServerSideProps(context) {
     where: {
       userId: selectedTask.userId,
       status: "OPEN"
+    },
+    include: {
+      address: true,
     }
   })
 
+
+  //all offers of logged in user
   const offers = await prisma.offer.findMany({
     where: {
       userId: 2
     }
   })
 
-  const userAddress = await prisma.address.findUnique({
-    where: {
-      id: selectedTask.addressId
-    }
-  })
 
+  //similar tasks by category
   const similarTasks = await prisma.task.findMany({
     where: {
-      category: selectedTask.category
+      category: selectedTask.category,
+      status: "OPEN"
     }
   })
 
@@ -91,7 +92,6 @@ export async function getServerSideProps(context) {
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
-             userAddress: JSON.parse(JSON.stringify(userAddress)),
              similarTasks: JSON.parse(JSON.stringify(similarTasks)),
             }
   };

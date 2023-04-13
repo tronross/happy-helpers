@@ -8,7 +8,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
   const [currentTask, setCurrentTask] = useState(selectedId);
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
-console.log(currentTask)
+
   const changeTask = (id) => { 
     setCurrentTask(id)
   }
