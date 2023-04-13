@@ -36,6 +36,7 @@ export default function TaskList(props) {
           city={task.city}
           distance={distanceProp}
           startDate={startDateString}
+          onClick={onClick}
           />
         </li>
     )
