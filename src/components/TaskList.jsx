@@ -4,7 +4,7 @@ export default function TaskList(props) {
 
   const tasks = props.tasks.map(task => {
     const startDate = task.startDate || task.start_date
-    const startDateString = (new Date(startDate).toLocaleDateString()); 
+    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
     
     return (
       <li key={task.id}><Task

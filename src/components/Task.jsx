@@ -23,7 +23,7 @@ export default function Task(props) {
     {props.description}
     </p>
     <p className="mb-2 text-base text-teal-700">
-    {`Date: ${props.startDate}`}
+    {props.startDate}
     </p>
     </section>
     </div>
