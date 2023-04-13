@@ -9,7 +9,6 @@ import prisma from "../../../prisma/.db";
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
   const selectedId = selectedTask.id
-console.log(selectedId)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
@@ -68,38 +67,23 @@ export async function getServerSideProps(context) {
     }
   })
 
-  const getTaskAddresses = async (tasks) => {
-    console.log(tasks)
-    const newTasks = tasks.map(task => {
-      const address = prisma.address.findUnique({
-        where: {
-          id: task.addressId
-        }
-      })
 
-      console.log(`Address: ${address.city}`)
 
-      return {...task, address: address.address, city: address.city}
-    })
-
-    return newTasks
-  }
-
-  const userTasksWithAddress = getTaskAddresses(userTasks);
-// console.log(userTasksWithAddress)
-
+  //all offers of logged in user
   const offers = await prisma.offer.findMany({
     where: {
       userId: 2
     }
   })
 
+  //selected user address
   const userAddress = await prisma.address.findUnique({
     where: {
       id: selectedTask.addressId
     }
   })
 
+  //similar tasks by category
   const similarTasks = await prisma.task.findMany({
     where: {
       category: selectedTask.category,
