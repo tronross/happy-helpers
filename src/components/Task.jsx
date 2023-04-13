@@ -26,7 +26,7 @@ export default function Task(props) {
     {props.city}
     </span>
     <span className="mb-2 text-base text-teal-700">
-    {`    -  ${props.distance}km`}
+    {`     -   ${props.distance}`}
     </span>
     </section>
     <p className="mb-2 text-base text-teal-700">

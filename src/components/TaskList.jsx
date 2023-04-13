@@ -5,7 +5,17 @@ export default function TaskList(props) {
   const tasks = props.tasks.map(task => {
     const startDate = task.startDate || task.start_date
     const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
-    
+
+    const calcDistanceProp = function(distance) {
+      if (distance <= 1) {
+        return 'nearby';
+      } else {
+        return `${distance}km`
+      }
+    }
+  
+    const distanceProp = calcDistanceProp(task.distance)
+
     return (
       <li key={task.id}><Task
           key={task.id}
@@ -16,7 +26,7 @@ export default function TaskList(props) {
           image={task.image}
           status={task.status}
           city={task.city}
-          distance={task.distance}
+          distance={distanceProp}
           startDate={startDateString}
           />
         </li>
