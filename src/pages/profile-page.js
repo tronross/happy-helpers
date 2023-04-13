@@ -23,7 +23,7 @@ import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
 import addCoordsToUser from "@/helpers/add-coords-to-user";
 import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 
-export default function ProfilePage({ user, userAddress, upcomingData, pastData }) {
+export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
   // console.log(user.user);
@@ -53,6 +53,23 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
   const toggleEditProfileForm = () => {
     setShowEditProfileForm(!showEditProfileForm);
   };
+
+  // console.log(userOrganizations)
+
+  let [orgString, setOrgString] = useState("");
+
+  useEffect(() => {
+    let orgStr = "";
+    userOrganizations.forEach((org, index) => {
+      if(userOrganizations.length - 1 === index){
+        orgStr += `${org.name}.`
+      } else {
+        orgStr += `${org.name}, `;
+      }
+    });
+    setOrgString(orgStr);
+  }, [userOrganizations]);
+  
 
   // const slideLeft = function() {
   //   const slider = document.getElementById('slider');
@@ -97,7 +114,7 @@ export default function ProfilePage({ user, userAddress, upcomingData, pastData 
             <h1>Skills:</h1>
             <p>{userData.skills}</p><br></br>
             <h1>Organizations:</h1>
-            <p>Meals on Wheels</p><br></br>
+            <p>{orgString}</p><br></br>
             <h1>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
@@ -157,8 +174,8 @@ export async function getServerSideProps() {
       Organizations: true
     }
   });
-  console.log(userOrganizations, 'userOrganizations')
-  console.log(user.data.user.id, 'user.data.user.id')
+  console.log(userOrganizations.Organizations, 'userOrganizations');
+  // console.log(user.data.user.id, 'user.data.user.id');
 
   // Task table profile data
   // const prisma = new PrismaClient();
@@ -233,6 +250,7 @@ export async function getServerSideProps() {
     props: {
       user: user.data,
       userAddress: userAddress.data,
+      userOrganizations: userOrganizations.Organizations,
       upcomingData,
       pastData
     }
