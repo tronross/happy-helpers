@@ -3,6 +3,7 @@ import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
 import TaskForm from '@/components/TaskForm'
 import { useState } from 'react'
+import prisma from '../../prisma/.db'
 
 
 export default function NewTask(props) {
@@ -28,11 +29,26 @@ export default function NewTask(props) {
       <main className="h-[100vh-40px]">
         <NavBar />
         <div className="flex justify-center">
-        <TaskForm formData={formData} setFormData={setFormData}/>
+        <TaskForm formData={formData} setFormData={setFormData} user={props.user}/>
         </div>
       </main>
 
       <Footer/>
     </>
   )
+}
+
+export async function getServerSideProps() {
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: 1
+    }
+  })
+
+  return {
+    props: {
+      user
+    }
+  }
 }

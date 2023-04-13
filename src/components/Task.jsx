@@ -1,7 +1,6 @@
 export default function Task(props) {
   
-  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[25em] flex flex-col justify-between";
-
+  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[25em] flex flex-col justify-between hover:cursor-pointer";
 
   
   return (
