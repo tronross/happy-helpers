@@ -46,6 +46,7 @@ export default function Home({ tasks, user }) {
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState(tasks);
+  
   // const [category, setCategory] = useState(0);
 
   // useEffect(() => {
@@ -67,6 +68,14 @@ export default function Home({ tasks, user }) {
 
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
 
+  const tasksSortD = function() {
+   setFilteredTasks(sortTasksByDistance([...tasks]))
+  }
+
+  const tasksSortT = function() {
+    setFilteredTasks(sortTasksByStartTime([...tasks]))
+  }
+
   // Template
   return (
     <>
@@ -81,10 +90,12 @@ export default function Home({ tasks, user }) {
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
+            sortDistance={tasksSortD}
+            sortTime={tasksSortT}
           />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.city} />
-            {currentView}
+            <TaskList tasks={filteredTasks} /> 
           </section>
         </div>
       </main>
@@ -112,11 +123,13 @@ export async function getServerSideProps() {
 
   // Add distance between user and task to tasks, order by ascending distance
   addDistanceToTasks(tasks, user);
-  sortTasksByDistance(tasks);
-
+  // const sortedTasks = sortTasksByDistance(tasks);
+  // console.log(tasks)
+  const sortedTasks = sortTasksByStartTime(tasks);
+  console.log(sortedTasks)
   return {
     props: {
-      tasks: JSON.parse(JSON.stringify(tasks)),
+      tasks: JSON.parse(JSON.stringify(sortedTasks)),
       user: JSON.parse(JSON.stringify(user))
     }
   };
