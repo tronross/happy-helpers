@@ -21,11 +21,16 @@ export default function Task(props) {
       <h5 className=" text-xl leading-tight line-clamp-1">
       {props.name}
     </h5>
-    <p className="mb-2 text-base text-teal-700">
+    <section >
+    <span className="mb-2 text-base text-teal-700">
     {props.city}
-    </p>
+    </span>
+    <span className="mb-2 text-base text-teal-700">
+    {`     -   ${props.distance}`}
+    </span>
+    </section>
     <p className="mb-2 text-base text-teal-700">
-    {`Distance: ${props.distance}km`}
+    {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">
     {props.description}

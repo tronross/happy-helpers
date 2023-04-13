@@ -32,7 +32,7 @@ export default function NavBar(props) {
           <h2>Messages</h2>
         </li>
         <li className='px-6 '>
-          <Link href="/my-profile/:id">Fred</Link>
+          <Link href="/my-profile/:id">{props.name}</Link>
         </li>
         <li className='px-6 '>
           <Button buttonName={"LOGOUT"}/>
