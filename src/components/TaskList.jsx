@@ -7,7 +7,7 @@ export default function TaskList(props) {
   
   const router = useRouter();
   const onClick = (id) => {
-    router.push(`/tasks/${id}`)
+    router.push(`/task/${id}`)
   }
 
   const tasks = props.tasks.map(task => {

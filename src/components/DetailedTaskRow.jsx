@@ -36,6 +36,7 @@ console.log(currentTask)
           sendOffer={sendOffer}
           offerTaskIds={offerTaskIds}
           userAddress={userAddress}
+          type="fake"
         />
         </li>
     } else {
