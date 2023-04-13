@@ -3,6 +3,8 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
+    "./node_modules/flowbite/**/*.js",
+    "./node_modules/flowbite-react/**/*.js",
   ],
   theme: {
     extend: {
@@ -27,6 +29,7 @@ module.exports = {
   },
   plugins: [
     require('tailwind-scrollbar-hide'),
+    require('flowbite/plugin'),
   ],
 }
 

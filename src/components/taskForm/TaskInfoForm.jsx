@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 export default function TaskInfo({formData, onChange}) {
   // console.log(formData.name)
@@ -18,7 +17,7 @@ export default function TaskInfo({formData, onChange}) {
               Category
             </label>
           <div className="relative">
-            <select className="block appearance-none w-full  border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-600" id="category" name="category" value={formData.category} onChange={e => onChange(e)}>
+            <select className=" w-full  border border-gray-200 py-3 px-4 pr-8 rounded leading-tight active:outline-none" id="category" name="category" value={formData.category} onChange={e => onChange(e)}>
               <option>Volunteer</option>
               <option>Cleaning</option>
               <option>Errands</option>
@@ -40,7 +39,7 @@ export default function TaskInfo({formData, onChange}) {
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="nbHelpers">
              Helpers Needed
            </label>
-           <div className="relative">
+           <div className="">
              <select className="block appearance-none w-full  border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-600" id="nbHelpers" name="nbHelpers" value={formData.nbHelpers} onChange={e => onChange(e)} >
                <option value ="1">1</option>
                <option value ="2">2</option>
@@ -48,9 +47,6 @@ export default function TaskInfo({formData, onChange}) {
                <option value ="4">4</option>
                <option value ="5+">5+</option>
              </select>
-             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
-               <svg className="fill-current h-4 w-4" xmlns="http:www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-             </div>
            </div>
          </div>
          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">

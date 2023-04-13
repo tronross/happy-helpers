@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Checkbox } from "flowbite-react"
 
 export default function WhereForm({formData, onChange, user, setFormData}) {
   const [check, setCheck] = useState(true)
@@ -14,9 +15,9 @@ export default function WhereForm({formData, onChange, user, setFormData}) {
 
   return (
     <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
-      <div className="mb-2">
+      <div className="mb-2 flex items-center">
+        <Checkbox className="mr-2 focus:ring-transparent text-violet-500" name="addressCheck" checked={check} onChange={(e) => handleCheck(e)} />
         <label htmlFor="addressCheck">Same as Home Address</label>
-        <input name="addressCheck" type="checkbox" className="w-10" checked={check} onChange={(e) => handleCheck(e)}></input>
       </div>
        <div className="flex flex-wrap -mx-3 mb-6">
          <div className="w-full md:w-full px-3 mb-6 md:mb-0">

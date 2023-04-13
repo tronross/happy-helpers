@@ -16,8 +16,8 @@ export default function WhenForm({formData, setFormData}) {
   })
 
   useEffect(() => {
-    const startDate = new Date(`2023-04-29 01:00:00`)
-    const endDate = new Date(`2023-04-29 01:00:00`)
+    const startDate = new Date(`2023-04-29 13:00:00`)
+    const endDate = new Date(`2023-04-29 13:00:00`)
     setFormData(prev => ({...prev, startDate}))
     setFormData(prev => ({...prev, endDate}))
   }, [])
