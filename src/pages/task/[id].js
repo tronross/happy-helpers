@@ -68,6 +68,26 @@ export async function getServerSideProps(context) {
     }
   })
 
+  const getTaskAddresses = async (tasks) => {
+    console.log(tasks)
+    const newTasks = tasks.map(task => {
+      const address = prisma.address.findUnique({
+        where: {
+          id: task.addressId
+        }
+      })
+
+      console.log(`Address: ${address.city}`)
+
+      return {...task, address: address.address, city: address.city}
+    })
+
+    return newTasks
+  }
+
+  const userTasksWithAddress = getTaskAddresses(userTasks);
+// console.log(userTasksWithAddress)
+
   const offers = await prisma.offer.findMany({
     where: {
       userId: 2
@@ -82,7 +102,8 @@ export async function getServerSideProps(context) {
 
   const similarTasks = await prisma.task.findMany({
     where: {
-      category: selectedTask.category
+      category: selectedTask.category,
+      status: "OPEN"
     }
   })
 
