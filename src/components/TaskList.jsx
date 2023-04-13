@@ -1,13 +1,21 @@
+import { useRouter } from 'next/router'
 import Task from '../components/Task'
 
+
+
 export default function TaskList(props) {
+  
+  const router = useRouter();
+  const onClick = (id) => {
+    router.push(`/tasks/${id}`)
+  }
 
   const tasks = props.tasks.map(task => {
     
     
     return (
       <li key={task.id}><Task
-          key={task.id}
+          id={task.id}
           name={task.name}
           description={task.description}
           category={task.category}
@@ -16,6 +24,7 @@ export default function TaskList(props) {
           status={task.status}
           city={task.city}
           distance={task.distance}
+          onClick={onClick}
           />
         </li>
     )

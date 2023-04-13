@@ -8,7 +8,7 @@ import WhereForm from "./taskForm/WhereForm";
 import WhenForm from "./taskForm/WhenForm";
 import ConfirmForm from "./taskForm/ConfirmForm";
 
-export default function TaskForm({formData, setFormData}) {
+export default function TaskForm({formData, setFormData, user}) {
 const [currentStep, setCurrentStep] = useState(1)
   const steps = ["Task Info", "Where", "When", "Confirm"];
 
@@ -27,7 +27,7 @@ const [currentStep, setCurrentStep] = useState(1)
       case 3: 
         return <WhenForm formData={formData} setFormData={setFormData} onChange={onChange} />
       case 4:
-        return <ConfirmForm formData={formData} setFormData={setFormData} onChange={onChange}/>
+        return <ConfirmForm formData={formData} setFormData={setFormData} onChange={onChange} user={user}/>
 
     }
   }
