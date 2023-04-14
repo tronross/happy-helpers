@@ -51,8 +51,6 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
     setShowEditProfileForm(!showEditProfileForm);
   };
 
-  // console.log(userOrganizations)
-
   let [orgString, setOrgString] = useState("");
 
   useEffect(() => {
@@ -79,9 +77,12 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-          <section>
-            <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
-            {user.user.id === 1 && <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />}
+          <section style={{margin:"0rem 1.5rem", padding:"1rem 1.5rem", backgroundColor:"rgb(13 148 136)", color:"white"}}>
+            <h1 style={{fontWeight:"bold", fontSize:"1rem", textAlign:"center"}}>Profile Details</h1>
+            <br></br>
+            <h1 style={{fontWeight:"bold"}}>Name:</h1>
+            <p>{`${userData.firstName} ${userData.lastName}`}</p><br></br>
+            {user.user.id === 1 && <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>}
             {showEditProfileForm &&
               <EditProfileForm
                 userId={userData.id}
@@ -90,27 +91,27 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
                 setEditProfileFormData={setEditProfileFormData}
               />
             }
-            <br></br>
-            <h1>Address:</h1>
+            <br></br><br></br>
+            <h1 style={{fontWeight:"bold"}}>Address:</h1>
             <p>{fullAddress}</p><br></br>
-            <h1>Phone Number:</h1>
+            <h1 style={{fontWeight:"bold"}}>Phone Number:</h1>
             <p>{userData.phone}</p><br></br>
-            <h1>Skills:</h1>
+            <h1 style={{fontWeight:"bold"}}>Skills:</h1>
             <p>{userData.skills}</p><br></br>
-            <h1>Organizations:</h1>
+            <h1 style={{fontWeight:"bold"}}>Organizations:</h1>
             <p>{orgString}</p><br></br>
-            <h1>Description:</h1>
+            <h1 style={{fontWeight:"bold"}}>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
           <section>
-            <h1>Your Upcoming tasks</h1>
+            <h1 style={{color:"rgb(13 148 136)", fontSize:"1.5rem", fontWeight:"bold"}}>Upcoming Tasks</h1>
             <div>
               <TaskList
                 tasks={upcomingTasksData}
               />
             </div>
 
-            <h1>Past Tasks</h1>
+            <h1 style={{color:"rgb(13 148 136)", fontSize:"1.5rem", fontWeight:"bold"}}>Past Tasks</h1>
             <div>
               <TaskList
                 tasks={pastTasksData}

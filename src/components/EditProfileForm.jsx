@@ -41,7 +41,7 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
       {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
-      <button type="submit" onClick={handleSubmit} className="p-4 bg-purple-600 m-2">Submit</button>
+      <button type="submit" onClick={handleSubmit} className="inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white">Submit</button>
     </div >
   );
 }
