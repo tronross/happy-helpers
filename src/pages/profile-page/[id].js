@@ -6,6 +6,7 @@ import Head from "next/head";
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import prisma from "../../../prisma/.db";
+import { useRouter } from "next/navigation";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
@@ -80,7 +81,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
         <div className="flex">
           <section className="w-[1500px] h-screen sticky top-0">
             <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
-            <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
+            {user.user.id === 1 && <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />}
             {showEditProfileForm &&
               <EditProfileForm
                 userId={userData.id}
@@ -130,7 +131,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
 export async function getServerSideProps(context) {
 
   // Get url slug for profile page dynamically from url.
-  const { id } = context.query
+  const { id } = context.query;
   // console.log(id, 'ID');
 
   // User table profile data
@@ -154,7 +155,7 @@ export async function getServerSideProps(context) {
   });
   // console.log(user.data.user.id, 'user.data.user.id');
   // console.log(userOrganizations.Organizations, 'userOrganizations');
-  
+
   // Task table profile data
   // Get tasks where offer is complete for user
   const userPastOffersComplete = await prisma.offer.findMany({
