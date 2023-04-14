@@ -32,8 +32,8 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <NavBar />
     <main>
+    <NavBar />
       <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
