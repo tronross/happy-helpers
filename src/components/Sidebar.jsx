@@ -42,9 +42,9 @@ export default function Sidebar(props) {
         })}
         </section>
         <h5 className= "m-4 text-lg text-teal-600 font-bold mb-2">Distance:</h5>
-        <section class="inline-flex rounded-md shadow-sm">
+        <section className="inline-flex rounded-md shadow-sm">
         {props.distances.map((distance, idx) => {
-          return  <button type="button" class="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border" key={idx} value={distance} onClick={closerThan} >
+          return  <button type="button" className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border" key={idx} value={distance} onClick={closerThan} >
           {distance}</button>
         })}
          
