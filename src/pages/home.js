@@ -37,6 +37,10 @@ const sidebarOptions = [
   'Yardwork'
 ];
 
+const distances = [
+  1, 5, 10, 25, 50, 'all'
+]
+
 export default function Home({ tasks, user }) {
   
   // Hooks
@@ -56,15 +60,24 @@ export default function Home({ tasks, user }) {
   const [category, setCategory] = useState(taskFilters.category)
 
   const filterTasks = function(tasks, filters) {
+    // Function globals
     const unfilteredTasks = [...tasks];
     let tasksInCategory;
     let sortedFilteredTasks;
+    let tasksCloserThan;
+    let distance;
+    
+    if (filters.distance === 'all') {
+      distance = Infinity;
+    } else {
+      distance = parseInt(filters.distance);
+    }
 
-    let tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= filters.distance);
+    tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
 
     if (filters.category === 'All Categories') {
       console.log('>>>>>>>>>>>>>>>>>>>>>>>')
-      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= filters.distance);
+      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
     } else {
       tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
@@ -103,6 +116,7 @@ export default function Home({ tasks, user }) {
             filters={taskFilters}
             setFilters={setTaskFilters}
             setCategory={setCategory}
+            distances={distances}
             />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
