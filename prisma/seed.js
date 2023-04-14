@@ -178,6 +178,10 @@ async function main() {
   });
 
   // Create tasks ----------------------------------------------------------------
+
+  // User 1 Tasks ------------------------
+  // OPEN
+
   await prisma.task.create({
     data: {
       name: 'Take out bins',
@@ -202,9 +206,10 @@ async function main() {
       category: 'Heavy Lifting',
       startDate: new Date('2023-04-19 15:00+0500'),
       endDate: new Date('2023-04-19 15:00+0500'),
-      userId: 2,
+      userId: 1,
+      status: 'OPEN',
       nbHelpers: 3,
-      addressId: 2
+      addressId: 1
     }
   });
 
@@ -231,9 +236,10 @@ async function main() {
       category: 'DIY',
       startDate: new Date('2023-04-18 12:00+0500'),
       endDate: new Date('2023-04-18 13:00+0500'),
-      userId: 4,
+      status: 'OPEN',
+      userId: 1,
       nbHelpers: 1,
-      addressId: 4
+      addressId: 1
     }
   });
 
@@ -245,7 +251,8 @@ async function main() {
       category: 'DIY',
       startDate: new Date('2023-04-22 10:00+0500'),
       endDate: new Date('2023-04-23 15:00+0500'),
-      userId: 5,
+      status: 'OPEN',
+      userId: 1,
       nbHelpers: 1,
       addressId: 5
     }
@@ -259,11 +266,15 @@ async function main() {
       category: 'Driving',
       startDate: new Date('2023-04-19 15:00+0500'),
       endDate: new Date('2023-04-19 15:00+0500'),
-      userId: 4,
+      status: 'OPEN',
+      userId: 1,
       nbHelpers: 1,
       addressId: 4
     }
   });
+
+  // User 1 Pending Tasks ------------------
+
 
   await prisma.task.create({
     data: {
@@ -274,7 +285,7 @@ async function main() {
       startDate: new Date('2023-04-16 15:00+0500'),
       endDate: new Date('2023-04-16 15:00+0500'),
       userId: 1,
-      status: 'COMPLETE',
+      status: 'PENDING',
       nbHelpers: 1,
       addressId: 1
     }
@@ -288,6 +299,7 @@ async function main() {
       category: 'Cooking',
       startDate: new Date('2023-04-29 18:00+0500'),
       endDate: new Date('2023-04-29 19:00+0500'),
+      status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -302,6 +314,7 @@ async function main() {
       category: 'Cooking',
       // startDate: Date.now(),
       // endDate:
+      status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -316,6 +329,7 @@ async function main() {
       category: 'Animal Care',
       // startDate: Date.now(),
       // endDate:
+      status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -328,6 +342,7 @@ async function main() {
       description: 'I will be on holiday next week and am scared my snake will eat my gerbil.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
+      status: 'PENDING',
       // startDate: Date.now(),
       // endDate:
       userId: 1,
@@ -344,11 +359,14 @@ async function main() {
       category: 'Animal Care',
       // startDate: Date.now(),
       // endDate:
+      status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
       addressId: 1
     }
   });
+
+  // User 1 Complete Tasks ------------------
 
   await prisma.task.create({
     data: {
@@ -356,11 +374,12 @@ async function main() {
       description: 'The ice-rink in my back yard melted, need help mopping up the garden.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
+      status: 'COMPLETE',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      userId: 1,
       nbHelpers: 10,
-      addressId: 3
+      addressId: 1
     }
   });
 
@@ -372,9 +391,10 @@ async function main() {
       category: 'Yardwork',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      userId: 1,
+      status: 'COMPLETE',
       nbHelpers: 1,
-      addressId: 3
+      addressId: 1
     }
   });
 
@@ -384,11 +404,12 @@ async function main() {
       description: 'Need help repainting my fence.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
+      status: 'COMPLETE',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      userId: 1,
       nbHelpers: 2,
-      addressId: 3
+      addressId: 1
     }
   });
 
@@ -398,11 +419,12 @@ async function main() {
       description: 'My beautiful lawn is covered with leaves, if anyone has a leaf blower I would be very appreciative.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
+      status: 'COMPLETE',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      userId: 1,
       nbHelpers: 1,
-      addressId: 3
+      addressId: 1
     }
   });
 
@@ -412,11 +434,12 @@ async function main() {
       description: 'My car is in the shop, need a lift there so I can pick it up.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
+      status: 'COMPLETE',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      userId: 1,
       nbHelpers: 1,
-      addressId: 3
+      addressId: 1
     }
   });
 
@@ -428,11 +451,14 @@ async function main() {
       category: 'Driving',
       // startDate: Date.now(),
       // endDate:
-      userId: 3,
+      status: 'COMPLETE',
+      userId: 1,
       nbHelpers: 1,
-      addressId: 3
+      addressId: 1
     }
   });
+
+  // User 2 ----- OPEN Tasks
 
   await prisma.task.create({
     data: {
