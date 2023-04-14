@@ -90,9 +90,9 @@ export default function Home({ tasks, user }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <main>
         <NavBar name={user.firstName}
                 id={user.id}/>
-      <main>
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
