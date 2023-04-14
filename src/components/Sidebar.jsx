@@ -36,21 +36,19 @@ export default function Sidebar(props) {
         <button className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
       </section>
         <h4 className= "m-4 text-lg text-teal-600 font-bold mb-2">Filter By:</h4>
-      <section className="max-w-xs flex flex-col rounded-md shadow-sm">
+      <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
         {props.sidebarOptions.map((item, idx) => {
           return <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={idx} value={item} onClick={dropdownSelect}>{item}</button>
         })}
         </section>
-        <h5 className= "m-4 text-lg text-teal-600 font-bold mb-2">Distance:</h5>
-        <section class="inline-flex rounded-md shadow-sm">
+        <h5 className= "m-4 text-lg text-teal-600 font-bold mb-2">Distance (km):</h5>
+        <section class="inline-flex rounded-md shadow-sm space-y-0.5">
         {props.distances.map((distance, idx) => {
-          return  <button type="button" class="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-lg first:ml-0 last:rounded-r-lg border" key={idx} value={distance} onClick={closerThan} >
+          return  <button type="button" class="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
           {distance}</button>
         })}
-         
-    
       </section>
-      <section className="max-w-xs flex flex-col rounded-md shadow-sm">
+      <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
         <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={dropdownSelect}>Reset Filters</button>
       </section>
     
