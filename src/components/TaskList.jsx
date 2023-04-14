@@ -33,9 +33,10 @@ export default function TaskList(props) {
           user={task.userId}
           image={task.image}
           status={task.status}
-          city={task.city}
+          city={task.address.city}
           distance={distanceProp}
           startDate={startDateString}
+          onClick={onClick}
           />
         </li>
     )

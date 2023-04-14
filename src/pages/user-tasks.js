@@ -94,8 +94,8 @@ export default function UserTasks({ userRequests }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-neutral-100">
         <NavBar />
+      <main className="bg-neutral-100">
         <div className="flex">
           {/* <Sidebar
             sidebarOptions={sidebar}

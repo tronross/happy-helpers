@@ -104,7 +104,7 @@ export default function Home({ tasks, user }) {
             setCategory={setCategory}
             />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView} city={user.city} category={category} />
+            <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </section>
         </div>
@@ -118,25 +118,37 @@ export default function Home({ tasks, user }) {
 export async function getServerSideProps() {
   
   // Capture tasks with addresses:
-  const tasks = await prisma.$queryRaw`
-  SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
-  JOIN addresses ON tasks.address_id = addresses.id
-  ORDER BY start_date desc;`
+  const tasks = await prisma.task.findMany({
+    where: {
+      status: "OPEN"
+    },
+    include: {
+      address: true
+    },
+    orderBy: {
+      startDate: 'desc'
+    }
+  })
   
   // Define current user
-  const userFetch = await prisma.$queryRaw`
-  SELECT users.*, addresses.city, addresses.latitude, addresses.longitude FROM users
-  JOIN addresses ON users.address_id = addresses.id
-  WHERE users.id = ${3}`
+  const userFetch = await prisma.user.findMany({
+    where: {
+      id: 2
+    },
+    include: {
+      address: true
+    }
+  })
   
   const user = userFetch[0];
+  console.log(user)
   
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
   // const sortedTasks = sortTasksByDistance(tasks);
   // console.log(tasks)
   const sortedTasks = sortTasksByStartTime(tasks);
-  console.log(sortedTasks)
+  // console.log(sortedTasks)
   return {
     props: {
       tasks: JSON.parse(JSON.stringify(sortedTasks)),
