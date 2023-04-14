@@ -2,13 +2,20 @@ export default function Sidebar(props) {
   const dropdownSelect = (e) => {
     const select = e.target.value
     console.log(select)
-    console.log(`>>>>>>>>>>>>>>>${props.filters.category}`)
+    
     props.setCategory(select === 'All Categories' ? '' : select)
-    props.filters.category = select;
-    console.log(`>>>>>>>>>>>>>>>${props.filters.category}`)
+    props.setFilters({category: select});
+    
     props.filterTasks()
 
     // props.setSelectedSidebar(select)
+  }
+
+  const sortSelect = (e) => {
+    const sort = e.target.value
+    console.log(sort)
+    props.filters.sort = sort;
+    props.filterTasks()
   }
 
   return (
@@ -16,8 +23,8 @@ export default function Sidebar(props) {
     <div className="h-screen sticky top-0 ">
       <section className="flex space-x-4" >
         <h4 className= "m-4 text-lg text-teal-600 font-bold mb-2">Sort By:</h4>
-        <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" onClick={props.sortDistance}>Distance</button>
-        <button className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" onClick={props.sortTime}>Date</button>
+        <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
+        <button className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
       </section>
         <h4 className= "m-4 text-lg text-teal-600 font-bold mb-2">Filter By:</h4>
       <section className="max-w-xs flex flex-col rounded-md shadow-sm">

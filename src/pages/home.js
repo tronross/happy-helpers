@@ -47,38 +47,50 @@ export default function Home({ tasks, user }) {
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
   
   const tasksToFilter = fetchTasks;
-  const taskFilters = {
+  const [taskFilters, setTaskFilters] = useState({
     distance: 50,
-    category: 'All Categories'
-  }
+    category: 'All Categories',
+    sort:     'Distance'
+  })
+
   const [category, setCategory] = useState(taskFilters.category)
 
   const filterTasks = function(tasks, filters) {
-    let unfilteredTasks = [...tasks]
-    const distance = filters.distance;
-    const category = filters.category;
+    const unfilteredTasks = [...tasks];
+    let tasksInCategory;
+    let sortedFilteredTasks;
 
+    let tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= filters.distance);
 
-    const tasksCloserThan = unfilteredTasks.filter(task => task.distance <= distance);
-
-    if (category === 'All Categories') {
-      setFilteredTasks(tasksCloserThan)
+    if (filters.category === 'All Categories') {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>')
+      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= filters.distance);
     } else {
-      const tasksInCategory = tasksCloserThan.filter(task => task.category === category);
-      setFilteredTasks(tasksInCategory)
+      tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
+    
+    let allFilteredTasks = tasksInCategory
+    
+    if (filters.sort === 'Distance') {
+      sortedFilteredTasks = sortTasksByDistance(allFilteredTasks)
+    } else {
+      sortedFilteredTasks = sortTasksByStartTime(allFilteredTasks)
+    }
+    
+    
+    setFilteredTasks(sortedFilteredTasks)
   }
   
   // filterTasks([...tasks], taskFilters)
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
   
-  const tasksSortD = function() {
-   setFilteredTasks(sortTasksByDistance([...tasks]))
-  }
+  // const tasksSortD = function() {
+  //  setFilteredTasks(sortTasksByDistance([...tasks]))
+  // }
 
-  const tasksSortT = function() {
-    setFilteredTasks(sortTasksByStartTime([...tasks]))
-  }
+  // const tasksSortT = function() {
+  //   setFilteredTasks(sortTasksByStartTime([...tasks]))
+  // }
 
 
   
@@ -97,10 +109,11 @@ export default function Home({ tasks, user }) {
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
-            sortDistance={tasksSortD}
-            sortTime={tasksSortT}
+            // sortDistance={tasksSortD}
+            // sortTime={tasksSortT}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
+            setFilters={setTaskFilters}
             setCategory={setCategory}
             />
           <section className='flex flex-col p-2 grow'>
@@ -119,9 +132,9 @@ export async function getServerSideProps() {
   
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    where: {
-      status: "OPEN"
-    },
+    // where: {
+    //   status: "OPEN"
+    // },
     include: {
       address: true
     },
