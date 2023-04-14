@@ -54,7 +54,8 @@ export default function Home({ tasks, user }) {
   const [taskFilters, setTaskFilters] = useState({
     distance: 50,
     category: 'All Categories',
-    sort:     'Distance'
+    sort:     'Distance',
+    date:     'All'
   })
 
   const [category, setCategory] = useState(taskFilters.category)
