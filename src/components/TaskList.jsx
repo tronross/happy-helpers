@@ -23,6 +23,7 @@ export default function TaskList(props) {
     }
   
     const distanceProp = calcDistanceProp(task.distance)
+    const city = task.city ? task.city : task.address.city;
 
     return (
       <li key={task.id}><Task
@@ -33,12 +34,12 @@ export default function TaskList(props) {
           user={task.userId}
           image={task.image}
           status={task.status}
-          city={task.address.city}
+          city={city}
           distance={distanceProp}
           startDate={startDateString}
           onClick={onClick}
           />
-        </li>
+      </li>
     )
   })
   return (
