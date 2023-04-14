@@ -1,19 +1,23 @@
 import { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation"
 
-export default function EditProfileForm({ editProfileFormData, setEditProfileFormData, userAddressId }) {
+export default function EditProfileForm({ userId, userAddressId, editProfileFormData, setEditProfileFormData }) {
+  const router =useRouter()
 
   // console.log(userAddressId)
   // HELPER FUNCTIONS
   const onChange = (event) => {
     setEditProfileFormData(prev => ({ ...prev, [`${event.target.name}`]: event.target.value }));
-    console.log(editProfileFormData);
+    // console.log(editProfileFormData);
   };
 
   const handleSubmit = async () => {
-    await axios.put('http://localhost:3000/api/addresses/[userId]', editProfileFormData);
-    await axios.put('http://localhost:3000/api/users/[userId]', editProfileFormData);
+    await axios.put(`http://localhost:3000/api/addresses/${userAddressId}`, editProfileFormData);
+    console.log(userId)
+    await axios.put(`http://localhost:3000/api/users/${userId}`, editProfileFormData);
     console.log(editProfileFormData);
+    router.refresh();
   };
 
   // TEMPLATE
