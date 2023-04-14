@@ -22,7 +22,8 @@ export default function TaskList(props) {
       }
     }
   
-    const distanceProp = calcDistanceProp(task.distance)
+    const distanceProp = calcDistanceProp(task.distance);
+  // Ternary operator is used below to accomodate differing object structures (nested address object vs flat) returned by Prisma calls
     const city = task.city ? task.city : task.address.city;
 
     return (
