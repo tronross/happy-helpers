@@ -5,19 +5,25 @@ export default function Sidebar(props) {
     const select = e.target.value
     // console.log(select)
     props.setCategory(select === 'All Categories' ? '' : select)
-    props.setFilters(prev => ({...prev, category: select }));
+    props.setFilters(prev => ({ ...prev, category: select }));
   }
 
   const closerThan = (e) => {
     const distance = e.target.value
     console.log(distance)
-    props.setFilters(prev => ({...prev, distance: distance }));
+    props.setFilters(prev => ({ ...prev, distance: distance }));
+  }
+
+  const selectDate = (e) => {
+    const date = e.target.value
+    console.log(date)
+    props.setFilters(prev => ({ ...prev, date: date }));
   }
 
   const sortSelect = (e) => {
     const sort = e.target.value
     // console.log(sort)
-    props.setFilters(prev => ({...prev, sort: sort }));
+    props.setFilters(prev => ({ ...prev, sort: sort }));
   }
 
 
@@ -42,9 +48,9 @@ export default function Sidebar(props) {
         })}
         </section>
         <h5 className= "m-4 text-lg text-teal-600 font-bold mb-2">Distance (km):</h5>
-        <section class="inline-flex rounded-md shadow-sm space-y-0.5">
+        <section className="inline-flex rounded-md shadow-sm space-y-0.5">
         {props.distances.map((distance, idx) => {
-          return  <button type="button" class="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
+          return  <button type="button" className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
           {distance}</button>
         })}
       </section>
@@ -52,6 +58,13 @@ export default function Sidebar(props) {
         <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={dropdownSelect}>Reset Filters</button>
       </section>
     
+
+      {/* <form>
+        <input type="date" name="selectedDate" onChange={selectDate} />
+          <noscript>
+            <input type="submit" value="Submit" />
+          </noscript>
+      </form> */}
       {/* <input type="date" placeholder="Date"/> */}
       {/* <input type="submit" value="Submit" /> */}
  
