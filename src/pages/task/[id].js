@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
+
+  console.log(selectedTask)
+
   const [selectedId, setSelectedId] = useState(selectedTask.id)
   // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
 
@@ -35,7 +38,7 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
-        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks"/>
+        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
@@ -86,7 +89,7 @@ export async function getServerSideProps(context) {
   })
 
 
-  //similar tasks by category
+  //similar tasks by category but not current user
   const similarTasks = await prisma.task.findMany({
     where: {
       category: selectedTask.category,
