@@ -79,7 +79,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-          <section className="w-[1500px] h-screen sticky top-0">
+          <section>
             <h1>{`${userData.firstName} ${userData.lastName}`}</h1><br></br>
             {user.user.id === 1 && <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />}
             {showEditProfileForm &&
@@ -106,7 +106,6 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <h1>Your Upcoming tasks</h1>
             <div>
               <TaskList
-                className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
                 tasks={upcomingTasksData}
               />
             </div>
@@ -114,7 +113,6 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <h1>Past Tasks</h1>
             <div>
               <TaskList
-                className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
                 tasks={pastTasksData}
               />
             </div>
