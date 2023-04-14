@@ -133,7 +133,7 @@ export async function getServerSideProps() {
   // Define current user
   const userFetch = await prisma.user.findMany({
     where: {
-      id: 3
+      id: 2
     },
     include: {
       address: true
