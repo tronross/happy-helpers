@@ -36,3 +36,8 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.full-height {
+  min-height: calc(100vh - 56px);
+  margin-bottom: 2em ;
+}

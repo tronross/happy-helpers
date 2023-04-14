@@ -5,16 +5,25 @@ import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
 import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
+import { useEffect, useState } from "react";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
-  const selectedId = selectedTask.id
-console.log(selectedId)
+
+  console.log(selectedTask)
+
+  const [selectedId, setSelectedId] = useState(selectedTask.id)
+  // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
     .then(setOffer(true))
   }
+
+  // useEffect(() => {
+  //   setNewSelectedId(selectedId)
+  //   console.log(selectedId)
+  // }, [selectedTask])
   
   return (
     <>
@@ -23,17 +32,17 @@ console.log(selectedId)
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <NavBar />
     <main>
+    <NavBar />
       <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
-        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks"/>
+        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
-        <TaskRow userTasks={similarTasks} rowType="similar"/>
+        <TaskRow userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>
     </main>
 
@@ -65,24 +74,26 @@ export async function getServerSideProps(context) {
     where: {
       userId: selectedTask.userId,
       status: "OPEN"
+    },
+    include: {
+      address: true,
     }
   })
 
+
+  //all offers of logged in user
   const offers = await prisma.offer.findMany({
     where: {
       userId: 2
     }
   })
 
-  const userAddress = await prisma.address.findUnique({
-    where: {
-      id: selectedTask.addressId
-    }
-  })
 
+  //similar tasks by category but not current user
   const similarTasks = await prisma.task.findMany({
     where: {
-      category: selectedTask.category
+      category: selectedTask.category,
+      status: "OPEN"
     }
   })
 
@@ -91,7 +102,6 @@ export async function getServerSideProps(context) {
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
-             userAddress: JSON.parse(JSON.stringify(userAddress)),
              similarTasks: JSON.parse(JSON.stringify(similarTasks)),
             }
   };

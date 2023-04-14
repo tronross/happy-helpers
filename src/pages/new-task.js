@@ -26,7 +26,7 @@ export default function NewTask(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-[100vh-40px]">
+      <main className="full-height">
         <NavBar />
         <div className="flex justify-center">
         <TaskForm formData={formData} setFormData={setFormData} user={props.user}/>
@@ -43,12 +43,16 @@ export async function getServerSideProps() {
   const user = await prisma.user.findUnique({
     where: {
       id: 1
+    },
+    include: {
+      address: true
     }
   })
+  
 
   return {
-    props: {
-      user
+    props:  { 
+      user: JSON.parse(JSON.stringify(user)),
     }
   }
 }

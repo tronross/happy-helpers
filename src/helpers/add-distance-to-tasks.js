@@ -1,13 +1,13 @@
 import getDistance from './get-distance';
 
 export default function addDistanceToTasks(tasks, user) {
-  console.log(user)
-  const userLat = user.latitude;
-  const userLong = user.longitude;
+
+  const userLat = user.address.latitude;
+  const userLong = user.address.longitude;
 
   for (const task of tasks) {
-    const taskLat = task.latitude;
-    const taskLong = task.longitude;
+    const taskLat = task.address.latitude;
+    const taskLong = task.address.longitude;
 
     const distance = getDistance(userLat, userLong, taskLat, taskLong);
 

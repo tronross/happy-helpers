@@ -1,6 +1,6 @@
 export default function Task(props) {
   
-  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[25em] flex flex-col justify-between hover:cursor-pointer";
+  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[25em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]";
 
   
   const getStyle = (status) => {
@@ -18,14 +18,19 @@ export default function Task(props) {
     <div>
     <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
     <section className="px-4">
-      <h5 className=" text-xl leading-tight">
+      <h5 className=" text-xl leading-tight line-clamp-1">
       {props.name}
     </h5>
-    <p className="mb-2 text-base text-teal-700">
+    <section >
+    <span className="mb-2 text-base text-teal-700">
     {props.city}
-    </p>
+    </span>
+    <span className="mb-2 text-base text-teal-700">
+    {`     -   ${props.distance}`}
+    </span>
+    </section>
     <p className="mb-2 text-base text-teal-700">
-    {`Distance: ${props.distance}km`}
+    {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">
     {props.description}
