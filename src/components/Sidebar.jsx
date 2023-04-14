@@ -1,22 +1,24 @@
+import { useEffect } from 'react';
+
 export default function Sidebar(props) {
   const dropdownSelect = (e) => {
     const select = e.target.value
-    console.log(select)
-    
+    // console.log(select)
     props.setCategory(select === 'All Categories' ? '' : select)
-    props.setFilters({category: select});
-    
-    props.filterTasks()
-
-    // props.setSelectedSidebar(select)
+    props.setFilters(prev => ({...prev, category: select }));
   }
 
   const sortSelect = (e) => {
     const sort = e.target.value
-    console.log(sort)
-    props.filters.sort = sort;
-    props.filterTasks()
+    // console.log(sort)
+    props.setFilters(prev => ({...prev, sort: sort }));
   }
+
+  useEffect(() => {
+    console.log(props.filters)
+    props.filterTasks()
+  }, [props.filters])
+
 
   return (
     <>

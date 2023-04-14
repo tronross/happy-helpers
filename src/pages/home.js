@@ -69,12 +69,12 @@ export default function Home({ tasks, user }) {
       tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
     
-    let allFilteredTasks = tasksInCategory
+    // let allFilteredTasks = tasksInCategory
     
     if (filters.sort === 'Distance') {
-      sortedFilteredTasks = sortTasksByDistance(allFilteredTasks)
+      sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
     } else {
-      sortedFilteredTasks = sortTasksByStartTime(allFilteredTasks)
+      sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
     }
     
     
@@ -83,17 +83,7 @@ export default function Home({ tasks, user }) {
   
   // filterTasks([...tasks], taskFilters)
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
-  
-  // const tasksSortD = function() {
-  //  setFilteredTasks(sortTasksByDistance([...tasks]))
-  // }
-
-  // const tasksSortT = function() {
-  //   setFilteredTasks(sortTasksByStartTime([...tasks]))
-  // }
-
-
-  
+ 
   // Template
   return (
     <>
@@ -109,8 +99,6 @@ export default function Home({ tasks, user }) {
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
-            // sortDistance={tasksSortD}
-            // sortTime={tasksSortT}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
             setFilters={setTaskFilters}
@@ -132,9 +120,9 @@ export async function getServerSideProps() {
   
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    // where: {
-    //   status: "OPEN"
-    // },
+    where: {
+      status: "OPEN"
+    },
     include: {
       address: true
     },
@@ -158,10 +146,7 @@ export async function getServerSideProps() {
   
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
-  // const sortedTasks = sortTasksByDistance(tasks);
-  // console.log(tasks)
   const sortedTasks = sortTasksByStartTime(tasks);
-  // console.log(sortedTasks)
   return {
     props: {
       tasks: JSON.parse(JSON.stringify(sortedTasks)),
