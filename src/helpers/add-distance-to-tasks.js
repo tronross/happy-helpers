@@ -1,7 +1,7 @@
 import getDistance from './get-distance';
 
 export default function addDistanceToTasks(tasks, user) {
-
+  // Ternary operators are used below to accomodate differing object structures (nested address object vs flat) returned by Prisma calls
   const userLat = user.latitude ? user.latitude : user.address.latitude;
   const userLong = user.longitude ? user.longitude : user.address.longitude;
 
