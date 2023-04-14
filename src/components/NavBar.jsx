@@ -26,7 +26,7 @@ export default function NavBar(props) {
       </ul>
       <ul className="flex items-center  w-1/2 justify-end">
       <li className='px-6 '>
-          <Link href="/my-help">MyHelp</Link>
+          <Link href="/user-tasks">MyHelp</Link>
         </li>
         <li className='px-6 '>
           <h2>Messages</h2>
