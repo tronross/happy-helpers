@@ -7,11 +7,11 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const user = selectedUser;
   const startDate = new Date(task.startDate);
   const endDate = new Date(task.endDate);
-  const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`
-
+  const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`;
+  const taskId = `scroll-pos-${task.id}`;
 
   const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 active:bg-teal-800";
-  const disabled = offerSent
+  const disabled = offerSent;
 
   const handleClick = () => {
     if (type === "fake") {
@@ -33,7 +33,7 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
 
 
   return (
-    <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600">
+    <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600" id={taskId}>
       <div className="flex p-2"> 
         <div className="max-w-[16em] w-1/2">
           <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>

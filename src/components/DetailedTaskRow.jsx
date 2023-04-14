@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
 
 export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId}) {
-  const [currentTask, setCurrentTask] = useState(selectedId);
+  const [scrollPosition, setScrollPosition] = useState(selectedId);
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
 
