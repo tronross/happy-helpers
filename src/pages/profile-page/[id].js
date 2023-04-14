@@ -5,11 +5,7 @@
 import Head from "next/head";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-// import { PrismaClient } from '@prisma/client';
-
-// import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-
-import prisma from "../../prisma/.db";
+import prisma from "../../../prisma/.db";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
@@ -87,7 +83,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
             {showEditProfileForm &&
               <EditProfileForm
-                userId = {userData.id}
+                userId={userData.id}
                 userAddressId={userData.addressId}
                 editProfileFormData={editProfileFormData}
                 setEditProfileFormData={setEditProfileFormData}
@@ -107,26 +103,21 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
           </section>
           <section>
             <h1>Your Upcoming tasks</h1>
-            <div className='relative flex items-center'>
-              <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
-                <TaskList
-                  className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
-                  tasks={upcomingTasksData}
-                />
-              </div>
+            <div>
+              <TaskList
+                className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
+                tasks={upcomingTasksData}
+              />
             </div>
 
             <h1>Past Tasks</h1>
-            <div className='relative flex items-center'>
-              {/* <MdChevronLeft onClick={slideLeft} size={70} /> */}
-              <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
-                <TaskList
-                  className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
-                  tasks={pastTasksData}
-                />
-              </div>
-              {/* <MdChevronRight onClick={slideRight} size={70} /> */}
+            <div>
+              <TaskList
+                className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
+                tasks={pastTasksData}
+              />
             </div>
+
           </section>
         </div>
       </main>
@@ -136,9 +127,14 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
 }
 
 // DATA FETCHING
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+  // Get url slug for profile page dynamically from url.
+  const { id } = context.query
+  // console.log(id, 'ID');
+
   // User table profile data
-  const user = await axios.get(`http://localhost:3000/api/users/${1}`);
+  const user = await axios.get(`http://localhost:3000/api/users/${id}`);
   // console.log('userAddressId', user.data.user.addressId)
   // console.log( user.data.user.Organization, 'USER')
 
@@ -148,9 +144,6 @@ export async function getServerSideProps() {
   // console.log(userAddress, 'userAddress')
 
   // Organization table profile data
-  // const userOrganization = await axios.get(`http://localhost:3000/api/organizations/${user.data.user.organizationId}`);
-  // console.log(userOrganization, 'userOrganization');
-
   const userOrganizations = await prisma.user.findUnique({
     where: {
       id: user.data.user.id
@@ -159,11 +152,10 @@ export async function getServerSideProps() {
       Organizations: true
     }
   });
-  console.log(userOrganizations.Organizations, 'userOrganizations');
   // console.log(user.data.user.id, 'user.data.user.id');
-
+  // console.log(userOrganizations.Organizations, 'userOrganizations');
+  
   // Task table profile data
-  // const prisma = new PrismaClient();
   // Get tasks where offer is complete for user
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
@@ -172,10 +164,8 @@ export async function getServerSideProps() {
     }
   });
   // console.log('userPastOffersComplete', userPastOffersComplete);
-  // const tasksObject = [];
 
   // Get all tasks data for user based on offers complete for the user
-  // console.log('userPastOffersComplete', userPastOffersComplete);
   const tasksArr = userPastOffersComplete.map((item) => {
     return axios.get(`http://localhost:3000/api/tasks/${item.taskId}`);
   });
@@ -188,6 +178,7 @@ export async function getServerSideProps() {
   });
   // console.log(tasksData, 'TASKS-DATA');
 
+  // Get addresses with addressId from tasksData array
   const addressWithAddressIdArr = tasksData.map((task) => {
     // console.log(task.addressId, 'task.addressId')
     return axios.get(`http://localhost:3000/api/addresses/${task.addressId}`);
@@ -198,7 +189,6 @@ export async function getServerSideProps() {
     return item.data.address;
   });
   // console.log(addressWithAddressId, 'addressWithAddressId');
-  // console.log(tasksData);
 
   tasksData.forEach((task) => {
     for (let i = 0; i < addressWithAddressId.length; i++) {
@@ -208,12 +198,10 @@ export async function getServerSideProps() {
     }
   });
 
-
   const addresses = await prisma.address.findMany();
   addCoordsToTasks(tasksData, addresses);
   addCoordsToUser(user.data.user, addresses);
   addDistanceToTasks(tasksData, user.data.user);
-
   // console.log(tasksData, 'TASKS-DATA');
 
   // Extract upcoming tasks data
@@ -227,9 +215,6 @@ export async function getServerSideProps() {
     return item.status === 'COMPLETE';
   });
   // console.log(pastData, 'pastData');
-
-  // console.log(user.data, 'USER')
-  // console.log(userAddress.data, 'userAddress');
 
   return {
     props: {
