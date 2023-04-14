@@ -121,6 +121,7 @@ export async function getServerSideProps() {
   const tasks = await prisma.$queryRaw`
   SELECT tasks.*, addresses.city, addresses.latitude, addresses.longitude FROM tasks
   JOIN addresses ON tasks.address_id = addresses.id
+  WHERE status = 'OPEN'
   ORDER BY start_date desc;`
   
   // Define current user
