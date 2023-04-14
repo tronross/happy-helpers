@@ -26,7 +26,7 @@ import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
-  // console.log(user.user);
+  // console.log(userData);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd);
@@ -61,28 +61,14 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
   useEffect(() => {
     let orgStr = "";
     userOrganizations.forEach((org, index) => {
-      if(userOrganizations.length - 1 === index){
-        orgStr += `${org.name}.`
+      if (userOrganizations.length - 1 === index) {
+        orgStr += `${org.name}.`;
       } else {
         orgStr += `${org.name}, `;
       }
     });
     setOrgString(orgStr);
   }, [userOrganizations]);
-  
-
-  // const slideLeft = function() {
-  //   const slider = document.getElementById('slider');
-  //   slider.scrollLeft = slider.scrollLeft - 500;
-  //   console.log('LEFT');
-  // };
-
-  // const slideRight = () => {
-  //   const slider = document.getElementById('slider');
-  //   slider.scrollLeft = slider.scrollLeft + 500;
-  //   console.log('RIGHT');
-  //   console.log(slider);
-  // };
 
   // TEMPLATE
   return (
@@ -101,6 +87,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <Button buttonName='Edit Profile' onClick={toggleEditProfileForm} />
             {showEditProfileForm &&
               <EditProfileForm
+                userId = {userData.id}
                 userAddressId={userData.addressId}
                 editProfileFormData={editProfileFormData}
                 setEditProfileFormData={setEditProfileFormData}
@@ -121,14 +108,12 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
           <section>
             <h1>Your Upcoming tasks</h1>
             <div className='relative flex items-center'>
-              {/* <MdChevronLeft onClick={slideLeft} size={70} /> */}
               <div id='slider' className="w-full h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth">
                 <TaskList
                   className='w-[220px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300'
                   tasks={upcomingTasksData}
                 />
               </div>
-              {/* <MdChevronRight onClick={slideRight} size={70} /> */}
             </div>
 
             <h1>Past Tasks</h1>
