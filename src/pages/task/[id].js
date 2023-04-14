@@ -5,15 +5,22 @@ import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
 import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
+import { useEffect, useState } from "react";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
-  const selectedId = selectedTask.id
+  const [selectedId, setSelectedId] = useState(selectedTask.id)
+  // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
     .then(setOffer(true))
   }
+
+  // useEffect(() => {
+  //   setNewSelectedId(selectedId)
+  //   console.log(selectedId)
+  // }, [selectedTask])
   
   return (
     <>
@@ -32,7 +39,7 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       </div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
-        <TaskRow userTasks={similarTasks} rowType="similar"/>
+        <TaskRow userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>
     </main>
 
