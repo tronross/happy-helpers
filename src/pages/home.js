@@ -104,7 +104,7 @@ export default function Home({ tasks, user }) {
             setCategory={setCategory}
             />
           <section className='flex flex-col p-2 grow'>
-            <PageHeader setView={setView} city={user.city} category={category} />
+            <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </section>
         </div>
@@ -141,6 +141,7 @@ export async function getServerSideProps() {
   })
   
   const user = userFetch[0];
+  console.log(user)
   
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
