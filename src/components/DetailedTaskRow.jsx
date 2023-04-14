@@ -14,8 +14,8 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
   }
 
   useEffect(() => {
-
-  }, [currentTask])
+    setCurrentTask(selectedId)
+  }, [selectedId])
 
   const offerTaskIds = offers.map(offer => (
    offer.taskId 
