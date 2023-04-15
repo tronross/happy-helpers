@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       }
     });
 
-    console.log('updateTaskStatus: ', updateTaskStatus);
+    // console.log('updateTaskStatus: ', updateTaskStatus);
     res.status(200).send('ok');
   }
 }

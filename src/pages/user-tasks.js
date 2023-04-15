@@ -1,8 +1,10 @@
+// @refresh reset
 import Head from 'next/head';
 import { useState, useMemo, useEffect } from 'react';
-import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
-import axios from "axios"
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 // Component dependencies
 import RequestList from '@/components/RequestList';
@@ -10,45 +12,74 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import RequestSidebar from '@/components/RequestSidebar';
 
-
 export default function UserTasks({ userRequests, offers }) {
 
   // Hooks
   const [category, setCategory] = useState('All Categories');
   const [status, setStatus] = useState('Any Status');
-  const [selectedTask, setSelectedTask] = useState();
+  const [selectedRequestId, setSelectedRequestId] = useState();
   const [selectedOffers, setSelectedOffers] = useState([]);
+
+  const router = useRouter(); // Used to force render page (all state will be lost)
+
+  // Track the status of the currently selected request and it's offer status
+  const [selectedRequestStatus, setSelectedRequestStatus] = useState();
+  useEffect(() => {
+    if (selectedRequestId) {
+      const selectedRequest = userRequests.find((request) => request.id === selectedRequestId);
+      setSelectedRequestStatus(selectedRequest.status);
+    }
+  }, [selectedRequestId, userRequests]);
+
+  // Keep selected request id in memory during a router.refresh()
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const selectedRequestId = localStorage.getItem('selectedRequestId');
+      if (selectedRequestId) {
+        setSelectedRequestId(parseInt(selectedRequestId));
+      }
+      localStorage.clear();
+    }
+  }, []);
 
   /* When user clicks on accept offer from volunteer button:
    * In tasks table: set task status as pending where id = selectedTask
    * In offers table: set offer status as pending where id = offer.id
    */
   const handleAcceptOffer = async function(offerId) {
-
     await axios.put(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'PENDING'});
-    await axios.put(`http://localhost:3000/api/tasks/${selectedTask}`, {newStatus: 'PENDING'});
-
+    await axios.put(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
+    localStorage.setItem("selectedRequestId", selectedRequestId);
+    router.refresh(); // Force reload
   };
 
-  // const updateTaskStatus = await prisma.task.update({
-  //   where: {
-  //     id: selectedTask
-  //   },
-  //   data: {
-  //     status: 'PENDING'
-  //   }
-  // });
+  /* When user clicks on request complete button:
+   * In tasks table: set task status as closed where id = selectedTask
+   * In offers table: set offer status as closed where id = offer.id
+   * If the volunteer has received a star, add it to their user where user.id = offers.user_id
+   */
+  const handleRequestComplete = async function(offerId, volunteerId, giveStar) {
+    console.log('in handleRequestComplete function, offer id:', offerId, 'selectedRequestId', selectedRequestId, 'volunteerId', volunteerId, 'giveStar', giveStar);
+    
+    await axios.put(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'COMPLETE'});
+    await axios.put(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
 
+    if (giveStar) {
+      await axios.put(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+    }
+
+    localStorage.setItem("selectedRequestId", selectedRequestId);
+    router.refresh(); // Force reload
+  };
 
   // Create an array of offers received for a task when it is selected
   useEffect(() => {
-    if (selectedTask) {
-      const offersReceived = offers.filter((offer) => offer.taskId === selectedTask);
+    if (selectedRequestId) {
+      const offersReceived = offers.filter((offer) => offer.taskId === selectedRequestId);
       setSelectedOffers(offersReceived);
     }
-  }, [selectedTask, offers]);
-
-
+  }, [selectedRequestId, offers]);
+  
   const filterRequests = function() {
     if (category === 'All Categories' && status === 'Any Status') {
       return userRequests;
@@ -105,6 +136,8 @@ export default function UserTasks({ userRequests, offers }) {
   const resetFilters = function() {
     setCategory('All Categories');
     setStatus('Any Status');
+    setSelectedRequestId();
+    // router.refresh(); // Force reload
   };
 
   const handleCategoryChange = function(event) {
@@ -135,6 +168,9 @@ export default function UserTasks({ userRequests, offers }) {
             categoryFilter={categoryFilter}
             selectedOffers={selectedOffers}
             handleAcceptOffer={handleAcceptOffer}
+            selectedRequestId={selectedRequestId}
+            selectedRequestStatus={selectedRequestStatus}
+            handleRequestComplete={handleRequestComplete}
           />
           <section className='flex flex-col p-2 max-w-6xl'>
             <div className="flex justify-between m-4 text-lg text-teal-700">
@@ -142,8 +178,9 @@ export default function UserTasks({ userRequests, offers }) {
             </div>
             <RequestList
               requests={filteredRequests}
-              selectedTask={selectedTask}
-              setSelectedTask={setSelectedTask}
+              selectedRequestId={selectedRequestId}
+              setSelectedRequestId={setSelectedRequestId}
+              offers={offers}
             />
           </section>
         </div>

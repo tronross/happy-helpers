@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import Request from '../components/Request';
 
-export default function RequestList({ requests, selectedTask, setSelectedTask }) {
+export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers }) {
 
   const selectedClass = "outline outline-4 outline-teal-600";
 
   const requestItems = requests.map(request => {
 
-    if (request.id === selectedTask) {
+    const nbOffers = offers.filter((offer) => offer.taskId === request.id).length;
+
+    if (request.id === selectedRequestId) {
       return (
         <li key={request.id}>
           <Request
@@ -24,7 +25,8 @@ export default function RequestList({ requests, selectedTask, setSelectedTask })
             endDate={request.endDate}
             starred={request.starred}
             selectedClass={selectedClass}
-            onClick={setSelectedTask}
+            onClick={setSelectedRequestId}
+            nbOffers={nbOffers}
           />
         </li>
       );
@@ -45,7 +47,8 @@ export default function RequestList({ requests, selectedTask, setSelectedTask })
             endDate={request.endDate}
             starred={request.starred}
             selectedClass=""
-            onClick={setSelectedTask}
+            onClick={setSelectedRequestId}
+            nbOffers={nbOffers}
           />
         </li>
       );

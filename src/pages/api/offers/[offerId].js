@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       }
     });
 
-    console.log('updateOfferStatus: ', updateOfferStatus);
+    // console.log('updateOfferStatus: ', updateOfferStatus);
     res.status(200).send('ok');
   }
 }
