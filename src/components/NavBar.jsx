@@ -2,8 +2,6 @@
 // NavBar Component
 //////////////////////
 
-// Stylesheet
-
 // Component
 import Link from 'next/link';
 import Button from '@/components/Button'
