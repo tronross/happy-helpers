@@ -4,18 +4,18 @@ import Task from "./Task";
 import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
 
-export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType}) {
+export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId}) {
   const [currentTask, setCurrentTask] = useState(selectedId);
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
 
   const changeTask = (id) => { 
-    setCurrentTask(id)
+    setSelectedId(id)
   }
 
-  useEffect(() => {
-
-  }, [currentTask])
+  // useEffect(() => {
+  //   setSelectedId(selectedId)
+  // }, [selectedId])
 
   const offerTaskIds = offers.map(offer => (
    offer.taskId 
@@ -23,7 +23,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
 
 
   const tasks = userTasks.map(task => {
-    if (task.id === currentTask) {
+    if (task.id === selectedId) {
       return <li key={task.id} className="snap-center">
         <DetailedTask
           task={task}
