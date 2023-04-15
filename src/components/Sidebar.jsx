@@ -62,8 +62,15 @@ export default function Sidebar(props) {
       <div className="h-screen sticky top-0 ">
         <section className="flex space-x-4" >
           <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
-          <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
+          { clicked.sort === 'Distance' ? 
+          <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
+          :
+          <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>}
+          { clicked.sort === 'Date' ? 
+          <button className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+          :
           <button className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+          }
         </section>
         <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Filter By:</h4>
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
