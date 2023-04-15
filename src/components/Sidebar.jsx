@@ -1,25 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Sidebar(props) {
-  const clicked = {
+  const [clicked, setClicked] = useState({
     distance: 50,
     category: 'All Categories',
     sort:     'Distance'
-  };
+  });
 
   const dropdownSelect = (e) => {
     const select = e.target.value
     // console.log(select)
     props.setCategory(select === 'All Categories' ? '' : select)
-    console.log(clicked.category)
+    // console.log(clicked.category)
     clicked.category = select;
-    console.log(clicked.category)
+    // console.log(clicked.category)
     props.setFilters(prev => ({ ...prev, category: select }));
   }
 
   const closerThan = (e) => {
-    const distance = e.target.value
-    clicked.distance = distance;
+    const distance = e.target.value;
+    console.log(`Before: ${clicked.distance}`)
+    setClicked(prev => ({ ...prev, distance: distance}));
+    console.log(`After: ${clicked.distance}`)
     props.setFilters(prev => ({ ...prev, distance: distance }));
   }
 
@@ -41,10 +43,11 @@ export default function Sidebar(props) {
       category: 'All Categories',
       sort:     'Distance',
       date:     'All'
-    })
-    clicked.distance = 50;
-    clicked.category = 'All Categories';
-    clicked.sort = 'Distance';
+    });
+
+    setClicked(prev => ({ ...prev, distance: 50}));
+    setClicked(prev => ({ ...prev, category: 'All Categories'}));
+    setClicked(prev => ({ ...prev, sort: 'Distance'}));
   }
 
 
@@ -71,12 +74,13 @@ export default function Sidebar(props) {
         <h5 className= "m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
         {props.distances.map((distance, idx) => {
-          if (parseInt(distance) === props.filters.distance) {
+          console.log(`distance: ${distance} >> clicked: ${clicked.distance}`)
+          if (parseInt(distance) == clicked.distance) {
             return  <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
           {distance}</button>
           } else {
-          return  <button type="button" className="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
-          {distance}</button>
+            return  <button type="button" className="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
+            {distance}</button>
           }
         })}
       </section>

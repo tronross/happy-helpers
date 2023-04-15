@@ -56,7 +56,7 @@ export default function Home({ tasks, user }) {
     category: 'All Categories',
     sort:     'Distance',
     date:     'All'
-  })
+  });
 
   const [category, setCategory] = useState(taskFilters.category)
 
