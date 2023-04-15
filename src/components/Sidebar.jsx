@@ -26,6 +26,15 @@ export default function Sidebar(props) {
     props.setFilters(prev => ({ ...prev, sort: sort }));
   }
 
+  const resetFilters = () => {
+    props.setFilters({
+      distance: 50,
+      category: 'All Categories',
+      sort:     'Distance',
+      date:     'All'
+    })
+  }
+
 
   useEffect(() => {
     console.log(props.filters)
@@ -55,7 +64,7 @@ export default function Sidebar(props) {
         })}
       </section>
       <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
-        <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={dropdownSelect}>Reset Filters</button>
+        <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
       </section>
     
 

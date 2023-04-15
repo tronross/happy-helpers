@@ -135,9 +135,9 @@ export async function getServerSideProps() {
   
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    where: {
-      status: "OPEN"
-    },
+    // where: {
+    //   status: "OPEN"
+    // },
     include: {
       address: true
     },
