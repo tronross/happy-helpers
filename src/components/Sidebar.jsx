@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 
 export default function Sidebar(props) {
+  // Button state
   const [clicked, setClicked] = useState({
     distance: 50,
     category: 'All Categories',
     sort: 'Date'
   });
 
+  // Click handlers
   const dropdownSelect = (e) => {
     const select = e.target.value
     props.setCategory(select === 'All Categories' ? '' : select)
@@ -46,13 +48,11 @@ export default function Sidebar(props) {
       sort: 'Date',
       date: 'All'
     });
-    // setClicked(prev => ({ ...prev, category: 'All Categories' }));
-    // setClicked(prev => ({ ...prev, sort: 'Distance' }));
   }
 
-
+  // Call filterTasks on change of filters state
   useEffect(() => {
-    console.log(props.filters)
+    // console.log(props.filters)
     props.filterTasks()
   }, [props.filters])
 
@@ -63,15 +63,15 @@ export default function Sidebar(props) {
         <section className="flex items-baseline space-x-4" >
           <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
           {clicked.sort === 'Date' ?
-              <button className="inline-flex justify-center items-center gap-2 bg-teal-800 h-10 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
-              :
-              <button className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 h-10 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+            <button className="inline-flex justify-center items-center gap-2 bg-teal-800 h-10 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+            :
+            <button className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 h-10 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
           }
           {clicked.sort === 'Distance' ?
             <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-800 h-10 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
             :
             <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 h-10 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
-            }
+          }
         </section>
         <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Filter By:</h4>
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">

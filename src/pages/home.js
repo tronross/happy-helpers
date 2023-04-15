@@ -1,3 +1,8 @@
+///////////////
+// Home Page
+///////////////
+
+// Vendor methods
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -39,8 +44,10 @@ const sidebarOptions = [
 
 const distances = [
   1, 5, 10, 25, 50, 'all'
-]
+];
 
+/////////////////////
+// Page (component)
 export default function Home({ tasks, user }) {
 
   // Hooks
@@ -50,7 +57,7 @@ export default function Home({ tasks, user }) {
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
-  const tasksToFilter = fetchTasks;
+  const tasksToFilter = [...fetchTasks];
   const [taskFilters, setTaskFilters] = useState({
     distance: 50,
     category: 'All Categories',
@@ -60,6 +67,7 @@ export default function Home({ tasks, user }) {
 
   const [category, setCategory] = useState(taskFilters.category)
 
+  // Sort and Filter Tasks
   const filterTasks = function (tasks, filters) {
     // Function globals
     const unfilteredTasks = [...tasks];
@@ -68,6 +76,7 @@ export default function Home({ tasks, user }) {
     let tasksCloserThan;
     let distance;
 
+    // Filters
     if (filters.distance === 'all') {
       distance = Infinity;
     } else {
@@ -77,18 +86,19 @@ export default function Home({ tasks, user }) {
     tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
 
     if (filters.category === 'All Categories') {
-      // console.log('>>>>>>>>>>>>>>>>>>>>>>>')
       tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
     } else {
       tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
 
+    // Sort
     if (filters.sort === 'Distance') {
       sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
     } else {
       sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
     }
 
+    // Update state -> fire render of filtered tasks
     setFilteredTasks(sortedFilteredTasks)
   }
 
