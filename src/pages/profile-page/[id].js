@@ -117,14 +117,14 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
           </section>
           <section>
             <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Upcoming Tasks</h1>
-            <div>
+            <div style={{height:"50%"}}>
               <TaskList
                 tasks={upcomingTasksData}
               />
             </div>
 
             <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Past Tasks</h1>
-            <div>
+            <div style={{height:"50%"}}>
               <TaskList
                 tasks={pastTasksData}
               />
