@@ -42,32 +42,32 @@ const distances = [
 ]
 
 export default function Home({ tasks, user }) {
-  
+
   // Hooks
   const [fetchTasks, setFetchTasks] = useState([...tasks]);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
-  
+
   const tasksToFilter = fetchTasks;
   const [taskFilters, setTaskFilters] = useState({
     distance: 50,
     category: 'All Categories',
-    sort:     'Date',
-    date:     'All'
+    sort: 'Date',
+    date: 'All'
   });
 
   const [category, setCategory] = useState(taskFilters.category)
 
-  const filterTasks = function(tasks, filters) {
+  const filterTasks = function (tasks, filters) {
     // Function globals
     const unfilteredTasks = [...tasks];
     let tasksInCategory;
     let sortedFilteredTasks;
     let tasksCloserThan;
     let distance;
-    
+
     if (filters.distance === 'all') {
       distance = Infinity;
     } else {
@@ -77,23 +77,23 @@ export default function Home({ tasks, user }) {
     tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
 
     if (filters.category === 'All Categories') {
-      console.log('>>>>>>>>>>>>>>>>>>>>>>>')
+      // console.log('>>>>>>>>>>>>>>>>>>>>>>>')
       tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
     } else {
       tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
-    
+
     if (filters.sort === 'Distance') {
       sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
     } else {
       sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
     }
-    
+
     setFilteredTasks(sortedFilteredTasks)
   }
-  
+
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
- 
+
   // Template
   return (
     <>
@@ -104,7 +104,7 @@ export default function Home({ tasks, user }) {
       </Head>
       <main>
         <NavBar name={user.firstName}
-                id={user.id}/>
+          id={user.id} />
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
@@ -114,7 +114,7 @@ export default function Home({ tasks, user }) {
             setFilters={setTaskFilters}
             setCategory={setCategory}
             distances={distances}
-            />
+          />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
@@ -128,7 +128,7 @@ export default function Home({ tasks, user }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  
+
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
     // where: {
@@ -141,20 +141,20 @@ export async function getServerSideProps() {
       startDate: 'desc'
     }
   })
-  
+
   // Define current user
   const userFetch = await prisma.user.findMany({
     where: {
-      id: 2
+      id: 1
     },
     include: {
       address: true
     }
   })
-  
+
   const user = userFetch[0];
   console.log(user)
-  
+
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
   const sortedTasks = sortTasksByStartTime(tasks);
