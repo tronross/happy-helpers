@@ -1,16 +1,25 @@
 import { useEffect } from 'react';
 
 export default function Sidebar(props) {
+  const clicked = {
+    distance: 50,
+    category: 'All Categories',
+    sort:     'Distance'
+  };
+
   const dropdownSelect = (e) => {
     const select = e.target.value
     // console.log(select)
     props.setCategory(select === 'All Categories' ? '' : select)
+    console.log(clicked.category)
+    clicked.category = select;
+    console.log(clicked.category)
     props.setFilters(prev => ({ ...prev, category: select }));
   }
 
   const closerThan = (e) => {
     const distance = e.target.value
-    console.log(distance)
+    clicked.distance = distance;
     props.setFilters(prev => ({ ...prev, distance: distance }));
   }
 
@@ -22,7 +31,7 @@ export default function Sidebar(props) {
 
   const sortSelect = (e) => {
     const sort = e.target.value
-    // console.log(sort)
+    clicked.sort = sort;
     props.setFilters(prev => ({ ...prev, sort: sort }));
   }
 
@@ -33,6 +42,9 @@ export default function Sidebar(props) {
       sort:     'Distance',
       date:     'All'
     })
+    clicked.distance = 50;
+    clicked.category = 'All Categories';
+    clicked.sort = 'Distance';
   }
 
 
@@ -56,11 +68,16 @@ export default function Sidebar(props) {
           return <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={idx} value={item} onClick={dropdownSelect}>{item}</button>
         })}
         </section>
-        <h5 className= "m-4 text-lg text-teal-600 font-bold mb-2">Distance (km):</h5>
+        <h5 className= "m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
         {props.distances.map((distance, idx) => {
-          return  <button type="button" className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
+          if (parseInt(distance) === props.filters.distance) {
+            return  <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
           {distance}</button>
+          } else {
+          return  <button type="button" className="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
+          {distance}</button>
+          }
         })}
       </section>
       <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
