@@ -5,7 +5,7 @@ import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
 import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
@@ -19,10 +19,17 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
     .then(setOffer(true))
   }
 
-  // useEffect(() => {
-  //   setNewSelectedId(selectedId)
-  //   console.log(selectedId)
-  // }, [selectedTask])
+  const setScroll = (id, rowType) => {
+    
+    if (typeof window !== "undefined") {
+      const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+      const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+      scrollBox.scrollLeft = (scrollPos - 200);
+      console.log(scrollPos)
+      console.log(scrollBox.scrollLeft)
+    }
+  }
+  
 
   return (
     <>
@@ -38,11 +45,11 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
-        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
+        <DetailedTaskRow setScroll={setScroll} sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
-        <TaskRow userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
+        <TaskRow setScroll={setScroll} userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>
     </main>
 

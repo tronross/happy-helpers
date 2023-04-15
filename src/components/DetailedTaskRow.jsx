@@ -1,40 +1,27 @@
-import Button from "./Button";
 import DetailedTask from "./DetailedTask";
 import Task from "./Task";
-import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
+import { useEffect } from "react";
 
-export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId}) {
+export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId, setScroll}) {
   
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
   const taskId = `scroll-pos-${selectedId}`;
 
 
-  // const getScrollPos = async function()  {
-  //   await Promise.resolve(document.querySelector(`#${taskId}`))
-  //   .then(res => {
-  //     setScrollPosition(res.offsetLeft)
-  //   })
-    // console.log(detailedTaskPos)
-  // }
 
-  // const res = await Promise.all(getScrollPos)
+  useEffect(() => {
+    setScroll(taskId, rowType)
+  }, [selectedId]) 
+  
 
-  // console.log(res)
-
-//   const [scrollPosition, setScrollPosition] = useState(getScrollPos);
-// console.log(scrollPosition)
-
-
+  
 
 const changeTask = (id) => { 
     setSelectedId(id)
   }
 
-  // useEffect(() => {
-  //   setSelectedId(selectedId)
-  // }, [selectedId])
 
   const offerTaskIds = offers.map(offer => (
    offer.taskId 
@@ -98,7 +85,7 @@ const changeTask = (id) => {
             <RowButton rowType={rowType} id={buttonsId} svg="next" onClick={(event) => scrollRight(event)}/>  
         </div>
       <div id={scrollboxId} className=".no-scrollbar mx-[8em] rounded flex justify-start list-none overflow-scroll overflow-hidden scroll-smooth scrollbar-hide snap-proximity  snap-x relative ">
-        <div className="flex items-center p-3 task-container">
+        <div className="flex items-center task-container">
           {tasks}
         </div>
       </div>
