@@ -53,7 +53,6 @@ export default function Home({ tasks, user }) {
   // Hooks
   const [fetchTasks, setFetchTasks] = useState([...tasks]);
   const [sidebar, setSidebar] = useState(sidebarOptions);
-  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
@@ -118,7 +117,6 @@ export default function Home({ tasks, user }) {
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
-            setSelectedSidebar={setSelectedSidebar}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
             setFilters={setTaskFilters}
