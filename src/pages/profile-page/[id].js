@@ -23,7 +23,7 @@ import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
   // HOOKS
   const [userData, setUserData] = useState(user.user);
-  // console.log(userData);
+  console.log(userData);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
   const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd);
@@ -77,12 +77,24 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-          <section style={{margin:"0rem 1.5rem", padding:"1rem 1.5rem", backgroundColor:"rgb(13 148 136)", color:"white"}}>
-            <h1 style={{fontWeight:"bold", fontSize:"1rem", textAlign:"center"}}>Profile Details</h1>
+          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width:"20%" }}>
+            <h1 style={{ fontWeight: "bold", fontSize: "1rem", textAlign: "center" }}>Profile Details</h1>
             <br></br>
-            <h1 style={{fontWeight:"bold"}}>Name:</h1>
-            <p>{`${userData.firstName} ${userData.lastName}`}</p><br></br>
-            {user.user.id === 1 && <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>}
+            <div style={{display:"flex", justifyContent:"center"}}>
+              <img
+                src={userData.avatar}
+                className="rounded-full"
+                alt="Avatar"
+              />
+            </div>
+            <br></br>
+            <h1 style={{ fontWeight: "bold" }}>Name:</h1>
+            <p>{`${userData.firstName} ${userData.lastName}`}</p>
+            {user.user.id === 1 && <>
+              <br></br>
+              <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>
+              <br></br>
+            </>}
             {showEditProfileForm &&
               <EditProfileForm
                 userId={userData.id}
@@ -91,27 +103,27 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
                 setEditProfileFormData={setEditProfileFormData}
               />
             }
-            <br></br><br></br>
-            <h1 style={{fontWeight:"bold"}}>Address:</h1>
+            <br></br>
+            <h1 style={{ fontWeight: "bold" }}>Address:</h1>
             <p>{fullAddress}</p><br></br>
-            <h1 style={{fontWeight:"bold"}}>Phone Number:</h1>
+            <h1 style={{ fontWeight: "bold" }}>Phone Number:</h1>
             <p>{userData.phone}</p><br></br>
-            <h1 style={{fontWeight:"bold"}}>Skills:</h1>
+            <h1 style={{ fontWeight: "bold" }}>Skills:</h1>
             <p>{userData.skills}</p><br></br>
-            <h1 style={{fontWeight:"bold"}}>Organizations:</h1>
+            <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
             <p>{orgString}</p><br></br>
-            <h1 style={{fontWeight:"bold"}}>Description:</h1>
+            <h1 style={{ fontWeight: "bold" }}>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
           <section>
-            <h1 style={{color:"rgb(13 148 136)", fontSize:"1.5rem", fontWeight:"bold"}}>Upcoming Tasks</h1>
+            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Upcoming Tasks</h1>
             <div>
               <TaskList
                 tasks={upcomingTasksData}
               />
             </div>
 
-            <h1 style={{color:"rgb(13 148 136)", fontSize:"1.5rem", fontWeight:"bold"}}>Past Tasks</h1>
+            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Past Tasks</h1>
             <div>
               <TaskList
                 tasks={pastTasksData}
