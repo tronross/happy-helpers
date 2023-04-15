@@ -37,6 +37,10 @@ const sidebarOptions = [
   'Yardwork'
 ];
 
+const distances = [
+  1, 5, 10, 25, 50, 'all'
+]
+
 export default function Home({ tasks, user }) {
   
   // Hooks
@@ -47,41 +51,52 @@ export default function Home({ tasks, user }) {
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
   
   const tasksToFilter = fetchTasks;
-  const taskFilters = {
+  const [taskFilters, setTaskFilters] = useState({
     distance: 50,
-    category: 'All Categories'
-  }
+    category: 'All Categories',
+    sort:     'Distance'
+  })
+
   const [category, setCategory] = useState(taskFilters.category)
 
   const filterTasks = function(tasks, filters) {
-    let unfilteredTasks = [...tasks]
-    const distance = filters.distance;
-    const category = filters.category;
-
-
-    const tasksCloserThan = unfilteredTasks.filter(task => task.distance <= distance);
-
-    if (category === 'All Categories') {
-      setFilteredTasks(tasksCloserThan)
+    // Function globals
+    const unfilteredTasks = [...tasks];
+    let tasksInCategory;
+    let sortedFilteredTasks;
+    let tasksCloserThan;
+    let distance;
+    
+    if (filters.distance === 'all') {
+      distance = Infinity;
     } else {
-      const tasksInCategory = tasksCloserThan.filter(task => task.category === category);
-      setFilteredTasks(tasksInCategory)
+      distance = parseInt(filters.distance);
     }
+
+    tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
+
+    if (filters.category === 'All Categories') {
+      console.log('>>>>>>>>>>>>>>>>>>>>>>>')
+      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
+    } else {
+      tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
+    }
+    
+    // let allFilteredTasks = tasksInCategory
+    
+    if (filters.sort === 'Distance') {
+      sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
+    } else {
+      sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
+    }
+    
+    
+    setFilteredTasks(sortedFilteredTasks)
   }
   
   // filterTasks([...tasks], taskFilters)
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
-  
-  const tasksSortD = function() {
-   setFilteredTasks(sortTasksByDistance([...tasks]))
-  }
-
-  const tasksSortT = function() {
-    setFilteredTasks(sortTasksByStartTime([...tasks]))
-  }
-
-
-  
+ 
   // Template
   return (
     <>
@@ -97,11 +112,11 @@ export default function Home({ tasks, user }) {
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
-            sortDistance={tasksSortD}
-            sortTime={tasksSortT}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
+            setFilters={setTaskFilters}
             setCategory={setCategory}
+            distances={distances}
             />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
@@ -145,10 +160,7 @@ export async function getServerSideProps() {
   
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
-  // const sortedTasks = sortTasksByDistance(tasks);
-  // console.log(tasks)
   const sortedTasks = sortTasksByStartTime(tasks);
-  // console.log(sortedTasks)
   return {
     props: {
       tasks: JSON.parse(JSON.stringify(sortedTasks)),
