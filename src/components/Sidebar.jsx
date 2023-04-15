@@ -87,7 +87,6 @@ export default function Sidebar(props) {
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
           {props.distances.map((distance, idx) => {
             // Loose equality operator used to coerce type
-            console.log(`distance: ${distance} >>>>> clicked.distance ${clicked.distance}`)
             if (parseInt(distance) == clicked.distance) {
               return <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
             } else if (distance == 'all' && clicked.distance == 'all') {
