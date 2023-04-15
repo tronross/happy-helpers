@@ -4,7 +4,7 @@ export default function Sidebar(props) {
   const [clicked, setClicked] = useState({
     distance: 50,
     category: 'All Categories',
-    sort: 'Distance'
+    sort: 'Date'
   });
 
   const dropdownSelect = (e) => {
@@ -36,14 +36,14 @@ export default function Sidebar(props) {
     props.setFilters({
       distance: 50,
       category: 'All Categories',
-      sort: 'Distance',
+      sort: 'Date',
       date: 'All'
     });
 
     setClicked({
       distance: 50,
       category: 'All Categories',
-      sort: 'Distance',
+      sort: 'Date',
       date: 'All'
     });
     // setClicked(prev => ({ ...prev, category: 'All Categories' }));
@@ -62,15 +62,16 @@ export default function Sidebar(props) {
       <div className="h-screen sticky top-0 ">
         <section className="flex space-x-4" >
           <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
-          { clicked.sort === 'Distance' ? 
-          <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
-          :
-          <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>}
-          { clicked.sort === 'Date' ? 
-          <button className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
-          :
-          <button className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+          {clicked.sort === 'Date' ?
+              <button className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
+              :
+              <button className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white" value={'Date'} onClick={sortSelect}>Date</button>
           }
+          {clicked.sort === 'Distance' ?
+            <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-800 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
+            :
+            <button type="button" className="inline-flex justify-center items-center gap-2 bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white" value={'Distance'} onClick={sortSelect}>Distance</button>
+            }
         </section>
         <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Filter By:</h4>
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
@@ -78,7 +79,7 @@ export default function Sidebar(props) {
             if (item === clicked.category) {
               return <button className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={idx} value={item} onClick={dropdownSelect}>{item}</button>
             } else {
-              return <button className="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={idx} value={item} onClick={dropdownSelect}>{item}</button>
+              return <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={idx} value={item} onClick={dropdownSelect}>{item}</button>
             }
           })}
         </section>
@@ -86,17 +87,18 @@ export default function Sidebar(props) {
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
           {props.distances.map((distance, idx) => {
             // Loose equality operator used to coerce type
+            console.log(`distance: ${distance} >>>>> clicked.distance ${clicked.distance}`)
             if (parseInt(distance) == clicked.distance) {
-              return <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
-                {distance}</button>
+              return <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
+            } else if (distance == 'all' && clicked.distance == 'all') {
+              return <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
             } else {
-              return <button type="button" className="w-full bg-teal-600 hover:bg-teal-700 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >
-                {distance}</button>
+              return <button type="button" className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
             }
           })}
         </section>
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
-          <button className="w-full bg-teal-600 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
+          <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
 
 
