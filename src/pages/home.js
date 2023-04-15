@@ -54,7 +54,7 @@ export default function Home({ tasks, user }) {
   const [taskFilters, setTaskFilters] = useState({
     distance: 50,
     category: 'All Categories',
-    sort:     'Distance',
+    sort:     'Date',
     date:     'All'
   });
 
@@ -83,19 +83,15 @@ export default function Home({ tasks, user }) {
       tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
     }
     
-    // let allFilteredTasks = tasksInCategory
-    
     if (filters.sort === 'Distance') {
       sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
     } else {
       sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
     }
     
-    
     setFilteredTasks(sortedFilteredTasks)
   }
   
-  // filterTasks([...tasks], taskFilters)
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
  
   // Template
@@ -169,26 +165,3 @@ export async function getServerSideProps() {
     }
   };
 }
-
-
-
-
-
-// const [category, setCategory] = useState(0);
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
-//     return data;
-//   };
-//   const theFetcher = fetchData();
-// console.log(theFetcher);
-// });
-// console.log(fetchTasks);
-
-// useEffect (() => {
-//   setFetchTasks((prev) => {
-//     prev.filter(item => ) 
-//   })
-
-// }, [selectedSidebar])
