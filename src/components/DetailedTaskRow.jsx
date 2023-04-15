@@ -5,11 +5,30 @@ import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
 
 export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId}) {
-  const [scrollPosition, setScrollPosition] = useState(selectedId);
+  
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
+  const taskId = `scroll-pos-${selectedId}`;
 
-  const changeTask = (id) => { 
+
+  const getScrollPos = async function()  {
+    await Promise.resolve(document.querySelector(`#${taskId}`))
+    .then(res => {
+      setScrollPosition(res.offsetLeft)
+    })
+    // console.log(detailedTaskPos)
+  }
+
+  // const res = await Promise.all(getScrollPos)
+
+  // console.log(res)
+
+  const [scrollPosition, setScrollPosition] = useState(getScrollPos);
+console.log(scrollPosition)
+
+
+
+const changeTask = (id) => { 
     setSelectedId(id)
   }
 
@@ -32,6 +51,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
           sendOffer={sendOffer}
           offerTaskIds={offerTaskIds}
           userAddress={userAddress}
+          taskId={taskId}
         />
         </li>
     } else {
@@ -52,7 +72,10 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
     }
   })
 
- 
+  useEffect(()=> {
+    const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+    scrollBox.scrollRight += {scrollPosition}
+  }, [scrollPosition])
 
   
 

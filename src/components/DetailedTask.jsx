@@ -1,14 +1,13 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function DetailedTask({selectedUser, task, sendOffer, offerTaskIds, userAddress, type}) {
+export default function DetailedTask({selectedUser, task, sendOffer, offerTaskIds, taskId, type}) {
 
   const [offerSent, setOfferSent] = useState(offerTaskIds.includes(task.id));
   const user = selectedUser;
   const startDate = new Date(task.startDate);
   const endDate = new Date(task.endDate);
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`;
-  const taskId = `scroll-pos-${task.id}`;
 
   const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 active:bg-teal-800";
   const disabled = offerSent;

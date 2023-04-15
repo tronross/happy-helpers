@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
 
-  console.log(selectedTask)
 
   const [selectedId, setSelectedId] = useState(selectedTask.id)
   // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
