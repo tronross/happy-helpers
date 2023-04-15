@@ -8,7 +8,7 @@ import prisma from "../../../prisma/.db";
 import { useEffect, useState } from "react";
 
 
-export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
+export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
 
 
   const [selectedId, setSelectedId] = useState(selectedTask.id)
@@ -23,7 +23,7 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
   //   setNewSelectedId(selectedId)
   //   console.log(selectedId)
   // }, [selectedTask])
-  
+
   return (
     <>
     <Head>
@@ -32,7 +32,8 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main>
-    <NavBar />
+    <NavBar name={loggedInUser.firstName}
+                id={loggedInUser.id}/>
       <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
@@ -96,12 +97,22 @@ export async function getServerSideProps(context) {
     }
   })
 
+  const loggedInUser = await prisma.user.findUnique({
+    where: {
+      id: 2
+    },
+    include: {
+      address: true
+    }
+  })
+
   return {
     props: { selectedTask: JSON.parse(JSON.stringify(selectedTask)),
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
              similarTasks: JSON.parse(JSON.stringify(similarTasks)),
+             loggedInUser: JSON.parse(JSON.stringify(loggedInUser)),
             }
   };
 }

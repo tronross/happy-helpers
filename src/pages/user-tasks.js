@@ -15,7 +15,7 @@ import Sidebar from '@/components/Sidebar';
 // import addCoordsToUser from '../helpers/add-coords-to-user'
 // import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 
-export default function UserTasks({ userRequests }) {
+export default function UserTasks({ userRequests, user }) {
 
   // Hooks
   const [category, setCategory] = useState('All Categories');
@@ -94,7 +94,8 @@ export default function UserTasks({ userRequests }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <NavBar />
+      <NavBar name={user.firstName}
+                id={user.id}/>
       <main className="bg-neutral-100">
         <div className="flex">
           {/* <Sidebar
@@ -149,7 +150,7 @@ export const getServerSideProps = async function() {
   */
   const userRequests = await prisma.task.findMany({
     where: {
-      userId: 1
+      userId: 2
     },
     include: {
       address: true
@@ -159,7 +160,21 @@ export const getServerSideProps = async function() {
     },
   });
 
+  const user = await prisma.user.findUnique({
+    where: {
+      id: 2
+    },
+    include: {
+      address: true
+    }
+  })
+
+  
+
   return {
-    props: { userRequests: JSON.parse(JSON.stringify(userRequests)) }
+    props: { 
+      userRequests: JSON.parse(JSON.stringify(userRequests)),
+      user: JSON.parse(JSON.stringify(user))
+    }
   };
 };

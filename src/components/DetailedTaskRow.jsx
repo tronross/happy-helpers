@@ -11,20 +11,20 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
   const taskId = `scroll-pos-${selectedId}`;
 
 
-  const getScrollPos = async function()  {
-    await Promise.resolve(document.querySelector(`#${taskId}`))
-    .then(res => {
-      setScrollPosition(res.offsetLeft)
-    })
+  // const getScrollPos = async function()  {
+  //   await Promise.resolve(document.querySelector(`#${taskId}`))
+  //   .then(res => {
+  //     setScrollPosition(res.offsetLeft)
+  //   })
     // console.log(detailedTaskPos)
-  }
+  // }
 
   // const res = await Promise.all(getScrollPos)
 
   // console.log(res)
 
-  const [scrollPosition, setScrollPosition] = useState(getScrollPos);
-console.log(scrollPosition)
+//   const [scrollPosition, setScrollPosition] = useState(getScrollPos);
+// console.log(scrollPosition)
 
 
 
@@ -72,10 +72,10 @@ const changeTask = (id) => {
     }
   })
 
-  useEffect(()=> {
-    const scrollBox = document.querySelector(`#scrollbox${rowType}`);
-    scrollBox.scrollRight += {scrollPosition}
-  }, [scrollPosition])
+  // useEffect(()=> {
+  //   const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+  //   scrollBox.scrollRight += {scrollPosition}
+  // }, [scrollPosition])
 
   
 
