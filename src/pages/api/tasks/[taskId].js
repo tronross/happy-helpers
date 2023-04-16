@@ -11,9 +11,20 @@ export default async function handler(req, res) {
     console.log(task)
     res.json({ task })
   } if (req.method === 'PUT') {
-    console.log(req.body)
+
     const { taskId } = req.query;
-    console.log(`You have reached PUT api/tasks/${taskId}`)
+    const { newStatus } = req.body;
+
+    const updateTaskStatus = await prisma.task.update({
+      where: {
+        id: parseInt(taskId)
+      },
+      data: {
+        status: newStatus
+      }
+    });
+
+    // console.log('updateTaskStatus: ', updateTaskStatus);
     res.status(200).send('ok');
   }
 }
