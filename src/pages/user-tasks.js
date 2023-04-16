@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import RequestList from '@/components/RequestList';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
-import RequestSidebar from '@/components/RequestSidebar';
+import RequestSidebar from '@/components/RequestSideBar';
 
 export default function UserTasks({ userRequests, offers, user }) {
 
