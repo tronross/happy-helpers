@@ -155,7 +155,7 @@ export default function UserTasks({ userRequests, offers }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <NavBar />
+      <NavBar />
       <main className="bg-neutral-100">
         <div className="flex">
           <RequestSidebar

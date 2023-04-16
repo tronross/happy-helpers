@@ -61,7 +61,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
                 className="w-5 h-5 text-blue-600 bg-gray-100 border-teal-700 rounded"
                 onChange={event => setGiveStar(event.target.checked)}
               />
-              <label htmlFor="checkbox" className="ml-2 mt-4 text-sm font-medium text-teal-700">Recommend {offer.user.firstName} by giver her a star.</label>
+              <label htmlFor="checkbox" className="ml-2 mt-4 text-sm font-medium text-teal-700">Recommend {offer.user.firstName} by giving a star.</label>
             </div>
             <button
               className="mt-2 mb-4 inline-block w-[18em] h-[3em] leading-none bg-transparent hover:bg-teal-700 text-teal-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center items-center border border-teal-700 hover:border-transparent"
