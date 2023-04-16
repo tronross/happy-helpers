@@ -1,26 +1,58 @@
 import Request from '../components/Request';
 
-export default function RequestList({ requests }) {
+export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers }) {
+
+  const selectedClass = "outline outline-4 outline-teal-600";
 
   const requestItems = requests.map(request => {
-    return (
-      <li key={request.id}>
-        <Request
-          key={request.id}
-          name={request.name}
-          description={request.description}
-          category={request.category}
-          user={request.userId}
-          image={request.image}
-          status={request.status}
-          city={request.city}
-          address={request.address}
-          startDate={request.startDate}
-          endDate={request.endDate}
-          starred={request.starred}
-        />
-      </li>
-    );
+
+    const nbOffers = offers.filter((offer) => offer.taskId === request.id).length;
+
+    if (request.id === selectedRequestId) {
+      return (
+        <li key={request.id}>
+          <Request
+            id={request.id}
+            name={request.name}
+            description={request.description}
+            category={request.category}
+            user={request.userId}
+            image={request.image}
+            status={request.status}
+            city={request.city}
+            address={request.address}
+            startDate={request.startDate}
+            endDate={request.endDate}
+            starred={request.starred}
+            selectedClass={selectedClass}
+            onClick={setSelectedRequestId}
+            nbOffers={nbOffers}
+          />
+        </li>
+      );
+    } else {
+      return (
+        <li key={request.id}>
+          <Request
+            id={request.id}
+            name={request.name}
+            description={request.description}
+            category={request.category}
+            user={request.userId}
+            image={request.image}
+            status={request.status}
+            city={request.city}
+            address={request.address}
+            startDate={request.startDate}
+            endDate={request.endDate}
+            starred={request.starred}
+            selectedClass=""
+            onClick={setSelectedRequestId}
+            nbOffers={nbOffers}
+          />
+        </li>
+      );
+    }
   });
 
   return (

@@ -1,23 +1,34 @@
-import Button from "./Button";
-import DetailedTask from "./DetailedTask";
 import Task from "./Task";
 import RowButton from "./RowButton";
-import { useRouter } from "next/router";
 
 export default function TaskRow({userTasks, rowType, changeId}) {
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
 
-  const router = useRouter();
 
   const onClick = (id) => {
-    router.push(`/task/${id}`)
-    changeId(id)
+    window.location = (`/task/${id}`)
   }
 
-
+  
   const tasks = userTasks.map(task => {
-      return <li key={task.id} className="snap-center"><Task
+
+    const startDate = task.startDate || task.start_date
+    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+
+    const calcDistanceProp = function(distance) {
+      if (distance <= 1) {
+        return 'nearby';
+      } else {
+        return `${distance}km`
+      }
+    }
+  
+    const distanceProp = calcDistanceProp(task.distance);
+    
+    const city = task.city ? task.city : task.address.city;
+
+    return <li key={task.id} className="snap-center"><Task
           id={task.id}
           name={task.name}
           description={task.description}
@@ -25,8 +36,9 @@ export default function TaskRow({userTasks, rowType, changeId}) {
           user={task.userId}
           image={task.image}
           status={task.status}
-          city={task.city}
-          distance={task.distance}
+          city={city}
+          distance={distanceProp}
+          startDate={startDateString}
           row={true}
           onClick={onClick}
           />

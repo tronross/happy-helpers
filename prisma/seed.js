@@ -489,13 +489,12 @@ async function main() {
       description: 'Move bins to the bottom of the driveway for collection.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      startDate: new Date('2023-04-20 16:00+0500'),
-      endDate: new Date('2023-04-20 20:00+0500'),
+      startDate: new Date('2023-04-29 16:00+0500'),
+      endDate: new Date('2023-04-29 20:00+0500'),
       userId: 1,
       status: 'OPEN',
       nbHelpers: 1,
-      addressId: 1,
-      starred: true
+      addressId: 1
     }
   });
 
@@ -505,8 +504,8 @@ async function main() {
       description: 'Heavy couch needs to go up to 23rd floor apartment.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      startDate: new Date('2023-04-19 15:00+0500'),
-      endDate: new Date('2023-04-19 15:00+0500'),
+      startDate: new Date('2023-04-30 15:00+0500'),
+      endDate: new Date('2023-04-30 15:00+0500'),
       userId: 1,
       status: 'OPEN',
       nbHelpers: 3,
@@ -520,8 +519,8 @@ async function main() {
       description: 'I have broken my leg, need someone to walk the dog.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
-      startDate: new Date('2023-04-21 15:00+0500'),
-      endDate: new Date('2023-04-21 15:00+0500'),
+      startDate: new Date('2023-05-02 15:00+0500'),
+      endDate: new Date('2023-05-02 15:00+0500'),
       userId: 1,
       status: 'OPEN',
       nbHelpers: 1,
@@ -535,8 +534,8 @@ async function main() {
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      startDate: new Date('2023-04-18 12:00+0500'),
-      endDate: new Date('2023-04-18 13:00+0500'),
+      startDate: new Date('2023-05-18 12:00+0500'),
+      endDate: new Date('2023-05-18 13:00+0500'),
       status: 'OPEN',
       userId: 1,
       nbHelpers: 1,
@@ -550,12 +549,12 @@ async function main() {
       description: 'Bulb is too high for me to reach.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      startDate: new Date('2023-04-22 10:00+0500'),
-      endDate: new Date('2023-04-23 15:00+0500'),
+      startDate: new Date('2023-05-22 10:00+0500'),
+      endDate: new Date('2023-05-23 15:00+0500'),
       status: 'OPEN',
       userId: 1,
       nbHelpers: 1,
-      addressId: 5
+      addressId: 1
     }
   });
 
@@ -565,8 +564,8 @@ async function main() {
       description: 'Going on holiday, parking is too expensive at the airport.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      startDate: new Date('2023-04-19 15:00+0500'),
-      endDate: new Date('2023-04-19 15:00+0500'),
+      startDate: new Date('2023-05-19 15:00+0500'),
+      endDate: new Date('2023-05-19 15:00+0500'),
       status: 'OPEN',
       userId: 1,
       nbHelpers: 1,
@@ -583,8 +582,8 @@ async function main() {
       description: 'Any cakes would be welcome, I hate cooking.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Cooking',
-      startDate: new Date('2023-04-16 15:00+0500'),
-      endDate: new Date('2023-04-16 15:00+0500'),
+      startDate: new Date('2023-04-28 15:00+0500'),
+      endDate: new Date('2023-04-28 15:00+0500'),
       userId: 1,
       status: 'PENDING',
       nbHelpers: 1,
@@ -613,8 +612,8 @@ async function main() {
       description: 'My kids get hungry and I have to go out.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Cooking',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-01 18:00+0500'),
+      endDate: new Date('2023-05-10 20:00+0500'),
       status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
@@ -628,8 +627,8 @@ async function main() {
       description: 'I will be on holiday next week and my cat did not want to come.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-11 18:00+0500'),
+      endDate: new Date('2023-05-30 20:00+0500'),
       status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
@@ -644,8 +643,8 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
       status: 'PENDING',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-10 18:00+0500'),
+      endDate: new Date('2023-05-10 18:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -658,8 +657,8 @@ async function main() {
       description: 'My frog is out of control, need help keeping it on lillypad.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Animal Care',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-10 18:00+0500'),
+      endDate: new Date('2023-05-10 18:00+0500'),
       status: 'PENDING',
       userId: 1,
       nbHelpers: 1,
@@ -676,11 +675,12 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
       status: 'COMPLETE',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-10 18:00+0500'),
+      endDate: new Date('2023-04-10 18:00+0500'),
       userId: 1,
       nbHelpers: 10,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 
@@ -690,12 +690,13 @@ async function main() {
       description: 'My yard is overrun with squirrels, need help to chase them away.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-01 18:00+0500'),
+      endDate: new Date('2023-04-01 18:00+0500'),
       userId: 1,
       status: 'COMPLETE',
       nbHelpers: 1,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 
@@ -706,8 +707,8 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
       status: 'COMPLETE',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-05 18:00+0500'),
+      endDate: new Date('2023-04-10 18:00+0500'),
       userId: 1,
       nbHelpers: 2,
       addressId: 1
@@ -721,8 +722,8 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yardwork',
       status: 'COMPLETE',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-03-30 18:00+0500'),
+      endDate: new Date('2023-03-30 18:00+0500'),
       userId: 1,
       nbHelpers: 1,
       addressId: 1
@@ -736,11 +737,12 @@ async function main() {
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
       status: 'COMPLETE',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-15 18:00+0500'),
+      endDate: new Date('2023-04-15 22:00+0500'),
       userId: 1,
       nbHelpers: 1,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 
@@ -750,12 +752,13 @@ async function main() {
       description: 'Need co-pilot to take over while I sleep on excursion to Mars and back.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-07 18:00+0500'),
+      endDate: new Date('2023-04-10 22:00+0500'),
       status: 'COMPLETE',
       userId: 1,
       nbHelpers: 1,
-      addressId: 1
+      addressId: 1,
+      starred: true
     }
   });
 
@@ -767,8 +770,8 @@ async function main() {
       description: 'I love to waterski, but have no-one to drive the boat since my husband fell overboard last year.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-07 18:00+0500'),
+      endDate: new Date('2023-05-10 22:00+0500'),
       status: "OPEN",
       userId: 2,
       nbHelpers: 2,
@@ -782,8 +785,8 @@ async function main() {
       description: 'I have a tandem but my boyfriend dumped me.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-06-07 18:00+0500'),
+      endDate: new Date('2023-06-10 22:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -797,8 +800,8 @@ async function main() {
       description: 'Need help to get my groceries from the car into the house.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-01 18:00+0500'),
+      endDate: new Date('2023-05-01 18:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -812,8 +815,8 @@ async function main() {
       description: 'Need help installing shelf in bathroom above toilet, should be able to hold 10lbs.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-30 15:00+0500'),
+      endDate: new Date('2023-04-30 15:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -827,8 +830,8 @@ async function main() {
       description: 'Need someone to rake my lawn after a long winter, can no longer get around as easily.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yard Work',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-01 15:00+0500'),
+      endDate: new Date('2023-05-01 15:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -842,8 +845,8 @@ async function main() {
       description: 'I have a small hole in my fence and cats keep getting in and eatting my strawberries. Need someone to wire it closed.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yard Work',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-02 15:00+0500'),
+      endDate: new Date('2023-05-02 15:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -859,8 +862,8 @@ async function main() {
       description: 'Looking for someone to make a custom rubber duck for the annual duck race.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-01 15:00+0500'),
+      endDate: new Date('2023-05-01 15:00+0500'),
       status: "PENDING",
       userId: 2,
       nbHelpers: 2,
@@ -874,8 +877,8 @@ async function main() {
       description: 'I have a fridge, stove and dishwasher I need to get rid of, will have trailer to load onto with someone to take it away.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-02 15:00+0500'),
+      endDate: new Date('2023-05-02 15:00+0500'),
       userId: 2,
       status: "PENDING",
       nbHelpers: 1,
@@ -889,8 +892,8 @@ async function main() {
       description: 'Need help changing my curtains, they are 15ft from floor and I dont have a ladder.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Housework',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-05 15:00+0500'),
+      endDate: new Date('2023-05-06 15:00+0500'),
       userId: 2,
       status: "PENDING",
       nbHelpers: 1,
@@ -904,8 +907,8 @@ async function main() {
       description: 'Need someone to pick up pet food at mailbox, there are 4 10lb bags.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-06-01 15:00+0500'),
+      endDate: new Date('2023-06-01 15:00+0500'),
       userId: 2,
       status: "PENDING",
       nbHelpers: 1,
@@ -919,8 +922,8 @@ async function main() {
       description: 'Need someone to dust my fan, with tall ceilings I am unable to reach up there with no ladder.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Housework',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-05-11 15:00+0500'),
+      endDate: new Date('2023-05-12 15:00+0500'),
       userId: 2,
       status: "PENDING",
       nbHelpers: 1,
@@ -934,8 +937,8 @@ async function main() {
       description: 'Need someone to remove the large hanging icicles as they are melting and getting dangerous to walk under.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yard Work',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-06-05 15:00+0500'),
+      endDate: new Date('2023-06-06 15:00+0500'),
       userId: 2,
       status: "PENDING",
       nbHelpers: 1,
@@ -951,12 +954,13 @@ async function main() {
       description: 'Looking for someone to deliver flyers Sat and Sun as I am out of town',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Other',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-01 15:00+0500'),
+      endDate: new Date('2023-04-01 15:00+0500'),
       status: "COMPLETE",
       userId: 2,
       nbHelpers: 2,
-      addressId: 2
+      addressId: 2,
+      starred: true
     }
   });
 
@@ -966,12 +970,13 @@ async function main() {
       description: 'I have a standard car needing to be moved down the road but I am unable to drive stick',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Driving',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-11 15:00+0500'),
+      endDate: new Date('2023-04-11 15:00+0500'),
       userId: 2,
       status: "COMPLETE",
       nbHelpers: 1,
-      addressId: 2
+      addressId: 2,
+      starred: true
     }
   });
 
@@ -981,8 +986,8 @@ async function main() {
       description: 'My turtle gets lonely and I am away for a week, looking for someone to watch him',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Housework',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-11 15:00+0500'),
+      endDate: new Date('2023-04-12 15:00+0500'),
       userId: 2,
       status: "COMPLETE",
       nbHelpers: 1,
@@ -996,12 +1001,13 @@ async function main() {
       description: 'Need someone to salt the walkway at the appartment entrance tomorrow morning as I have an appointment',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Heavy Lifting',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-01-01 15:00+0500'),
+      endDate: new Date('2023-01-01 15:00+0500'),
       userId: 2,
       status: "COMPLETE",
       nbHelpers: 1,
-      addressId: 2
+      addressId: 2,
+      starred: true
     }
   });
 
@@ -1011,8 +1017,8 @@ async function main() {
       description: 'Need someone to man the game booth at our upcoming festival, duties include making sure each kid gets a turn and a prize',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Charity & Causes',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-03-01 15:00+0500'),
+      endDate: new Date('2023-03-10 15:00+0500'),
       userId: 2,
       status: "COMPLETE",
       nbHelpers: 1,
@@ -1026,8 +1032,8 @@ async function main() {
       description: 'Need help moving stump, was dug out last year and would like it gone by end of month.',
       image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'Yard Work',
-      // startDate: Date.now(),
-      // endDate:
+      startDate: new Date('2023-04-01 15:00+0500'),
+      endDate: new Date('2023-04-01 20:00+0500'),
       userId: 2,
       status: "COMPLETE",
       nbHelpers: 1,
@@ -1379,7 +1385,7 @@ async function main() {
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
     data: {
-      userId: 1,
+      userId: 2,
       taskId: 4,
       status: 'OPEN'
     }
@@ -1387,16 +1393,168 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 1,
+      userId: 3,
+      taskId: 4,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 4,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
       taskId: 5,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 6,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 13,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 14,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 15,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
+      taskId: 1,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 10,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 7,
       status: 'PENDING'
     }
   });
 
   await prisma.offer.create({
     data: {
-      userId: 1,
-      taskId: 6,
+      userId: 4,
+      taskId: 8,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 9,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
+      taskId: 10,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 11,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
+      taskId: 12,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
+      taskId: 13,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 14,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 15,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 16,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 17,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 18,
       status: 'COMPLETE'
     }
   });
@@ -1404,7 +1562,23 @@ async function main() {
   await prisma.offer.create({
     data: {
       userId: 1,
-      taskId: 13,
+      taskId: 19,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 19,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 19,
       status: 'OPEN'
     }
   });
@@ -1412,7 +1586,47 @@ async function main() {
   await prisma.offer.create({
     data: {
       userId: 1,
-      taskId: 14,
+      taskId: 20,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 22,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 22,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 24,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 24,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 25,
       status: 'PENDING'
     }
   });
@@ -1420,11 +1634,90 @@ async function main() {
   await prisma.offer.create({
     data: {
       userId: 1,
-      taskId: 15,
+      taskId: 26,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 27,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 28,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 29,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 30,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 31,
       status: 'COMPLETE'
     }
   });
 
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 32,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 33,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 34,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 35,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 36,
+      status: 'COMPLETE'
+    }
+  });
 }
 
 main()

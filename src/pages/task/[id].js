@@ -5,12 +5,12 @@ import axios from "axios";
 import DetailedTaskRow from "@/components/DetailedTaskRow";
 import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import addDistanceToTasks from '../../helpers/add-distance-to-tasks';
 
 
-export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks}) {
+export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
 
-  console.log(selectedTask)
 
   const [selectedId, setSelectedId] = useState(selectedTask.id)
   // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
@@ -20,11 +20,19 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
     .then(setOffer(true))
   }
 
-  // useEffect(() => {
-  //   setNewSelectedId(selectedId)
-  //   console.log(selectedId)
-  // }, [selectedTask])
+  const setScroll = (id, rowType) => {
+    setTimeout(function () {
+      if (typeof window !== "undefined") {
+        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+        scrollBox.scrollLeft = (scrollPos - 200);
+        console.log(scrollPos)
+        console.log(scrollBox.scrollLeft)
+      }
+    }, 100);
+  }
   
+
   return (
     <>
     <Head>
@@ -33,17 +41,22 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <main>
-    <NavBar />
+    <NavBar name={loggedInUser.firstName}
+                id={loggedInUser.id}/>
+    <div className="">
       <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
-        <DetailedTaskRow sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
+        <DetailedTaskRow setScroll={setScroll} sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
+    </div>
+    <div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
-        <TaskRow userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
+        <TaskRow setScroll={setScroll} userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>
+    </div>
     </main>
 
     <Footer/>
@@ -94,15 +107,29 @@ export async function getServerSideProps(context) {
     where: {
       category: selectedTask.category,
       status: "OPEN"
-    }
+    },
+    include: {
+      address: true
+    },
   })
 
+  const loggedInUser = await prisma.user.findUnique({
+    where: {
+      id: 2
+    },
+    include: {
+      address: true
+    }
+  })
+  addDistanceToTasks(userTasks, loggedInUser);
+  addDistanceToTasks(similarTasks, loggedInUser);
   return {
     props: { selectedTask: JSON.parse(JSON.stringify(selectedTask)),
              selectedUser: JSON.parse(JSON.stringify(currentUser)),
              userTasks: JSON.parse(JSON.stringify(userTasks)),
              offers: JSON.parse(JSON.stringify(offers)),
              similarTasks: JSON.parse(JSON.stringify(similarTasks)),
+             loggedInUser: JSON.parse(JSON.stringify(loggedInUser)),
             }
   };
 }

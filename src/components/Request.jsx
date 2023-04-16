@@ -1,68 +1,74 @@
+// @refresh reset
 export default function Request(props) {
-
-  // test code
-  // console.log('props', props);
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
+  const endDate = new Date(props.endDate);
+  
+  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative`;
+
+  // Colour-code the status in a pill button style
+  const getStatusStyle = function(status) {
+    switch (status) {
+    case 'OPEN':  return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-teal-200 text-teal-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+    case 'PENDING': return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-violet-200 text-violet-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+    case 'COMPLETE': return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-amber-200 text-amber-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+    }
+  };
+  
+  const statusStyle = getStatusStyle(props.status);
 
   return (
-    <div className="border-1 shadow-lg m-4 bg-white rounded-lg">
-      <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
-      <section className="px-4">
-        <h5 className=" text-xl leading-tight text-teal-700">
-          {props.name}
-        </h5>
-        <p className="mb-2 text-base text-teal-700">
-          {props.address.city}
-        </p>
-        <p className="text-base text-teal-700 font-bold">
-          {props.category}
-        </p>
-        <p className="text-sm text-teal-700 font-bold">
-          {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}
-        </p>
-        <p className="text-base text-teal-700 line-clamp-2 h-20">
-          {props.description}
-        </p>
-        <p className="text-sm text-teal-700">
-          Status: <span className="font-bold">{props.status}</span>
-        </p>
-      </section>
-      <div className="p-4 text-sm text-gray-700 flex justify-between items-center">
-        <button className="inline-block w-[8em] h-[3em] leading-none bg-transparent hover:bg-teal-700 text-teal-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center border border-teal-700 hover:border-transparent">
-          Edit
-        </button>
-        <button className="inline-block w-[8em] h-[3em] leading-none bg-transparent hover:bg-red-700 text-red-700 hover:text-white rounded font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center border border-red-700 hover:border-transparent">
-          Completed
-        </button>
-      </div>
-      <div className="p-4 text-sm text-gray-700 flex justify-between items-center">
+    <div className={className} onClick={() => props.onClick(props.id)}>
+      {props.nbOffers > 0 && props.status === 'OPEN' && (
+        <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
+          {props.nbOffers}
+        </div>
+      )}
+      {props.starred && props.status === 'COMPLETE' && (
         <svg
-          className="h-7 w-7 text-teal-500 hover:fill-current hover:cursor-pointer"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-        </svg>
-
-        <svg
-          className={"h-9 w-9 stroke-yellow-300 hover:fill-yellow-300 hover:cursor-pointer " + (props.starred ? "fill-yellow-300" : "fill-none")}
+          className="absolute -top-4 -right-3 h-8 w-8 stroke-yellow-300 hover:fill-yellow-300 hover:cursor-pointer fill-yellow-300"
           viewBox="0 0 24 24"
           strokeWidth="2"
         >
-          {props.starred && <title>You have given the volunteer for this task a star!</title>}
+          <title>You have given the volunteer for this task a star!</title>
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
           />
         </svg>
-      </div>
+      )}
+      <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
+      <section className="px-4 text-teal-700 text-base">
+        <h5 className="mb-1 text-xl leading-tight line-clamp-1">{props.name}</h5>
+        {/* <p className="mb-1">{props.address.city}</p> */}
+        <p className="mb-1 font-bold">{props.category}</p>
+        {/* <p>Starts at:</p> */}
+        <p className="text-sm">
+          {startDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+        </p>
+        <p className="mb-1 text-sm font-bold">
+          {startDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
+        </p>
+        {/* <p>Ends at:</p>
+        <p className="text-sm">
+          {endDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+        </p>
+        <p className="mb-1 text-sm">
+          {endDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
+        </p> */}
+        <div className="">
+          <p className="h-12 line-clamp-2">
+            {props.description}
+          </p>
+        </div>
+        <div className="my-4 flex justify-between items-center">
+          <div className={statusStyle}>
+            {props.status}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

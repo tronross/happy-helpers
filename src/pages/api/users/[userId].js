@@ -11,10 +11,24 @@ export default async function handler(req, res) {
     console.log(user)
     res.json({ user })
   } if (req.method === 'PUT') {
-    console.log(req.body)
+
     const { userId } = req.query;
+    const { field } = req.body;
+
+    if (field === 'stars') {
+
+      const updateStarStatus = await prisma.user.update({
+        where: {
+          id: parseInt(userId)
+        },
+        data: {
+          stars: { increment: 1 }
+        }
+      });
+      // console.log('updateStarStatus: ', updateStarStatus);
+    }
+
     res.status(200).send('ok');
-    console.log(`You have reached PUT api/users/${userId}`)
   }
 }
 
