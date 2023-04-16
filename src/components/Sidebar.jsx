@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function Sidebar(props) {
   // Button state
@@ -50,6 +51,16 @@ export default function Sidebar(props) {
     });
   }
 
+  const [value, setValue] = useState({
+    startDate: new Date(),
+    endDate: new Date().setMonth(4)
+  });
+
+  const handleValueChange = (newValue) => {
+    console.log("newValue:", newValue);
+    setValue(newValue);
+  }
+
   // Call filterTasks on change of filters state
   useEffect(() => {
     console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0,10))
@@ -96,6 +107,12 @@ export default function Sidebar(props) {
             }
           })}
         </section>
+        <Datepicker
+                primaryColor={"teal"}
+                className="color-theme: light"
+                value={value}
+                onChange={handleValueChange}
+            />
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
           <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
