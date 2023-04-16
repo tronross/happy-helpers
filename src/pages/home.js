@@ -66,7 +66,7 @@ export default function Home({ tasks, user }) {
   });
 
   const [category, setCategory] = useState(taskFilters.category);
-  const [cityFilter, setCityFilter] = useState('');
+  // const [cityFilter, setCityFilter] = useState('');
 
   // Sort and Filter Tasks
   const filterTasks = function (tasks, filters) {
@@ -87,16 +87,17 @@ export default function Home({ tasks, user }) {
 
     tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
 
-    if (cityFilter === '') {
+    if (filters.city === '') {
       tasksInCity = tasksCloserThan;
     } else {
-      tasksInCity = tasksCloserThan.filter(task => task.city.includes(cityFilter.toLowerCase))
+      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city))
+      console.log(tasksInCity)
     }
 
     if (filters.category === 'All Categories') {
       tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
     } else {
-      tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
+      tasksInCategory = tasksInCity.filter(task => task.category === filters.category);
     }
 
     // Sort
@@ -130,7 +131,6 @@ export default function Home({ tasks, user }) {
             filters={taskFilters}
             setFilters={setTaskFilters}
             setCategory={setCategory}
-            setCityFilter={setCityFilter}
             distances={distances}
           />
           <section className='flex flex-col p-2 grow'>

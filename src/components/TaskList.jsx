@@ -9,7 +9,7 @@ export default function TaskList(props) {
   }
 
   const tasks = props.tasks.map(task => {
-    console.log(task)
+    // console.log(task)
     const startDate = task.startDate || task.start_date
     const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
 
