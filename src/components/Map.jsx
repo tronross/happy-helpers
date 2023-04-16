@@ -2,8 +2,8 @@ import {useEffect, useRef} from 'react';
 import {Loader} from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
 
-export default function Map() {
-
+export default function Map(props) {
+  
   Geocode.setApiKey(process.env.NEXT_PUBLIC_API_KEY);
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();
@@ -52,11 +52,26 @@ export default function Map() {
     console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng,'K'));
 
   };
-  getDistanceFromAddresses("Centre Bell", "CN Tower");
+  // getDistanceFromAddresses("Centre Bell", "CN Tower");
 
   
 
+  const tasks = props.tasks;
+  const taskMarkers = tasks.map(task => {
+    const lat = task.address.latitude;
+    const lng = task.address.longitude;
+    const title = task.name;
+    return {
+      lat,
+      lng,
+      title
+    }
 
+  })
+  // console.log(tasks)
+  // console.log(taskMarkers)
+
+  
   // This code displays google maps on the page... will maybe use as a stretch
   const googlemap = useRef(null);
 
@@ -71,8 +86,8 @@ export default function Map() {
     loader.load().then(() => {
       const google = window.google;
       map = new google.maps.Map(googlemap.current, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8,
+        center: {lat: 43.70536, lng: -79.45664},
+        zoom: 12,
         /*
         fullscreenControl: false, // remove the top-right button
         mapTypeControl: false, // remove the top-left buttons
@@ -80,7 +95,26 @@ export default function Map() {
         zoomControl: false, // remove the bottom-right buttons
         */
       });
+      new google.maps.Marker({
+        position: {lat: 43.70536, lng: -79.45664},
+        map,
+        title: "Anderson",
+      });
+      taskMarkers.forEach(task =>{
+        const lat = Number(task.lat);
+        const lng = Number(task.lng);
+        const title = task.title;
+        // const lat = Number(task.address.latitude);
+        //   const lng = Number(task.address.longitude);
+        //   const title = task.name;
 
+        console.log(lat, lng, title)
+        new google.maps.Marker({
+          position: { lat: lat, lng: lng },
+          map,
+          title: title,
+        }); 
+      })
     }); // useEffect
   }); // function
 
