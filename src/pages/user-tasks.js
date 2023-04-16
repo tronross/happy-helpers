@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import RequestSidebar from '@/components/RequestSidebar';
 
-export default function UserTasks({ userRequests, offers }) {
+export default function UserTasks({ userRequests, offers, user }) {
 
   // Hooks
   const [category, setCategory] = useState('All Categories');
@@ -137,7 +137,6 @@ export default function UserTasks({ userRequests, offers }) {
     setCategory('All Categories');
     setStatus('Any Status');
     setSelectedRequestId();
-    // router.refresh(); // Force reload
   };
 
   const handleCategoryChange = function(event) {
@@ -155,10 +154,8 @@ export default function UserTasks({ userRequests, offers }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NavBar />
       <main className="bg-neutral-100">
-      <NavBar name={user.firstName}
-                id={user.id}/>
+        <NavBar name={user.firstName} id={user.id} />
         <div className="flex">
           <RequestSidebar
             status={status}
@@ -195,12 +192,12 @@ export default function UserTasks({ userRequests, offers }) {
 // Data fetching
 export const getServerSideProps = async function() {
 
-  /* Capture tasks with addresses:
-    SELECT tasks.*, addresses.* FROM tasks
-    JOIN addresses ON tasks.address_id = addresses.id
-    WHERE tasks.user_id = 1
-    ORDER BY start_date desc;
-  */
+  /** Capture tasks with addresses:
+   *  SELECT tasks.*, addresses.* FROM tasks
+   *  JOIN addresses ON tasks.address_id = addresses.id
+   * WHERE tasks.user_id = 1
+   * ORDER BY start_date desc;
+   */
   const userRequests = await prisma.task.findMany({
     where: {
       userId: 2
@@ -213,17 +210,30 @@ export const getServerSideProps = async function() {
     },
   });
 
-  /* Capture offers with volunteer's user info:
-    SELECT offers.*, users.* FROM offers
-    JOIN users ON offers.user_id = users.id;
-  */
+  /** Capture offers with volunteer's user info:
+   * SELECT offers.*, users.* FROM offers
+   * JOIN users ON offers.user_id = users.id;
+   */
   const offers = await prisma.offer.findMany({
     include: {
       user: true
     }
   });
 
+  /** Capture the logged in user:
+   * SELECT * FROM users
+   * WHERE id = 1;
+   */
+  const user = await prisma.user.findUnique({
+    where: {
+      id: 1
+    },
+    include: {
+      address: true
+    }
+  });
+
   return {
-    props: { userRequests: JSON.parse(JSON.stringify(userRequests)), offers }
+    props: { userRequests: JSON.parse(JSON.stringify(userRequests)), offers, user: JSON.parse(JSON.stringify(user)) }
   };
 };
