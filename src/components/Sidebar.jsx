@@ -83,6 +83,11 @@ export default function Sidebar(props) {
             }
           })}
         </section>
+        <section className="flex flex-row space-x-1.5 items-baseline">
+          <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">City:</h5>
+          <input className="h-8 block w-full text-m text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"></input>
+        </section>
+       
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
           {props.distances.map((distance, idx) => {
