@@ -1193,6 +1193,165 @@ async function main() {
     }
   });
 
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 19,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 19,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 19,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 20,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 22,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 22,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 24,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 24,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 25,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 26,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 27,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 28,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 29,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 30,
+      status: 'PENDING'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 31,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 32,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 33,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 34,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 1,
+      taskId: 35,
+      status: 'COMPLETE'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 36,
+      status: 'COMPLETE'
+    }
+  });
 }
 
 main()

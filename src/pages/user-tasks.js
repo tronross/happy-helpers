@@ -234,6 +234,10 @@ export const getServerSideProps = async function() {
   });
 
   return {
-    props: { userRequests: JSON.parse(JSON.stringify(userRequests)), offers, user: JSON.parse(JSON.stringify(user)) }
+    props: {
+      userRequests: JSON.parse(JSON.stringify(userRequests)),
+      offers,
+      user: JSON.parse(JSON.stringify(user))
+    }
   };
 };
