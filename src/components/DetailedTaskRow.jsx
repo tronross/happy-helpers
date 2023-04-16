@@ -1,21 +1,27 @@
-import Button from "./Button";
 import DetailedTask from "./DetailedTask";
 import Task from "./Task";
-import { useEffect, useState } from "react";
 import RowButton from "./RowButton";
+import { useEffect } from "react";
 
-export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId}) {
-  const [currentTask, setCurrentTask] = useState(selectedId);
+export default function DetailedTaskRow({selectedId, selectedUser, userTasks, sendOffer, offers ,userAddress, rowType, setSelectedId, setScroll}) {
+  
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
+  const taskId = `scroll-pos-${selectedId}`;
 
-  const changeTask = (id) => { 
+
+
+  useEffect(() => {
+    setScroll(taskId, rowType)
+  }, [selectedId]) 
+  
+
+  
+
+const changeTask = (id) => { 
     setSelectedId(id)
   }
 
-  // useEffect(() => {
-  //   setSelectedId(selectedId)
-  // }, [selectedId])
 
   const offerTaskIds = offers.map(offer => (
    offer.taskId 
@@ -32,6 +38,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
           sendOffer={sendOffer}
           offerTaskIds={offerTaskIds}
           userAddress={userAddress}
+          taskId={taskId}
         />
         </li>
     } else {
@@ -52,7 +59,10 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
     }
   })
 
- 
+  // useEffect(()=> {
+  //   const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+  //   scrollBox.scrollRight += {scrollPosition}
+  // }, [scrollPosition])
 
   
 
@@ -75,7 +85,7 @@ export default function DetailedTaskRow({selectedId, selectedUser, userTasks, se
             <RowButton rowType={rowType} id={buttonsId} svg="next" onClick={(event) => scrollRight(event)}/>  
         </div>
       <div id={scrollboxId} className=".no-scrollbar mx-[8em] rounded flex justify-start list-none overflow-scroll overflow-hidden scroll-smooth scrollbar-hide snap-proximity  snap-x relative ">
-        <div className="flex items-center p-3 task-container">
+        <div className="flex items-center task-container">
           {tasks}
         </div>
       </div>

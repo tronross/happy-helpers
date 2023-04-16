@@ -157,6 +157,8 @@ export default function UserTasks({ userRequests, offers }) {
       </Head>
       <NavBar />
       <main className="bg-neutral-100">
+      <NavBar name={user.firstName}
+                id={user.id}/>
         <div className="flex">
           <RequestSidebar
             status={status}
@@ -201,7 +203,7 @@ export const getServerSideProps = async function() {
   */
   const userRequests = await prisma.task.findMany({
     where: {
-      userId: 1
+      userId: 2
     },
     include: {
       address: true
