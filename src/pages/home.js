@@ -61,10 +61,12 @@ export default function Home({ tasks, user }) {
     distance: 50,
     category: 'All Categories',
     sort: 'Date',
-    date: 'All'
+    date: 'All',
+    city: ''
   });
 
-  const [category, setCategory] = useState(taskFilters.category)
+  const [category, setCategory] = useState(taskFilters.category);
+  const [cityFilter, setCityFilter] = useState('');
 
   // Sort and Filter Tasks
   const filterTasks = function (tasks, filters) {
@@ -73,6 +75,7 @@ export default function Home({ tasks, user }) {
     let tasksInCategory;
     let sortedFilteredTasks;
     let tasksCloserThan;
+    let tasksInCity;
     let distance;
 
     // Filters
@@ -83,6 +86,12 @@ export default function Home({ tasks, user }) {
     }
 
     tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
+
+    if (cityFilter === '') {
+      tasksInCity = tasksCloserThan;
+    } else {
+      tasksInCity = tasksCloserThan.filter(task => task.city.includes(cityFilter.toLowerCase))
+    }
 
     if (filters.category === 'All Categories') {
       tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
@@ -121,6 +130,7 @@ export default function Home({ tasks, user }) {
             filters={taskFilters}
             setFilters={setTaskFilters}
             setCategory={setCategory}
+            setCityFilter={setCityFilter}
             distances={distances}
           />
           <section className='flex flex-col p-2 grow'>
