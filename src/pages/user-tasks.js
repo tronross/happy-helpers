@@ -65,7 +65,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     await axios.put(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
 
     if (giveStar) {
-      await axios.put(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+      await axios.put(`http://localhost:3000/api/users/${volunteerId}/giveStar`, {field: 'stars'});
     }
 
     localStorage.setItem("selectedRequestId", selectedRequestId);

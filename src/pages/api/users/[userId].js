@@ -10,7 +10,12 @@ export default async function handler(req, res) {
     })
     console.log(user)
     res.json({ user })
+
   } if (req.method === 'PUT') {
+    
+  }
+
+  } if (req.method === 'PATCH') {
 
     const { userId } = req.query;
     const { field } = req.body;
