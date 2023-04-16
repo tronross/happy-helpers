@@ -14,6 +14,7 @@ export default function TaskList(props) {
     const startDate = task.startDate || task.start_date
     const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
 
+    // Provide more meaningful description for distance, where it is less than 1km (also helps with rounding errors)
     const calcDistanceProp = function(distance) {
       if (distance <= 1) {
         return 'nearby';
