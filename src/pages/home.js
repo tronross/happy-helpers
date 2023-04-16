@@ -39,7 +39,7 @@ const sidebarOptions = [
   'Housework',
   'Personal Care',
   'Tech Support',
-  'Yardwork'
+  'Yard Work'
 ];
 
 const distances = [
