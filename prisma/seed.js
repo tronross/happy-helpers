@@ -253,7 +253,7 @@ async function main() {
       status: 'OPEN',
       userId: 1,
       nbHelpers: 1,
-      addressId: 5
+      addressId: 1
     }
   });
 

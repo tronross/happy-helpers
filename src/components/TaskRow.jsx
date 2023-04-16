@@ -1,5 +1,3 @@
-import Button from "./Button";
-import DetailedTask from "./DetailedTask";
 import Task from "./Task";
 import RowButton from "./RowButton";
 import { useRouter } from "next/router";
@@ -11,7 +9,7 @@ export default function TaskRow({userTasks, rowType, changeId}) {
   const router = useRouter();
 
   const onClick = (id) => {
-    router.push(`/task/${id}`)
+    window.location = (`/task/${id}`)
     changeId(id)
   }
 
