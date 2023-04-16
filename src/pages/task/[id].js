@@ -20,14 +20,15 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
   }
 
   const setScroll = (id, rowType) => {
-    
-    if (typeof window !== "undefined") {
-      const scrollPos = document.querySelector(`#${id}`).offsetLeft;
-      const scrollBox = document.querySelector(`#scrollbox${rowType}`);
-      scrollBox.scrollLeft = (scrollPos - 200);
-      console.log(scrollPos)
-      console.log(scrollBox.scrollLeft)
-    }
+    setTimeout(function () {
+      if (typeof window !== "undefined") {
+        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+        scrollBox.scrollLeft = (scrollPos - 200);
+        console.log(scrollPos)
+        console.log(scrollBox.scrollLeft)
+      }
+    }, 100);
   }
   
 
@@ -41,16 +42,20 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
     <main>
     <NavBar name={loggedInUser.firstName}
                 id={loggedInUser.id}/>
+    <div className="">
       <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
       <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
         <DetailedTaskRow setScroll={setScroll} sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
+    </div>
+    <div>
       <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
       <div className="">
         <TaskRow setScroll={setScroll} userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>
+    </div>
     </main>
 
     <Footer/>
