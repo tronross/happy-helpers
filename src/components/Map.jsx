@@ -55,7 +55,7 @@ export default function Map(props) {
   // getDistanceFromAddresses("Centre Bell", "CN Tower");
 
   
-
+  // Convert filteredTasks to Marker-compatible objects
   const tasks = props.tasks;
   const taskMarkers = tasks.map(task => {
     const lat = task.address.latitude;
@@ -66,13 +66,10 @@ export default function Map(props) {
       lng,
       title
     }
-
   })
-  // console.log(tasks)
-  // console.log(taskMarkers)
 
   
-  // This code displays google maps on the page... will maybe use as a stretch
+  // This code displays google maps on the page
   const googlemap = useRef(null);
 
   useEffect(() => {
@@ -95,6 +92,7 @@ export default function Map(props) {
         zoomControl: false, // remove the bottom-right buttons
         */
       });
+      // Position map to be 
       new google.maps.Marker({
         position: {lat: 43.70536, lng: -79.45664},
         map,
@@ -104,10 +102,6 @@ export default function Map(props) {
         const lat = Number(task.lat);
         const lng = Number(task.lng);
         const title = task.title;
-        // const lat = Number(task.address.latitude);
-        //   const lng = Number(task.address.longitude);
-        //   const title = task.name;
-
         console.log(lat, lng, title)
         new google.maps.Marker({
           position: { lat: lat, lng: lng },
