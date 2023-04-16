@@ -8,23 +8,24 @@ export default function Sidebar(props) {
     sort: 'Date'
   });
 
-  // City filter state
-
-  const [cityFilter, setCityFilter] = useState('');
+  
 
   // Click handlers
   const dropdownSelect = (e) => {
-    const select = e.target.value
+    const select = e.target.value;
     props.setCategory(select === 'All Categories' ? '' : select)
     setClicked(prev => ({ ...prev, category: select }));
     props.setFilters(prev => ({ ...prev, category: select }));
   }
 
   const filterCity = (e) => {
-   setCityFilter(e.target.value);
+   const cityFilter = e.target.value;
+   console.log(cityFilter)
+   props.setFilters(prev => ({ ...prev, city: cityFilter }));
+  }
 
-   
-
+  const clearCityFilter = () => {
+    document.getElementById('cityFilter').reset();
   }
 
   const closerThan = (e) => {
@@ -94,9 +95,10 @@ export default function Sidebar(props) {
             }
           })}
         </section>
-        <section className="flex flex-row space-x-1.5 items-baseline">
           <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">City:</h5>
-          <input className="h-8 block w-full text-m text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 " name={cityFilter} onChange={cityFilter} ></input>
+        <section className="flex flex-row space-x-1.5 items-baseline">
+          <input className="h-8 w-400 block w-full text-m text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 " name="cityFilter" type="text" onChange={filterCity} id="cityFilter" ></input>
+          <button className="inline-flex justify-center items-center gap-2 bg-teal-600 h-8 px-4 py-1 rounded text-white">clear</button>
         </section>
        
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
