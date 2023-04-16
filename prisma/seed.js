@@ -228,7 +228,7 @@ async function main() {
           phone: '(647)447-2422',
           stars: 25,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/11.jpg',
-          skills: 'Animal care'
+          skills: 'Driving, mechanic.'
         }
       }
     }
@@ -394,6 +394,53 @@ async function main() {
       }
     }
   });
+
+  await prisma.address.create({
+    data: {
+      address: '2393 Queen St E',
+      city: 'Toronto',
+      postcode: 'M4E 1H5',
+      latitude: '43.672607330457325',
+      longitude: '-79.28685648616003',
+      Users: {
+        create: {
+          firstName: 'Samuel',
+          lastName: 'Dormand',
+          description: 'I like to go grocery shopping, and house-sitting.',
+          email: 'dormand1237@gmail.com',
+          password: 'hsh%9t',
+          phone: '(647)788-9955',
+          stars: 12,
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/39.jpg',
+          skills: 'House-sitting, errands, yardwork.'
+        }
+      }
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '26 Juniper Ave',
+      city: 'Toronto',
+      postcode: 'M4L 1S3',
+      latitude: '43.676853518866615',
+      longitude: '-79.30116247387848',
+      Users: {
+        create: {
+          firstName: 'Anita',
+          lastName: 'Silvers',
+          description: 'I am a fiend for assembling Ikea furniture',
+          email: 'silversart27@me.com',
+          password: 'hsh%afsdkjh5879t',
+          phone: '(647)847-9445',
+          stars: 20,
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/42.jpg',
+          skills: 'Assembly, measurements, mounting and installation.'
+        }
+      }
+    }
+  });
+
 
 
   // Create organizations with addresses -------------------------------------
@@ -1263,6 +1310,71 @@ async function main() {
       addressId: 3
     }
   });
+
+  await prisma.task.create({
+    data: {
+      name: 'Walk my dog',
+      description: "My dog likes meeting new dog-friends! If you can come by and take my dog for a walk, I can do the same for you later in the week!",
+      image: 'https://www.lawscountrykennel.com/wp-content/uploads/2018/04/Dog-Walk.jpg',
+      category: 'Animal Care',
+      // startDate: Date.new('2023-05-01T10:00:00.000Z'),
+      // endDate:   Date.new('2023-05-01T12:00:00.000Z'),
+      userId: 7,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 7
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Move heavy bags',
+      description: "I have some big bags (20kg) of flour and sugar in my van, but I hurt my back. Can you carry them into my basement? I'll give you cookies!",
+      image: 'https://t2.gstatic.com/licensed-image?q=tbn:ANd9GcRVSp6lnjgy68ENobCFIam16G5G-JJ7oXy6cAsKibCpAzga39tvcWbmw9iSeQZmyabl',
+      category: 'Animal Care',
+      // startDate: Date.new('2023-05-02T14:00:00.000Z'),
+      // endDate:   Date.new('2023-05-02T15:00:00.000Z'),
+      userId: 8,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 8
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Drive my Mom',
+      description: "My mom has a dentist's appointment. Can you drive her there and I can pick her up? (about a half hour away)",
+      image: 'https://www.vectornator.io/blog/content/images/2022/09/Cover-How-to-draw-a-car.png',
+      category: 'Driving',
+      // startDate: Date.new('2023-05-02T14:00:00.000Z'),
+      // endDate:   Date.new('2023-05-02T15:00:00.000Z'),
+      userId: 9,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 9
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Watch football',
+      description: "I'm a big Manchester United fan, but don't know any other fans (new to Toronto). Looking for someone to watch a match at the pub with me.",
+      image: 'https://s.yimg.com/ny/api/res/1.2/IkCaDFntWIRZvjSsEMrOcw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTcyMDtjZj13ZWJw/https://media.zenfs.com/en-us/aniin.com/593197b95c26fa4e721def4e9cb83ce7',
+      category: 'Animal Care',
+      // startDate: Date.new('2023-05-02T14:00:00.000Z'),
+      // endDate:   Date.new('2023-05-02T15:00:00.000Z'),
+      userId: 10,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 10
+    }
+  });
+
+
+
+
+
 
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
