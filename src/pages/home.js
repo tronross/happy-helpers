@@ -101,7 +101,7 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map tasks={filteredTasks} />)
 
   // Template
   return (
