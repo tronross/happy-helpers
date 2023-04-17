@@ -30,7 +30,7 @@ export default function NavBar(props) {
           <h2>Messages</h2>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
-          <Link href={`/api/users/${props.id}`}>{props.name}</Link>
+          <Link href={`/profile-page/${props.id}`}>{props.name}</Link>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
           <Button buttonName={"LOGOUT"}/>

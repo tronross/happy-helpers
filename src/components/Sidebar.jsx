@@ -52,7 +52,7 @@ export default function Sidebar(props) {
 
   // Call filterTasks on change of filters state
   useEffect(() => {
-    // console.log(props.filters)
+    console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0,10))
     props.filterTasks()
   }, [props.filters])
 
