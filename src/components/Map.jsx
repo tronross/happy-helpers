@@ -1,14 +1,14 @@
-import {useEffect, useRef} from 'react';
-import {Loader} from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
+import { useEffect, useRef } from 'react';
+import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
 
-export default function Map() {
+export default function Map(props) {
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_API_KEY);
   Geocode.setLocationType("ROOFTOP");
   Geocode.enableDebug();
 
-  const getCoordinates = function(address) {
+  const getCoordinates = function (address) {
 
     return Geocode.fromAddress(address).then(
       (response) => {
@@ -20,7 +20,7 @@ export default function Map() {
       }
     );
   };
-  
+
   const getDistance = (lat1, lon1, lat2, lon2, unit) => {
     if ((lat1 === lat2) && (lon1 === lon2)) {
       return 0;
@@ -45,19 +45,31 @@ export default function Map() {
     return dist;
   };
 
-  const getDistanceFromAddresses = async function(origin, destination) {
+  const getDistanceFromAddresses = async function (origin, destination) {
 
     const originCoords = await getCoordinates(origin);
     const destinationCoords = await getCoordinates(destination);
-    console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng,'K'));
+    console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng, 'K'));
 
   };
-  getDistanceFromAddresses("Centre Bell", "CN Tower");
-
-  
+  // getDistanceFromAddresses("Centre Bell", "CN Tower");
 
 
-  // This code displays google maps on the page... will maybe use as a stretch
+  // Convert filteredTasks to Marker-compatible objects
+  const tasks = props.tasks;
+  const taskMarkers = tasks.map(task => {
+    const lat = task.address.latitude;
+    const lng = task.address.longitude;
+    const title = task.name;
+    return {
+      lat,
+      lng,
+      title
+    }
+  })
+
+
+  // This code displays google maps on the page
   const googlemap = useRef(null);
 
   useEffect(() => {
@@ -71,8 +83,8 @@ export default function Map() {
     loader.load().then(() => {
       const google = window.google;
       map = new google.maps.Map(googlemap.current, {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8,
+        center: { lat: 43.70536, lng: -79.45664 },
+        zoom: 12,
         /*
         fullscreenControl: false, // remove the top-right button
         mapTypeControl: false, // remove the top-left buttons
@@ -81,6 +93,26 @@ export default function Map() {
         */
       });
 
+      // Position map to be centered over "logged-in user's" location
+      new google.maps.Marker({
+        position: { lat: 43.70536, lng: -79.45664 },
+        map,
+        title: "Anderson",
+      });
+
+      // Add Markers to map for each Task
+      taskMarkers.forEach(task => {
+        const lat = Number(task.lat);
+        const lng = Number(task.lng);
+        const title = task.title;
+        console.log(lat, lng, title)
+        new google.maps.Marker({
+          position: { lat: lat, lng: lng },
+          // label: title,
+          map,
+          title: title,
+        });
+      })
     }); // useEffect
   }); // function
 

@@ -39,7 +39,7 @@ const sidebarOptions = [
   'Housework',
   'Personal Care',
   'Tech Support',
-  'Yardwork'
+  'Yard Work'
 ];
 
 const distances = [
@@ -53,7 +53,6 @@ export default function Home({ tasks, user }) {
   // Hooks
   const [fetchTasks, setFetchTasks] = useState([...tasks]);
   const [sidebar, setSidebar] = useState(sidebarOptions);
-  const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
@@ -102,7 +101,7 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
+  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map tasks={filteredTasks} />)
 
   // Template
   return (
@@ -118,7 +117,6 @@ export default function Home({ tasks, user }) {
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
-            setSelectedSidebar={setSelectedSidebar}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
             setFilters={setTaskFilters}
