@@ -91,9 +91,9 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <br></br>
             <h1 style={{ fontWeight: "bold" }}>Name:</h1>
             <p>{`${userData.firstName} ${userData.lastName}`}</p>
-            {/* <br></br> */}
-            {/* <h1 style={{ fontWeight: "bold" }}>Stars:</h1>
-            <p>{userData.stars}</p> */}
+            <br></br>
+            <h1 style={{ fontWeight: "bold" }}>Stars:</h1>
+            <p>{userData.stars}</p>
             {user.user.id === 1 && <>
               <br></br>
               <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>
