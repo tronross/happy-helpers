@@ -18,7 +18,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
   if (offer.status === 'OPEN') {
     return (
       <div key={offer.id}>
-        <p className="font-bold mb-2 text-base">You have an offer from {offer.user.firstName} {offer.user.lastName}!</p>
+        <p className="font-bold mb-2 uppercase text-base">You have an offer from {offer.user.firstName} {offer.user.lastName}!</p>
         <p className="font-semibold">Description:</p>
         <p>{offer.user.description}</p>
         {offer.user.skills && (
@@ -46,7 +46,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
   if (offer.status === 'PENDING') {
     return (
       <div key={offer.id}>
-        <p className="mb-2 font-bold uppercase">You have accepted an offer from {offer.user.firstName} {offer.user.lastName}!</p>
+        <p className="mb-2 font-bold uppercase text-base">You have accepted an offer from {offer.user.firstName} {offer.user.lastName}!</p>
         <p className="mb-2">Please remember to mark this request as complete once you have received the help.</p>
         <p className="mb-2">Your feedback is valuable to the community and you will be able to recommend {offer.user.firstName} to other users by giving a star.</p>
         {!showStarChoice && (
@@ -90,7 +90,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
   if (offer.status === 'COMPLETE') {
     return (
       <div key={offer.id}>
-        <p className="font-semibold">This request was completed by {offer.user.firstName} {offer.user.lastName}!</p>
+        <p className="font-bold uppercase text-base">This request was completed by {offer.user.firstName} {offer.user.lastName}!</p>
         <p className="font-semibold mt-2 hover:rounded hover:text-gray-100 hover:bg-teal-500">
           <Link href={`/profile-page/${offer.user.id}`}>
             Click here to take a look at {offer.user.firstName}&apos;s profile
