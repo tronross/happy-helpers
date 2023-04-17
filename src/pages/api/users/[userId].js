@@ -16,17 +16,26 @@ export default async function handler(req, res) {
     const { userId } = req.query;
     res.status(200).send('ok');
     console.log(`You have reached PUT api/users/${userId}`);
+
+    const userDataObj = req.body
+    console.log(userDataObj)
+    for (let key in req.body) {
+      if(!req.body[key]){
+        delete userDataObj[key]
+      }
+    }
+
     await prisma.user.update({
       where: {
         id: parseInt(userId)
       },
       data: {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        phone: req.body.phone,
-        skills: req.body.skills,
-        description: req.body.description
+        firstName: userDataObj.firstName,
+        lastName: userDataObj.lastName,
+        email: userDataObj.email,
+        phone: userDataObj.phone,
+        skills: userDataObj.skills,
+        description: userDataObj.description
       }
     });
   } else if (req.method === 'PATCH') {
