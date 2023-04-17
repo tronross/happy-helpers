@@ -116,8 +116,8 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <p>{userData.phone}</p><br></br>
             <h1 style={{ fontWeight: "bold" }}>Skills:</h1>
             <p>{userData.skills}</p><br></br>
-            <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
-            <p>{orgString}</p><br></br>
+            {/* <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
+            <p>{orgString}</p><br></br> */}
             <h1 style={{ fontWeight: "bold" }}>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
