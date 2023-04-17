@@ -25,9 +25,7 @@ export default async function handler(req, res) {
           stars: { increment: 1 }
         }
       });
-
-      console.log('updateStarStatus: ', updateStarStatus);
-
+      // console.log('updateStarStatus: ', updateStarStatus);
     }
 
     res.status(200).send('ok');

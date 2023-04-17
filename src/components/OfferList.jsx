@@ -2,7 +2,7 @@ import Offer from '../components/Offer';
 import { useState, useEffect } from 'react';
 
 
-export default function OfferList({ selectedOffers, handleAcceptOffer, selectedRequestId, handleRequestComplete, selectedRequestStatus }) {
+export default function OfferList({ selectedOffers, handleAcceptOffer, handleRequestComplete, selectedRequestStatus }) {
 
   // selectedOffers not being updated in state... needs useEffect
   const [currentOffers, setCurrentOffers] = useState([]);
@@ -44,7 +44,7 @@ export default function OfferList({ selectedOffers, handleAcceptOffer, selectedR
   const offers = getOffers();
 
   return (
-    <ul className="min-w-400 flex-col justify-start content-start mt-4 text-teal-700">
+    <ul className="min-w-400 flex-col justify-start content-start mt-4 text-white text-sm">
       {offers}
     </ul>
   );

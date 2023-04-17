@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 import RequestList from '@/components/RequestList';
 import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
-import RequestSidebar from '@/components/RequestSidebar';
+import RequestSideBar from '@/components/RequestSideBar';
 
 export default function UserTasks({ userRequests, offers, user }) {
 
@@ -157,7 +157,7 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main className="bg-neutral-100">
         <NavBar name={user.firstName} id={user.id} />
         <div className="flex">
-          <RequestSidebar
+          <RequestSideBar
             status={status}
             category={category}
             resetFilters={resetFilters}
