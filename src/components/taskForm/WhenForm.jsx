@@ -15,12 +15,44 @@ export default function WhenForm({formData, setFormData}) {
     ampm: "PM"
   })
 
+  const [Date, setDate] = useState({ 
+    startDate: null, 
+    endDate: null 
+    }); 
+
+    const handleValueChange = (e) => {
+
+      console.log(e)
+      console.log("newValue:", e.startDate); 
+      setDate((prev) => ({...prev, startDate: e.startDate})); 
+      } 
+
   useEffect(() => {
-    const startDate = new Date(`2023-04-29 01:00:00`)
-    const endDate = new Date(`2023-04-29 01:00:00`)
-    setFormData(prev => ({...prev, startDate}))
-    setFormData(prev => ({...prev, endDate}))
-  }, [])
+    let startDate;
+    if (startTime.ampm === "AM") {
+      startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    } else {
+      // const getPM = (time) => {
+      //   switch(time) {
+      //     case "1": return "13";
+      //     case "2": return "14";
+      //     case "3": return "15";
+      //     case "4": return "16";
+      //   }
+      // }
+
+      // startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+        
+      console.log(startDate)
+    }
+
+
+
+    
+    // const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
+    // setFormData(prev => ({...prev, startDate}))
+    // setFormData(prev => ({...prev, endDate}))
+  }, [startTime, endTime])
   
   
   const updateTime = async (e) => {
@@ -28,7 +60,6 @@ export default function WhenForm({formData, setFormData}) {
     const selected = e.target.id;
     const name = e.target.name;
 
-    console.log(value)
     
 
     if (name === "startTime") {
@@ -42,7 +73,6 @@ export default function WhenForm({formData, setFormData}) {
 
     setFormData(prev => ({...prev, startDate}))
     setFormData(prev => ({...prev, endDate}))
-    console.log(startDate, endDate)
   }
 
 
@@ -53,7 +83,11 @@ export default function WhenForm({formData, setFormData}) {
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
              Start Date
            </label>
-           <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
+           <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none active:outline-none">
+           <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red" value={Date.startDate} 
+          onChange={(e) => handleValueChange(e)} 
+          showShortcuts={true} />
+          </div>
 
 
 
@@ -62,7 +96,9 @@ export default function WhenForm({formData, setFormData}) {
           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="grid-first-name">
             End Date
           </label>
-          <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
+            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
+            <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
+          </div>
         </div>
          
        </div>
