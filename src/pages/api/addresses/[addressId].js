@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import prisma from "../../../../prisma/.db";
 
 export default async function handler(req, res) {
@@ -10,19 +11,28 @@ export default async function handler(req, res) {
     });
     console.log(address);
     res.json({ address });
-  } else if (req.method === 'PUT') {
+  } else if (req.method === 'PATCH') {
     console.log(req.body);
     const { addressId } = req.query;
     console.log(`You have reached PUT api/addresses/${addressId}`);
     res.status(200).send('ok');
+
+    const addressDataObj = req.body
+    console.log(addressDataObj)
+    for (let key in req.body) {
+      if(!req.body[key]){
+        delete addressDataObj[key]
+      }
+    }
+
     await prisma.address.update({
       where: {
         id: parseInt(addressId)
       },
       data: {
-        address: req.body.address,
-        city: req.body.city,
-        postcode: req.body.postcode
+        address: addressDataObj.address,
+        city: addressDataObj.city,
+        postcode: addressDataObj.postcode
       }
     });
   }

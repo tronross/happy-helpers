@@ -13,8 +13,8 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
   };
 
   const handleSubmit = async () => {
-    await axios.put(`http://localhost:3000/api/addresses/${userAddressId}`, editProfileFormData);
-    console.log(userId)
+    await axios.patch(`http://localhost:3000/api/addresses/${userAddressId}`, editProfileFormData);
+    // console.log(userId)
     await axios.put(`http://localhost:3000/api/users/${userId}`, editProfileFormData);
     console.log(editProfileFormData);
     router.refresh();
