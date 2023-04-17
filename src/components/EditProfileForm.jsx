@@ -29,6 +29,8 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
       <input type="text" id="description" name="description" placeholder="description" value={editProfileFormData.description} onChange={onChange} required />
 
+      <input type="text" id="email" name="email" placeholder="email" value={editProfileFormData.email} onChange={onChange} required />
+
       <input type="text" id="phone" name="phone" placeholder="phone number" value={editProfileFormData.phone} onChange={onChange} required />
 
       <input type="text" id="address" name="address" placeholder="address" value={editProfileFormData.address} onChange={onChange} required />
