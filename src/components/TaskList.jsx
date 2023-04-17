@@ -1,18 +1,17 @@
-import { useRouter } from 'next/router'
 import Task from '../components/Task'
 
 
 
 export default function TaskList(props) {
   
-  const router = useRouter();
   const onClick = (id) => {
-    router.push(`/task/${id}`)
+    window.location = (`/task/${id}`)
   }
 
   const tasks = props.tasks.map(task => {
+    console.log(task)
     const startDate = task.startDate || task.start_date
-    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
 
     const calcDistanceProp = function(distance) {
       if (distance <= 1) {
@@ -22,9 +21,9 @@ export default function TaskList(props) {
       }
     }
   
-    const distanceProp = calcDistanceProp(task.distance)
+    const distanceProp = calcDistanceProp(task.distance);
+  // Ternary operator is used below to accomodate differing object structures (nested address object vs flat) returned by Prisma calls
     const city = task.city ? task.city : task.address.city;
-
     return (
       <li key={task.id}><Task
           id={task.id}

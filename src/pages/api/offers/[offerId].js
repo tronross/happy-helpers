@@ -7,13 +7,24 @@ export default async function handler(req, res) {
       where: {
         id: parseInt(offerId)
       }
-    })
+    });
     console.log(offer)
     res.json({ offer })
   } else if (req.method === 'PUT') {
-    console.log(req.body)
+
     const { offerId } = req.query;
+    const { newStatus } = req.body;
+
+    const updateOfferStatus = await prisma.offer.update({
+      where: {
+        id: parseInt(offerId)
+      },
+      data: {
+        status: newStatus
+      }
+    });
+
+    // console.log('updateOfferStatus: ', updateOfferStatus);
     res.status(200).send('ok');
-    console.log(`You have reached PUT api/offers/${offerId}`)
   }
 }

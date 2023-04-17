@@ -1,3 +1,8 @@
+///////////////
+// Home Page
+///////////////
+
+// Vendor methods
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -37,51 +42,68 @@ const sidebarOptions = [
   'Yardwork'
 ];
 
+const distances = [
+  1, 5, 10, 25, 50, 'all'
+];
+
+/////////////////////
+// Page (component)
 export default function Home({ tasks, user }) {
-  
+
   // Hooks
   const [fetchTasks, setFetchTasks] = useState([...tasks]);
   const [sidebar, setSidebar] = useState(sidebarOptions);
   const [selectedSidebar, setSelectedSidebar] = useState(sidebar[0]);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
-  
-  const tasksToFilter = fetchTasks;
-  const taskFilters = {
+
+  const tasksToFilter = [...fetchTasks];
+  const [taskFilters, setTaskFilters] = useState({
     distance: 50,
-    category: 'All Categories'
-  }
+    category: 'All Categories',
+    sort: 'Date',
+    date: 'All'
+  });
+
   const [category, setCategory] = useState(taskFilters.category)
 
-  const filterTasks = function(tasks, filters) {
-    let unfilteredTasks = [...tasks]
-    const distance = filters.distance;
-    const category = filters.category;
+  // Sort and Filter Tasks
+  const filterTasks = function (tasks, filters) {
+    // Function globals
+    const unfilteredTasks = [...tasks];
+    let tasksInCategory;
+    let sortedFilteredTasks;
+    let tasksCloserThan;
+    let distance;
 
-
-    const tasksCloserThan = unfilteredTasks.filter(task => task.distance <= distance);
-
-    if (category === 'All Categories') {
-      setFilteredTasks(tasksCloserThan)
+    // Filters
+    if (filters.distance === 'all') {
+      distance = Infinity;
     } else {
-      const tasksInCategory = tasksCloserThan.filter(task => task.category === category);
-      setFilteredTasks(tasksInCategory)
+      distance = parseInt(filters.distance);
     }
+
+    tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
+
+    if (filters.category === 'All Categories') {
+      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
+    } else {
+      tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
+    }
+
+    // Sort
+    if (filters.sort === 'Distance') {
+      sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
+    } else {
+      sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
+    }
+
+    // Update state -> fire render of filtered tasks
+    setFilteredTasks(sortedFilteredTasks)
   }
-  
-  // filterTasks([...tasks], taskFilters)
+
   const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map />)
-  
-  const tasksSortD = function() {
-   setFilteredTasks(sortTasksByDistance([...tasks]))
-  }
 
-  const tasksSortT = function() {
-    setFilteredTasks(sortTasksByStartTime([...tasks]))
-  }
-
-
-  
   // Template
   return (
     <>
@@ -92,17 +114,17 @@ export default function Home({ tasks, user }) {
       </Head>
       <main>
         <NavBar name={user.firstName}
-                id={user.id}/>
+          id={user.id} />
         <div className="flex">
           <Sidebar
             sidebarOptions={sidebar}
             setSelectedSidebar={setSelectedSidebar}
-            sortDistance={tasksSortD}
-            sortTime={tasksSortT}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
             filters={taskFilters}
+            setFilters={setTaskFilters}
             setCategory={setCategory}
-            />
+            distances={distances}
+          />
           <section className='flex flex-col p-2 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
@@ -116,12 +138,12 @@ export default function Home({ tasks, user }) {
 
 // Data fetching
 export async function getServerSideProps() {
-  
+
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    where: {
-      status: "OPEN"
-    },
+    // where: {
+    //   status: "OPEN"
+    // },
     include: {
       address: true
     },
@@ -129,26 +151,23 @@ export async function getServerSideProps() {
       startDate: 'desc'
     }
   })
-  
+
   // Define current user
   const userFetch = await prisma.user.findMany({
     where: {
-      id: 2
+      id: 1
     },
     include: {
       address: true
     }
   })
-  
+
   const user = userFetch[0];
   console.log(user)
-  
+
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
-  // const sortedTasks = sortTasksByDistance(tasks);
-  // console.log(tasks)
   const sortedTasks = sortTasksByStartTime(tasks);
-  // console.log(sortedTasks)
   return {
     props: {
       tasks: JSON.parse(JSON.stringify(sortedTasks)),
@@ -156,26 +175,3 @@ export async function getServerSideProps() {
     }
   };
 }
-
-
-
-
-
-// const [category, setCategory] = useState(0);
-
-// useEffect(() => {
-//   const fetchData = async () => {
-//     const data = await axios.post('http://localhost:3000/api/tasks', fetchTasks);
-//     return data;
-//   };
-//   const theFetcher = fetchData();
-// console.log(theFetcher);
-// });
-// console.log(fetchTasks);
-
-// useEffect (() => {
-//   setFetchTasks((prev) => {
-//     prev.filter(item => ) 
-//   })
-
-// }, [selectedSidebar])
