@@ -1,22 +1,35 @@
 import prisma from "../../../../prisma/.db";
 
 export default async function handler(req, res) {
-
-  console.log(req.method);
-
   if (req.method === 'GET') {
     const { userId } = req.query;
     const user = await prisma.user.findUnique({
       where: {
         id: parseInt(userId)
       }
-    })
-    console.log(user)
-    res.json({ user })
+    });
+    console.log(user);
+    res.json({ user });
 
-  } if (req.method === 'PUT') {
-  
-  } if (req.method === 'PATCH') {
+  } else if (req.method === 'PUT') {
+    console.log(req.body);
+    const { userId } = req.query;
+    res.status(200).send('ok');
+    console.log(`You have reached PUT api/users/${userId}`);
+    await prisma.user.update({
+      where: {
+        id: parseInt(userId)
+      },
+      data: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phone: req.body.phone,
+        skills: req.body.skills,
+        description: req.body.description
+      }
+    });
+  } else if (req.method === 'PATCH') {
 
     const { userId } = req.query;
     const { field } = req.body;
@@ -31,10 +44,9 @@ export default async function handler(req, res) {
           stars: { increment: 1 }
         }
       });
-      console.log('updateStarStatus: ', updateStarStatus);
+      // console.log('updateStarStatus: ', updateStarStatus);
     }
 
     res.status(200).send('ok');
   }
 }
-
