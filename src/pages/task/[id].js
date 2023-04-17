@@ -6,6 +6,7 @@ import DetailedTaskRow from "@/components/DetailedTaskRow";
 import TaskRow from "@/components/TaskRow";
 import prisma from "../../../prisma/.db";
 import { useState } from "react";
+import addDistanceToTasks from '../../helpers/add-distance-to-tasks';
 
 
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
@@ -106,7 +107,10 @@ export async function getServerSideProps(context) {
     where: {
       category: selectedTask.category,
       status: "OPEN"
-    }
+    },
+    include: {
+      address: true
+    },
   })
 
   const loggedInUser = await prisma.user.findUnique({
@@ -117,7 +121,8 @@ export async function getServerSideProps(context) {
       address: true
     }
   })
-
+  addDistanceToTasks(userTasks, loggedInUser);
+  addDistanceToTasks(similarTasks, loggedInUser);
   return {
     props: { selectedTask: JSON.parse(JSON.stringify(selectedTask)),
              selectedUser: JSON.parse(JSON.stringify(currentUser)),

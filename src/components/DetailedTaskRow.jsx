@@ -29,6 +29,22 @@ const changeTask = (id) => {
 
 
   const tasks = userTasks.map(task => {
+
+    const startDate = task.startDate || task.start_date
+    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+
+    const calcDistanceProp = function(distance) {
+      if (distance <= 1) {
+        return 'nearby';
+      } else {
+        return `${distance}km`
+      }
+    }
+  
+    const distanceProp = calcDistanceProp(task.distance);
+    
+    const city = task.city ? task.city : task.address.city;
+
     if (task.id === selectedId) {
       return <li key={task.id} className="snap-center">
         <DetailedTask
@@ -50,10 +66,11 @@ const changeTask = (id) => {
           user={task.userId}
           image={task.image}
           status={task.status}
-          city={task.city}
-          distance={task.distance}
-          row={true}
+          city={city}
+          distance={distanceProp}
+          startDate={startDateString}
           onClick={changeTask}
+          row={true}
           />
         </li>
     }
