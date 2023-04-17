@@ -1,7 +1,10 @@
+// @refresh reset
 export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
+  const endDate = new Date(props.endDate);
+  
   const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative`;
 
   // Colour-code the status in a pill button style
@@ -37,16 +40,29 @@ export default function Request(props) {
         </svg>
       )}
       <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
-      <section className="px-4">
-        <h5 className="text-xl leading-tight text-teal-700 line-clamp-2 h-16">{props.name}</h5>
-        <p className="mb-2 text-base text-teal-700">{props.address.city}</p>
-        <p className="text-base text-teal-700 font-bold">{props.category}</p>
-        <p className="text-sm text-teal-700 font-bold">
-          {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}
+      <section className="px-4 text-teal-700 text-base">
+        <h5 className="mb-1 text-xl leading-tight line-clamp-1">{props.name}</h5>
+        {/* <p className="mb-1">{props.address.city}</p> */}
+        <p className="mb-1 font-bold">{props.category}</p>
+        {/* <p>Starts at:</p> */}
+        <p className="text-sm">
+          {startDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
         </p>
-        <p className="text-base text-teal-700 line-clamp-2 h-18">Id (dev) {props.id} {props.description}</p>
-        <p className="text-base text-teal-700">nbOffers (dev) {props.nbOffers}</p>
-        <p className="text-base text-teal-700">starred (dev) {props.starred && 'starred'}</p>
+        <p className="mb-1 text-sm font-bold">
+          {startDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
+        </p>
+        {/* <p>Ends at:</p>
+        <p className="text-sm">
+          {endDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+        </p>
+        <p className="mb-1 text-sm">
+          {endDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
+        </p> */}
+        <div className="">
+          <p className="h-12 line-clamp-2">
+            {props.description}
+          </p>
+        </div>
         <div className="my-4 flex justify-between items-center">
           <div className={statusStyle}>
             {props.status}
