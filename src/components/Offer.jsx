@@ -18,7 +18,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
   if (offer.status === 'OPEN') {
     return (
       <div key={offer.id}>
-        <p className="font-bold mb-2">You have an offer from {offer.user.firstName} {offer.user.lastName}!</p>
+        <p className="font-bold mb-2 text-base">You have an offer from {offer.user.firstName} {offer.user.lastName}!</p>
         <p className="font-semibold">Description:</p>
         <p>{offer.user.description}</p>
         {offer.user.skills && (

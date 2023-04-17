@@ -172,9 +172,6 @@ export default function UserTasks({ userRequests, offers, user }) {
             handleRequestComplete={handleRequestComplete}
           />
           <section className='flex flex-col p-2 max-w-6xl'>
-            <div className="flex justify-between ml-4 mb-2 text-lg text-teal-700">
-              <h1 className="text-[1.5em]">My requests for help</h1>
-            </div>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
