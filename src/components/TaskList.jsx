@@ -1,13 +1,11 @@
-import { useRouter } from 'next/router'
 import Task from '../components/Task'
 
 
 
 export default function TaskList(props) {
   
-  const router = useRouter();
   const onClick = (id) => {
-    router.push(`/task/${id}`)
+    window.location = (`/task/${id}`)
   }
 
   const tasks = props.tasks.map(task => {
