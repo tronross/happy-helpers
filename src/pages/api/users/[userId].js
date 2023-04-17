@@ -1,6 +1,9 @@
 import prisma from "../../../../prisma/.db";
 
 export default async function handler(req, res) {
+
+  console.log(req.method);
+
   if (req.method === 'GET') {
     const { userId } = req.query;
     const user = await prisma.user.findUnique({
@@ -12,9 +15,7 @@ export default async function handler(req, res) {
     res.json({ user })
 
   } if (req.method === 'PUT') {
-    
-  }
-
+  
   } if (req.method === 'PATCH') {
 
     const { userId } = req.query;
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
           stars: { increment: 1 }
         }
       });
-      // console.log('updateStarStatus: ', updateStarStatus);
+      console.log('updateStarStatus: ', updateStarStatus);
     }
 
     res.status(200).send('ok');

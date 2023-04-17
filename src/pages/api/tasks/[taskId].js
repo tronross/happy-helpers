@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     })
     console.log(task)
     res.json({ task })
-  } if (req.method === 'PUT') {
+  } if (req.method === 'PATCH') {
 
     const { taskId } = req.query;
     const { newStatus } = req.body;
