@@ -1,16 +1,13 @@
 import Task from "./Task";
 import RowButton from "./RowButton";
-import { useRouter } from "next/router";
 
 export default function TaskRow({userTasks, rowType, changeId}) {
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
 
-  const router = useRouter();
 
   const onClick = (id) => {
     window.location = (`/task/${id}`)
-    changeId(id)
   }
 
 
