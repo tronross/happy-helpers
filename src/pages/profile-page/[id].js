@@ -33,6 +33,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
     firstName: "",
     lastName: "",
     description: "",
+    email: "",
     phone: "",
     address: "",
     city: "",
@@ -77,10 +78,10 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
       <main className="bg-neutral-100">
         <NavBar />
         <div className="flex">
-          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width:"20%" }}>
+          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width: "20%" }}>
             <h1 style={{ fontWeight: "bold", fontSize: "1rem", textAlign: "center" }}>Profile Details</h1>
             <br></br>
-            <div style={{display:"flex", justifyContent:"center"}}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
               <img
                 src={userData.avatar}
                 className="rounded-full"
@@ -90,6 +91,9 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <br></br>
             <h1 style={{ fontWeight: "bold" }}>Name:</h1>
             <p>{`${userData.firstName} ${userData.lastName}`}</p>
+            <br></br>
+            <h1 style={{ fontWeight: "bold" }}>Stars:</h1>
+            <p>{userData.stars}</p>
             {user.user.id === 1 && <>
               <br></br>
               <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>
@@ -106,6 +110,8 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <br></br>
             <h1 style={{ fontWeight: "bold" }}>Address:</h1>
             <p>{fullAddress}</p><br></br>
+            <h1 style={{ fontWeight: "bold" }}>Email:</h1>
+            <p>{userData.email}</p><br></br>
             <h1 style={{ fontWeight: "bold" }}>Phone Number:</h1>
             <p>{userData.phone}</p><br></br>
             <h1 style={{ fontWeight: "bold" }}>Skills:</h1>
@@ -117,14 +123,14 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
           </section>
           <section>
             <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Upcoming Tasks</h1>
-            <div style={{height:"50%"}}>
+            <div style={{ height: "50%" }}>
               <TaskList
                 tasks={upcomingTasksData}
               />
             </div>
 
             <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Past Tasks</h1>
-            <div style={{height:"50%"}}>
+            <div style={{ height: "50%" }}>
               <TaskList
                 tasks={pastTasksData}
               />
