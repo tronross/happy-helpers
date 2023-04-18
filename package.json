@@ -26,7 +26,7 @@
     "react-tailwindcss-datepicker": "^1.6.0",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "description": "A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.",
   "main": "next.config.js",
   "devDependencies": {
     "autoprefixer": "^10.4.14",

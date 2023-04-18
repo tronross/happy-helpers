@@ -16,21 +16,21 @@ export default function Task(props) {
   return (
   <div className={taskStyle} onClick={() => props.onClick(props.id)}>
     <div>
-    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
+    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg "></img>
     <section className="px-4">
       <h5 className=" text-xl leading-tight line-clamp-1 mb-1">
       {props.name}
     </h5>
     <section >
     <span className="mb-2 text-sm text-teal-700">
-    {props.city}
+      {props.city}
     </span>
     </section>
     <p className="mb-2 text-sm text-teal-700">
-    {props.startDate}
+      {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">
-    {props.description}
+      {props.description}
     </p>
     </section>
     </div>
@@ -43,7 +43,7 @@ export default function Task(props) {
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
       </svg>
-      <p className="text-teal-600 pl-1">{props.distance}</p>
+      <p className="text-teal-600 text-base pl-1">{props.distance}</p>
       </div>
       
     </div>
