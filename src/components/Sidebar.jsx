@@ -69,10 +69,13 @@ export default function Sidebar(props) {
       category: 'All Categories',
       sort: 'Date'
     });
+
+    setTimeout(() => { setDateFilter( {startDate: null, endDate: null} ) }, 50)
   }
 
   // Call filterTasks on change of filters state
   useEffect(() => { props.filterTasks() }, [props.filters])
+  
 
 
   return (
@@ -103,7 +106,7 @@ export default function Sidebar(props) {
         </section>
         <section className='max-w-xs' >
           <Datepicker
-            id="calendarFilter"
+            // displayFormat={''}
             primaryColor={"teal"}
             asSingle={true}
             value={dateFilter}
