@@ -16,7 +16,7 @@ export default function Task(props) {
   return (
   <div className={taskStyle} onClick={() => props.onClick(props.id)}>
     <div>
-    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
+    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg "></img>
     <section className="px-4">
       <h5 className=" text-xl leading-tight line-clamp-1 mb-1">
       {props.name}

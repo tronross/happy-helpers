@@ -32,15 +32,14 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
 
   return (
     <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600" id={taskId}>
-      <div className="flex p-2"> 
-        <div className="max-w-[16em] w-1/2">
+      <div className="flex p-3"> 
+        <div className="max-w-[16em] w-2/7">
           <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>
         </div>
-        <div className="flex flex-col  pl-5 w-1/2 mt-3">
+        <div className="flex flex-col  pl-5 w-5/6 mt-3">
             <h5 className=" text-xl leading-tight mb-1">
             {task.name}
             </h5>
-            <p>Helpers Needed: {task.nbHelpers}</p>
             <p className="mb-2 text-base text-teal-700">
             {task.city}
             </p>
@@ -62,8 +61,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
         </svg>
         <div className="flex flex-col items-center">
 
-          <p>{task.address.address || userAddress.address}</p>
           <p>{task.address.city || userAddress.city}</p>
+          <p>{task.address.postcode || userAddress.postcode}</p>
         </div>
         </div> 
       </div> 

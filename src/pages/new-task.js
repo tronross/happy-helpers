@@ -17,7 +17,17 @@ export default function NewTask(props) {
     image: "",
     address: "",
     city: "",
-    postcode: ""
+    postcode: "",
+    startTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    },
+    endTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    }
   })
   return (
     <>

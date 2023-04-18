@@ -5,71 +5,34 @@ import { useEffect } from "react"
 
 export default function WhenForm({formData, setFormData}) {
   const [startTime, setStartTime] = useState({
-    hour: "1",
-    minute: "00",
-    ampm: "PM"
+    hour: formData.startTime.hour,
+    minute: formData.startTime.minute,
+    ampm: formData.startTime.ampm
   })
   const [endTime, setEndTime] = useState({
-    hour: "1",
-    minute: "00",
-    ampm: "PM"
+    hour: formData.endTime.hour,
+    minute: formData.endTime.minute,
+    ampm: formData.endTime.ampm
   })
 
-  const [date, setDate] = useState({ 
-    startDate: null, 
-    endDate: null 
-    }); 
+  const [startDate, setStartDate] = useState({ 
+    startDate: null
+  }); 
 
-    const handleValueChange = (newDate) => {
+  const [endDate, setEndDate] = useState({ 
+    endDate: null
+  }); 
 
-      console.log("newValue:", newDate.startDate); 
-      setDate((prev) => ({...prev, startDate: newDate.startDate})); 
-      } 
+  const handleStartDate = (newDate) => {
+    console.log("newValue:", newDate.startDate); 
+    setStartDate(newDate); 
+  } 
 
-  // useEffect(() => {
-    // if (startTime.ampm === "AM") {
-      // const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-      // setDate((prev) => ({ ...prev, startDate: newStartDate }))
-      // } else {
-      // const getPM = (time) => {
-      //   switch(time) {
-      //     case "1": return "13";
-      //     case "2": return "14";
-      //     case "3": return "15";
-      //     case "4": return "16";
-      //   }
-      // }
+  const handleEndDate = (newDate) => {
+    console.log("newValue:", newDate.endDate); 
+    setEndDate(newDate); 
+  } 
 
-      // const newEndDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-      // setDate((prev) => ({ ...prev, startDate: newEndDate }))
-      // console.log(startDate)
-    // }
-
-
-// console.log(startTime, endTime, date)
-    
-    // const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
-    // setFormData(prev => ({...prev, startDate}))
-    // setFormData(prev => ({...prev, endDate}))
-
-//     // new Date('2023-04-29 18:00+0500')
-    // const startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    // const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
-// console.log(startDate, endDate)
-    // setFormData(prev => ({...prev, startDate: newStartDate}))
-    // setFormData(prev => ({...prev, endDate: newEndDate}))
-  // }, [startTime, endTime, date, setFormData])
-
-  const updateDate = () => {
-    const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    setDate((prev) => ({ ...prev, startDate: newStartDate }))
-    const newEndDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    setDate((prev) => ({ ...prev, startDate: newEndDate }))
-    setFormData(prev => ({...prev, startDate: newStartDate}))
-    setFormData(prev => ({...prev, endDate: newEndDate}))
-  }
-  
-  
   const updateTime = (e) => {
     const value = e.target.value;
     const selected = e.target.id;
@@ -81,22 +44,51 @@ export default function WhenForm({formData, setFormData}) {
     } else {
       setEndTime(prev => ({...prev, [selected]: value}))
     }
-
-    const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    setDate((prev) => ({ ...prev, startDate: newStartDate }))
   }
 
+  useEffect(() => {
+console.log(startDate,)
+    const AMPM = (hour, ampm) => {
+      if (ampm === "AM") {
+        return hour
+      } else {
+        switch(hour) {
+          case "1": return "13"
+          case "2": return "14"
+          case "3": return "15"
+          case "4": return "16"
+          case "5": return "17"
+          case "6": return "18"
+          case "7": return "19"
+          case "8": return "20"
+          case "9": return "21"
+          case "10": return "22"
+          case "11": return "23"
+          case "12": return "24"
+        }
+      }
+    }
 
-  return (
+
+    const newStartDate = new Date(`${startDate.startDate} ${AMPM(startTime.hour, startTime.ampm)}:${startTime.minute}:00`)
+
+    const newEndDate = new Date(`${endDate.endDate} ${AMPM(endTime.hour, endTime.ampm)}:${endTime.minute}:00`)
+
+    setFormData(prev => ({...prev, startDate: newStartDate}))
+    setFormData(prev => ({...prev, endDate: newEndDate}))
+  }, [startTime, endTime, startDate, endDate])
+
+
+    return (
     <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
-       <div className="flex flex-wrap -mx-3 mb-6">
+     <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
              Start Date
            </label>
            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none active:outline-none">
-           <Datepicker asSingle="true" primaryColor={"teal"} value={date.startDate} 
-          onChange={handleValueChange}/>
+           <Datepicker asSingle="true" primaryColor="teal" value={startDate} 
+          onChange={handleStartDate} inputClassName="text-teal-600 font-normal" useRange={false}/>
           </div>
 
 
@@ -107,7 +99,8 @@ export default function WhenForm({formData, setFormData}) {
             End Date
           </label>
             <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
-            <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/>
+            <Datepicker asSingle="true" primaryColor={"teal"} value={endDate} 
+          onChange={handleEndDate} inputClassName="text-teal-600 font-normal" useRange={false}/>
           </div>
         </div>
          

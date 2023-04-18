@@ -6,7 +6,7 @@ export default function ConfirmForm({formData, user}) {
     city: formData.city,
     postcode: formData.postcode
   }
-
+console.log(formData)
   const startDate = formData.startDate
   const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
   const endDate = formData.endDate
