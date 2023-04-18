@@ -23,14 +23,14 @@ export default function Task(props) {
     </h5>
     <section >
     <span className="mb-2 text-sm text-teal-700">
-    {props.city}
+      {props.city}
     </span>
     </section>
     <p className="mb-2 text-sm text-teal-700">
-    {props.startDate}
+      {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">
-    {props.description}
+      {props.description}
     </p>
     </section>
     </div>
