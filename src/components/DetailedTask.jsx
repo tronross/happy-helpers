@@ -1,16 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function DetailedTask({selectedUser, task, sendOffer, offerTaskIds, taskId, type}) {
+export default function DetailedTask({selectedUser, task, sendOffer, offerTaskIds, taskId, type, userAddress, distance, startDate, endDate}) {
 
   const [offerSent, setOfferSent] = useState(offerTaskIds.includes(task.id));
   const user = selectedUser;
-  const startDate = new Date(task.startDate);
-  const endDate = new Date(task.endDate);
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`;
 
   const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 active:bg-teal-800";
   const disabled = offerSent;
+
 
   const handleClick = () => {
     if (type === "fake") {
@@ -33,15 +32,14 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
 
   return (
     <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600" id={taskId}>
-      <div className="flex p-2"> 
-        <div className="max-w-[16em] w-1/2">
+      <div className="flex p-3"> 
+        <div className="max-w-[16em] w-2/7">
           <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>
         </div>
-        <div className="flex flex-col  pl-5 w-1/2 mt-3">
+        <div className="flex flex-col  pl-5 w-5/6 mt-3">
             <h5 className=" text-xl leading-tight mb-1">
             {task.name}
             </h5>
-            <p>Helpers Needed: {task.nbHelpers}</p>
             <p className="mb-2 text-base text-teal-700">
             {task.city}
             </p>
@@ -53,8 +51,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
       <div>
       <div className="px-5 pb-3 flex justify-between items-end">
         <div>
-          <p>Start: {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}</p>
-          <p>End: {startDate.toLocaleString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})}</p>
+          <p>Start: {startDate}</p>
+          <p>End: {endDate}</p>
         </div> 
         <div className="flex flex-col items-center mr-1">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -63,8 +61,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
         </svg>
         <div className="flex flex-col items-center">
 
-          <p>{task.address.address}</p>
-          <p>{task.address.city}</p>
+          <p>{task.address.city || userAddress.city}</p>
+          <p>{task.address.postcode || userAddress.postcode}</p>
         </div>
         </div> 
       </div> 
@@ -73,7 +71,9 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
             <span className={statusColor}>
             <p>{task.status}</p>
             </span>
-            <svg className="h-7 w-7 text-teal-500 hover:fill-current hover:cursor-pointer mx-5"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+            <div className="flex items-center">
+      <p className="text-teal-600 pl-4">{distance}</p>
+      </div>
           </div>
             <Button disabled={disabled} buttonName={buttonName} buttonStyle={buttonStyle} onClick={handleClick}></Button>          
         </div>

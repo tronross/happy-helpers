@@ -35,11 +35,14 @@ const sidebarOptions = [
   'DIY',
   'Driving',
   'Errands',
+  'Giving',
   'Heavy Lifting',
   'Housework',
   'Personal Care',
+  'Social',
   'Tech Support',
-  'Yard Work'
+  'Yard Work',
+  'Other'
 ];
 
 const distances = [
@@ -61,10 +64,11 @@ export default function Home({ tasks, user }) {
     distance: 50,
     category: 'All Categories',
     sort: 'Date',
-    date: 'All'
+    date: 'All',
+    city: ''
   });
 
-  const [category, setCategory] = useState(taskFilters.category)
+  const [category, setCategory] = useState(taskFilters.category);
 
   // Sort and Filter Tasks
   const filterTasks = function (tasks, filters) {
@@ -73,24 +77,36 @@ export default function Home({ tasks, user }) {
     let tasksInCategory;
     let sortedFilteredTasks;
     let tasksCloserThan;
+    let tasksInCity;
     let distance;
 
     // Filters
+    // Set distance filter
     if (filters.distance === 'all') {
       distance = Infinity;
     } else {
       distance = parseInt(filters.distance);
     }
 
+    // Filter by distance
     tasksCloserThan = [...unfilteredTasks].filter(task => task.distance <= distance);
 
-    if (filters.category === 'All Categories') {
-      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
+    // Search and filter by city
+    if (filters.city === '') {
+      tasksInCity = tasksCloserThan;
     } else {
-      tasksInCategory = tasksCloserThan.filter(task => task.category === filters.category);
+      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city));
+      // console.log(tasksInCity)
     }
 
-    // Sort
+    // Filter by category
+    if (filters.category === 'All Categories') {
+      tasksInCategory = tasksInCity;
+    } else {
+      tasksInCategory = tasksInCity.filter(task => task.category === filters.category);
+    }
+
+    // Sort by distance or date
     if (filters.sort === 'Distance') {
       sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
     } else {
@@ -123,7 +139,7 @@ export default function Home({ tasks, user }) {
             setCategory={setCategory}
             distances={distances}
           />
-          <section className='flex flex-col p-2 grow'>
+          <section className='flex flex-col p-2 mx-4 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </section>
@@ -139,9 +155,9 @@ export async function getServerSideProps() {
 
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    // where: {
-    //   status: "OPEN"
-    // },
+    where: {
+      status: "OPEN"
+    },
     include: {
       address: true
     },
