@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
 
 export default function Sidebar(props) {
+  const [dateFilter, setDateFilter] = useState(null); 
+
   // Button state
   const [clicked, setClicked] = useState({
     distance: 50,
@@ -42,10 +44,10 @@ export default function Sidebar(props) {
     props.setFilters(prev => ({ ...prev, distance: distance }));
   }
 
-  const selectDate = (e) => {
-    const date = e.target.value
-    console.log(date)
-    props.setFilters(prev => ({ ...prev, date: date }));
+  const handleDateFilter = (dateFilter) => {
+    console.log("dateFilter:", dateFilter.startDate);
+    setDateFilter(dateFilter);
+    props.setFilters(prev => ({ ...prev, date: dateFilter.startDate }));
   }
 
   const sortSelect = (e) => {
@@ -59,7 +61,7 @@ export default function Sidebar(props) {
       distance: 50,
       category: 'All Categories',
       sort: 'Date',
-      date: 'All',
+      dateFilter: null,
       city: ''
     });
 
@@ -83,7 +85,7 @@ export default function Sidebar(props) {
 
   // Call filterTasks on change of filters state
   useEffect(() => {
-    console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0, 10))
+    // console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0, 10))
     props.filterTasks()
   }, [props.filters])
 
@@ -114,6 +116,15 @@ export default function Sidebar(props) {
             }
           })}
         </section>
+        <section >
+          <Datepicker
+            id="calendarFilter"
+            primaryColor={"teal"}
+            asSingle={true}
+            value={dateFilter}
+            onChange={handleDateFilter}
+          />
+        </section>
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">City:</h5>
         <section className="flex flex-row space-x-1.5 items-baseline">
           <input className="h-8 w-400 block w-full text-m text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 " name="cityFilter" type="text" onChange={filterCity} id="cityFilter" ></input>
@@ -133,12 +144,6 @@ export default function Sidebar(props) {
             }
           })}
         </section>
-        <Datepicker
-                primaryColor={"teal"}
-                className="color-theme: light"
-                value={value}
-                onChange={handleValueChange}
-            />
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
           <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
