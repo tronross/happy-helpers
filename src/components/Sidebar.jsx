@@ -111,7 +111,7 @@ export default function Sidebar(props) {
           />
         </section>
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">City:</h5>
-        <section className="flex flex-row space-x-1.5 items-baseline">
+        <section className="flex flex-row space-x-0.5 items-baseline">
           <input className="h-8 w-400 block w-full text-m text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 " name="cityFilter" type="text" onChange={filterCity} id="cityFilter" ></input>
           <button className="inline-flex justify-center items-center gap-2 bg-teal-600 h-8 px-4 py-1 rounded text-white" onClick={clearCityFilter}>reset</button>
         </section>

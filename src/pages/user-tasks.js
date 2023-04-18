@@ -155,29 +155,33 @@ export default function UserTasks({ userRequests, offers, user }) {
       </Head>
       <main className="bg-neutral-100">
         <NavBar name={user.firstName} id={user.id} />
-        <div className="flex">
-          <RequestSideBar
-            status={status}
-            category={category}
-            resetFilters={resetFilters}
-            handleStatusChange={handleStatusChange}
-            statusFilter={statusFilter}
-            handleCategoryChange={handleCategoryChange}
-            categoryFilter={categoryFilter}
-            selectedOffers={selectedOffers}
-            handleAcceptOffer={handleAcceptOffer}
-            selectedRequestId={selectedRequestId}
-            selectedRequestStatus={selectedRequestStatus}
-            handleRequestComplete={handleRequestComplete}
-          />
-          <section className='flex flex-col p-2 max-w-6xl'>
-            <RequestList
-              requests={filteredRequests}
+        <div className='flex'>
+          <div className="">
+            <RequestSideBar
+              status={status}
+              category={category}
+              resetFilters={resetFilters}
+              handleStatusChange={handleStatusChange}
+              statusFilter={statusFilter}
+              handleCategoryChange={handleCategoryChange}
+              categoryFilter={categoryFilter}
+              selectedOffers={selectedOffers}
+              handleAcceptOffer={handleAcceptOffer}
               selectedRequestId={selectedRequestId}
-              setSelectedRequestId={setSelectedRequestId}
-              offers={offers}
+              selectedRequestStatus={selectedRequestStatus}
+              handleRequestComplete={handleRequestComplete}
             />
-          </section>
+          </div>
+          <div>
+            <section className='flex flex-col'>
+              <RequestList
+                requests={filteredRequests}
+                selectedRequestId={selectedRequestId}
+                setSelectedRequestId={setSelectedRequestId}
+                offers={offers}
+              />
+            </section>
+          </div>
         </div>
       </main>
       <Footer />

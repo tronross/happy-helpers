@@ -31,6 +31,5 @@ body {
 }
 
 .full-height {
-  min-height: calc(100vh - 56px);
-  margin-bottom: 2em ;
+  min-height: calc(100vh - 33px);
 }
