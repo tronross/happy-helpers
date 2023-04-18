@@ -35,6 +35,7 @@ const sidebarOptions = [
   'DIY',
   'Driving',
   'Errands',
+  'Giving',
   'Heavy Lifting',
   'Housework',
   'Personal Care',
@@ -90,12 +91,12 @@ export default function Home({ tasks, user }) {
     if (filters.city === '') {
       tasksInCity = tasksCloserThan;
     } else {
-      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city))
+      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city));
       console.log(tasksInCity)
     }
 
     if (filters.category === 'All Categories') {
-      tasksInCategory = [...unfilteredTasks].filter(task => task.distance <= distance);
+      tasksInCategory = tasksInCity;
     } else {
       tasksInCategory = tasksInCity.filter(task => task.category === filters.category);
     }
@@ -149,9 +150,9 @@ export async function getServerSideProps() {
 
   // Capture tasks with addresses:
   const tasks = await prisma.task.findMany({
-    // where: {
-    //   status: "OPEN"
-    // },
+    where: {
+      status: "OPEN"
+    },
     include: {
       address: true
     },
