@@ -83,7 +83,7 @@ model Task {
   endDate       DateTime  @default(dbgenerated("NOW() + interval '1 day'")) @map("end_date")
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id])
-  status        Status    @default(PENDING)
+  status        Status    @default(OPEN)
   nbHelpers     Int       @map("nb_helpers")
   addressId     Int       @map("address_id")
   address       Address   @relation(fields: [addressId], references: [id])
