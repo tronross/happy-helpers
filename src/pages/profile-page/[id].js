@@ -4,14 +4,11 @@
 
 import Head from "next/head";
 import { useEffect, useState } from 'react';
-import axios from "axios";
 import prisma from "../../../prisma/.db";
-import { useRouter } from "next/navigation";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import Button from "@/components/Button";
 import TaskList from "@/components/TaskList";
 import EditProfileForm from "@/components/EditProfileForm";
 
@@ -22,10 +19,10 @@ import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 
 export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
   // HOOKS
-  const [userData, setUserData] = useState(user.user);
+  const [userData, setUserData] = useState(user);
   console.log(userData);
   // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
-  const fullAdd = `${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`;
+  const fullAdd = `${userAddress.address} ${userAddress.city} ${userAddress.postcode}`;
   const [fullAddress, setFullAddress] = useState(fullAdd);
 
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
@@ -42,8 +39,8 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
     // organizations: "",
   });
 
-  // console.log(upcomingData)
-  // console.log(pastData)
+  console.log(upcomingData);
+  console.log(pastData);
   const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData);
   const [pastTasksData, setPastTasksData] = useState(pastData);
 
@@ -52,19 +49,18 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
     setShowEditProfileForm(!showEditProfileForm);
   };
 
-  let [orgString, setOrgString] = useState("");
-
-  useEffect(() => {
-    let orgStr = "";
-    userOrganizations.forEach((org, index) => {
-      if (userOrganizations.length - 1 === index) {
-        orgStr += `${org.name}.`;
-      } else {
-        orgStr += `${org.name}, `;
-      }
-    });
-    setOrgString(orgStr);
-  }, [userOrganizations]);
+  // let [orgString, setOrgString] = useState("");
+  // useEffect(() => {
+  //   let orgStr = "";
+  //   userOrganizations.forEach((org, index) => {
+  //     if (userOrganizations.length - 1 === index) {
+  //       orgStr += `${org.name}.`;
+  //     } else {
+  //       orgStr += `${org.name}, `;
+  //     }
+  //   });
+  //   setOrgString(orgStr);
+  // }, [userOrganizations]);
 
   // TEMPLATE
   return (
@@ -78,7 +74,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
       <main className="bg-neutral-100">
         <NavBar name={userData.firstName} id={userData.id}/>
         <div className="flex">
-          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width: "20%" }}>
+          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width: "24em" }}>
             <h1 style={{ fontWeight: "bold", fontSize: "1rem", textAlign: "center" }}>Profile Details</h1>
             <br></br>
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -94,7 +90,7 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <br></br>
             <h1 style={{ fontWeight: "bold" }}>Stars:</h1>
             <p>{userData.stars}</p>
-            {user.user.id === 1 && <>
+            {user.id === 1 && <>
               <br></br>
               <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>
               <br></br>
@@ -116,8 +112,8 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <p>{userData.phone}</p><br></br>
             <h1 style={{ fontWeight: "bold" }}>Skills:</h1>
             <p>{userData.skills}</p><br></br>
-            <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
-            <p>{orgString}</p><br></br>
+            {/* <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
+            <p>{orgString}</p><br></br> */}
             <h1 style={{ fontWeight: "bold" }}>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
@@ -135,7 +131,6 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
                 tasks={pastTasksData}
               />
             </div>
-
           </section>
         </div>
       </main>
@@ -147,81 +142,56 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
 // DATA FETCHING
 export async function getServerSideProps(context) {
 
-  // Get url slug for profile page dynamically from url.
+  //////// User table user profile data /////////
+
+  // Get url slug for profile page dynamically from url to be used as userId.
   const { id } = context.query;
-  // console.log(id, 'ID');
-
-  // User table profile data
-  const user = await axios.get(`http://localhost:3000/api/users/${id}`);
-  // console.log('userAddressId', user.data.user.addressId)
-  // console.log( user.data.user.Organization, 'USER')
-
-  // User address data
-  // Address table profile data
-  const userAddress = await axios.get(`http://localhost:3000/api/addresses/${user.data.user.addressId}`);
-  // console.log(userAddress, 'userAddress')
-
-  // Organization table profile data
-  const userOrganizations = await prisma.user.findUnique({
+  // Get user table profile data and include address data
+  const user = await prisma.user.findUnique({
     where: {
-      id: user.data.user.id
+      id: parseInt(id)
     },
     include: {
-      Organizations: true
+      address: true,
+      // Organizations: true,
     }
   });
-  // console.log(user.data.user.id, 'user.data.user.id');
-  // console.log(userOrganizations.Organizations, 'userOrganizations');
 
-  // Task table profile data
-  // Get tasks where offer is complete for user
+  ///////// Task table user profile data /////////
+
+  // Get tasks where offer is complete for userId
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
-      userId: parseInt(user.data.user.id),
+      userId: parseInt(user.id),
       status: 'COMPLETE'
+    },
+    include: {
+      task: true,
     }
   });
-  // console.log('userPastOffersComplete', userPastOffersComplete);
 
   // Get all tasks data for user based on offers complete for the user
-  const tasksArr = userPastOffersComplete.map((item) => {
-    return axios.get(`http://localhost:3000/api/tasks/${item.taskId}`);
+  const tasksData = userPastOffersComplete.map((item) => {
+    return item.task;
   });
-  const res = await Promise.all(tasksArr);
-
-  // Extract tasks data
-  const tasksData = res.map((item) => {
-    // console.log(item, 'ITEM');
-    return item.data.task;
-  });
-  // console.log(tasksData, 'TASKS-DATA');
-
-  // Get addresses with addressId from tasksData array
-  const addressWithAddressIdArr = tasksData.map((task) => {
-    // console.log(task.addressId, 'task.addressId')
-    return axios.get(`http://localhost:3000/api/addresses/${task.addressId}`);
-  });
-  const resAddressWithAddressIdArr = await Promise.all(addressWithAddressIdArr);
-
-  const addressWithAddressId = resAddressWithAddressIdArr.map((item) => {
-    return item.data.address;
-  });
-  // console.log(addressWithAddressId, 'addressWithAddressId');
-
-  tasksData.forEach((task) => {
-    for (let i = 0; i < addressWithAddressId.length; i++) {
-      if (task.addressId === addressWithAddressId[i].id) {
-        task.city = addressWithAddressId[i].city;
-      }
-    }
-  });
-
+  
+  // console.log(tasksData);
+  // console.log(user)
   const addresses = await prisma.address.findMany();
-  addCoordsToTasks(tasksData, addresses);
-  addCoordsToUser(user.data.user, addresses);
-  addDistanceToTasks(tasksData, user.data.user);
-  // console.log(tasksData, 'TASKS-DATA');
 
+  // Add city, latitude, longitude to tasksData
+  addCoordsToTasks(tasksData, addresses);
+
+  // Add city, latitude, longitude to user
+  addCoordsToUser(user, addresses);
+
+  // Add distance to tasksData
+  addDistanceToTasks(tasksData, user);
+
+  // console.log(tasksData);
+  // console.log(user)
+
+  
   // Extract upcoming tasks data
   const upcomingData = tasksData.filter(item => {
     return item.status === 'PENDING';
@@ -236,11 +206,10 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      user: user.data,
-      userAddress: userAddress.data,
-      userOrganizations: userOrganizations.Organizations,
-      upcomingData,
-      pastData
+      user: JSON.parse(JSON.stringify(user)),
+      userAddress: JSON.parse(JSON.stringify(user.address)),
+      upcomingData: JSON.parse(JSON.stringify(upcomingData)),
+      pastData: JSON.parse(JSON.stringify(pastData)),
     }
   };
 }

@@ -29,7 +29,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
         )}
         <p className="font-semibold my-2">Stars: {offer.user.stars}</p>
         <p className="font-semibold hover:rounded hover:text-gray-100 hover:bg-teal-500">
-          <Link href={`/profile-page/${offer.user.id}`}>
+          <Link href={`/profile-page/${offer.user.id}`} target="_blank">
             Click here to take a look at {offer.user.firstName}&apos;s profile
           </Link>
         </p>
@@ -92,7 +92,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
       <div key={offer.id}>
         <p className="font-bold uppercase text-base">This request was completed by {offer.user.firstName} {offer.user.lastName}!</p>
         <p className="font-semibold mt-2 hover:rounded hover:text-gray-100 hover:bg-teal-500">
-          <Link href={`/profile-page/${offer.user.id}`}>
+          <Link href={`/profile-page/${offer.user.id}`} target="_blank">
             Click here to take a look at {offer.user.firstName}&apos;s profile
           </Link>
         </p>
