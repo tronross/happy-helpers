@@ -138,7 +138,7 @@ export default function Home({ tasks, user }) {
       <main>
         <NavBar name={user.firstName}
           id={user.id} />
-        <div className="flex">
+        <div className="flex pl-2">
           <Sidebar
             sidebarOptions={sidebar}
             filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
