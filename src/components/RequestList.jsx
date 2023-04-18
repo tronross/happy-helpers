@@ -1,7 +1,10 @@
 import Request from '../components/Request';
 import Link from 'next/link';
+import RowButton from "./RowButton";
 
 export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers }) {
+
+  console.log('requests log:', requests);
 
   // Add border to selected request
   const selectedClass = "outline outline-4 outline-teal-600";
@@ -13,7 +16,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
 
       if (request.id === selectedRequestId) {
         return (
-          <li key={request.id}>
+          <li key={request.id} className="flex-none w-64">
             <Request
               id={request.id}
               name={request.name}
@@ -35,7 +38,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
         );
       } else {
         return (
-          <li key={request.id}>
+          <li key={request.id} className="flex-none w-64">
             <Request
               id={request.id}
               name={request.name}
@@ -66,6 +69,16 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
   const completeRequests = requests.filter(request => request.status === 'COMPLETE');
   const completeRequestItems = createRequestItems(completeRequests);
 
+  const scrollLeft = (rowType) => {
+    const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+    scrollBox.scrollLeft -= 260;
+  };
+
+  const scrollRight = (rowType) => {
+    const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+    scrollBox.scrollLeft += 260;
+  };
+
   return (
     <>
       {openRequests.length === 0 && pendingRequests.length === 0 && completeRequests.length === 0 ? (
@@ -83,16 +96,22 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       {openRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Open requests:</h1>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center overflow-auto">
+          {/* <div className="absolute left-[50px] z-10 ">
+            <RowButton svg='prev' onClick={() => scrollLeft('Open')}/>
+          </div> */}
+          <ul id="scrollboxOpen" className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { openRequestItems }
           </ul>
+          {/* <div className="absolute right-[10px] z-10 ">
+            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
+          </div> */}
         </div>
       )}
 
       {pendingRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Pending requests:</h1>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center overflow-auto">
+          <ul className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { pendingRequestItems }
           </ul>
         </div>
@@ -101,7 +120,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       {completeRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Completed requests:</h1>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center overflow-auto">
+          <ul className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { completeRequestItems }
           </ul>
         </div>

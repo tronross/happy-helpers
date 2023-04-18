@@ -31,7 +31,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     }
   }, [selectedRequestId, userRequests]);
 
-  // Keep selected request id in memory during a router.refresh()
+  // Keep selected request id in local memory during a router.refresh() or page change
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const selectedRequestId = localStorage.getItem('selectedRequestId');
@@ -59,8 +59,7 @@ export default function UserTasks({ userRequests, offers, user }) {
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
    */
   const handleRequestComplete = async function(offerId, volunteerId, giveStar) {
-    console.log('in handleRequestComplete function, offer id:', offerId, 'selectedRequestId', selectedRequestId, 'volunteerId', volunteerId, 'giveStar', giveStar);
-    
+    // console.log('in handleRequestComplete function, offer id:', offerId, 'selectedRequestId', selectedRequestId, 'volunteerId', volunteerId, 'giveStar', giveStar);
     await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'COMPLETE'});
     await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
 
