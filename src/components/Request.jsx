@@ -54,7 +54,7 @@ export default function Request(props) {
         </div>
         <div className="my-4 flex justify-between items-center">
           <div className={statusStyle}>
-            {props.status}
+            <p className="p-3">{props.status}</p>
           </div>
         </div>
       </section>
