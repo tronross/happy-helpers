@@ -85,7 +85,7 @@ const HomePage = function() {
   }); // function
 
   return (
-    <div id="map" ref={googlemap} />
+    <div id="map" ref={googlemap}/>
   );
 };
 
