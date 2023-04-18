@@ -1,6 +1,6 @@
 export default function Task(props) {
   
-  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[25em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]";
+  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px]";
 
   
   const getStyle = (status) => {
@@ -18,18 +18,15 @@ export default function Task(props) {
     <div>
     <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
     <section className="px-4">
-      <h5 className=" text-xl leading-tight line-clamp-1">
+      <h5 className=" text-xl leading-tight line-clamp-1 mb-1">
       {props.name}
     </h5>
     <section >
-    <span className="mb-2 text-base text-teal-700">
+    <span className="mb-2 text-sm text-teal-700">
     {props.city}
     </span>
-    <span className="mb-2 text-base text-teal-700">
-    {`     -   ${props.distance}`}
-    </span>
     </section>
-    <p className="mb-2 text-base text-teal-700">
+    <p className="mb-2 text-sm text-teal-700">
     {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">
@@ -41,7 +38,13 @@ export default function Task(props) {
       <div className={statusColor}>
           <p className="p-3">{props.status}</p>
       </div>
-      <svg className="h-7 w-7 text-teal-500 hover:fill-current hover:cursor-pointer"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="2"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+      <div className="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#0d9488" className="w-6 h-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+      </svg>
+      <p className="text-teal-600 pl-1">{props.distance}</p>
+      </div>
       
     </div>
 </div>

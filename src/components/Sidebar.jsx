@@ -9,12 +9,31 @@ export default function Sidebar(props) {
     sort: 'Date'
   });
 
+
+
   // Click handlers
   const dropdownSelect = (e) => {
-    const select = e.target.value
+    const select = e.target.value;
     props.setCategory(select === 'All Categories' ? '' : select)
     setClicked(prev => ({ ...prev, category: select }));
     props.setFilters(prev => ({ ...prev, category: select }));
+  }
+
+  const filterCity = (e) => {
+    const cityFilter = e.target.value;
+    console.log(cityFilter)
+    setClicked({ distance: 'all' })
+    props.setFilters(prev => ({
+      ...prev, city: cityFilter,
+      distance: 'all'
+    }));
+  }
+
+  const clearCityFilter = () => {
+    const cityFilter = document.getElementById('cityFilter');
+    cityFilter.value = '';
+    props.setFilters(prev => ({ ...prev, city: '' }));
+    setClicked({ distance: 50 })
   }
 
   const closerThan = (e) => {
@@ -40,7 +59,8 @@ export default function Sidebar(props) {
       distance: 50,
       category: 'All Categories',
       sort: 'Date',
-      date: 'All'
+      date: 'All',
+      city: ''
     });
 
     setClicked({
@@ -63,7 +83,7 @@ export default function Sidebar(props) {
 
   // Call filterTasks on change of filters state
   useEffect(() => {
-    console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0,10))
+    console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0, 10))
     props.filterTasks()
   }, [props.filters])
 
@@ -94,6 +114,12 @@ export default function Sidebar(props) {
             }
           })}
         </section>
+        <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">City:</h5>
+        <section className="flex flex-row space-x-1.5 items-baseline">
+          <input className="h-8 w-400 block w-full text-m text-black file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 " name="cityFilter" type="text" onChange={filterCity} id="cityFilter" ></input>
+          <button className="inline-flex justify-center items-center gap-2 bg-teal-600 h-8 px-4 py-1 rounded text-white" onClick={clearCityFilter}>reset</button>
+        </section>
+
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
         <section className="inline-flex rounded-md shadow-sm space-y-0.5">
           {props.distances.map((distance, idx) => {
