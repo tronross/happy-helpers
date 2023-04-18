@@ -149,12 +149,12 @@ export async function getServerSideProps(context) {
 
   // Get url slug for profile page dynamically from url.
   const { id } = context.query;
-  // console.log(id, 'ID');
+  console.log(id, 'ID');
 
   // User table profile data
-  const user = await axios.get(`http://localhost:3000/api/users/${id}`);
-  // console.log('userAddressId', user.data.user.addressId)
-  // console.log( user.data.user.Organization, 'USER')
+  const user = await axios.get(`http://localhost:3000/api/users/${parseInt(id)}`);
+  console.log('userAddressId', user.data.user.addressId)
+  console.log( user.data.user.Organization, 'USER')
 
   // User address data
   // Address table profile data
