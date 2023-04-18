@@ -6,7 +6,13 @@ export default function ConfirmForm({formData, user}) {
     city: formData.city,
     postcode: formData.postcode
   }
-  console.log(user)
+console.log(formData)
+  const startDate = formData.startDate
+  const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+  const endDate = formData.endDate
+  const endDateString = (new Date(endDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+
+console.log(formData)
   return (
     <div className="flex flex-col w-1/2 items-center self-center">
     <div className="text-teal-600">Is everything correct?</div>
@@ -18,6 +24,8 @@ export default function ConfirmForm({formData, user}) {
       task={formData}
       userAddress={address}
       type="fake"
+      startDate={startDateString}
+      endDate={endDateString}
     />
     </div>
   )

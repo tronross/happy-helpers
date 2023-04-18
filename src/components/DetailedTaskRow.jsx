@@ -31,7 +31,9 @@ const changeTask = (id) => {
   const tasks = userTasks.map(task => {
 
     const startDate = task.startDate || task.start_date
+    const endDate = task.endDate || task.end_date
     const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+    const endDateString = (new Date(endDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
 
     const calcDistanceProp = function(distance) {
       if (distance <= 1) {
@@ -49,10 +51,12 @@ const changeTask = (id) => {
       return <li key={task.id} className="snap-center">
         <DetailedTask
           task={task}
-          startDate={task.startDate}
           selectedUser={selectedUser}
           sendOffer={sendOffer}
           offerTaskIds={offerTaskIds}
+          startDate={startDateString}
+          endDate={endDateString}
+          distance={distanceProp}
           userAddress={userAddress}
           taskId={taskId}
         />

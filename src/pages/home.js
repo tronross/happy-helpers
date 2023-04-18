@@ -139,7 +139,7 @@ export default function Home({ tasks, user }) {
             setCategory={setCategory}
             distances={distances}
           />
-          <section className='flex flex-col p-2 grow'>
+          <section className='flex flex-col p-2 mx-4 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </section>

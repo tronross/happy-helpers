@@ -7,7 +7,7 @@ export default function PageHeader(props) {
       <section className="flex mr-2">
         <p className="mx-3 hover:cursor-pointer hover:text-teal-500 active:text-teal-700" onClick={() => props.setView("List")}>LIST</p>
         <p>|</p>
-        <p className="mx-3 hover:cursor-pointer hover:text-teal-500 active:text-teal-700" onClick={() => props.setView("Map")}>MAP</p>
+        <p className="ml-3 hover:cursor-pointer hover:text-teal-500 active:text-teal-700" onClick={() => props.setView("Map")}>MAP</p>
       </section>
     </div>
 
