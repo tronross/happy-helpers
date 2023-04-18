@@ -108,7 +108,7 @@ export default function Map(props) {
         console.log(lat, lng, title)
         new google.maps.Marker({
           position: { lat: lat, lng: lng },
-          // label: title,
+          label: title,
           map,
           title: title,
         });
