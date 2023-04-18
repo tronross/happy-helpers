@@ -11,8 +11,6 @@ export default function Sidebar(props) {
     sort: 'Date'
   });
 
-
-
   // Click handlers
   const dropdownSelect = (e) => {
     const select = e.target.value;
@@ -71,16 +69,6 @@ export default function Sidebar(props) {
       sort: 'Date',
       date: 'All'
     });
-  }
-
-  const [value, setValue] = useState({
-    startDate: new Date(),
-    endDate: new Date().setMonth(4)
-  });
-
-  const handleValueChange = (newValue) => {
-    console.log("newValue:", newValue);
-    setValue(newValue);
   }
 
   // Call filterTasks on change of filters state
@@ -147,18 +135,6 @@ export default function Sidebar(props) {
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
           <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
-
-
-        {/* <form>
-        <input type="date" name="selectedDate" onChange={selectDate} />
-          <noscript>
-            <input type="submit" value="Submit" />
-          </noscript>
-      </form> */}
-        {/* <input type="date" placeholder="Date"/> */}
-        {/* <input type="submit" value="Submit" /> */}
-
-
       </div>
     </>
   )
