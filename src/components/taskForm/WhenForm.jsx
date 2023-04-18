@@ -5,7 +5,7 @@ import { useEffect } from "react"
 
 export default function WhenForm({formData, setFormData}) {
   const [startTime, setStartTime] = useState({
-    hour: "01",
+    hour: "1",
     minute: "00",
     ampm: "PM"
   })
@@ -15,23 +15,22 @@ export default function WhenForm({formData, setFormData}) {
     ampm: "PM"
   })
 
-  const [Date, setDate] = useState({ 
+  const [date, setDate] = useState({ 
     startDate: null, 
     endDate: null 
     }); 
 
-    const handleValueChange = (e) => {
+    const handleValueChange = (newDate) => {
 
-      console.log(e)
-      console.log("newValue:", e.startDate); 
-      setDate((prev) => ({...prev, startDate: e.startDate})); 
+      console.log("newValue:", newDate.startDate); 
+      setDate((prev) => ({...prev, startDate: newDate.startDate})); 
       } 
 
-  useEffect(() => {
-    let startDate;
-    if (startTime.ampm === "AM") {
-      startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    } else {
+  // useEffect(() => {
+    // if (startTime.ampm === "AM") {
+      // const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+      // setDate((prev) => ({ ...prev, startDate: newStartDate }))
+      // } else {
       // const getPM = (time) => {
       //   switch(time) {
       //     case "1": return "13";
@@ -41,38 +40,50 @@ export default function WhenForm({formData, setFormData}) {
       //   }
       // }
 
-      // startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-        
-      console.log(startDate)
-    }
+      // const newEndDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+      // setDate((prev) => ({ ...prev, startDate: newEndDate }))
+      // console.log(startDate)
+    // }
 
 
-
+// console.log(startTime, endTime, date)
     
     // const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
     // setFormData(prev => ({...prev, startDate}))
     // setFormData(prev => ({...prev, endDate}))
-  }, [startTime, endTime])
+
+//     // new Date('2023-04-29 18:00+0500')
+    // const startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    // const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
+// console.log(startDate, endDate)
+    // setFormData(prev => ({...prev, startDate: newStartDate}))
+    // setFormData(prev => ({...prev, endDate: newEndDate}))
+  // }, [startTime, endTime, date, setFormData])
+
+  const updateDate = () => {
+    const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    setDate((prev) => ({ ...prev, startDate: newStartDate }))
+    const newEndDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    setDate((prev) => ({ ...prev, startDate: newEndDate }))
+    setFormData(prev => ({...prev, startDate: newStartDate}))
+    setFormData(prev => ({...prev, endDate: newEndDate}))
+  }
   
   
-  const updateTime = async (e) => {
+  const updateTime = (e) => {
     const value = e.target.value;
     const selected = e.target.id;
     const name = e.target.name;
-
-    
+  
 
     if (name === "startTime") {
       setStartTime(prev => ({...prev, [selected]: value}))
-    } else if (name === "endTime") {
+    } else {
       setEndTime(prev => ({...prev, [selected]: value}))
     }
-    // new Date('2023-04-29 18:00+0500')
-    const startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
 
-    setFormData(prev => ({...prev, startDate}))
-    setFormData(prev => ({...prev, endDate}))
+    const newStartDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
+    setDate((prev) => ({ ...prev, startDate: newStartDate }))
   }
 
 
@@ -84,9 +95,8 @@ export default function WhenForm({formData, setFormData}) {
              Start Date
            </label>
            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none active:outline-none">
-           <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red" value={Date.startDate} 
-          onChange={(e) => handleValueChange(e)} 
-          showShortcuts={true} />
+           <Datepicker asSingle="true" primaryColor={"teal"} value={date.startDate} 
+          onChange={handleValueChange}/>
           </div>
 
 
@@ -118,15 +128,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={startTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="01">1</option>
-                  <option value="02">2</option>
-                  <option value="03">3</option>
-                  <option value="04">4</option>
-                  <option value="05">5</option>
-                  <option value="06">6</option>
-                  <option value="07">7</option>
-                  <option value="08">8</option>
-                  <option value="09">9</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
@@ -168,15 +178,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={endTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="01">1</option>
-                  <option value="02">2</option>
-                  <option value="03">3</option>
-                  <option value="04">4</option>
-                  <option value="05">5</option>
-                  <option value="06">6</option>
-                  <option value="07">7</option>
-                  <option value="08">8</option>
-                  <option value="09">9</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
