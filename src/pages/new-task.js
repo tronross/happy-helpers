@@ -17,7 +17,17 @@ export default function NewTask(props) {
     image: "",
     address: "",
     city: "",
-    postcode: ""
+    postcode: "",
+    startTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    },
+    endTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    }
   })
   return (
     <>
@@ -43,7 +53,7 @@ export async function getServerSideProps() {
 
   const user = await prisma.user.findUnique({
     where: {
-      id: 2
+      id: 1
     },
     include: {
       address: true
