@@ -79,7 +79,7 @@ export default function Sidebar(props) {
 
   return (
     <>
-      <div className="h-screen sticky top-0 ">
+      <div className="h-screen sticky top-0 w-[24em]">
         <section className="flex items-baseline space-x-4" >
           <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
           {clicked.sort === 'Date' ?
