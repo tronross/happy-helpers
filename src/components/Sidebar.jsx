@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
 
 export default function Sidebar(props) {
-  const [dateFilter, setDateFilter] = useState(null); 
+  // Calendar (date) filter state
+  const [dateFilter, setDateFilter] = useState(null);
 
   // Button state
   const [clicked, setClicked] = useState({
@@ -66,16 +67,12 @@ export default function Sidebar(props) {
     setClicked({
       distance: 50,
       category: 'All Categories',
-      sort: 'Date',
-      date: 'All'
+      sort: 'Date'
     });
   }
 
   // Call filterTasks on change of filters state
-  useEffect(() => {
-    // console.log(new Date('2023-04-19T10:00:00.000Z').toISOString().substring(0, 10))
-    props.filterTasks()
-  }, [props.filters])
+  useEffect(() => { props.filterTasks() }, [props.filters])
 
 
   return (
