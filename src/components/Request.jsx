@@ -3,7 +3,7 @@ export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
-  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative`;
+  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative hover:cursor-pointer`;
 
   // Colour-code the status in a pill button style
   const getStatusStyle = function(status) {
@@ -19,7 +19,7 @@ export default function Request(props) {
   return (
     <div className={className} onClick={() => props.onClick(props.id)}>
       {props.nbOffers > 0 && props.status === 'OPEN' && (
-        <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
+        <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-2 -right-2">
           {props.nbOffers}
         </div>
       )}
