@@ -13,8 +13,8 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
   };
 
   const handleSubmit = async () => {
-    await axios.put(`http://localhost:3000/api/addresses/${userAddressId}`, editProfileFormData);
-    console.log(userId)
+    await axios.patch(`http://localhost:3000/api/addresses/${userAddressId}`, editProfileFormData);
+    // console.log(userId)
     await axios.put(`http://localhost:3000/api/users/${userId}`, editProfileFormData);
     console.log(editProfileFormData);
     router.refresh();
@@ -22,7 +22,7 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
   // TEMPLATE
   return (
-    <div className="flex flex-col">
+    <div style={{color:"black"}} className="flex flex-col">
       <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required />
 
       <input type="text" id="lastName" name="lastName" placeholder="last name" value={editProfileFormData.lastName} onChange={onChange} required />
