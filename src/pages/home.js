@@ -64,7 +64,7 @@ export default function Home({ tasks, user }) {
     distance: 50,
     category: 'All Categories',
     sort: 'Date',
-    date: 'All',
+    dateFilter: null,
     city: ''
   });
 
@@ -78,6 +78,7 @@ export default function Home({ tasks, user }) {
     let sortedFilteredTasks;
     let tasksCloserThan;
     let tasksInCity;
+    let filteredByDate;
     let distance;
 
     // Filters
@@ -96,7 +97,7 @@ export default function Home({ tasks, user }) {
       tasksInCity = tasksCloserThan;
     } else {
       tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city));
-      // console.log(tasksInCity)
+      console.log(tasksInCity)
     }
 
     // Filter by category
@@ -106,11 +107,18 @@ export default function Home({ tasks, user }) {
       tasksInCategory = tasksInCity.filter(task => task.category === filters.category);
     }
 
+    // Filter by date
+    if (!filters.date) {
+      filteredByDate = tasksInCategory;
+    } else {
+      filteredByDate = tasksInCategory.filter(task => new Date(task.startDate).toISOString().substring(0, 10) === filters.date)
+    }
+    console.log(filteredByDate)
     // Sort by distance or date
     if (filters.sort === 'Distance') {
-      sortedFilteredTasks = sortTasksByDistance(tasksInCategory)
+      sortedFilteredTasks = sortTasksByDistance(filteredByDate)
     } else {
-      sortedFilteredTasks = sortTasksByStartTime(tasksInCategory)
+      sortedFilteredTasks = sortTasksByStartTime(filteredByDate)
     }
 
     // Update state -> fire render of filtered tasks
