@@ -4,8 +4,6 @@ import RowButton from "./RowButton";
 
 export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers }) {
 
-  console.log('requests log:', requests);
-
   // Add border to selected request
   const selectedClass = "outline outline-4 outline-teal-600";
 
@@ -96,22 +94,28 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       {openRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Open requests:</h1>
-          {/* <div className="absolute left-[50px] z-10 ">
+          <div className="absolute left-[260px] z-10">
             <RowButton svg='prev' onClick={() => scrollLeft('Open')}/>
-          </div> */}
+          </div>
+          <div className="absolute right-[0px] z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
+          </div>
           <ul id="scrollboxOpen" className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { openRequestItems }
           </ul>
-          {/* <div className="absolute right-[10px] z-10 ">
-            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
-          </div> */}
         </div>
       )}
 
       {pendingRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Pending requests:</h1>
-          <ul className="flex flex-nowrap overflow-x-auto scrollbar-hide">
+          <div className="absolute left-[260px] z-10">
+            <RowButton svg='prev' onClick={() => scrollLeft('Pending')}/>
+          </div>
+          <div className="absolute right-[0px] z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Pending')}/>
+          </div>
+          <ul id="scrollboxPending" className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { pendingRequestItems }
           </ul>
         </div>
@@ -120,7 +124,13 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       {completeRequests.length > 0 && (
         <div className="text-lg text-teal-700">
           <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Completed requests:</h1>
-          <ul className="flex flex-nowrap overflow-x-auto scrollbar-hide">
+          <div className="absolute left-[260px] z-10">
+            <RowButton svg='prev' onClick={() => scrollLeft('Complete')}/>
+          </div>
+          <div className="absolute right-[0px] z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Complete')}/>
+          </div>
+          <ul id="scrollboxComplete" className="flex flex-nowrap overflow-x-auto scrollbar-hide">
             { completeRequestItems }
           </ul>
         </div>
