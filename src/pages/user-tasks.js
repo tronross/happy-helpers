@@ -47,8 +47,8 @@ export default function UserTasks({ userRequests, offers, user }) {
    * In offers table: set offer status as pending where id = offer.id
    */
   const handleAcceptOffer = async function(offerId) {
-    await axios.put(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'PENDING'});
-    await axios.put(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
+    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'PENDING'});
+    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh(); // Force reload
   };
@@ -61,11 +61,11 @@ export default function UserTasks({ userRequests, offers, user }) {
   const handleRequestComplete = async function(offerId, volunteerId, giveStar) {
     console.log('in handleRequestComplete function, offer id:', offerId, 'selectedRequestId', selectedRequestId, 'volunteerId', volunteerId, 'giveStar', giveStar);
     
-    await axios.put(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'COMPLETE'});
-    await axios.put(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
+    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'COMPLETE'});
+    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
 
     if (giveStar) {
-      await axios.put(`http://localhost:3000/api/users/${volunteerId}/giveStar`, {field: 'stars'});
+      await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
     }
 
     localStorage.setItem("selectedRequestId", selectedRequestId);
@@ -172,9 +172,6 @@ export default function UserTasks({ userRequests, offers, user }) {
             handleRequestComplete={handleRequestComplete}
           />
           <section className='flex flex-col p-2 max-w-6xl'>
-            <div className="flex justify-between m-4 text-lg text-teal-700">
-              <h1 className="text-[1.5em]">My requests for help</h1>
-            </div>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
@@ -200,7 +197,7 @@ export const getServerSideProps = async function() {
    */
   const userRequests = await prisma.task.findMany({
     where: {
-      userId: 2
+      userId: 1
     },
     include: {
       address: true

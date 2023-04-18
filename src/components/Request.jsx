@@ -3,20 +3,18 @@ export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
-  const endDate = new Date(props.endDate);
-  
   const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative`;
 
   // Colour-code the status in a pill button style
   const getStatusStyle = function(status) {
     switch (status) {
-    case 'OPEN':  return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-teal-200 text-teal-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
-    case 'PENDING': return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-violet-200 text-violet-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
-    case 'COMPLETE': return "inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none bg-amber-200 text-amber-600 rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center";
+    case 'OPEN':  return "bg-teal-200 text-teal-600";
+    case 'PENDING': return "bg-violet-200 text-violet-600";
+    case 'COMPLETE': return "bg-amber-200 text-amber-600";
     }
   };
   
-  const statusStyle = getStatusStyle(props.status);
+  const statusStyle = `inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
 
   return (
     <div className={className} onClick={() => props.onClick(props.id)}>
@@ -42,23 +40,14 @@ export default function Request(props) {
       <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
       <section className="px-4 text-teal-700 text-base">
         <h5 className="mb-1 text-xl leading-tight line-clamp-1">{props.name}</h5>
-        {/* <p className="mb-1">{props.address.city}</p> */}
         <p className="mb-1 font-bold">{props.category}</p>
-        {/* <p>Starts at:</p> */}
         <p className="text-sm">
           {startDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
         </p>
         <p className="mb-1 text-sm font-bold">
           {startDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
         </p>
-        {/* <p>Ends at:</p>
-        <p className="text-sm">
-          {endDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
-        </p>
-        <p className="mb-1 text-sm">
-          {endDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
-        </p> */}
-        <div className="">
+        <div>
           <p className="h-12 line-clamp-2">
             {props.description}
           </p>

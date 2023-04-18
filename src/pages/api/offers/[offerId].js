@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     });
     console.log(offer)
     res.json({ offer })
-  } else if (req.method === 'PUT') {
+  } else if (req.method === 'PATCH') {
 
     const { offerId } = req.query;
     const { newStatus } = req.body;
