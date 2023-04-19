@@ -113,14 +113,12 @@ export default function UserTasks({ userRequests, offers, user }) {
             selectedRequestStatus={selectedRequestStatus}
             handleRequestComplete={handleRequestComplete}
           />
-          <section className='flex flex-col p-2 max-w-6xl'>
-            <RequestList
-              requests={filteredRequests}
-              selectedRequestId={selectedRequestId}
-              setSelectedRequestId={setSelectedRequestId}
-              offers={offers}
-            />
-          </section>
+          <RequestList
+            requests={filteredRequests}
+            selectedRequestId={selectedRequestId}
+            setSelectedRequestId={setSelectedRequestId}
+            offers={offers}
+          />
         </div>
       </main>
       <Footer />

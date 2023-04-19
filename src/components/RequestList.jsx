@@ -78,7 +78,8 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
   };
 
   return (
-    <>
+    <section className='flex flex-col p-2 max-w-6xl'>
+
       {openRequests.length === 0 && pendingRequests.length === 0 && completeRequests.length === 0 ? (
         <div className="ml-4 mb-2 text-lg text-teal-700">
           <h1 className="text-[1.5em] font-bold mb-2">There are no requests for help to show.</h1>
@@ -135,6 +136,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
           </ul>
         </div>
       )}
-    </>
+
+    </section>
   );
 }
