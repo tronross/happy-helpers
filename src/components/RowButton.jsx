@@ -3,7 +3,7 @@ export default function RowButton(props) {
   
 
   return (
-    <button className='px-10 py-1 rounded-sm fill-teal-600 text-2xl h-[400px] ' onClick={props.onClick} >
+    <button className='px-5 py-1 rounded-sm fill-teal-600 text-2xl h-[400px] ' onClick={props.onClick} >
       {buttonSvg}
     </button>
   )
