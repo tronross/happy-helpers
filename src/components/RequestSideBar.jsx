@@ -11,11 +11,17 @@ import OfferList from '../components/OfferList';
  *    - If NO offers, show 'Sorry, there are no volunteers for this request yet.'
  *    - If ANY offers, map offers, show ACCEPT OFFER button
  *    - Link to volunteer profile
- *    - Clicking ACCEPT OFFER button will change selected request status & offer status to PENDING
+ *    - Clicking ACCEPT OFFER button will:
+ *        - change selected request status to PENDING in database
+ *        - change accepted offer status to ACCEPTED in database
+ *        - change all non-accepted offers to have status DENIED in database
+ *        - send WON message to winning volunteer
+ *        - send LOSE message to denied volunteers
  *
  * 3. If selected request is PENDING:
  *    - show accepted offer
  *    - when user clicks on COMPLETED button, show option to give star
+ *    - send message to volunteer, mention if star was received
  *
  * 4. If selected request is CLOSED:
  *    - show 'this request was completed by ${volunteer name}'

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-export default function Offer({ offer, handleAcceptOffer, handleRequestComplete }) {
+export default function Offer({ offer, handleAcceptOffer, handleRequestComplete, selectedRequestStatus }) {
 
   const [showStarChoice, setShowStarChoice] = useState(false);
   const [giveStar, setGiveStar] = useState(false);
@@ -43,7 +43,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
     );
   }
 
-  if (offer.status === 'PENDING') {
+  if (selectedRequestStatus === 'PENDING' && offer.status === 'ACCEPTED') {
     return (
       <div key={offer.id}>
         <p className="mb-2 font-bold uppercase text-base">You have accepted an offer from {offer.user.firstName} {offer.user.lastName}!</p>
@@ -87,7 +87,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete 
     );
   }
 
-  if (offer.status === 'COMPLETE') {
+  if (selectedRequestStatus === 'COMPLETE' && offer.status === 'ACCEPTED') {
     return (
       <div key={offer.id}>
         <p className="font-bold uppercase text-base">This request was completed by {offer.user.firstName} {offer.user.lastName}!</p>

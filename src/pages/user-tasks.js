@@ -1,10 +1,9 @@
 // @refresh reset
 import Head from 'next/head';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import prisma from '../../prisma/.db';
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
 
 // Component dependencies
 import RequestList from '@/components/RequestList';
@@ -12,21 +11,33 @@ import Footer from '@/components/Footer';
 import NavBar from '@/components/NavBar';
 import RequestSideBar from '@/components/RequestSideBar';
 
+// Custom hooks
+import filterRequests from '../helpers/filter-requests';
+
 export default function UserTasks({ userRequests, offers, user }) {
 
   // Hooks
-  const [category, setCategory] = useState('All Categories');
-  const [status, setStatus] = useState('Any Status');
   const [selectedRequestId, setSelectedRequestId] = useState();
   const [selectedOffers, setSelectedOffers] = useState([]);
+  const {
+    category,
+    status,
+    filteredRequests,
+    categoryFilter,
+    statusFilter,
+    resetFilters,
+    handleCategoryChange,
+    handleStatusChange
+  } = filterRequests(userRequests, setSelectedRequestId);
 
-  const router = useRouter(); // Used to force render page (all state will be lost)
+  // Used to force render page (all state is lost)
+  const router = useRouter();
 
   // Track the status of the currently selected request and it's offer status
   const [selectedRequestStatus, setSelectedRequestStatus] = useState();
   useEffect(() => {
     if (selectedRequestId) {
-      const selectedRequest = userRequests.find((request) => request.id === selectedRequestId);
+      const selectedRequest = userRequests.find(request => request.id === selectedRequestId);
       setSelectedRequestStatus(selectedRequest.status);
     }
   }, [selectedRequestId, userRequests]);
@@ -44,23 +55,22 @@ export default function UserTasks({ userRequests, offers, user }) {
 
   /* When user clicks on accept offer from volunteer button:
    * In tasks table: set task status as pending where id = selectedTask
-   * In offers table: set offer status as pending where id = offer.id
+   * In offers table: set winning offer status as accepted where id = offer.id
+   *  & set all losing offers status as denied
    */
   const handleAcceptOffer = async function(offerId) {
-    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'PENDING'});
+    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {offerArray: selectedOffers});
     await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
     localStorage.setItem("selectedRequestId", selectedRequestId);
-    router.refresh(); // Force reload
+    router.refresh();
   };
 
   /* When user clicks on request complete button:
    * In tasks table: set task status as closed where id = selectedTask
-   * In offers table: set offer status as closed where id = offer.id
+   * There is nothing to change in the offers table
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
    */
-  const handleRequestComplete = async function(offerId, volunteerId, giveStar) {
-    // console.log('in handleRequestComplete function, offer id:', offerId, 'selectedRequestId', selectedRequestId, 'volunteerId', volunteerId, 'giveStar', giveStar);
-    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {newStatus: 'COMPLETE'});
+  const handleRequestComplete = async function(volunteerId, giveStar) {
     await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
 
     if (giveStar) {
@@ -68,83 +78,16 @@ export default function UserTasks({ userRequests, offers, user }) {
     }
 
     localStorage.setItem("selectedRequestId", selectedRequestId);
-    router.refresh(); // Force reload
+    router.refresh();
   };
 
   // Create an array of offers received for a task when it is selected
   useEffect(() => {
     if (selectedRequestId) {
-      const offersReceived = offers.filter((offer) => offer.taskId === selectedRequestId);
+      const offersReceived = offers.filter(offer => offer.taskId === selectedRequestId);
       setSelectedOffers(offersReceived);
     }
   }, [selectedRequestId, offers]);
-  
-  const filterRequests = function() {
-    if (category === 'All Categories' && status === 'Any Status') {
-      return userRequests;
-    }
-    if (category !== 'All Categories' && status === 'Any Status') {
-      return userRequests.filter(request => request.category === category);
-    }
-    if (category === 'All Categories' && status !== 'Any Status') {
-      return userRequests.filter(request => request.status === status);
-    }
-    if (category !== 'All Categories' && status !== 'Any Status') {
-      return userRequests.filter(request => request.category === category && request.status === status);
-    }
-  };
-
-  // Avoid duplicate function calls with useMemo
-  const filteredRequests = useMemo(filterRequests, [category, status, userRequests]);
-
-  // Build an array of the available categories
-  const categoryOptions = ['All Categories'];
-  for (const request of userRequests) {
-    if (!categoryOptions.includes(request.category)) {
-      categoryOptions.push(request.category);
-    }
-  }
-
-  // Build an array of the available statuses
-  const statusOptions = ['Any Status'];
-  for (const request of userRequests) {
-    if (!statusOptions.includes(request.status)) {
-      statusOptions.push(request.status);
-    }
-  }
-
-  // Create dropdown select element to filter by category
-  const categoryFilter = categoryOptions.map((category, index) => {
-    return (
-      <option key={index} value={category}>
-        {category}
-      </option>
-    );
-  });
-
-  // Create dropdown select element to filter by status
-  const statusFilter = statusOptions.map((status, index) => {
-    return (
-      <option key={index} value={status}>
-        {status}
-      </option>
-    );
-  });
-
-  // Event Handlers
-  const resetFilters = function() {
-    setCategory('All Categories');
-    setStatus('Any Status');
-    setSelectedRequestId();
-  };
-
-  const handleCategoryChange = function(event) {
-    setCategory(event.target.value);
-  };
-
-  const handleStatusChange = function(event) {
-    setStatus(event.target.value);
-  };
 
   return (
     <>
@@ -185,7 +128,6 @@ export default function UserTasks({ userRequests, offers, user }) {
   );
 }
 
-// Data fetching
 export const getServerSideProps = async function() {
 
   /** Capture tasks with addresses:
