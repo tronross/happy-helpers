@@ -116,46 +116,51 @@ export default function Map(props) {
         const lng = Number(task.lng);
         const category = task.category;
         const description = task.description;
-        
+
         // Prevent overlapping labels
-        const title = !userIds.includes(userId) ? task.title : null;
-        !userIds.includes(userId) && userIds.push(userId);
+        const title = task.title;
+
         // console.log(lat, lng, title, index)
-
-        const infoWindowContent = 
-         `<section>` +
-            `<h2>${title}</h2>` +
-            `<h6>${category}</h6>` +
-            `<p>${description}</p>` +
-          `</section>`
-
-        const infoWindow = new google.maps.InfoWindow({
-          content: infoWindowContent
-        })
-
-        const marker = new google.maps.Marker({
-          position: { lat: lat, lng: lng },
-          label: {
-            text: title,
-            fontWeight: "bold"
-          },
-          map,
-          // title: task.title,
-          zIndex: task.index
-        });
-
-        marker.addListener("mouseover", () => {
-          infoWindow.open({
-            anchor: marker,
+        
+        if (!userIds.includes(userId)) {
+          const marker = new google.maps.Marker({
+            position: { lat: lat, lng: lng },
+            label: {
+              text: title,
+              fontWeight: "bold"
+            },
             map,
+            // title: task.title,
+            zIndex: task.index
           });
-        })
+          
+          const infoWindow = new google.maps.InfoWindow({
+            ariaLabel: title,
+            maxWidth: 250
+          })
+          
+        infoWindow.setContent(`
+          <div>
+            <h2><b>${title}</b></h2>
+            <h6>${category}</h6>
+            <p>${description}</p>
+          </div>`
+          );
 
-        marker.addListener("mouseout", () => {
-          infoWindow.close()
-        })
+          marker.addListener("mouseover", () => {
+            infoWindow.open({
+              anchor: marker,
+              map,
+            });
+          })
+          
+          marker.addListener("mouseout", () => {
+            infoWindow.close()
+          })
+          !userIds.includes(userId) && userIds.push(userId);
+        }
       })
-      console.log(userIds)
+      // console.log(userIds)
     }); // useEffect
   }); // function
 
