@@ -63,12 +63,16 @@ export default function Map(props) {
     const title = task.name;
     const index = task.id;
     const userId = task.userId;
+    const category = task.category;
+    const description = task.description;
     return {
       lat,
       lng,
       title,
       index,
-      userId
+      userId,
+      category,
+      description
     }
   })
 
@@ -110,18 +114,46 @@ export default function Map(props) {
         const userId = task.userId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
+        const category = task.category;
+        const description = task.description;
         
         // Prevent overlapping labels
         const title = !userIds.includes(userId) ? task.title : null;
         !userIds.includes(userId) && userIds.push(userId);
         // console.log(lat, lng, title, index)
-        new google.maps.Marker({
+
+        const infoWindowContent = 
+         `<section>` +
+            `<h2>${title}</h2>` +
+            `<h6>${category}</h6>` +
+            `<p>${description}</p>` +
+          `</section>`
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: infoWindowContent
+        })
+
+        const marker = new google.maps.Marker({
           position: { lat: lat, lng: lng },
-          label: title,
+          label: {
+            text: title,
+            fontWeight: "bold"
+          },
           map,
-          title: task.title,
+          // title: task.title,
           zIndex: task.index
         });
+
+        marker.addListener("mouseover", () => {
+          infoWindow.open({
+            anchor: marker,
+            map,
+          });
+        })
+
+        marker.addListener("mouseout", () => {
+          infoWindow.close()
+        })
       })
       console.log(userIds)
     }); // useEffect
