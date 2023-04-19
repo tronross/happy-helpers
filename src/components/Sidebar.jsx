@@ -79,8 +79,8 @@ export default function Sidebar(props) {
 
 
   return (
-    <>
-      <div className="h-screen sticky top-0 w-[24em]">
+    <aside className="h-full w-[24em] relative">
+      <div className="fixed top-20 w-[24em]">
         <section className="flex items-baseline space-x-4" >
           <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
           {clicked.sort === 'Date' ?
@@ -136,6 +136,6 @@ export default function Sidebar(props) {
           <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
       </div>
-    </>
+      </aside>
   )
 }

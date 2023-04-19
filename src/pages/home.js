@@ -139,14 +139,14 @@ export default function Home({ tasks, user }) {
         <NavBar name={user.firstName}
           id={user.id} />
         <div className="flex pl-2">
-          <Sidebar
-            sidebarOptions={sidebar}
-            filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
-            filters={taskFilters}
-            setFilters={setTaskFilters}
-            setCategory={setCategory}
-            distances={distances}
-          />
+            <Sidebar
+              sidebarOptions={sidebar}
+              filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
+              filters={taskFilters}
+              setFilters={setTaskFilters}
+              setCategory={setCategory}
+              distances={distances}
+            />
           <section className='flex flex-col p-2 mx-4 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
