@@ -20,7 +20,7 @@ export default function Landing() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <nav className="flex items-center p-5 text-teal-600 uppercase tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-neutral-100">
+        <nav style={{display:"flex", justifyContent: "space-between"}} className="flex items-center p-5 text-teal-600 uppercase tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-neutral-100">
           <Link href="/home">Happy Helpers</Link>
           <Link href="/profile-page/1">
             <button className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 uppercase font-bold px-3 py-1 rounded text-white h-8 text-sm">
@@ -29,7 +29,7 @@ export default function Landing() {
           </Link>
         </nav>
 
-        <section style={{ display: "flex" }}>
+        <section>
           <div>
             <h1>Find your next volunteer Opportunity</h1>
             <p>Happy Helpers gives everyone a chance to have a nearby hand when needed most.</p>
