@@ -20,21 +20,22 @@ export default function Landing() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <nav style={{display:"flex", justifyContent: "space-between"}} className="flex items-center p-5 text-teal-600 uppercase tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-neutral-100">
-          <Link href="/home">Happy Helpers</Link>
+        <nav className="flex justify-between items-center p-5 text-teal-600 uppercase tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-neutral-100">
+          <Link href="/home">
+            Happy Helpers
+          </Link>
           <Link href="/profile-page/1">
             <button className="bg-teal-600 hover:bg-teal-700 active:bg-teal-800 uppercase font-bold px-3 py-1 rounded text-white h-8 text-sm">
               LOGIN
             </button>
           </Link>
         </nav>
-
-        <section>
+        <section className="flex justify-between">
           <div>
             <h1>Find your next volunteer Opportunity</h1>
             <p>Happy Helpers gives everyone a chance to have a nearby hand when needed most.</p>
           </div>
-          <img src='../../../public/images/432.svg' alt="432" />
+          <img src="../../../public/images/432.svg" alt="432" />
         </section>
 
         <h1>How it Works?</h1>
