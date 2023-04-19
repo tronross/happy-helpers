@@ -98,7 +98,9 @@ export default function UserTasks({ userRequests, offers, user }) {
       </Head>
       <main className="bg-neutral-100">
         <NavBar name={user.firstName} id={user.id} />
-        <div className="flex">
+
+        <div className="flex w-full justify-start">
+        <section className=' flex w-[243m]'>
           <RequestSideBar
             status={status}
             category={category}
@@ -113,7 +115,8 @@ export default function UserTasks({ userRequests, offers, user }) {
             selectedRequestStatus={selectedRequestStatus}
             handleRequestComplete={handleRequestComplete}
           />
-          <section className='flex flex-col p-2 max-w-6xl'>
+          </section>
+          <section className='flex flex-col pl-5 w-[74%]'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
