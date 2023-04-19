@@ -99,7 +99,7 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main className="bg-neutral-100">
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full justify-start">
+        <div className="flex w-full overflow-hidden">
         <section className=' flex w-[243m]'>
           <RequestSideBar
             status={status}

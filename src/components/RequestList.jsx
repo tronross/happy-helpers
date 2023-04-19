@@ -93,46 +93,52 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       
       {openRequests.length > 0 && (
         <div className="text-lg text-teal-700 w-[100%] flex flex-col">
-          <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Open requests:</h1>
-          <div className="absolute left-[356px] top-[160px] z-10 ">
+        <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Open requests:</h1>
+        <div className='flex '>
+          <div className=" z-10 ">
             <RowButton svg='prev' onClick={() => scrollLeft('Open')}/>
           </div>
-          <div className="absolute right-[20px] top-[160px] z-10 ">
-            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
-          </div>
-          <ul id="scrollboxOpen" className="flex overflow-scroll overflow-hidden scroll-smooth scrollbar-hide ml-[5em] mr-[2em]">
+          <ul id="scrollboxOpen" className="flex flex-nowrap overflow-scroll overflow-hidden scroll-smooth scrollbar-hide">
             { openRequestItems }
           </ul>
+          <div className="z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
+          </div>
         </div>
+      </div>
       )}
 
       {pendingRequests.length > 0 && (
         <div className="text-lg text-teal-700 w-[100%] flex flex-col">
         <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Pending requests:</h1>
-        <div className="absolute left-[356px] top-[614px] z-10 ">
-          <RowButton svg='prev' onClick={() => scrollLeft('Pending')}/>
+        <div className='flex '>
+          <div className=" z-10 ">
+            <RowButton svg='prev' onClick={() => scrollLeft('Pending')}/>
+          </div>
+          <ul id="scrollboxPending" className="flex flex-nowrap overflow-scroll overflow-hidden scroll-smooth scrollbar-hide">
+            { pendingRequestItems }
+          </ul>
+          <div className="z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Pending')}/>
+          </div>
         </div>
-        <div className="absolute right-[20px] top-[614px] z-10">
-          <RowButton svg="next" onClick={() => scrollRight('Pending')}/>
-        </div>
-        <ul id="scrollboxPending" className="flex flex-nowrap overflow-scroll overflow-hidden scroll-smooth scrollbar-hide ml-[5em] mr-[2em]">
-          { pendingRequestItems }
-        </ul>
       </div>
       )}
 
       {completeRequests.length > 0 && (
-        <div className="text-lg text-teal-700 w-[100%] flex flex-col">
+      <div className="text-lg text-teal-700 w-[100%] flex flex-col">
         <h1 className="ml-4 mb-2 mt-2 text-[1.5em]">Completed requests:</h1>
-        <div className="absolute left-[356px] top-[1068px] z-10 ">
-          <RowButton svg='prev' onClick={() => scrollLeft('Completed')}/>
+        <div className='flex '>
+          <div className=" z-10 ">
+            <RowButton svg='prev' onClick={() => scrollLeft('Completed')}/>
+          </div>
+          <ul id="scrollboxCompleted" className="flex flex-nowrap overflow-scroll overflow-hidden scroll-smooth scrollbar-hide">
+            { completeRequestItems }
+          </ul>
+          <div className="z-10">
+            <RowButton svg="next" onClick={() => scrollRight('Completed')}/>
+          </div>
         </div>
-        <div className="absolute right-[20px] top-[1068px] z-10">
-          <RowButton svg="next" onClick={() => scrollRight('Completed')}/>
-        </div>
-        <ul id="scrollboxCompleted" className="flex flex-nowrap overflow-scroll overflow-hidden scroll-smooth scrollbar-hide ml-[5em] mr-[2em]">
-          { completeRequestItems }
-        </ul>
       </div>
       )}
     </>
