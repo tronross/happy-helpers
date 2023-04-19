@@ -102,7 +102,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
             { openRequestItems }
           </ul>
           <div className="z-10">
-            <RowButton svg="next" onClick={() => scrollRight('Open')}/>
+            <RowButton  className="mr-[20px]" svg="next" onClick={() => scrollRight('Open')}/>
           </div>
         </div>
       </div>
@@ -119,7 +119,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
             { pendingRequestItems }
           </ul>
           <div className="z-10">
-            <RowButton svg="next" onClick={() => scrollRight('Pending')}/>
+            <RowButton className="mr-[20px]" svg="next" onClick={() => scrollRight('Pending')}/>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
             { completeRequestItems }
           </ul>
           <div className="z-10">
-            <RowButton svg="next" onClick={() => scrollRight('Completed')}/>
+            <RowButton className="mr-[20px]" svg="next" onClick={() => scrollRight('Completed')}/>
           </div>
         </div>
       </div>
