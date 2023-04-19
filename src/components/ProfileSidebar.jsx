@@ -1,15 +1,15 @@
 import EditProfileForm from "./EditProfileForm";
 
-export default function ProfileSidebar({userData, showEditProfileForm, toggleEditProfileForm}) {
+export default function ProfileSidebar({userData, showEditProfileForm, toggleEditProfileForm, editProfileFormData ,setEditProfileFormData}) {
   return (
-    <section className="rounded-3xl relative ml-4 p-4 pt-20 mt-20 shadow-xl" style={{backgroundColor: "rgb(13 148 136)", color: "white", width: "24em" }}>
+    <aside className="rounded-3xl ml-6 p-4 pt-20 mt-[73px] shadow-xl bg-violet-200 w-[320px] text-teal-800 border-violet-300 border-2">
             <div className="flex justify-center mb-3 mt-2">
           <p className="uppercase text-lg font-bold">{`${userData.firstName} ${userData.lastName}`}</p>
           </div>
-            <div className="absolute top-[-80px] left-[80px]" style={{ display: "flex", justifyContent: "center" }}>
+            <div className="absolute top-[0px] left-[110px]" style={{ display: "flex", justifyContent: "center" }}>
               <img
                 src={userData.avatar}
-                className="rounded-full border-[7px] border-teal-600 shadow-lg"
+                className="rounded-full border-[7px] border-violet-200 shadow-xl"
                 alt="Avatar"
                 width="150rem"
                 
@@ -46,6 +46,6 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
             <p>{orgString}</p><br></br> */}
             <h1 style={{ fontWeight: "bold" }}>Description:</h1>
             <p>{userData.description}</p><br></br>
-          </section>
+          </aside>
   )
 }
