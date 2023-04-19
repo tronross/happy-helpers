@@ -1417,6 +1417,46 @@ async function main() {
   await prisma.offer.create({
     data: {
       userId: 2,
+      taskId: 1,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 1,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 4,
+      taskId: 1,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 1,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 2,
+      status: 'OPEN'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 2,
       taskId: 4,
       status: 'OPEN'
     }
@@ -1456,49 +1496,9 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
-      taskId: 13,
-      status: 'COMPLETE'
-    }
-  });
-
-  await prisma.offer.create({
-    data: {
-      userId: 6,
-      taskId: 14,
-      status: 'COMPLETE'
-    }
-  });
-
-  await prisma.offer.create({
-    data: {
-      userId: 6,
-      taskId: 15,
-      status: 'COMPLETE'
-    }
-  });
-
-  await prisma.offer.create({
-    data: {
-      userId: 2,
-      taskId: 1,
-      status: 'OPEN'
-    }
-  });
-
-  await prisma.offer.create({
-    data: {
-      userId: 3,
-      taskId: 10,
-      status: 'OPEN'
-    }
-  });
-
-  await prisma.offer.create({
-    data: {
       userId: 4,
       taskId: 7,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1506,7 +1506,7 @@ async function main() {
     data: {
       userId: 4,
       taskId: 8,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1514,7 +1514,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 9,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1522,7 +1522,15 @@ async function main() {
     data: {
       userId: 2,
       taskId: 10,
-      status: 'PENDING'
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 10,
+      status: 'DENIED'
     }
   });
 
@@ -1530,7 +1538,7 @@ async function main() {
     data: {
       userId: 5,
       taskId: 11,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1538,7 +1546,7 @@ async function main() {
     data: {
       userId: 2,
       taskId: 12,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1546,7 +1554,15 @@ async function main() {
     data: {
       userId: 2,
       taskId: 13,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 5,
+      taskId: 13,
+      status: 'DENIED'
     }
   });
 
@@ -1554,7 +1570,15 @@ async function main() {
     data: {
       userId: 3,
       taskId: 14,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 14,
+      status: 'DENIED'
     }
   });
 
@@ -1562,7 +1586,15 @@ async function main() {
     data: {
       userId: 4,
       taskId: 15,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 6,
+      taskId: 15,
+      status: 'DENIED'
     }
   });
 
@@ -1570,7 +1602,7 @@ async function main() {
     data: {
       userId: 5,
       taskId: 16,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1578,7 +1610,7 @@ async function main() {
     data: {
       userId: 6,
       taskId: 17,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1586,7 +1618,7 @@ async function main() {
     data: {
       userId: 6,
       taskId: 18,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1658,7 +1690,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 25,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1666,7 +1698,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 26,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1674,7 +1706,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 27,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1682,7 +1714,7 @@ async function main() {
     data: {
       userId: 4,
       taskId: 28,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1690,7 +1722,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 29,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1698,7 +1730,7 @@ async function main() {
     data: {
       userId: 5,
       taskId: 30,
-      status: 'PENDING'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1706,7 +1738,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 31,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1714,7 +1746,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 32,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1722,7 +1754,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 33,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1730,7 +1762,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 34,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1738,7 +1770,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 35,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1746,7 +1778,7 @@ async function main() {
     data: {
       userId: 6,
       taskId: 36,
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     }
   });
 }

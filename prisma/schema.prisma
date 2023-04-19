@@ -18,8 +18,8 @@ enum Status {
 
 model User {
   id            Int       @id @default(autoincrement())
-  firstName     String?
-  lastName      String
+  firstName     String?   @map("first_name")
+  lastName      String    @map("last_name")
   description   String?   @db.VarChar(255)
   email         String    @unique
   password      String
@@ -68,7 +68,7 @@ model Offer {
   user          User      @relation(fields: [userId], references: [id])
   taskId        Int       @map("task_id")
   task          Task      @relation(fields: [taskId], references: [id])
-  status        Status    @default(OPEN)
+  status        String    @default("OPEN")
 
   @@map("offers")
 }

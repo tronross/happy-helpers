@@ -2,7 +2,7 @@ import Offer from '../components/Offer';
 import { useState, useEffect } from 'react';
 
 
-export default function OfferList({ selectedOffers, handleAcceptOffer, handleRequestComplete, selectedRequestStatus }) {
+export default function OfferList({ selectedOffers, handleAcceptOffer, handleRequestComplete, selectedRequestId, selectedRequestStatus }) {
 
   // selectedOffers not being updated in state... needs useEffect
   const [currentOffers, setCurrentOffers] = useState([]);
@@ -16,31 +16,42 @@ export default function OfferList({ selectedOffers, handleAcceptOffer, handleReq
       return currentOffers.map((offer, index) => {
         return (
           <li key={index}>
-            <Offer offer={offer} handleAcceptOffer={handleAcceptOffer} />
+            <Offer
+              offer={offer}
+              selectedRequestStatus={selectedRequestStatus}
+              handleAcceptOffer={handleAcceptOffer} />
           </li>
         );
       });
     }
 
     if (selectedRequestStatus === 'PENDING') {
-      const acceptedOffer = selectedOffers.find((offer) => offer.status === 'PENDING');
+      const acceptedOffer = selectedOffers.find(offer => offer.status === 'ACCEPTED');
+
       return (
         <li key={acceptedOffer.id}>
-          <Offer offer={acceptedOffer} handleRequestComplete={handleRequestComplete} />
+          <Offer
+            offer={acceptedOffer}
+            selectedRequestStatus={selectedRequestStatus}
+            handleRequestComplete={handleRequestComplete}
+          />
         </li>
       );
     }
 
     if (selectedRequestStatus === 'COMPLETE') {
-      const acceptedOffer = selectedOffers.find((offer) => offer.status === 'COMPLETE');
+      const acceptedOffer = selectedOffers.find(offer => offer.status === 'ACCEPTED');
       return (
         <li key={acceptedOffer.id}>
-          <Offer offer={acceptedOffer} />
+          <Offer
+            offer={acceptedOffer}
+            selectedRequestStatus={selectedRequestStatus}
+            handleRequestComplete={handleRequestComplete}
+          />
         </li>
       );
     }
   };
-
   const offers = getOffers();
 
   return (

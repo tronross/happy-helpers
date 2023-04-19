@@ -81,8 +81,8 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
     <>
       {openRequests.length === 0 && pendingRequests.length === 0 && completeRequests.length === 0 ? (
         <div className="ml-4 mb-2 text-lg text-teal-700">
-          <h1 className="text-[1.5em] font-bold">You have not made any requests for help yet.</h1>
-          <p>Click<Link href={"/new-task1"}> here </Link> to request help, or return to the<Link href={"/home"}> home page </Link>to volunteer for a task.
+          <h1 className="text-[1.5em] font-bold mb-2">There are no requests for help to show.</h1>
+          <p>You can click <Link href={"/new-task1"} className="underline">here</Link> to request help, or return to the <Link href={"/home"}  className="underline">home page</Link> to volunteer for a task.
           </p>
         </div>
       ) : (
