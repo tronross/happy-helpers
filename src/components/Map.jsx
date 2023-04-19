@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
+import axios from 'axios';
 
 export default function Map(props) {
 
@@ -116,6 +117,8 @@ export default function Map(props) {
         const lng = Number(task.lng);
         const category = task.category;
         const description = task.description;
+        const taskId = task.index;
+        console.log(`TaskId >>>> ${task.index}`)
 
         // Prevent overlapping labels
         const title = task.title;
@@ -131,7 +134,8 @@ export default function Map(props) {
             },
             map,
             // title: task.title,
-            zIndex: task.index
+            zIndex: task.index,
+            taskId
           });
           
           const infoWindow = new google.maps.InfoWindow({
@@ -141,9 +145,9 @@ export default function Map(props) {
           
         infoWindow.setContent(`
           <div>
-            <h2><b>${title}</b></h2>
-            <h6>${category}</h6>
-            <p>${description}</p>
+            <h2 className="text-l font-bold"><b>${title}</b></h2>
+            <h3 className="text-m font-bold">${category}</h6>
+            <p><b>${description}</b></p>
           </div>`
           );
 
@@ -157,6 +161,12 @@ export default function Map(props) {
           marker.addListener("mouseout", () => {
             infoWindow.close()
           })
+
+          marker.addListener("click", () => {
+            console.log(`TaskId >>>> ${taskId}`)
+            window.location = (`/task/${taskId}`)
+          })
+
           !userIds.includes(userId) && userIds.push(userId);
         }
       })
