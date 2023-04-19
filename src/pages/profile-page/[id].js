@@ -16,6 +16,7 @@ import EditProfileForm from "@/components/EditProfileForm";
 import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
 import addCoordsToUser from "@/helpers/add-coords-to-user";
 import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
+import ProfileTaskRow from "@/components/ProfileTaskRow";
 
 export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
   // HOOKS
@@ -62,7 +63,31 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
   //   setOrgString(orgStr);
   // }, [userOrganizations]);
 
+  // ROWS 
+  const[selectedId, setSelectedId] = useState(null)
+  const setScroll = (id, rowType) => {
+    setTimeout(function () {
+      console.log("ID IS:", id)
+      if (!selectedId) {
+        return
+      }
+      
+      if (typeof window !== "undefined") {
+        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+        
+        scrollBox.scrollLeft = (scrollPos - 200);
+        console.log(scrollPos)
+        console.log(scrollBox.scrollLeft)
+      }
+    }, 100);
+  }
+  
+  
+
   // TEMPLATE
+
+  
   return (
     <>
       <Head>
@@ -117,21 +142,21 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
             <h1 style={{ fontWeight: "bold" }}>Description:</h1>
             <p>{userData.description}</p><br></br>
           </section>
-          <section>
-            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Upcoming Tasks</h1>
-            <div style={{ height: "50%" }}>
-              <TaskList
-                tasks={upcomingTasksData}
-              />
-            </div>
+          <div className="flex flex-col w-[100%] overflow-hidden">
+          <section >
+          <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Upcoming Tasks:</h1>
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{upcomingTasksData.length} Available</h1>
 
-            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Past Tasks</h1>
-            <div style={{ height: "50%" }}>
-              <TaskList
-                tasks={pastTasksData}
-              />
-            </div>
+            <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+
           </section>
+          <section className="pt-4">
+            <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Past Tasks:</h1>
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{pastTasksData.length} Available</h1>
+          <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+
+          </section>
+          </div>
         </div>
       </main>
       <Footer />
@@ -163,10 +188,14 @@ export async function getServerSideProps(context) {
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
       userId: parseInt(user.id),
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     },
     include: {
-      task: true,
+      task: {
+        include: {
+          address: true
+        }
+      }
     }
   });
 
