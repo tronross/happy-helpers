@@ -32,6 +32,7 @@ model User {
   Organizations Organization[]
   Offers        Offer[]
   Tasks         Task[]
+  Messages      Message[]
 
   @@map("users")
 }
@@ -91,4 +92,16 @@ model Task {
   Offers        Offer[]
 
   @@map("tasks")
+}
+
+model Message {
+  id            Int       @id @default(autoincrement())
+  userId        Int       @map("user_id")
+  user          User      @relation(fields: [userId], references: [id])
+  subject       String
+  message       String
+  markedRead    Boolean   @default(false) @map("marked_read")
+  active        Boolean   @default(true)
+
+  @@map("messages")
 }

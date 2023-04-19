@@ -1410,9 +1410,6 @@ async function main() {
     }
   });
 
-
-
-
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
     data: {
@@ -1782,6 +1779,17 @@ async function main() {
     }
   });
 }
+
+// Create messages -------------------------------------------------------------
+await prisma.message.create({
+  data: {
+    userId: 1,
+    subject: 'Offer of help received',
+    message: 'Lore Winks has made an offered to help for the following task: Feed Cats. Learn more in your MY REQUESTS page.',
+    markedRead: false,
+    active: true
+  }
+});
 
 main()
   .then(async() => {
