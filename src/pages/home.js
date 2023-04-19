@@ -139,7 +139,6 @@ export default function Home({ tasks, user }) {
         <NavBar name={user.firstName}
           id={user.id} />
         <div className="flex pl-2">
-          {/* <aside className="h-screen sticky top-20"> */}
             <Sidebar
               sidebarOptions={sidebar}
               filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
@@ -148,7 +147,6 @@ export default function Home({ tasks, user }) {
               setCategory={setCategory}
               distances={distances}
             />
-          {/* </aside> */}
           <section className='flex flex-col p-2 mx-4 grow'>
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
