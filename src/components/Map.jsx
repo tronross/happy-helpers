@@ -61,10 +61,14 @@ export default function Map(props) {
     const lat = task.address.latitude;
     const lng = task.address.longitude;
     const title = task.name;
+    const index = task.id;
+    const userId = task.userId;
     return {
       lat,
       lng,
-      title
+      title,
+      index,
+      userId
     }
   })
 
@@ -100,19 +104,26 @@ export default function Map(props) {
         title: "Anderson",
       });
 
+      const userIds = [];
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
+        const userId = task.userId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
-        const title = task.title;
-        console.log(lat, lng, title)
+        
+        // Prevent overlapping labels
+        const title = !userIds.includes(userId) ? task.title : null;
+        !userIds.includes(userId) && userIds.push(userId);
+        // console.log(lat, lng, title, index)
         new google.maps.Marker({
           position: { lat: lat, lng: lng },
           label: title,
           map,
-          title: title,
+          title: task.title,
+          zIndex: task.index
         });
       })
+      console.log(userIds)
     }); // useEffect
   }); // function
 
