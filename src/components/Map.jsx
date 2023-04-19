@@ -56,7 +56,7 @@ export default function Map(props) {
   // getDistanceFromAddresses("Centre Bell", "CN Tower");
 
 
-  // Convert filteredTasks to Marker-compatible objects
+  // Convert filteredTasks to Marker-appropriate objects
   const tasks = props.tasks;
   const taskMarkers = tasks.map(task => {
     const lat = task.address.latitude;
@@ -118,13 +118,9 @@ export default function Map(props) {
         const category = task.category;
         const description = task.description;
         const taskId = task.index;
-        console.log(`TaskId >>>> ${task.index}`)
-
-        // Prevent overlapping labels
         const title = task.title;
-
-        // console.log(lat, lng, title, index)
         
+        // Prevent overlapping markers(tasks)
         if (!userIds.includes(userId)) {
           const marker = new google.maps.Marker({
             position: { lat: lat, lng: lng },
@@ -133,7 +129,6 @@ export default function Map(props) {
               fontWeight: "bold"
             },
             map,
-            // title: task.title,
             zIndex: task.index,
             taskId
           });
@@ -151,6 +146,7 @@ export default function Map(props) {
           </div>`
           );
 
+          // Marker event handlers for show/hide infoWindows and click-throughs to tasks
           marker.addListener("mouseover", () => {
             infoWindow.open({
               anchor: marker,
@@ -163,18 +159,18 @@ export default function Map(props) {
           })
 
           marker.addListener("click", () => {
-            console.log(`TaskId >>>> ${taskId}`)
             window.location = (`/task/${taskId}`)
           })
 
+          // Array of userIds to prevent multiple markers rendered over one another at the same location
           !userIds.includes(userId) && userIds.push(userId);
         }
       })
-      // console.log(userIds)
     }); // useEffect
   }); // function
 
   return (
+    // Display map
     <section className="h-screen">
       <div id="map" ref={googlemap} />
     </section>
