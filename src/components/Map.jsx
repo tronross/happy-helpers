@@ -150,7 +150,7 @@ export default function Map(props) {
               />
             </section>
             <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
-            <h3 style="font-weight: bold; font-size: 1.17em;">${category}</h3>
+            <h3 style="font-weight: bold; font-size: 1.2em;">${category}</h3>
             <p style="font-weight: bold; font-size: 1em;">${description}</p>
           </article>`
           );
