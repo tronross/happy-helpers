@@ -1,7 +1,8 @@
 //////////////////////
 // NavBar Component
 //////////////////////
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from "axios";
 
 // Component
 import Link from 'next/link';
@@ -16,6 +17,21 @@ export default function NavBar(props) {
   const handleMessages = function() {
     setDisplayMessages(displayMessages ? false : true);
   };
+
+  const [unreadMessageCount, setUnreadMessageCount] = useState();
+
+  const fetchUnreadMessageCount = async function() {
+    try {
+      const res = await axios.get(`http://localhost:3000/api/messages/${props.id}`, {params: {type: 'countUnread'}});
+      setUnreadMessageCount(res.data.messageCount);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchUnreadMessageCount();
+  }, []);
 
   // Template
   return (
@@ -35,7 +51,12 @@ export default function NavBar(props) {
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
           <Link href="/user-tasks">MyHelp</Link>
         </li>
-        <li className='px-6 bg-neutral-100 hover:text-teal-500 active:text-teal-700'>
+        <li className='px-6 hover:text-teal-500 active:text-teal-700 hover:cursor-pointer relative'>
+          {unreadMessageCount > 0 && (
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-3 right-1">
+              {unreadMessageCount}
+            </div>
+          )}
           <h2 onClick={handleMessages}>Messages</h2>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
@@ -47,7 +68,7 @@ export default function NavBar(props) {
           <Button buttonName={"LOGOUT"}/>
         </li>
       </ul>
-      {displayMessages && (<MessageList userId={props.id}/>)}
+      {displayMessages && (<MessageList userId={props.id} fetchUnreadMessageCount={fetchUnreadMessageCount} />)}
     </div>
   );
 }

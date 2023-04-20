@@ -147,8 +147,8 @@ export const getServerSideProps = async function() {
       address: true
     },
     orderBy: {
-      startDate: 'desc',
-    },
+      startDate: 'desc'
+    }
   });
 
   /** Capture offers with volunteer's user info:

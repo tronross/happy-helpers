@@ -100,8 +100,10 @@ model Message {
   user          User      @relation(fields: [userId], references: [id])
   subject       String
   message       String
+  receivedAt    DateTime  @default(dbgenerated("NOW()")) @map("received_at")
   markedRead    Boolean   @default(false) @map("marked_read")
   active        Boolean   @default(true)
+
 
   @@map("messages")
 }

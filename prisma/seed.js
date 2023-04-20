@@ -1783,8 +1783,9 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received',
+      subject: 'Offer of help received:',
       message: 'Lore Winks has made an offer of help! Learn more in your MY REQUESTS page.',
+      receivedAt: new Date('2023-04-19 22:00+0500'),
       markedRead: false,
       active: true
     }
@@ -1793,8 +1794,9 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received',
+      subject: 'Offer of help received:',
       message: 'Danny Khan has made an offer of help! Learn more in your MY REQUESTS page.',
+      receivedAt: new Date('2023-04-11 20:00+0500'),
       markedRead: false,
       active: true
     }
@@ -1803,8 +1805,9 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Your offer to help Betty With A Broken Leg was accepted!',
-      message: 'She will contact you shortly. Learn more in your PROFILE page.',
+      subject: 'Your offer to help was accepted:',
+      message: 'Betty With A Broken Leg accepted your offer of help. Learn more in your PROFILE page.',
+      receivedAt: new Date('2023-04-18 22:00+0500'),
       markedRead: false,
       active: true
     }
@@ -1813,8 +1816,9 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Your offer of help wasn\'t required.',
-      message: 'Brad Bobley doesn\'t need your help to fix his window after all.',
+      subject: 'Your help isn\'t required:',
+      message: 'Brad Bobbley doesn\'t need your help to fix his window after all.',
+      receivedAt: new Date('2023-04-19 16:00+0500'),
       markedRead: false,
       active: true
     }
@@ -1823,10 +1827,11 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received',
+      subject: 'Offer of help received:',
       message: 'Hugh Jass has made an offer of help! Learn more in your MY REQUESTS page.',
-      markedRead: false,
-      active: true
+      receivedAt: new Date('2023-04-01 21:00+0500'),
+      markedRead: true,
+      active: false
     }
   });
 }
