@@ -2,27 +2,36 @@ import EditProfileForm from "./EditProfileForm";
 
 export default function ProfileSidebar({userData, showEditProfileForm, toggleEditProfileForm, editProfileFormData ,setEditProfileFormData}) {
   return (
-    <aside className="rounded-3xl ml-6 p-4 pt-20 mt-[73px] shadow-xl bg-violet-200 w-[320px] text-teal-800 border-violet-300 border-2 sticky top-[155px]">
+    <aside className="rounded-3xl ml-6 p-4 pt-20 mt-[73px] shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[155px] ">
       {userData.id === 1 && <>
         <svg
           viewBox="0 0 24 24"
-          fill="currentColor"
           height="1.5em"
           width="1.5em"
           onClick={toggleEditProfileForm}
-          className="absolute top-[12px] left-[280px] hover:cursor-pointer"
+          className="absolute top-[12px] left-[280px] hover:cursor-pointer fill-violet-400"
           >
           <path d="M7 17.013l4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z" />
           <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z" />
         </svg>
       </>}
+      <div className="absolute top-[-80px] left-[85px] flex justify-center">
+        <img
+          src={userData.avatar}
+          className="rounded-full border-[7px] border-violet-200 shadow-xl"
+          alt="Avatar"
+          width="150rem"
+        />
+      </div>
+      {!showEditProfileForm && <>
+      <div>
       <div className="flex justify-center mb-3 mt-2">
         <p className="uppercase text-lg font-bold">
           {`${userData.firstName} ${userData.lastName}`}
         </p>
       </div>
       <div className="flex justify-center mt-2">
-        <div>
+        <div className="mb-[-15px]">
           <svg
             viewBox="0 0 1024 1024"
             height="3em"
@@ -34,24 +43,6 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
           <p className="relative top-[-36px] left-[18px] font-bold text-white"> {userData.stars}</p>
         </div>
       </div>
-      <div className="relative">
-        {showEditProfileForm &&
-          <EditProfileForm
-            userId={userData.id}
-            userAddressId={userData.addressId}
-            editProfileFormData={editProfileFormData}
-            setEditProfileFormData={setEditProfileFormData}
-          />
-        }
-      </div>
-      <div className="absolute top-[-80px] left-[85px] flex justify-center">
-        <img
-          src={userData.avatar}
-          className="rounded-full border-[7px] border-violet-200 shadow-xl"
-          alt="Avatar"
-          width="150rem"
-        />
-      </div>
       <div className="flex flex-col items-center">
         <div className="mb-2 flex flex-col items-center">
           <h1 className="font-bold">About:</h1>
@@ -62,8 +53,9 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
           <h1 className="font-bold">Skills:</h1>
           <p>{userData.skills}</p>
         </div>
+      {userData.id === 1 && <>
         <div className="flex flex-col items-center my-3">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#115e59" className="w-7 h-7">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
           </svg>
@@ -106,7 +98,22 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
           </svg>
           <p>{userData.phone}</p>
         </div>
+        </>}
       </div>
+      </div>
+      </>}
+      {showEditProfileForm && <>
+        <div className="relative">
+        {showEditProfileForm &&
+          <EditProfileForm
+            userId={userData.id}
+            userAddressId={userData.addressId}
+            editProfileFormData={editProfileFormData}
+            setEditProfileFormData={setEditProfileFormData}
+          />
+        }
+      </div>
+      </>}
     </aside>
   )
 }

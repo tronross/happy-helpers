@@ -22,28 +22,33 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
   // TEMPLATE
   return (
-    <div style={{color:"black"}} className="flex flex-col z-[-10]">
-      <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required />
+    <div className="flex flex-col mt-3">
+      <p className="uppercase font-bold self-center pb-3">Edit Profile:</p>
+      <div className="flex flex-col">
+      <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none"/>
 
-      <input type="text" id="lastName" name="lastName" placeholder="last name" value={editProfileFormData.lastName} onChange={onChange} required />
+      <input type="text" id="lastName" name="lastName" placeholder="last name" value={editProfileFormData.lastName} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="description" name="description" placeholder="description" value={editProfileFormData.description} onChange={onChange} required />
+      <input type="text" id="phone" name="phone" placeholder="phone number" value={editProfileFormData.phone} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="email" name="email" placeholder="email" value={editProfileFormData.email} onChange={onChange} required />
+      <input type="text" id="address" name="address" placeholder="address" value={editProfileFormData.address} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="phone" name="phone" placeholder="phone number" value={editProfileFormData.phone} onChange={onChange} required />
+      <input type="text" id="city" name="city" placeholder="city" value={editProfileFormData.city} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="address" name="address" placeholder="address" value={editProfileFormData.address} onChange={onChange} required />
+      <input type="text" id="postcode" name="postcode" placeholder="postcode" value={editProfileFormData.postcode} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="city" name="city" placeholder="city" value={editProfileFormData.city} onChange={onChange} required />
+      <input type="text" id="email" name="email" placeholder="email" value={editProfileFormData.email} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <input type="text" id="postcode" name="postcode" placeholder="postcode" value={editProfileFormData.postcode} onChange={onChange} required />
+      <p className="uppercase text-sm font-bold">Description:</p>
+      <textarea type="text" id="description" name="description" placeholder="description" value={editProfileFormData.description} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none resize-none  scrollbar form-scroll" />
 
-      <input type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required />
+      <p className="uppercase text-sm font-bold">Skills:</p>
+      <textarea type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required  className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none resize-none  scrollbar form-scroll" />
 
       {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
-      <button type="submit" onClick={handleSubmit} className="inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white">Submit</button>
+      <button type="submit" onClick={handleSubmit} className="inline-flex justify-center items-center gap-2 bg-violet-300 border-[1.5px] border-violet-400 px-4 py-1 rounded text-violet-800 mt-3">Submit</button>
+      </div>
     </div >
   );
 }
