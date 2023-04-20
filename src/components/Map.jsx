@@ -65,6 +65,8 @@ export default function Map(props) {
     const userId = task.userId;
     const category = task.category;
     const description = task.description;
+    const img = task.image;
+
     return {
       lat,
       lng,
@@ -72,7 +74,8 @@ export default function Map(props) {
       index,
       userId,
       category,
-      description
+      description,
+      img
     }
   })
 
@@ -118,7 +121,8 @@ export default function Map(props) {
         const description = task.description;
         const taskId = task.index;
         const title = task.title;
-        
+        const img = task.img;
+
         // Prevent overlapping markers(tasks)
         if (!userIds.includes(userId)) {
           const marker = new google.maps.Marker({
@@ -131,18 +135,24 @@ export default function Map(props) {
             zIndex: task.index,
             taskId
           });
-          
+
           const infoWindow = new google.maps.InfoWindow({
             ariaLabel: title,
             maxWidth: 250
           })
-          
-        infoWindow.setContent(`
-          <div>
+
+          infoWindow.setContent(`
+          <article>
+            <section>
+              <img src=${img}
+                width="220"
+                height=auto
+              />
+            </section>
             <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
             <h3 style="font-weight: bold; font-size: 1.17em;">${category}</h3>
             <p style="font-weight: bold; font-size: 1em;">${description}</p>
-          </div>`
+          </article>`
           );
 
           // Marker event handlers for show/hide infoWindows and click-throughs to tasks
@@ -152,10 +162,10 @@ export default function Map(props) {
               map,
             });
           })
-          
-          // marker.addListener("mouseout", () => {
-          //   infoWindow.close()
-          // })
+
+          marker.addListener("mouseout", () => {
+            infoWindow.close()
+          })
 
           marker.addListener("click", () => {
             window.location = (`/task/${taskId}`)
