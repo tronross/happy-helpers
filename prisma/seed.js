@@ -517,7 +517,7 @@ async function main() {
     data: {
       name: 'Walk dog',
       description: 'I have broken my leg, need someone to walk the dog.',
-      image: 'https://dogsbestlife.com/wp-content/uploads/2020/02/walk-your-dog-860x573.jpeg',
+      image: 'https://www.akc.org/wp-content/uploads/2018/04/beagle-walking-on-leash-looking-up.jpg',
       category: 'Animal Care',
       startDate: new Date('2023-05-02 15:00+0500'),
       endDate: new Date('2023-05-02 15:00+0500'),

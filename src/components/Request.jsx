@@ -16,8 +16,13 @@ export default function Request(props) {
   
   const statusStyle = `inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
 
+  const handleTaskClick = () => {
+    props.onClick(props.id)
+    props.setSelectedOfferUser(null)
+  }
+
   return (
-    <div className={className} onClick={() => props.onClick(props.id)}>
+    <div className={className} onClick={handleTaskClick}>
       {props.nbOffers > 0 && props.status === 'OPEN' && (
         <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-2 -right-2">
           {props.nbOffers}

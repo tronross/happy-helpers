@@ -60,6 +60,7 @@ export default function NavBar(props) {
           <h2 onClick={handleMessages}>Messages</h2>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+          <h2>Notifications</h2>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
           <Link href={`/profile-page/${props.id}`}>{props.name}</Link>

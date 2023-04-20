@@ -29,16 +29,17 @@ import OfferList from '../components/OfferList';
 
 export default function RequestSideBar(props) {
 
-  const offerMessage = props.selectedRequestId ? 'OFFERS OF HELP:' : 'Click a request to see the offer status.';
-
   return (
-    <div className="full-height w-[24em] flex-col justify-between p-4 text-sm text-white bg-teal-600 rounded">
-      <h2 className="mb-2 text-base font-bold">FILTER REQUESTS:</h2>
+    <div className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[120px] pt-4">
+      <div className='flex justify-between items-center'>
+        <h2 className=" text-base font-bold ml-2">FILTER REQUESTS:</h2>
+        <p className='text-sm uppercase text-violet-400 font-bold mr-3 hover:cursor-pointer hover:text-violet-500' onClick={props.resetFilters}>RESET</p>
+      </div>
 
       <label htmlFor="status_select" className="sr-only">Filter By Status</label>
       <select
         id="status_select"
-        className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        className="block py-2 px-4 w-full bg-violet-100 border-2 rounded-full border-violet-300 appearance-none focus:outline-none peer hover:cursor-pointer my-4"
         name="selectedStatus"
         value={props.status}
         onChange={props.handleStatusChange}
@@ -49,24 +50,20 @@ export default function RequestSideBar(props) {
       <label htmlFor="category_select" className="sr-only">Filter By Category</label>
       <select
         id="category_select"
-        className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+        className="block py-2 px-4 w-full bg-violet-100 border-2 rounded-full border-violet-300 appearance-none focus:outline-none peer hover:cursor-pointer my-2"
         name="selectedCategory"
         value={props.category}
         onChange={props.handleCategoryChange}
       >
         {props.categoryFilter}
       </select>
-
-      <button
-        className="mt-4 inline-block w-[10em] h-[3em] leading-none bg-violet-600 hover:bg-white text-white hover:text-violet-600 rounded font-semibold uppercase tracking-wide text-xs text-center items-center"
-        onClick={props.resetFilters}
-      >
-        RESET FILTERS
-      </button>
-
+      <div className='flex justify-center'>
+        <div className='border-b-2 border-violet-300 w-2/3 py-2'></div>
+      </div>
       <section>
-        <h2 className="mb-2 mt-6 w-full text-white text-base font-bold uppercase">{offerMessage}</h2>
-        {props.selectedRequestId && props.selectedOffers.length === 0 && <p className="text-sm">Sorry, there are no volunteers for this request yet.</p>}
+        {!props.selectedRequestId && <h2 className="mb-2 p-2 w-full text-violet-800 text-sm pt-5">Click a request to see the offer status.</h2>
+        }
+        {props.selectedRequestId && props.selectedOffers.length === 0 && <p className="text-sm p-2 pb-2 pt-5">Sorry, there are no volunteers for this request yet.</p>}
         {props.selectedRequestId && props.selectedOffers.length > 0 && (
           <OfferList
             selectedOffers={props.selectedOffers}
@@ -74,6 +71,8 @@ export default function RequestSideBar(props) {
             selectedRequestId={props.selectedRequestId}
             selectedRequestStatus={props.selectedRequestStatus}
             handleRequestComplete={props.handleRequestComplete}
+            selectedOfferUser={props.selectedOfferUser}
+            setSelectedOfferUser={props.setSelectedOfferUser}
           />
         )}
       </section>

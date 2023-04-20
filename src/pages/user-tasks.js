@@ -29,6 +29,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     handleCategoryChange,
     handleStatusChange
   } = filterRequests(userRequests, setSelectedRequestId);
+  const [selectedOfferUser, setSelectedOfferUser] = useState(null);
 
   // Used to force render page (all state is lost)
   const router = useRouter();
@@ -99,8 +100,8 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full">
-          <section className='self-start sticky top-20 overflow-scroll h-[calc(100vh-80px)] flex w-[243m] bg-teal-600 rounded'>
+        <div className="flex w-[100%] relative">
+          <div className='z-20'>
             <RequestSideBar
               status={status}
               category={category}
@@ -114,16 +115,19 @@ export default function UserTasks({ userRequests, offers, user }) {
               selectedRequestId={selectedRequestId}
               selectedRequestStatus={selectedRequestStatus}
               handleRequestComplete={handleRequestComplete}
+              selectedOfferUser={selectedOfferUser}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
-          </section>
-          <section className='overflow-scroll flex flex-col pl-5 w-[74%]'>
+            </div>
+          <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
               setSelectedRequestId={setSelectedRequestId}
               offers={offers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
-          </section>
+          </div>
         </div>
       </main>
       <Footer />
