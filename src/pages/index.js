@@ -97,25 +97,33 @@ export default function Landing() {
             </p>
           </article>
 
-          {/*<article>
-          <h1>Sign Up and Join Our Community</h1>
-          <div style={{ display: "flex" }}>
-            <div>
-              <h1>Happy Helpers</h1>
-              <p>A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.</p>
+          <article className="border-black border-solid border-4 p-10 rounded-3xl">
+            <h1 className="flex justify-center text-green-900 font-bold text-4xl">
+              Sign Up and Join Our Community
+            </h1>
+            <br></br>
+            <div className="flex justify-center">
+              <div className="w-1/2 border-solid border-green-900 border-r-4 px-10">
+                <h1 className="text-green-900 text-5xl font-bold">
+                  Happy Helpers
+                </h1>
+                <br></br>
+                <p className="text-black-900 text-2xl">A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.</p>
+              </div>
+              <form className="flex flex-col content-center w-1/2 px-10">
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="firstName" name="firstName" placeholder="First Name" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5"type="text" id="lastName" name="lastName" placeholder="Last Name" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5"type="text" id="email" name="email" placeholder="Email" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="password" name="password" placeholder="Password" />
+              </form>
             </div>
-            <form style={{ display: "flex", flexDirection: "column" }}>
-              <input type="text" id="firstName" name="firstName" placeholder="First Name" />
-              <input type="text" id="lastName" name="lastName" placeholder="Last Name" />
-              <input type="text" id="email" name="email" placeholder="Email" />
-              <input type="text" id="password" name="password" placeholder="Password" />
-            </form>
-          </div>
-        </article> */}
+            <div className="flex justify-center pt-10">
+              <button className="border-solid border-violet-300 border-2 bg-white hover:bg-violet-300 px-10 rounded-full text-green-900 h-8 text-xl">
+                Sign Up
+              </button>
+            </div>
+          </article>
         </section>
-        {/* </div>
-        </div> */}
-
       </main>
     </>
   );
