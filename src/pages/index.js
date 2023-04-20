@@ -64,19 +64,17 @@ export default function Landing() {
                 Happy Helpers gives everyone a chance to have a nearby hand when needed most.
               </p>
             </div>
-            <img src='/images/main.png' alt="main" className="w-1/2" />
+            <img src="/images/main.png" alt="main" className="w-1/2" />
           </article>
 
-          <h1 className="flex justify-center text-green-900 font-bold text-4xl py-40">How it Works?</h1>
+          <h1 className="flex justify-center text-green-900 font-bold text-4xl pt-40">How it Works?</h1>
 
-        {/* <article style={{ display: "flex" }}>
-          <div>
-            <p>Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.</p>
-          </div>
-          <img src='../../../public/images/13.svg' alt="13" />
-        </article>
+          <article className="flex justify-center pt-20">
+            <p className="w-1/2 flex flex-col justify-center text-3xl text-black-900">Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.</p>
+            <img src="/images/1.png" alt="1" className="w-1/2" />
+          </article>
 
-        <article style={{ display: "flex" }}>
+          {/* <article style={{ display: "flex" }}>
           <img src='../../../public/images/168.svg' alt="168" />
           <div>
             <p>Offering help is simple, just find a task you want to volunteer for and hit OFFER. Once an offer comes in for one of your own tasks, you can view their profiles and select the best match.</p>
