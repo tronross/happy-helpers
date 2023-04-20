@@ -2,10 +2,10 @@ import Request from '../components/Request';
 import Link from 'next/link';
 import RowButton from "./RowButton";
 
-export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers }) {
+export default function RequestList({ requests, selectedRequestId, setSelectedRequestId, offers, setSelectedOfferUser }) {
 
   // Add border to selected request
-  const selectedClass = "outline outline-4 outline-teal-600";
+  const selectedClass = "outline outline-4 outline-violet-400";
 
   const createRequestItems = function(requestArray) {
     return requestArray.map(request => {
@@ -31,6 +31,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
               selectedClass={selectedClass}
               onClick={setSelectedRequestId}
               nbOffers={nbOffers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
           </li>
         );
@@ -53,6 +54,7 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
               selectedClass=""
               onClick={setSelectedRequestId}
               nbOffers={nbOffers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
           </li>
         );
@@ -80,14 +82,14 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
   return (
     <>
       {openRequests.length === 0 && pendingRequests.length === 0 && completeRequests.length === 0 ? (
-        <div className="ml-4 mb-2 text-lg text-teal-700">
+        <div className="ml-4 mb-2 text-lg text-teal-700 mt-5">
           <h1 className="text-[1.5em] font-bold mb-2">There are no requests for help to show.</h1>
           <p>You can click <Link href={"/new-task1"} className="underline">here</Link> to request help, or return to the <Link href={"/home"}  className="underline">home page</Link> to volunteer for a task.
           </p>
         </div>
       ) : (
         <div className="ml-4 mb-2 mt-5 text-lg text-teal-700">
-          <h1 className="text-[1.4em] font-bold uppercase pl-12">My requests for help</h1>
+          <h1 className="text-[1.4em] font-bold uppercase pl-12">Your Help Requests</h1>
         </div>
       )}
       

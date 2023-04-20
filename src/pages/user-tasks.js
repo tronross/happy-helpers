@@ -29,6 +29,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     handleCategoryChange,
     handleStatusChange
   } = filterRequests(userRequests, setSelectedRequestId);
+  const [selectedOfferUser, setSelectedOfferUser] = useState(null);
 
   // Used to force render page (all state is lost)
   const router = useRouter();
@@ -99,8 +100,8 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-[100%]">
-          <div className=''>
+        <div className="flex w-[100%] relative">
+          <div className='z-20'>
             <RequestSideBar
               status={status}
               category={category}
@@ -114,6 +115,8 @@ export default function UserTasks({ userRequests, offers, user }) {
               selectedRequestId={selectedRequestId}
               selectedRequestStatus={selectedRequestStatus}
               handleRequestComplete={handleRequestComplete}
+              selectedOfferUser={selectedOfferUser}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
             </div>
           <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
@@ -122,6 +125,7 @@ export default function UserTasks({ userRequests, offers, user }) {
               selectedRequestId={selectedRequestId}
               setSelectedRequestId={setSelectedRequestId}
               offers={offers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
           </div>
         </div>

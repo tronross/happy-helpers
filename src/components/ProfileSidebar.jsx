@@ -2,7 +2,7 @@ import EditProfileForm from "./EditProfileForm";
 
 export default function ProfileSidebar({userData, showEditProfileForm, toggleEditProfileForm, editProfileFormData ,setEditProfileFormData}) {
   return (
-    <aside className="rounded-3xl ml-6 p-4 pt-20 mt-[73px] shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[155px] ">
+    <aside className="rounded-3xl ml-6 p-6 pt-20 mt-[73px] shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[155px] ">
       {userData.id === 1 && <>
         <svg
           viewBox="0 0 24 24"
