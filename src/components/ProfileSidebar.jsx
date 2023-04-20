@@ -46,12 +46,12 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
       <div className="flex flex-col items-center">
         <div className="mb-2 flex flex-col items-center">
           <h1 className="font-bold">About:</h1>
-          <p>{userData.description}</p>
+          <p className="text-center">{userData.description}</p>
         </div>
 
         <div className="my-2 flex flex-col items-center">
           <h1 className="font-bold">Skills:</h1>
-          <p>{userData.skills}</p>
+          <p className="text-center">{userData.skills}</p>
         </div>
       {userData.id === 1 && <>
         <div className="flex flex-col items-center my-3">
