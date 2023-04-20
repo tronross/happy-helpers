@@ -70,28 +70,34 @@ export default function Landing() {
           <h1 className="flex justify-center text-green-900 font-bold text-4xl pt-40">How it Works?</h1>
 
           <article className="flex justify-center pt-20">
-            <p className="w-1/2 flex flex-col justify-center text-3xl text-black-900">Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.</p>
+            <p className="w-1/2 flex flex-col justify-center text-3xl text-black-900">
+              Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.
+            </p>
             <img src="/images/1.png" alt="1" className="w-1/2" />
           </article>
 
           <article className="flex justify-center pt-20">
             <img src='/images/2.png' alt="2" className="w-1/2" />
-            <p className="flex flex-col justify-center text-3xl text-black-900">Offering help is simple, just find a task you want to volunteer for and hit OFFER. Once an offer comes in for one of your own tasks, you can view their profiles and select the best match.</p>
+            <p className="flex flex-col justify-center text-3xl text-black-900 w-1/2">
+              Offering help is simple, just find a task you want to volunteer for and hit OFFER. Once an offer comes in for one of your own tasks, you can view their profiles and select the best match.
+            </p>
           </article>
 
           <article className="flex justify-center pt-20">
-            <p className="w-1/2 flex flex-col justify-center text-3xl text-black-900">After being accepted for a task, you can view it on your profile page with more information. Patiently wait for the day to come to receive help or help your neighbor with their task.</p>
-          <img src="/images/3.png" alt="3" className="w-1/2" />
-        </article>
+            <p className="w-1/2 flex flex-col justify-center text-3xl text-black-900">
+              After being accepted for a task, you can view it on your profile page with more information. Patiently wait for the day to come to receive help or help your neighbor with their task.
+            </p>
+            <img src="/images/3.png" alt="3" className="w-1/2" />
+          </article>
 
-        {/*<article style={{ display: "flex" }}>
-          <img src='../../../public/images/93.svg' alt="93" />
-          <div>
-            <p>Once your task is finished don't forget to check it complete and reward your volunteer with a star if deserved. Stars show up on your profile to show others they can rely on you to get the task done.</p>
-          </div>
-        </article>
+          <article className="flex justify-center pt-20">
+            <img src="/images/4.png" alt="4" className="w-1/2" />
+            <p className="flex flex-col justify-center text-3xl text-black-900 w-1/2">
+              Once your task is finished don't forget to check it complete and reward your volunteer with a star if deserved. Stars show up on your profile to show others they can rely on you to get the task done.
+            </p>
+          </article>
 
-        <article>
+          {/*<article>
           <h1>Sign Up and Join Our Community</h1>
           <div style={{ display: "flex" }}>
             <div>
