@@ -139,9 +139,9 @@ export default function Map(props) {
           })
           
         infoWindow.setContent(`
-          <div>
-            <h2 className="text-l font-bold"><b>${title}</b></h2>
-            <h3 className="text-m font-bold">${category}</h6>
+          <div className="!marker !infoWindow">
+            <h2 className="!text-l !font-bold"><b>${title}</b></h2>
+            <h3 className="!text-m !font-bold">${category}</h3>
             <p><b>${description}</b></p>
           </div>`
           );
@@ -154,9 +154,9 @@ export default function Map(props) {
             });
           })
           
-          marker.addListener("mouseout", () => {
-            infoWindow.close()
-          })
+          // marker.addListener("mouseout", () => {
+          //   infoWindow.close()
+          // })
 
           marker.addListener("click", () => {
             window.location = (`/task/${taskId}`)
