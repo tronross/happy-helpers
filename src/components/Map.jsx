@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
-import axios from 'axios';
 
 export default function Map(props) {
 
@@ -66,6 +65,9 @@ export default function Map(props) {
     const userId = task.userId;
     const category = task.category;
     const description = task.description;
+    const img = task.image;
+    const date = new Date(task.startDate).toISOString().substring(0, 10);
+
     return {
       lat,
       lng,
@@ -73,7 +75,9 @@ export default function Map(props) {
       index,
       userId,
       category,
-      description
+      description,
+      img,
+      date
     }
   })
 
@@ -115,11 +119,13 @@ export default function Map(props) {
         const userId = task.userId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
+        const title = task.title;
         const category = task.category;
+        const date = task.date;
         const description = task.description;
         const taskId = task.index;
-        const title = task.title;
-        
+        const img = task.img;
+
         // Prevent overlapping markers(tasks)
         if (!userIds.includes(userId)) {
           const marker = new google.maps.Marker({
@@ -132,18 +138,25 @@ export default function Map(props) {
             zIndex: task.index,
             taskId
           });
-          
+
           const infoWindow = new google.maps.InfoWindow({
             ariaLabel: title,
             maxWidth: 250
           })
-          
-        infoWindow.setContent(`
-          <div>
-            <h2 className="text-l font-bold"><b>${title}</b></h2>
-            <h3 className="text-m font-bold">${category}</h6>
-            <p><b>${description}</b></p>
-          </div>`
+
+          infoWindow.setContent(`
+          <article>
+            <section>
+              <img src=${img}
+                width="220"
+                height=auto
+              />
+            </section>
+            <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
+              <h3 style="font-weight: bold; font-size: 1.2em;">${category}</h3>
+              <h4 style="font-weight: bold; font-size: 0.9em;">${date}</h4>
+            <p style="font-weight: bold; font-size: 1em;">${description}</p>
+          </article>`
           );
 
           // Marker event handlers for show/hide infoWindows and click-throughs to tasks
@@ -153,7 +166,7 @@ export default function Map(props) {
               map,
             });
           })
-          
+
           marker.addListener("mouseout", () => {
             infoWindow.close()
           })
