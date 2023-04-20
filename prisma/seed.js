@@ -1784,12 +1784,51 @@ async function main() {
     data: {
       userId: 1,
       subject: 'Offer of help received',
-      message: 'Lore Winks has made an offered to help for the following task: Feed Cats. Learn more in your MY REQUESTS page.',
+      message: 'Lore Winks has made an offer of help! Learn more in your MY REQUESTS page.',
       markedRead: false,
       active: true
     }
   });
 
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Offer of help received',
+      message: 'Danny Khan has made an offer of help! Learn more in your MY REQUESTS page.',
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Your offer to help Betty With A Broken Leg was accepted!',
+      message: 'She will contact you shortly. Learn more in your PROFILE page.',
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Your offer of help wasn\'t required.',
+      message: 'Brad Bobley doesn\'t need your help to fix his window after all.',
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Offer of help received',
+      message: 'Hugh Jass has made an offer of help! Learn more in your MY REQUESTS page.',
+      markedRead: false,
+      active: true
+    }
+  });
 }
 
 main()

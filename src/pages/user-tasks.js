@@ -99,24 +99,24 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main className="bg-neutral-100">
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full overflow-hidden">
-        <section className=' flex w-[243m]'>
-          <RequestSideBar
-            status={status}
-            category={category}
-            resetFilters={resetFilters}
-            handleStatusChange={handleStatusChange}
-            statusFilter={statusFilter}
-            handleCategoryChange={handleCategoryChange}
-            categoryFilter={categoryFilter}
-            selectedOffers={selectedOffers}
-            handleAcceptOffer={handleAcceptOffer}
-            selectedRequestId={selectedRequestId}
-            selectedRequestStatus={selectedRequestStatus}
-            handleRequestComplete={handleRequestComplete}
-          />
+        <div className="flex w-full">
+          <section className='self-start sticky top-20 overflow-scroll h-[calc(100vh-80px)] flex w-[243m] bg-teal-600 rounded'>
+            <RequestSideBar
+              status={status}
+              category={category}
+              resetFilters={resetFilters}
+              handleStatusChange={handleStatusChange}
+              statusFilter={statusFilter}
+              handleCategoryChange={handleCategoryChange}
+              categoryFilter={categoryFilter}
+              selectedOffers={selectedOffers}
+              handleAcceptOffer={handleAcceptOffer}
+              selectedRequestId={selectedRequestId}
+              selectedRequestStatus={selectedRequestStatus}
+              handleRequestComplete={handleRequestComplete}
+            />
           </section>
-          <section className='flex flex-col pl-5 w-[74%]'>
+          <section className='overflow-scroll flex flex-col pl-5 w-[74%]'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
