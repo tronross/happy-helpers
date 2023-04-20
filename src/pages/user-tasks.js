@@ -99,31 +99,31 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full overflow-hidden">
-        <section className=' flex w-[243m]'>
-          <RequestSideBar
-            status={status}
-            category={category}
-            resetFilters={resetFilters}
-            handleStatusChange={handleStatusChange}
-            statusFilter={statusFilter}
-            handleCategoryChange={handleCategoryChange}
-            categoryFilter={categoryFilter}
-            selectedOffers={selectedOffers}
-            handleAcceptOffer={handleAcceptOffer}
-            selectedRequestId={selectedRequestId}
-            selectedRequestStatus={selectedRequestStatus}
-            handleRequestComplete={handleRequestComplete}
-          />
-          </section>
-          <section className='flex flex-col pl-5 w-[74%]'>
+        <div className="flex w-[100%]">
+          <div className=''>
+            <RequestSideBar
+              status={status}
+              category={category}
+              resetFilters={resetFilters}
+              handleStatusChange={handleStatusChange}
+              statusFilter={statusFilter}
+              handleCategoryChange={handleCategoryChange}
+              categoryFilter={categoryFilter}
+              selectedOffers={selectedOffers}
+              handleAcceptOffer={handleAcceptOffer}
+              selectedRequestId={selectedRequestId}
+              selectedRequestStatus={selectedRequestStatus}
+              handleRequestComplete={handleRequestComplete}
+            />
+            </div>
+          <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
               setSelectedRequestId={setSelectedRequestId}
               offers={offers}
             />
-          </section>
+          </div>
         </div>
       </main>
       <Footer />
