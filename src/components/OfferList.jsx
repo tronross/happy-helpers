@@ -2,8 +2,15 @@ import Offer from '../components/Offer';
 import { useState, useEffect } from 'react';
 
 
-export default function OfferList({ selectedOffers, handleAcceptOffer, handleRequestComplete, selectedRequestId, selectedRequestStatus }) {
+export default function OfferList({ selectedOffers, handleAcceptOffer, handleRequestComplete, selectedRequestStatus, selectedOfferUser, setSelectedOfferUser }) {
 
+  const header = function(status) {
+    switch(status) {
+      case "OPEN": return "OFFERS:"
+      case "PENDING": return "YOU HAVE ACCEPTED AN OFFER"
+      case "COMPLETE": return "THIS TASK WAS COMPLETED"
+    }
+  }
   // selectedOffers not being updated in state... needs useEffect
   const [currentOffers, setCurrentOffers] = useState([]);
   useEffect(() => {
@@ -19,7 +26,10 @@ export default function OfferList({ selectedOffers, handleAcceptOffer, handleReq
             <Offer
               offer={offer}
               selectedRequestStatus={selectedRequestStatus}
-              handleAcceptOffer={handleAcceptOffer} />
+              handleAcceptOffer={handleAcceptOffer} 
+              selectedOfferUser={selectedOfferUser}
+              setSelectedOfferUser={setSelectedOfferUser}
+            />
           </li>
         );
       });
@@ -54,9 +64,17 @@ export default function OfferList({ selectedOffers, handleAcceptOffer, handleReq
   };
   const offers = getOffers();
 
+  const divClass = selectedRequestStatus !== "OPEN" ? "flex flex-col items-center" : "flex flex-col"
+
+  const headerClass = selectedRequestStatus !== "OPEN" ? " text-base font-bold mt-4" : " text-base font-bold mt-4 ml-2"
+
+
   return (
-    <ul className="min-w-400 flex-col justify-start content-start mt-4 text-white text-sm">
-      {offers}
-    </ul>
+    <div className={divClass}>
+      <h2 className={headerClass}>{header(selectedRequestStatus)}</h2>
+      <ul className="min-w-400 flex-col justify-start content-start mt-4 text-white text-sm">
+        {offers}
+      </ul>
+    </div>
   );
 }

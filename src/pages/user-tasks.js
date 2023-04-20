@@ -29,6 +29,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     handleCategoryChange,
     handleStatusChange
   } = filterRequests(userRequests, setSelectedRequestId);
+  const [selectedOfferUser, setSelectedOfferUser] = useState(null);
 
   // Used to force render page (all state is lost)
   const router = useRouter();
@@ -99,31 +100,34 @@ export default function UserTasks({ userRequests, offers, user }) {
       <main>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full overflow-hidden">
-        <section className=' flex w-[243m]'>
-          <RequestSideBar
-            status={status}
-            category={category}
-            resetFilters={resetFilters}
-            handleStatusChange={handleStatusChange}
-            statusFilter={statusFilter}
-            handleCategoryChange={handleCategoryChange}
-            categoryFilter={categoryFilter}
-            selectedOffers={selectedOffers}
-            handleAcceptOffer={handleAcceptOffer}
-            selectedRequestId={selectedRequestId}
-            selectedRequestStatus={selectedRequestStatus}
-            handleRequestComplete={handleRequestComplete}
-          />
-          </section>
-          <section className='flex flex-col pl-5 w-[74%]'>
+        <div className="flex w-[100%] relative">
+          <div className='z-20'>
+            <RequestSideBar
+              status={status}
+              category={category}
+              resetFilters={resetFilters}
+              handleStatusChange={handleStatusChange}
+              statusFilter={statusFilter}
+              handleCategoryChange={handleCategoryChange}
+              categoryFilter={categoryFilter}
+              selectedOffers={selectedOffers}
+              handleAcceptOffer={handleAcceptOffer}
+              selectedRequestId={selectedRequestId}
+              selectedRequestStatus={selectedRequestStatus}
+              handleRequestComplete={handleRequestComplete}
+              selectedOfferUser={selectedOfferUser}
+              setSelectedOfferUser={setSelectedOfferUser}
+            />
+            </div>
+          <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
               setSelectedRequestId={setSelectedRequestId}
               offers={offers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
-          </section>
+          </div>
         </div>
       </main>
       <Footer />
@@ -147,8 +151,8 @@ export const getServerSideProps = async function() {
       address: true
     },
     orderBy: {
-      startDate: 'desc',
-    },
+      startDate: 'desc'
+    }
   });
 
   /** Capture offers with volunteer's user info:

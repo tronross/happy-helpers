@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     res.json({ tasks })
   } else if (req.method === 'POST') {
     // console.log(req.body)
-    const { name, desc, startDate, endDate, category, nbHelpers, image, address, city, postcode } = req.body
+    const { name, desc, startDate, endDate, category, image} = req.body
 
     
 
