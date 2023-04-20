@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
-import axios from 'axios';
 
 export default function Map(props) {
 
@@ -139,10 +138,10 @@ export default function Map(props) {
           })
           
         infoWindow.setContent(`
-          <div className="!marker !infoWindow">
-            <h2 className="!text-l !font-bold"><b>${title}</b></h2>
-            <h3 className="!text-m !font-bold">${category}</h3>
-            <p><b>${description}</b></p>
+          <div>
+            <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
+            <h3 style="font-weight: bold; font-size: 1.17em;">${category}</h3>
+            <p style="font-weight: bold; font-size: 1em;">${description}</p>
           </div>`
           );
 
