@@ -16,27 +16,26 @@ import EditProfileForm from "@/components/EditProfileForm";
 import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
 import addCoordsToUser from "@/helpers/add-coords-to-user";
 import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
+import ProfileTaskRow from "@/components/ProfileTaskRow";
+import ProfileSidebar from "@/components/ProfileSidebar";
 
-export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
+export default function ProfilePage({ user, upcomingData, pastData, loggedInUser }) {
   // HOOKS
   const [userData, setUserData] = useState(user);
   console.log(userData);
-  // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
-  const fullAdd = `${userAddress.address} ${userAddress.city} ${userAddress.postcode}`;
-  const [fullAddress, setFullAddress] = useState(fullAdd);
 
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [editProfileFormData, setEditProfileFormData] = useState({
-    firstName: "",
-    lastName: "",
-    description: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    postcode: "",
-    skills: "",
-    // organizations: "",
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    description: userData.description,
+    email: userData.email,
+    phone: userData.phone,
+    address: userData.address.address,
+    city: userData.address.city,
+    postcode: userData.address.postcode,
+    skills: userData.skills,
+    // organizations: userData.organizations,
   });
 
   console.log(upcomingData);
@@ -62,7 +61,31 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
   //   setOrgString(orgStr);
   // }, [userOrganizations]);
 
+  // ROWS 
+  const[selectedId, setSelectedId] = useState(null)
+  const setScroll = (id, rowType) => {
+    setTimeout(function () {
+      console.log("ID IS:", id)
+      if (!selectedId) {
+        return
+      }
+      
+      if (typeof window !== "undefined") {
+        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+        
+        scrollBox.scrollLeft = (scrollPos - 200);
+        console.log(scrollPos)
+        console.log(scrollBox.scrollLeft)
+      }
+    }, 100);
+  }
+  
+  
+
   // TEMPLATE
+
+  
   return (
     <>
       <Head>
@@ -71,67 +94,33 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-neutral-100">
-        <NavBar name={userData.firstName} id={userData.id}/>
-        <div className="flex">
-          <section style={{ margin: "0rem 1.5rem", padding: "1rem 1.5rem", backgroundColor: "rgb(13 148 136)", color: "white", width: "24em" }}>
-            <h1 style={{ fontWeight: "bold", fontSize: "1rem", textAlign: "center" }}>Profile Details</h1>
-            <br></br>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <img
-                src={userData.avatar}
-                className="rounded-full"
-                alt="Avatar"
-              />
-            </div>
-            <br></br>
-            <h1 style={{ fontWeight: "bold" }}>Name:</h1>
-            <p>{`${userData.firstName} ${userData.lastName}`}</p>
-            <br></br>
-            <h1 style={{ fontWeight: "bold" }}>Stars:</h1>
-            <p>{userData.stars}</p>
-            {user.id === 1 && <>
-              <br></br>
-              <button className='inline-flex justify-center items-center gap-2 bg-purple-600 px-4 py-1 rounded text-white' type='button' name='Edit Profile' onClick={toggleEditProfileForm}>Edit Profile</button>
-              <br></br>
-            </>}
-            {showEditProfileForm &&
-              <EditProfileForm
-                userId={userData.id}
-                userAddressId={userData.addressId}
-                editProfileFormData={editProfileFormData}
-                setEditProfileFormData={setEditProfileFormData}
-              />
-            }
-            <br></br>
-            <h1 style={{ fontWeight: "bold" }}>Address:</h1>
-            <p>{fullAddress}</p><br></br>
-            <h1 style={{ fontWeight: "bold" }}>Email:</h1>
-            <p>{userData.email}</p><br></br>
-            <h1 style={{ fontWeight: "bold" }}>Phone Number:</h1>
-            <p>{userData.phone}</p><br></br>
-            <h1 style={{ fontWeight: "bold" }}>Skills:</h1>
-            <p>{userData.skills}</p><br></br>
-            {/* <h1 style={{ fontWeight: "bold" }}>Organizations:</h1>
-            <p>{orgString}</p><br></br> */}
-            <h1 style={{ fontWeight: "bold" }}>Description:</h1>
-            <p>{userData.description}</p><br></br>
-          </section>
-          <section>
-            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Upcoming Tasks</h1>
-            <div style={{ height: "50%" }}>
-              <TaskList
-                tasks={upcomingTasksData}
-              />
-            </div>
+      <main className="">
+        <NavBar name={loggedInUser.firstName} id={userData.id}/>
+        <div className="flex w-[100%]">
+          <div className="sticky top-0">
+          <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
+          </div>
+          <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
+          <section >
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Upcoming Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
-            <h1 style={{ color: "rgb(13 148 136)", fontSize: "1.5rem", fontWeight: "bold" }}>Past Tasks</h1>
-            <div style={{ height: "50%" }}>
-              <TaskList
-                tasks={pastTasksData}
-              />
-            </div>
+            <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+
           </section>
+          <section className="pt-4">
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Past Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{pastTasksData.length} Available</h1>
+          <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+
+          </section>
+          </div>
         </div>
       </main>
       <Footer />
@@ -157,16 +146,27 @@ export async function getServerSideProps(context) {
     }
   });
 
+  //logged in user
+  const loggedInUser = await prisma.user.findUnique({
+    where: {
+      id: 1
+    }
+  });
+
   ///////// Task table user profile data /////////
 
   // Get tasks where offer is complete for userId
   const userPastOffersComplete = await prisma.offer.findMany({
     where: {
       userId: parseInt(user.id),
-      status: 'COMPLETE'
+      status: 'ACCEPTED'
     },
     include: {
-      task: true,
+      task: {
+        include: {
+          address: true
+        }
+      }
     }
   });
 
@@ -207,6 +207,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       user: JSON.parse(JSON.stringify(user)),
+      loggedInUser: JSON.parse(JSON.stringify(loggedInUser)),
       userAddress: JSON.parse(JSON.stringify(user.address)),
       upcomingData: JSON.parse(JSON.stringify(upcomingData)),
       pastData: JSON.parse(JSON.stringify(pastData)),

@@ -32,7 +32,7 @@ export default function RequestSideBar(props) {
   const offerMessage = props.selectedRequestId ? 'OFFERS OF HELP:' : 'Click a request to see the offer status.';
 
   return (
-    <div className="min-w-400 w-[24em] flex-col justify-between p-4 text-sm text-white bg-teal-600 rounded">
+    <div className="full-height w-[24em] flex-col justify-between p-4 text-sm text-white bg-teal-600 rounded">
       <h2 className="mb-2 text-base font-bold">FILTER REQUESTS:</h2>
 
       <label htmlFor="status_select" className="sr-only">Filter By Status</label>

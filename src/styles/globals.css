@@ -7,7 +7,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: rgb(245 245 245);
+  background-color: #f0fdfa
 }
 #__next {
   height: 100%;
@@ -33,4 +33,24 @@ body {
 .full-height {
   min-height: calc(100vh - 56px);
   margin-bottom: 2em ;
+}
+
+.form-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #a78bfa;
+}
+
+.form-scroll::-webkit-scrollbar {
+  width: 15px;
+}
+
+.form-scroll::-webkit-scrollbar-track {
+  background: #ddd6fe;
+  border-radius: 5px;
+}
+
+.form-scroll::-webkit-scrollbar-thumb {
+  background-color: #a78bfa;
+  border-radius: 14px;
+  border: 3px solid #ddd6fe;
 }
