@@ -66,6 +66,7 @@ export default function Map(props) {
     const category = task.category;
     const description = task.description;
     const img = task.image;
+    const date = new Date(task.startDate).toISOString().substring(0, 10);
 
     return {
       lat,
@@ -75,7 +76,8 @@ export default function Map(props) {
       userId,
       category,
       description,
-      img
+      img,
+      date
     }
   })
 
@@ -117,10 +119,11 @@ export default function Map(props) {
         const userId = task.userId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
+        const title = task.title;
         const category = task.category;
+        const date = task.date;
         const description = task.description;
         const taskId = task.index;
-        const title = task.title;
         const img = task.img;
 
         // Prevent overlapping markers(tasks)
@@ -150,7 +153,8 @@ export default function Map(props) {
               />
             </section>
             <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
-            <h3 style="font-weight: bold; font-size: 1.2em;">${category}</h3>
+              <h3 style="font-weight: bold; font-size: 1.2em;">${category}</h3>
+              <h4 style="font-weight: bold; font-size: 0.9em;">${date}</h4>
             <p style="font-weight: bold; font-size: 1em;">${description}</p>
           </article>`
           );
