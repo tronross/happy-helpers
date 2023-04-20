@@ -22,7 +22,7 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
   // TEMPLATE
   return (
-    <div style={{color:"black"}} className="flex flex-col">
+    <div style={{color:"black"}} className="flex flex-col z-[-10]">
       <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required />
 
       <input type="text" id="lastName" name="lastName" placeholder="last name" value={editProfileFormData.lastName} onChange={onChange} required />

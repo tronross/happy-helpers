@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
+import axios from 'axios';
 
 export default function Map(props) {
 
@@ -55,16 +56,24 @@ export default function Map(props) {
   // getDistanceFromAddresses("Centre Bell", "CN Tower");
 
 
-  // Convert filteredTasks to Marker-compatible objects
+  // Convert filteredTasks to Marker-appropriate objects
   const tasks = props.tasks;
   const taskMarkers = tasks.map(task => {
     const lat = task.address.latitude;
     const lng = task.address.longitude;
     const title = task.name;
+    const index = task.id;
+    const userId = task.userId;
+    const category = task.category;
+    const description = task.description;
     return {
       lat,
       lng,
-      title
+      title,
+      index,
+      userId,
+      category,
+      description
     }
   })
 
@@ -100,23 +109,70 @@ export default function Map(props) {
         title: "Anderson",
       });
 
+      const userIds = [];
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
+        const userId = task.userId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
+        const category = task.category;
+        const description = task.description;
+        const taskId = task.index;
         const title = task.title;
-        console.log(lat, lng, title)
-        new google.maps.Marker({
-          position: { lat: lat, lng: lng },
-          label: title,
-          map,
-          title: title,
-        });
+        
+        // Prevent overlapping markers(tasks)
+        if (!userIds.includes(userId)) {
+          const marker = new google.maps.Marker({
+            position: { lat: lat, lng: lng },
+            label: {
+              text: title,
+              fontWeight: "bold"
+            },
+            map,
+            zIndex: task.index,
+            taskId
+          });
+          
+          const infoWindow = new google.maps.InfoWindow({
+            ariaLabel: title,
+            maxWidth: 250
+          })
+          
+        infoWindow.setContent(`
+          <div>
+            <h2 className="text-l font-bold"><b>${title}</b></h2>
+            <h3 className="text-m font-bold">${category}</h6>
+            <p><b>${description}</b></p>
+          </div>`
+          );
+
+          // Marker event handlers for show/hide infoWindows and click-throughs to tasks
+          marker.addListener("mouseover", () => {
+            infoWindow.open({
+              anchor: marker,
+              map,
+            });
+          })
+          
+          marker.addListener("mouseout", () => {
+            infoWindow.close()
+          })
+
+          marker.addListener("click", () => {
+            window.location = (`/task/${taskId}`)
+          })
+
+          // Array of userIds to prevent multiple markers rendered over one another at the same location
+          !userIds.includes(userId) && userIds.push(userId);
+        }
       })
     }); // useEffect
   }); // function
 
   return (
-    <div id="map" ref={googlemap} />
+    // Display map
+    <section className="h-screen">
+      <div id="map" ref={googlemap} />
+    </section>
   );
 };
