@@ -80,15 +80,15 @@ console.log(startDate,)
 
 
     return (
-    <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
+    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800">
      <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
              Start Date
            </label>
-           <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none active:outline-none">
-           <Datepicker asSingle="true" primaryColor="teal" value={startDate} 
-          onChange={handleStartDate} inputClassName="text-teal-600 font-normal" useRange={false}/>
+           <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight">
+           <Datepicker asSingle="true" primaryColor="violet" value={startDate} 
+          onChange={handleStartDate} inputClassName="text-violet-800 font-normal focus:outline-none active:outline-none" useRange={false}/>
           </div>
 
 
@@ -98,9 +98,9 @@ console.log(startDate,)
           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="grid-first-name">
             End Date
           </label>
-            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
-            <Datepicker asSingle="true" primaryColor={"teal"} value={endDate} 
-          onChange={handleEndDate} inputClassName="text-teal-600 font-normal" useRange={false}/>
+            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight">
+            <Datepicker asSingle="true" primaryColor={"violet"} value={endDate} 
+          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none" useRange={false}/>
           </div>
         </div>
          
@@ -112,7 +112,7 @@ console.log(startDate,)
           </label>
           
           
-          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
+          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600 bg-white">
               
                 <select
                   name="startTime"
@@ -162,7 +162,7 @@ console.log(startDate,)
           </label>
           
           
-          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
+          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600 bg-white">
               
                 <select
                   name="endTime"
