@@ -19,7 +19,7 @@ import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 import ProfileTaskRow from "@/components/ProfileTaskRow";
 import ProfileSidebar from "@/components/ProfileSidebar";
 
-export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData, loggedInUser }) {
+export default function ProfilePage({ user, upcomingData, pastData, loggedInUser }) {
   // HOOKS
   const [userData, setUserData] = useState(user);
   console.log(userData);
@@ -102,15 +102,21 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
           </div>
           <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
           <section >
-          <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Upcoming Tasks:</h1>
-             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{upcomingTasksData.length} Available</h1>
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Upcoming Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
             <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
           </section>
           <section className="pt-4">
-            <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Past Tasks:</h1>
-             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{pastTasksData.length} Available</h1>
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Past Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{pastTasksData.length} Available</h1>
           <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
           </section>
