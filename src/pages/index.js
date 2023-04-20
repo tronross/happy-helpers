@@ -74,14 +74,12 @@ export default function Landing() {
             <img src="/images/1.png" alt="1" className="w-1/2" />
           </article>
 
-          {/* <article style={{ display: "flex" }}>
-          <img src='../../../public/images/168.svg' alt="168" />
-          <div>
-            <p>Offering help is simple, just find a task you want to volunteer for and hit OFFER. Once an offer comes in for one of your own tasks, you can view their profiles and select the best match.</p>
-          </div>
-        </article>
+          <article className="flex justify-center pt-20">
+            <img src='/images/2.png' alt="2" className="w-1/2" />
+            <p className="flex flex-col justify-center text-3xl text-black-900">Offering help is simple, just find a task you want to volunteer for and hit OFFER. Once an offer comes in for one of your own tasks, you can view their profiles and select the best match.</p>
+          </article>
 
-        <article style={{ display: "flex" }}>
+          {/*<article style={{ display: "flex" }}>
           <div>
             <p>After being accepted for a task, you can view it on your profile page with more information. Patiently wait for the day to come to receive help or help your neighbor with their task.</p>
           </div>
