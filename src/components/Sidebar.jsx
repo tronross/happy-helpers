@@ -121,7 +121,7 @@ export default function Sidebar(props) {
         </section>
 
         <h5 className="m-4 text-lg text-teal-700 font-bold mb-2">Distance (km):</h5>
-        <section className="max-w-xs inline-flex rounded-md shadow-sm space-y-0.5">
+        <section className="max-w-xs w-full inline-flex rounded-md shadow-sm space-y-0.5">
           {props.distances.map((distance, idx) => {
             // Loose equality operator used to coerce type
             if (parseInt(distance) == clicked.distance) {
@@ -129,7 +129,7 @@ export default function Sidebar(props) {
             } else if (distance == 'all' && clicked.distance == 'all') {
               return <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
             } else {
-              return <button type="button" className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-5 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px first:rounded-l-m first:ml-0 last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
+              return <button type="button" className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white inline-flex justify-center items-center gap-2 -ml-px last:rounded-r-m border" key={idx} value={distance} onClick={closerThan} >{distance}</button>
             }
           })}
         </section>
