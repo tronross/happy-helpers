@@ -19,26 +19,23 @@ import addDistanceToTasks from "@/helpers/add-distance-to-tasks";
 import ProfileTaskRow from "@/components/ProfileTaskRow";
 import ProfileSidebar from "@/components/ProfileSidebar";
 
-export default function ProfilePage({ user, userAddress, userOrganizations, upcomingData, pastData }) {
+export default function ProfilePage({ user, upcomingData, pastData, loggedInUser }) {
   // HOOKS
   const [userData, setUserData] = useState(user);
   console.log(userData);
-  // console.log(`${userAddress.address.address} ${userAddress.address.city} ${userAddress.address.postcode}`);
-  const fullAdd = `${userAddress.address} ${userAddress.city} ${userAddress.postcode}`;
-  const [fullAddress, setFullAddress] = useState(fullAdd);
 
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [editProfileFormData, setEditProfileFormData] = useState({
-    firstName: "",
-    lastName: "",
-    description: "",
-    email: "",
-    phone: "",
-    address: "",
-    city: "",
-    postcode: "",
-    skills: "",
-    // organizations: "",
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    description: userData.description,
+    email: userData.email,
+    phone: userData.phone,
+    address: userData.address.address,
+    city: userData.address.city,
+    postcode: userData.address.postcode,
+    skills: userData.skills,
+    // organizations: userData.organizations,
   });
 
   console.log(upcomingData);
@@ -98,22 +95,28 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <NavBar name={userData.firstName} id={userData.id}/>
+        <NavBar name={loggedInUser.firstName} id={userData.id}/>
         <div className="flex w-[100%]">
           <div className="sticky top-0">
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
           </div>
           <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
           <section >
-          <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Upcoming Tasks:</h1>
-             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{upcomingTasksData.length} Available</h1>
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Upcoming Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
             <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
           </section>
           <section className="pt-4">
-            <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Past Tasks:</h1>
-             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{pastTasksData.length} Available</h1>
+          {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Past Tasks:</h1>
+          }
+          {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
+          }
+             <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{pastTasksData.length} Available</h1>
           <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
           </section>
@@ -140,6 +143,13 @@ export async function getServerSideProps(context) {
     include: {
       address: true,
       // Organizations: true,
+    }
+  });
+
+  //logged in user
+  const loggedInUser = await prisma.user.findUnique({
+    where: {
+      id: 1
     }
   });
 
@@ -197,6 +207,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       user: JSON.parse(JSON.stringify(user)),
+      loggedInUser: JSON.parse(JSON.stringify(loggedInUser)),
       userAddress: JSON.parse(JSON.stringify(user.address)),
       upcomingData: JSON.parse(JSON.stringify(upcomingData)),
       pastData: JSON.parse(JSON.stringify(pastData)),
