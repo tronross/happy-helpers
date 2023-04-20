@@ -56,20 +56,20 @@ export default function Landing() {
         <section className="mx-20">
           <article className="flex justify-center">
             <div className="w-1/2 flex flex-col justify-center">
-              <h1 className="text-green-900 font-bold text-4xl">
+              <h1 className="text-green-900 font-bold text-6xl">
                 Find your next volunteer Opportunity
               </h1>
               <br></br>
-              <p className="text-xl text-green-900">
+              <p className="text-3xl text-green-900">
                 Happy Helpers gives everyone a chance to have a nearby hand when needed most.
               </p>
             </div>
             <img src='/images/main.png' alt="main" className="w-1/2" />
           </article>
 
-          {/* <h1>How it Works?</h1>
+          <h1 className="flex justify-center text-green-900 font-bold text-4xl py-40">How it Works?</h1>
 
-        <article style={{ display: "flex" }}>
+        {/* <article style={{ display: "flex" }}>
           <div>
             <p>Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.</p>
           </div>
