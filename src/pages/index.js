@@ -112,8 +112,8 @@ export default function Landing() {
               </div>
               <form className="flex flex-col content-center w-1/2 px-10">
                 <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="firstName" name="firstName" placeholder="First Name" />
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5"type="text" id="lastName" name="lastName" placeholder="Last Name" />
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5"type="text" id="email" name="email" placeholder="Email" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="lastName" name="lastName" placeholder="Last Name" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="email" name="email" placeholder="Email" />
                 <input className="rounded-full border-violet-300 border-solid border-2 pl-10 text-2xl placeholder-green-900 mb-5" type="text" id="password" name="password" placeholder="Password" />
               </form>
             </div>
@@ -125,6 +125,27 @@ export default function Landing() {
           </article>
         </section>
       </main>
+      <footer className="flex bg-violet-400 mt-10 p-10 text-white">
+          <div className="pl-10 pr-40 border-solid border-white border-r-2">
+            <h1 className="font-bold text-2xl">Happy Helpers</h1>
+            <p className="text-m">Neighbors helping Neighbors</p>
+          </div>
+          <div className="pl-40">
+            <h1 className="font-bold text-2xl">About</h1>
+            <p>Careers</p>
+            <p>Our Projects</p>
+          </div>
+          <div className="pl-40">
+            <h1 className="font-bold text-2xl">Partnership</h1>
+            <p>Partners</p>
+            <p>Websites</p>
+          </div>
+          <div className="pl-40">
+            <h1 className="font-bold text-2xl">Support</h1>
+            <p>Support Request</p>
+            <p>Contact</p>
+          </div>
+      </footer>
     </>
   );
 }
