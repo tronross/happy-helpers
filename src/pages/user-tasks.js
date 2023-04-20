@@ -96,7 +96,7 @@ export default function UserTasks({ userRequests, offers, user }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-neutral-100">
+      <main>
         <NavBar name={user.firstName} id={user.id} />
 
         <div className="flex w-full overflow-hidden">

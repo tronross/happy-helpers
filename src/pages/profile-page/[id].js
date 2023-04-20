@@ -97,11 +97,13 @@ export default function ProfilePage({ user, userAddress, userOrganizations, upco
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-neutral-100">
+      <main className="">
         <NavBar name={userData.firstName} id={userData.id}/>
-        <div className="flex">
-          <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm}/>
-          <div className="flex flex-col w-[100%] overflow-hidden">
+        <div className="flex w-[100%]">
+          <div className="sticky top-0">
+          <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
+          </div>
+          <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
           <section >
           <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">Your Upcoming Tasks:</h1>
              <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{upcomingTasksData.length} Available</h1>
