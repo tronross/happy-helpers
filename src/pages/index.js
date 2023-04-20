@@ -19,10 +19,32 @@ export default function Landing() {
         <title>Happy Helpers</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
+        <style>
+          {
+            `.bg-shape {
+                width: 620px;
+                height: 620px;
+                border-radius: 9999px;
+            }
+
+            .opacity-50 {
+              opacity: .5;
+            }
+
+            .bg-blur {
+              filter: blur(150px)
+            }
+            `
+          }
+        </style>
       </Head>
-      <main className="bg-teal-50">
+      <main>
+        <div className='absolute inset-0 flex justify-between'>
+          <div className='bg-shape bg-teal-600 opacity-50 bg-blur'></div>
+          <div className='bg-shape bg-violet-600 opacity-50 bg-blur'></div>
+        </div>
         <nav className="flex justify-between items-center p-5 tracking-wide font-bold mx-5 mb-2 fixed sticky top-0 z-50">
-          <Link className="text-green-900 text-xl" href="/home">
+          <Link className="text-green-900 text-xl" href="/">
             Happy Helpers
           </Link>
           <Link href="/profile-page/1">
@@ -91,6 +113,9 @@ export default function Landing() {
           </div>
         </article> */}
         </section>
+        {/* </div>
+        </div> */}
+
       </main>
     </>
   );
