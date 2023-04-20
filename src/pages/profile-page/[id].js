@@ -97,11 +97,11 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
       <main className="">
         <NavBar name={loggedInUser.firstName} id={userData.id}/>
         <div className="flex w-[100%]">
-          <div className="sticky top-0">
+          <div className="">
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
           </div>
           <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
-          <section >
+          <div>
           {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Upcoming Tasks:</h1>
           }
           {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
@@ -110,8 +110,8 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
 
             <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
-          </section>
-          <section className="pt-4">
+          </div>
+          <div className="pt-4">
           {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Past Tasks:</h1>
           }
           {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
@@ -119,7 +119,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
              <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{pastTasksData.length} Available</h1>
           <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
-          </section>
+          </div>
           </div>
         </div>
       </main>

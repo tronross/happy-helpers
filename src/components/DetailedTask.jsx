@@ -7,7 +7,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const user = selectedUser;
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`;
 
-  const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 active:bg-teal-800";
+  const buttonColor = type === "fake" ? "bg-violet-500 hover:bg-violet-700 active:bg-violet-900" : "bg-teal-600 hover:bg-teal-700 active:bg-teal-800"
+  const buttonStyle = offerSent ? "bg-gray-500" : `${buttonColor}`;
   const disabled = offerSent;
 
 
@@ -27,11 +28,12 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
     }
   }
   
+  
   const statusColor = getStyle(task.status)
 
-
+  const taskClass = type === "fake" ?  "flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-violet-800 w-[40em] h-[20em] border-2 border-violet-400" : "flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600"
   return (
-    <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600" id={taskId}>
+    <div className={taskClass} id={taskId}>
       <div className="flex p-3"> 
         <div className="max-w-[16em] w-2/7">
           <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>
@@ -40,7 +42,7 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
             <h5 className=" text-xl leading-tight mb-1">
             {task.name}
             </h5>
-            <p className="mb-2 text-base text-teal-700">
+            <p className="mb-2 text-base">
             {task.city}
             </p>
             <p className=" text-base">
