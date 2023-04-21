@@ -94,7 +94,7 @@ export default function Sidebar(props) {
 
 
   return (
-    <aside className="h-full relative sticky top-[100px] left-0 rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 pt-4" >
+    <aside className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[100px] pt-4 mt-5" >
       <div className="px-2">
         <div className='flex justify-between'>
           <h1 className='uppercase font-bold text-base'>Sort By:</h1>
@@ -124,27 +124,28 @@ export default function Sidebar(props) {
         <section className='max-w-xs' >
           <Datepicker
             // displayFormat={''}
-            primaryColor={"teal"}
+            primaryColor={"violet"}
             asSingle={true}
             value={dateFilter}
             onChange={handleDateFilter}
+            useRange={false}
             inputClassName="rounded-full border-2 border-violet-300 w-full py-2 px-3 bg-violet-100 text-violet-900 focus:outline-violet-400" 
           />
         </section>
         <section className="max-w-xs flex flex-row space-x-1.5 items-baseline">
-          <input className="h-11 w-400 block w-full text-m placeholder-violet-900 rounded-full my-4 pl-4 bg-violet-100 border-2 border-violet-300 focus:outline-violet-400" name="cityFilter" type="text" placeholder="Search by City..." onChange={filterCity} id="cityFilter" ></input>
+          <input className="h-11 w-400 block w-full text-m placeholder-violet-900 rounded-full my-4 pl-4 bg-violet-100 border-2 border-violet-300 focus:outline-violet-400" name="cityFilter" type="text" placeholder="Search by City..." onChange={(e) => filterCity(e)} id="cityFilter" ></input>
         </section>
 
         <h5 className=" text-sm text-violet-900 uppercase font-bold mb-1">Distance (km):</h5>
         <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 accent-violet-400 hover:accent-violet-400 active:accent-violet-400 rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)}/>
       </div>
-        <div className="flex text-sm font-bold text-violet-900 pl-2">
+        <div className="flex text-xs font-bold text-violet-900 pl-2 mb-1">
           <p className='ml-1'>1</p>
-          <p className='ml-8'>5</p>
-          <p className='ml-7'>10</p>
-          <p className='ml-6'>25</p>
-          <p className='ml-6'>50</p>
-          <p className='ml-4'>ALL</p>
+          <p className='ml-[44px]'>5</p>
+          <p className='ml-[39px]'>10</p>
+          <p className='ml-[35px]'>25</p>
+          <p className='ml-[35px]'>50</p>
+          <p className='ml-[31px]'>ALL</p>
         </div>
       </aside>
   )

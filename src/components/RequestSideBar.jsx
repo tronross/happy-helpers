@@ -31,9 +31,10 @@ export default function RequestSideBar(props) {
 
   return (
     <aside className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[100px] pt-4 mt-5">
+      <div className='px-2'>
       <div className='flex justify-between'>
-        <h2 className=" text-base font-bold ml-2">FILTER REQUESTS</h2>
-        <p className='text-sm uppercase text-violet-400 font-bold mr-3 hover:cursor-pointer hover:text-violet-500' onClick={props.resetFilters}>RESET</p>
+        <h2 className=" text-base font-bold ml-2">FILTER BY:</h2>
+        <p className='text-sm uppercase text-violet-400 font-bold  hover:cursor-pointer hover:text-violet-500' onClick={props.resetFilters}>RESET</p>
       </div>
 
       <label htmlFor="status_select" className="sr-only">Filter By Status</label>
@@ -75,6 +76,7 @@ export default function RequestSideBar(props) {
           />
         )}
       </section>
+      </div>
     </aside>
   );
 }
