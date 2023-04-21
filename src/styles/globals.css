@@ -1,5 +1,5 @@
-@tailwind base; 
-@tailwind components; 
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 html,
@@ -9,9 +9,11 @@ body {
   padding: 0;
   background-color: #f0fdfa
 }
+
 #__next {
   height: 100%;
 }
+
 #map {
   height: 80%;
   width: 98%;
@@ -26,13 +28,15 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .full-height {
   min-height: calc(100vh - 56px);
-  margin-bottom: 2em ;
+  margin-bottom: 2em;
 }
 
 .form-scroll {
@@ -53,4 +57,19 @@ body {
   background-color: #a78bfa;
   border-radius: 14px;
   border: 3px solid #ddd6fe;
+}
+
+.bg-shape {
+  width: 420px;
+  height: 2620px;
+  border-radius: 9999px;
+
+}
+
+.opacity-50 {
+  opacity: .5;
+}
+
+.bg-blur {
+  filter: blur(300px)
 }
