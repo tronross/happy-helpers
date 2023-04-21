@@ -626,7 +626,7 @@ async function main() {
     data: {
       name: 'Fix shelf',
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.catastrophicreations.com/wp-content/uploads/2017/11/broken03.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-18 02:00+0500'),
       endDate: new Date('2023-05-18 13:00+0500'),
@@ -641,10 +641,10 @@ async function main() {
     data: {
       name: 'Change light bulb',
       description: 'Bulb is too high for me to reach.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://m.media-amazon.com/images/I/41kDzl61vxS._AC_.jpg',
       category: 'DIY',
-      startDate: new Date('2023-05-22 02:00+0500'),
-      endDate: new Date('2023-05-23 15:00+0500'),
+      startDate: new Date('2023-05-05 02:00+0500'),
+      endDate: new Date('2023-05-05 15:00+0500'),
       status: 'OPEN',
       userId: 1,
       nbHelpers: 1,
@@ -656,7 +656,7 @@ async function main() {
     data: {
       name: 'Need ride to airport',
       description: 'Going on holiday, parking is too expensive at the airport.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://images.freeimages.com/vhq/images/istock/previews/1029/102944583-airplane-icon-front-view-flying-aircraft.jpg',
       category: 'Driving',
       startDate: new Date('2023-05-19 00:00+0500'),
       endDate: new Date('2023-05-19 15:00+0500'),
@@ -719,7 +719,7 @@ async function main() {
     data: {
       name: 'Cat sitter required',
       description: 'I will be on holiday next week and my cat did not want to come.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://i.etsystatic.com/34736964/r/il/919979/3729131264/il_570xN.3729131264_h2vs.jpg',
       category: 'Animal Care',
       startDate: new Date('2023-05-11 18:00+0500'),
       endDate: new Date('2023-05-30 20:00+0500'),
@@ -954,7 +954,7 @@ async function main() {
     data: {
       name: 'Rubber Duck Maker',
       description: 'Looking for someone to make a custom rubber duck for the annual duck race.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://m.media-amazon.com/images/I/61rYCPyg8PL._AC_SL1500_.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-01 01:00+0500'),
       endDate: new Date('2023-05-01 15:00+0500'),
@@ -969,7 +969,7 @@ async function main() {
     data: {
       name: 'Move Appliances',
       description: 'I have a fridge, stove and dishwasher I need to get rid of, will have trailer to load onto with someone to take it away.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://media.istockphoto.com/id/506060186/photo/worker-carrying-a-washing-machine-on-his-back.jpg?s=612x612&w=0&k=20&c=unSb80hqNYwQYuUnu518kvMYP3SD84lViH_3YYJzO5k=',
       category: 'Heavy Lifting',
       startDate: new Date('2023-05-02 15:00+0500'),
       endDate: new Date('2023-05-02 15:00+0500'),
@@ -1014,7 +1014,7 @@ async function main() {
     data: {
       name: 'Dust Fan',
       description: 'Need someone to dust my fan, with tall ceilings I am unable to reach up there with no ladder.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://organizeyourstuffnow.com/wp-content/uploads/2018/10/Ceiling-Fan-dusty-blades-1024x683.jpg',
       category: 'Housework',
       startDate: new Date('2023-05-11 15:00+0500'),
       endDate: new Date('2023-05-12 15:00+0500'),
@@ -1046,7 +1046,7 @@ async function main() {
     data: {
       name: 'Deliver Flyers',
       description: 'Looking for someone to deliver flyers Sat and Sun as I am out of town',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://letterboxdistribution.co.uk/wp-content/uploads/2019/05/Letterbox-distribution-London-delivering-flyers-leaflets-and-promotional-material-1.jpg',
       category: 'Other',
       startDate: new Date('2023-04-01 15:00+0500'),
       endDate: new Date('2023-04-01 15:00+0500'),
@@ -1062,7 +1062,7 @@ async function main() {
     data: {
       name: 'Move Standard Car',
       description: 'I have a standard car needing to be moved down the road but I am unable to drive stick',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.jdpower.com/JDPA_Manual%20Transmission%20Shift%20Pattern%20by%20Pexels.jpg',
       category: 'Driving',
       startDate: new Date('2023-04-11 15:00+0500'),
       endDate: new Date('2023-04-11 15:00+0500'),
@@ -1109,7 +1109,7 @@ async function main() {
     data: {
       name: 'Game Booth Volunteer',
       description: 'Need someone to man the game booth at our upcoming festival, duties include making sure each kid gets a turn and a prize',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://tipjunkie.com/wp-content/uploads/cache/de/84/de84b9df831f3cc7af7522695c9da6b5.jpg',
       category: 'Charity & Causes',
       startDate: new Date('2023-03-01 15:00+0500'),
       endDate: new Date('2023-03-10 15:00+0500'),
