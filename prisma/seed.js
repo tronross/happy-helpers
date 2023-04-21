@@ -626,7 +626,7 @@ async function main() {
     data: {
       name: 'Fix shelf',
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
-      image: 'https://www.catastrophicreations.com/wp-content/uploads/2017/11/broken03.jpg',
+      image: 'https://imagesvc.meredithcorp.io/v3/jumpstartpure/image/?url=https%3A%2F%2Fcf-images.us-east-1.prod.boltdns.net%2Fv1%2Fstatic%2F5985631785001%2F700d3367-903f-42c0-8365-a8b0c489a0eb%2F8d27e4d7-83d7-4679-ab5c-682a2e25f1e6%2F1280x720%2Fmatch%2Fimage.jpg&w=640&h=360&q=90&c=cc',
       category: 'DIY',
       startDate: new Date('2023-05-18 02:00+0500'),
       endDate: new Date('2023-05-18 13:00+0500'),
