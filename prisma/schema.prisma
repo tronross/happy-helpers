@@ -99,13 +99,12 @@ model Message {
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id])
   type          String
-  cpId          Int
-  cpName        String
-  taskName      String
+  cpId          Int       @map("cp_id")
+  cpName        String    @map("cp_name")
+  taskName      String    @map("task_name")
   receivedAt    DateTime  @default(dbgenerated("NOW()")) @map("received_at")
   markedRead    Boolean   @default(false) @map("marked_read")
   active        Boolean   @default(true)
-
 
   @@map("messages")
 }
