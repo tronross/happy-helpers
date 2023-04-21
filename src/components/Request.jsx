@@ -20,7 +20,7 @@ export default function Request(props) {
     props.onClick(props.id)
     props.setSelectedOfferUser(null)
   }
-
+  
   return (
     <div className={className} onClick={handleTaskClick}>
       {props.nbOffers > 0 && props.status === 'OPEN' && (

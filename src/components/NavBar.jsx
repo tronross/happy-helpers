@@ -44,7 +44,7 @@ export default function NavBar(props) {
           <Link href="/home">Home</Link>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
-          <Link href="/new-task">New</Link>
+          <Link href="/new-task">New Task</Link>
         </li>
       </ul>
       <ul className="flex items-center  w-1/2 justify-end">
@@ -57,10 +57,7 @@ export default function NavBar(props) {
               {unreadMessageCount}
             </div>
           )}
-          <h2 onClick={handleMessages}>Messages</h2>
-        </li>
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
-          <h2>Notifications</h2>
+          <h2 onClick={handleMessages}>Notifications</h2>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
           <Link href={`/profile-page/${props.id}`}>{props.name}</Link>
