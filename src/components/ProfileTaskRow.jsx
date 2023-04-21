@@ -61,6 +61,7 @@ const changeTask = (id) => {
           user={task.userId}
           image={task.image}
           status={task.status}
+          starred={task.starred}
           city={city}
           distance={distanceProp}
           startDate={startDateString}
