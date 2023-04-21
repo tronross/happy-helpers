@@ -1468,7 +1468,7 @@ async function main() {
       endDate: new Date('2023-05-06 16:00+0500'),
       userId: 10,
       status: "OPEN",
-      nbHelpers: 12,
+      nbHelpers: 1,
       addressId: 26
     }
   });
@@ -1477,14 +1477,14 @@ async function main() {
     data: {
       name: 'Play Scrabble',
       description: "I'm looking for another Scrabble nerd to play with! I prefer playing outdoors, like in the park.",
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVKC02CgWUEBu7YCpsKSv1Z-Mphbh6HAZBnQ&usqp=CAU',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP0Fr7jhu6qjt8Tn_H_wcF4rz5S28GQ4cYYw&usqp=CAU',
       category: 'Social',
       startDate: new Date('2023-04-30 00:00+0500'),
       endDate: new Date('2023-04-30 16:00+0500'),
       userId: 11,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 29
+      addressId: 27
     }
   });
 
@@ -1563,6 +1563,21 @@ async function main() {
       addressId: 28
     }
   });
+  
+  await prisma.task.create({
+    data: {
+      name: 'Build Ikea Dresser',
+      description: "I'm terrible at assembling Ikea stuff - can you help me put together a dresser? I have cookies!",
+      image: 'https://1.bp.blogspot.com/-qtt18mo4f-k/XitkpbTfl_I/AAAAAAAASoI/dd5H5GjhXZQVEoqJCnPoCW467O6wIsxywCNcBGAsYHQ/s1600/ikea-manual.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-04-30 19:00+0500'),
+      endDate: new Date('2023-05-01 00:00+0500'),
+      userId: 11,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 11
+    }
+  });
 
   await prisma.task.create({
     data: {
@@ -1579,20 +1594,6 @@ async function main() {
     }
   });
 
-  await prisma.task.create({
-    data: {
-      name: 'Build Ikea Dresser',
-      description: "I'm terrible at assembling Ikea stuff - can you help me put together a dresser? I have cookies!",
-      image: 'https://1.bp.blogspot.com/-qtt18mo4f-k/XitkpbTfl_I/AAAAAAAASoI/dd5H5GjhXZQVEoqJCnPoCW467O6wIsxywCNcBGAsYHQ/s1600/ikea-manual.jpg',
-      category: 'DIY',
-      startDate: new Date('2023-04-29 19:00+0500'),
-      endDate: new Date('2023-04-30 00:00+0500'),
-      userId: 11,
-      status: "OPEN",
-      nbHelpers: 1,
-      addressId: 24
-    }
-  });
 
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
