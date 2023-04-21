@@ -183,14 +183,7 @@ export default function Map(props) {
   }); // function
 
   return (
-    // Display map
-    
       <div id="map" ref={googlemap} />
-   
-     
     );
   };
-  
-  {/* <div className="grow" id="map" ref={googlemap} /> */}
-  {/* <section className="h-screen w-screen flex flex-row"> */}
-  {/* <div className="flex-none w-100 h-screen">*/}
+ 
