@@ -866,7 +866,7 @@ async function main() {
       category: 'Driving',
       startDate: new Date('2023-05-07 18:00+0500'),
       endDate: new Date('2023-05-10 22:00+0500'),
-      status: "OPEN",
+      status: "PENDING",
       userId: 2,
       nbHelpers: 2,
       addressId: 2
@@ -882,7 +882,7 @@ async function main() {
       startDate: new Date('2023-06-07 18:00+0500'),
       endDate: new Date('2023-06-10 22:00+0500'),
       userId: 2,
-      status: "OPEN",
+      status: "PENDING",
       nbHelpers: 1,
       addressId: 2
     }
@@ -912,7 +912,7 @@ async function main() {
       startDate: new Date('2023-05-05 03:00+0500'),
       endDate: new Date('2023-05-30 15:00+0500'),
       userId: 2,
-      status: "OPEN",
+      status: "COMPLETE",
       nbHelpers: 1,
       addressId: 2
     }
@@ -942,7 +942,7 @@ async function main() {
       startDate: new Date('2023-05-02 00:00+0500'),
       endDate: new Date('2023-05-02 15:00+0500'),
       userId: 2,
-      status: "OPEN",
+      status: "COMPLETE",
       nbHelpers: 1,
       addressId: 2
     }
@@ -1809,7 +1809,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 19,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1833,7 +1833,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 20,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1841,7 +1841,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 22,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1865,7 +1865,7 @@ async function main() {
     data: {
       userId: 1,
       taskId: 24,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
