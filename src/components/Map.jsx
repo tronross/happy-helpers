@@ -184,8 +184,13 @@ export default function Map(props) {
 
   return (
     // Display map
-    <section className="h-screen">
+    
       <div id="map" ref={googlemap} />
-    </section>
-  );
-};
+   
+     
+    );
+  };
+  
+  {/* <div className="grow" id="map" ref={googlemap} /> */}
+  {/* <section className="h-screen w-screen flex flex-row"> */}
+  {/* <div className="flex-none w-100 h-screen">*/}
