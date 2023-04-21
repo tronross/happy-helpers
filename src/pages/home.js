@@ -97,7 +97,6 @@ export default function Home({ tasks, user }) {
       tasksInCity = tasksCloserThan;
     } else {
       tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city));
-      console.log(tasksInCity)
     }
 
     // Filter by category
@@ -113,7 +112,6 @@ export default function Home({ tasks, user }) {
     } else {
       filteredByDate = tasksInCategory.filter(task => new Date(task.startDate).toISOString().substring(0, 10) === filters.date)
     }
-    console.log(filteredByDate)
     // Sort by distance or date
     if (filters.sort === 'Distance') {
       sortedFilteredTasks = sortTasksByDistance(filteredByDate)
@@ -125,7 +123,8 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map tasks={filteredTasks} />)
+  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-4 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> : <Map tasks={filteredTasks} />)
+  
 
   // Template
   return (
@@ -135,10 +134,11 @@ export default function Home({ tasks, user }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className='full-height'>
         <NavBar name={user.firstName}
           id={user.id} />
-        <div className="flex pl-2">
+        <div className="flex w-[100%] justify-start relative">
+          <div className="">
             <Sidebar
               sidebarOptions={sidebar}
               filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
@@ -147,10 +147,12 @@ export default function Home({ tasks, user }) {
               setCategory={setCategory}
               distances={distances}
             />
-          <section className='flex flex-col p-2 mx-4 grow'>
+          </div>
+          <div className="w-[100%] h-screen">
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
-          </section>
+          </div>
+
         </div>
       </main>
       <Footer />
