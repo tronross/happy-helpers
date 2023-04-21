@@ -70,28 +70,29 @@ export default function Sidebar(props) {
       sort: 'Date'
     });
 
-    setTimeout(() => { setDateFilter({ startDate: null, endDate: null }) }, 50)
+    setTimeout(() => { setDateFilter( {startDate: null, endDate: null} ) }, 50)
   }
 
   // Call filterTasks on change of filters state
   useEffect(() => { props.filterTasks() }, [props.filters])
-
+  
 
 
   return (
-    <aside className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[120px] pt-4">
+    <aside className="h-full w-[24em] relative">
+      <div className="fixed top-20 w-[24em]">
         {/* <section className="flex items-baseline space-x-4" > */}
-        <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
-        <section className="max-w-xs flex inline-flex rounded-md shadow-sm space-y-0.5">
+          <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Sort By:</h4>
+          <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
           {clicked.sort === 'Date' ?
-            <button className="w-full bg-teal-800 px-16 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Date'} onClick={sortSelect}>Date</button>
+            <button className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Date'} onClick={sortSelect}>Date</button>
             :
-            <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-16 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Date'} onClick={sortSelect}>Date</button>
+            <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Date'} onClick={sortSelect}>Date</button>
           }
           {clicked.sort === 'Distance' ?
-            <button type="button" className="w-full bg-teal-800 px-12 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Distance'} onClick={sortSelect}>Distance</button>
+            <button type="button" className="w-full bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Distance'} onClick={sortSelect}>Distance</button>
             :
-            <button type="button" className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-12 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Distance'} onClick={sortSelect}>Distance</button>
+            <button type="button" className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-700 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" value={'Distance'} onClick={sortSelect}>Distance</button>
           }
         </section>
         <h4 className="m-4 text-lg text-teal-700 font-bold mb-2">Filter By:</h4>
@@ -135,6 +136,7 @@ export default function Sidebar(props) {
         <section className="max-w-xs flex flex-col rounded-md shadow-sm space-y-0.5">
           <button className="w-full bg-teal-600 hover:bg-teal-500 active:bg-teal-800 px-4 py-1 rounded text-white inline-flex justify-center shadow-sm" key={15} value={'All Categories'} onClick={resetFilters}>Reset Filters</button>
         </section>
+      </div>
       </aside>
   )
 }

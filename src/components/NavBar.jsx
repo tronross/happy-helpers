@@ -44,7 +44,7 @@ export default function NavBar(props) {
           <Link href="/home">Home</Link>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
-          <Link href="/new-task">New</Link>
+          <Link href="/new-task">New Task</Link>
         </li>
       </ul>
       <ul className="flex items-center  w-1/2 justify-end">
