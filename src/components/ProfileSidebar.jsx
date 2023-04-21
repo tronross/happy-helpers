@@ -60,7 +60,7 @@ export default function ProfileSidebar({userData, showEditProfileForm, toggleEdi
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
           </svg>
           <div className="flex flex-col items-center">
-            <div class="flex">
+            <div className="flex">
               <p className="pr-2">{userData.address.address}, </p>
               <p className="pr-2">{userData.address.city}</p>
             </div>
