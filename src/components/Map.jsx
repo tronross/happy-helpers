@@ -62,7 +62,7 @@ export default function Map(props) {
     const lng = task.address.longitude;
     const title = task.name;
     const index = task.id;
-    const userId = task.userId;
+    const addressId = task.addressId;
     const category = task.category;
     const description = task.description;
     const img = task.image;
@@ -73,7 +73,7 @@ export default function Map(props) {
       lng,
       title,
       index,
-      userId,
+      addressId,
       category,
       description,
       img,
@@ -106,17 +106,17 @@ export default function Map(props) {
         */
       });
 
-      // Position map to be centered over "logged-in user's" location
-      new google.maps.Marker({
-        position: { lat: 43.70536, lng: -79.45664 },
-        map,
-        title: "Anderson",
-      });
+      // // Position map to be centered over "logged-in user's" location
+      // new google.maps.Marker({
+      //   position: { lat: 43.70536, lng: -79.45664 },
+      //   map,
+      //   title: "Anderson",
+      // });
 
-      const userIds = [];
+      const addressIds = [];
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
-        const userId = task.userId;
+        const addressId = task.addressId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
         const title = task.title;
@@ -127,7 +127,7 @@ export default function Map(props) {
         const img = task.img;
 
         // Prevent overlapping markers(tasks)
-        if (!userIds.includes(userId)) {
+        if (!addressIds.includes(addressId)) {
           const marker = new google.maps.Marker({
             position: { lat: lat, lng: lng },
             label: {
@@ -176,7 +176,7 @@ export default function Map(props) {
           })
 
           // Array of userIds to prevent multiple markers rendered over one another at the same location
-          !userIds.includes(userId) && userIds.push(userId);
+          !addressIds.includes(addressId) && addressIds.push(addressId);
         }
       })
     }); // useEffect
