@@ -72,11 +72,13 @@ export default function UserTasks({ userRequests, offers, user }) {
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
    */
   const handleRequestComplete = async function(volunteerId, giveStar) {
-    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
-
     if (giveStar) {
-      await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE', starred: true});
+    await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+    } else {
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
     }
+
 
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();

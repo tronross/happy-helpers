@@ -14,13 +14,15 @@ export default async function handler(req, res) {
 
     const { taskId } = req.query;
     const { newStatus } = req.body;
+    const { starred } = req.body;
 
     const updateTaskStatus = await prisma.task.update({
       where: {
         id: parseInt(taskId)
       },
       data: {
-        status: newStatus
+        status: newStatus,
+        starred: starred
       }
     });
 
