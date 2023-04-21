@@ -627,11 +627,7 @@ async function main() {
     data: {
       name: 'Fix shelf',
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
-<<<<<<< HEAD
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
-=======
       image: 'https://img.wonderhowto.com/img/original/86/72/63522808758754/0/635228087587548672.jpg',
->>>>>>> master
       category: 'DIY',
       startDate: new Date('2023-05-18 02:00+0500'),
       endDate: new Date('2023-05-18 13:00+0500'),
