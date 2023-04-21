@@ -11,6 +11,9 @@ module.exports = {
         'auto-fill-100': 'repeat(auto-fill, minmax(100px, 1fr))',
         'auto-fit-100': 'repeat(auto-fit, minmax(100px, 1fr))',
       },
+      fontFamily: {
+        'fredoka': ['Fredoka', 'sans-serif']
+      }
     },
     screens: {
       'sm': '640px',

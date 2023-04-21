@@ -626,7 +626,7 @@ async function main() {
     data: {
       name: 'Fix shelf',
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
-      image: 'https://www.catastrophicreations.com/wp-content/uploads/2017/11/broken03.jpg',
+      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
       category: 'DIY',
       startDate: new Date('2023-05-18 02:00+0500'),
       endDate: new Date('2023-05-18 13:00+0500'),
@@ -656,7 +656,7 @@ async function main() {
     data: {
       name: 'Need ride to airport',
       description: 'Going on holiday, parking is too expensive at the airport.',
-      image: 'https://images.freeimages.com/vhq/images/istock/previews/1029/102944583-airplane-icon-front-view-flying-aircraft.jpg',
+      image: 'https://images.ctfassets.net/cnu0m8re1exe/6sLnMf6GKSgsXxbJbpGXWO/7ea7a98ebc24318f0d60b1f5484053de/shutterstock_707735803.jpg?fm=jpg&fl=progressive&w=660&h=433&fit=fill',
       category: 'Driving',
       startDate: new Date('2023-05-19 00:00+0500'),
       endDate: new Date('2023-05-19 15:00+0500'),
@@ -719,7 +719,7 @@ async function main() {
     data: {
       name: 'Cat sitter required',
       description: 'I will be on holiday next week and my cat did not want to come.',
-      image: 'https://i.etsystatic.com/34736964/r/il/919979/3729131264/il_570xN.3729131264_h2vs.jpg',
+      image: 'https://www.professionalcatsitter.com/wp-content/uploads/2014/02/cat1.jpg',
       category: 'Animal Care',
       startDate: new Date('2023-05-11 18:00+0500'),
       endDate: new Date('2023-05-30 20:00+0500'),

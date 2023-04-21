@@ -22,7 +22,6 @@ import ProfileSidebar from "@/components/ProfileSidebar";
 export default function ProfilePage({ user, upcomingData, pastData, loggedInUser }) {
   // HOOKS
   const [userData, setUserData] = useState(user);
-  console.log(userData);
 
   const [showEditProfileForm, setShowEditProfileForm] = useState(false);
   const [editProfileFormData, setEditProfileFormData] = useState({
@@ -38,8 +37,6 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
     // organizations: userData.organizations,
   });
 
-  console.log(upcomingData);
-  console.log(pastData);
   const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData);
   const [pastTasksData, setPastTasksData] = useState(pastData);
 
@@ -65,7 +62,6 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
   const[selectedId, setSelectedId] = useState(null)
   const setScroll = (id, rowType) => {
     setTimeout(function () {
-      console.log("ID IS:", id)
       if (!selectedId) {
         return
       }
@@ -97,7 +93,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
       <main className="">
         <NavBar name={loggedInUser.firstName} id={loggedInUser.id}/>
         <div className="flex w-[100%]">
-          <div className="">
+          <div >
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
           </div>
             <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
