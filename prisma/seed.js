@@ -21,7 +21,7 @@ async function main() {
           email: 'Anderson.Khorsandi@gmail.com',
           password: 'alligator',
           phone: '(636)313-2463',
-          stars: 1,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg',
           skills: 'Yardwork and moving stuff.'
         }
