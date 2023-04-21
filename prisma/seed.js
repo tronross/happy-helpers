@@ -595,7 +595,7 @@ async function main() {
     data: {
       name: 'Move couch',
       description: 'Heavy couch needs to go up to 23rd floor apartment.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.stor-it.com/wp-content/uploads/shutterstock_280426793-1.jpg',
       category: 'Heavy Lifting',
       startDate: new Date('2023-04-30 01:00+0500'),
       endDate: new Date('2023-04-30 15:00+0500'),
@@ -891,7 +891,7 @@ async function main() {
     data: {
       name: 'Carrying groceries',
       description: 'Need help to get my groceries from the car into the house.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.budget101.com/wp-content/uploads/2021/05/groceries-in-car.jpg',
       category: 'Heavy Lifting',
       startDate: new Date('2023-05-01 18:00+0500'),
       endDate: new Date('2023-05-01 18:00+0500'),
@@ -906,10 +906,10 @@ async function main() {
     data: {
       name: 'Install Shelf',
       description: 'Need help installing shelf in bathroom above toilet, should be able to hold 10lbs.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://plankandpillow.com/wp-content/uploads/2018/08/shelf-install-1024x709.jpg',
       category: 'DIY',
-      startDate: new Date('2023-04-30 03:00+0500'),
-      endDate: new Date('2023-04-30 15:00+0500'),
+      startDate: new Date('2023-05-05 03:00+0500'),
+      endDate: new Date('2023-05-30 15:00+0500'),
       userId: 2,
       status: "OPEN",
       nbHelpers: 1,
@@ -921,7 +921,7 @@ async function main() {
     data: {
       name: 'Raking Grass',
       description: 'Need someone to rake my lawn after a long winter, can no longer get around as easily.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.treehugger.com/thmb/IkMEHl0MbY3DN6qLAeOLE7lJ4LI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/is-it-better-to-rake-or-leave-leaves-4864213-14-e72dd5a4996e490e9d09b609c7dd8d9c.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-05-01 01:00+0500'),
       endDate: new Date('2023-05-01 15:00+0500'),
@@ -936,7 +936,7 @@ async function main() {
     data: {
       name: 'Fix Fence',
       description: 'I have a small hole in my fence and cats keep getting in and eatting my strawberries. Need someone to wire it closed.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://images.fineartamerica.com/images-medium-large-5/hole-in-chain-link-fence-ron-koeberer.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-05-02 00:00+0500'),
       endDate: new Date('2023-05-02 15:00+0500'),
@@ -1184,8 +1184,8 @@ async function main() {
   await prisma.task.create({
     data: {
       name: 'Clean Computer',
-      description: 'My computer has sloweed down and I am afraid there may be a virus, need someone to look and see if everything is ok.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      description: 'My computer has slowed down and I am afraid there may be a virus, need someone to look and see if everything is ok.',
+      image: 'https://www.ups.com/assets/resources/webcontent/images/how-to-ship-laptop-G-1134966284-Q421.jpg',
       category: 'Tech Support',
       startDate: new Date('2023-04-30 03:00+0500'),
       endDate: new Date('2023-04-30 20:00+0500'),
@@ -1200,7 +1200,7 @@ async function main() {
     data: {
       name: 'Ipad Help',
       description: 'Need someone to show me the ropes of my new Ipad, didnt have time to stay at the Apple store and learn',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.vox-cdn.com/thumbor/_fO7TX18HE07otQ4CcxWC4_4lcM=/0x0:2040x1360/1400x788/filters:focal(1020x680:1021x681)/cdn.vox-cdn.com/uploads/chorus_asset/file/24128006/226361_Apple_iPad_10.9_10th_gen_DSeifert_0004.jpg',
       category: 'Tech Support',
       startDate: new Date('2023-05-05 03:00+0500'),
       endDate: new Date('2023-05-05 20:00+0500'),
@@ -1509,7 +1509,7 @@ async function main() {
       description: "I'm organizing a bake sale in High Park! Proceeds will benefit Toronto Cat Rescue. Contact me for more details.",
       image: 'https://www.signupgenius.com/cms/socialMediaImages/bake-sale-ideas-fundraising-facebook-1200x630.png',
       category: 'Cooking',
-      startDate: new Date('2023-05-03 02:00+0500'),
+      startDate: new Date('2023-04-30 02:00+0500'),
       endDate: new Date('2023-05-03 16:00+0500'),
       userId: 13,
       status: "OPEN",
@@ -1556,7 +1556,7 @@ async function main() {
       image: 'https://static.ebayinc.com/static/assets/Uploads/Stories/Articles/_resampled/FillWzY4OCwzNDRd/vinyl.jpg',
       category: 'Other',
       startDate: new Date('2023-05-06 00:00+0500'),
-      endDate: new Date('2023-05-06 12:00+0500'),
+      endDate: new Date('2023-05-07 12:00+0500'),
       userId: 15,
       status: "OPEN",
       nbHelpers: 1,

@@ -106,12 +106,12 @@ export default function Map(props) {
         */
       });
 
-      // Position map to be centered over "logged-in user's" location
-      new google.maps.Marker({
-        position: { lat: 43.70536, lng: -79.45664 },
-        map,
-        title: "Anderson",
-      });
+      // // Position map to be centered over "logged-in user's" location
+      // new google.maps.Marker({
+      //   position: { lat: 43.70536, lng: -79.45664 },
+      //   map,
+      //   title: "Anderson",
+      // });
 
       const addressIds = [];
       // Add Markers to map for each Task
