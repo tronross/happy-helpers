@@ -95,7 +95,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <NavBar name={loggedInUser.firstName} id={userData.id}/>
+        <NavBar name={loggedInUser.firstName} id={loggedInUser.id}/>
         <div className="flex w-[100%]">
           <div className="">
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
