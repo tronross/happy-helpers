@@ -38,8 +38,7 @@ export default async function handler(req, res) {
 
     const countUpdated = await prisma.message.updateMany({
       where: {
-        userId: userId,
-        active: true
+        userId: userId
       },
       data: {
         markedRead: true
