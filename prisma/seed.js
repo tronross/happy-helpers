@@ -626,7 +626,7 @@ async function main() {
     data: {
       name: 'Fix shelf',
       description: 'Shelf fell off wall and broke all my picture frames. Need help fixing it up',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://img.wonderhowto.com/img/original/86/72/63522808758754/0/635228087587548672.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-18 02:00+0500'),
       endDate: new Date('2023-05-18 13:00+0500'),
@@ -674,7 +674,7 @@ async function main() {
     data: {
       name: 'Donations wanted for bake sale',
       description: 'Any cakes would be welcome, I hate cooking.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/rainbow_cake_20402_16x9.jpg',
       category: 'Cooking',
       startDate: new Date('2023-04-28 19:00+0500'),
       endDate: new Date('2023-04-28 15:00+0500'),
@@ -689,7 +689,7 @@ async function main() {
     data: {
       name: 'Cookies needed for meeting',
       description: 'Nobody liked my lasagne last time, need a change of menu.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://static01.nyt.com/images/2022/02/12/dining/JT-Chocolate-Chip-Cookies/JT-Chocolate-Chip-Cookies-master768.jpg?w=1280&q=75',
       category: 'Cooking',
       startDate: new Date('2023-04-29 18:00+0500'),
       endDate: new Date('2023-04-29 19:00+0500'),
@@ -704,7 +704,7 @@ async function main() {
     data: {
       name: 'Supper required on Friday',
       description: 'My kids get hungry and I have to go out.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://i2.wp.com/www.differencebetween.com/wp-content/uploads/2014/12/Dinner_Difference-Between-Dinner-and-Supper.jpg?resize=300%2C200&ssl=1',
       category: 'Cooking',
       startDate: new Date('2023-04-29 03:00+0500'),
       endDate: new Date('2023-05-10 20:00+0500'),
@@ -734,7 +734,7 @@ async function main() {
     data: {
       name: 'Snake feeder needed',
       description: 'I will be on holiday next week and am scared my snake will eat my gerbil.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.saferbrand.com/media/Articles/Safer-Brand/identify-and-get-rid-of-venmous-snakes.jpg',
       category: 'Animal Care',
       status: 'PENDING',
       startDate: new Date('2023-05-10 18:00+0500'),
@@ -749,7 +749,7 @@ async function main() {
     data: {
       name: 'Frog handler required',
       description: 'My frog is out of control, need help keeping it on lillypad.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.pbs.org/wnet/nature/files/2021/05/frog-610x343.png',
       category: 'Animal Care',
       startDate: new Date('2023-05-10 18:00+0500'),
       endDate: new Date('2023-05-10 18:00+0500'),
@@ -766,7 +766,7 @@ async function main() {
     data: {
       name: 'Mopper',
       description: 'The ice-rink in my back yard melted, need help mopping up the garden.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://saundersequipment.com/wp-content/uploads/2013/06/650-600x406.jpg',
       category: 'Yard Work',
       status: 'COMPLETE',
       startDate: new Date('2023-04-10 18:00+0500'),
@@ -782,7 +782,7 @@ async function main() {
     data: {
       name: 'Squirrel chaser',
       description: 'My yard is overrun with squirrels, need help to chase them away.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://api.time.com/wp-content/uploads/2020/03/Squirrel.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-04-01 18:00+0500'),
       endDate: new Date('2023-04-01 18:00+0500'),
@@ -798,7 +798,7 @@ async function main() {
     data: {
       name: 'Fence painter',
       description: 'Need help repainting my fence.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.owatroldirect.co.uk/wp-content/uploads/2016/02/colourfence.jpg.webp',
       category: 'Yard Work',
       status: 'COMPLETE',
       startDate: new Date('2023-04-05 18:00+0500'),
@@ -813,7 +813,7 @@ async function main() {
     data: {
       name: 'Leaf removal',
       description: 'My beautiful lawn is covered with leaves, if anyone has a leaf blower I would be very appreciative.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.bhg.com/thmb/rh4fzRctBkAWiGbr7MZfidV2_XU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/person-raking-fall-autumn-leaves-87a68497cbac4cf1828694592dd42c5b.jpg',
       category: 'Yard Work',
       status: 'COMPLETE',
       startDate: new Date('2023-03-30 18:00+0500'),
@@ -828,7 +828,7 @@ async function main() {
     data: {
       name: 'Need lift to garage',
       description: 'My car is in the shop, need a lift there so I can pick it up.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.vox-cdn.com/thumbor/j-v62q5_S0NgB2gvFt3JJ_zX9ow=/0x0:7492x5619/920x613/filters:focal(0x0:7492x5619):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/46484254/shutterstock_244451992.0.0.jpg',
       category: 'Driving',
       status: 'COMPLETE',
       startDate: new Date('2023-04-15 18:00+0500'),
@@ -844,7 +844,7 @@ async function main() {
     data: {
       name: 'Astronaut required',
       description: 'Need co-pilot to take over while I sleep on excursion to Mars and back.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://starlust.org/wp-content/uploads/elementor/thumbs/astronaut-floating-in-space-prf2kzw2msp5wib3hkumemjv9k51vj6jsrzwlx8y6o.webp',
       category: 'Driving',
       startDate: new Date('2023-04-07 18:00+0500'),
       endDate: new Date('2023-04-10 22:00+0500'),
@@ -862,7 +862,7 @@ async function main() {
     data: {
       name: 'Boat driver required',
       description: 'I love to waterski, but have no-one to drive the boat since my husband fell overboard last year.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn-bmkic.nitrocdn.com/mfayRNjpwuryPngPrBbCMHYQdhKGQOLg/assets/images/optimized/rev-c2761dd/boating-resources/wp-content/uploads/2021/06/How-to-drive-a-boat-1120x580.png.webp',
       category: 'Driving',
       startDate: new Date('2023-05-07 18:00+0500'),
       endDate: new Date('2023-05-10 22:00+0500'),
@@ -877,7 +877,7 @@ async function main() {
     data: {
       name: 'Cyclist required',
       description: 'I have a tandem but my boyfriend dumped me.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.shopify.com/s/files/1/0989/0486/files/IMG_5284_copy_2048x2048.jpg?v=1613255134',
       category: 'Driving',
       startDate: new Date('2023-06-07 18:00+0500'),
       endDate: new Date('2023-06-10 22:00+0500'),
@@ -1156,7 +1156,7 @@ async function main() {
     data: {
       name: 'Hanging Picture',
       description: 'I have a large picture I want to hang in my living room, need another person to hold one side.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2017/8/18/0/IO_Suzanne-Childress_Marin-Rancher_12.jpg.rend.hgtvcom.616.411.suffix/1503074475260.jpeg',
       category: 'Housework',
       startDate: new Date('2023-05-05 22:00+0500'),
       endDate: new Date('2023-05-07 20:00+0500'),
@@ -1216,7 +1216,7 @@ async function main() {
     data: {
       name: 'Fix Garden Box',
       description: 'My garden box is starting to rot, need to support it so it does not cave in',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://m.media-amazon.com/images/I/71ZN2rx5CGL._AC_SX522_.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-05-05 03:00+0500'),
       endDate: new Date('2023-05-05 20:00+0500'),
