@@ -6,8 +6,6 @@ import Image from 'next/image';
 import Button from '@/components/Button';
 import Link from 'next/link';
 
-// import main from 
-
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Landing() {
