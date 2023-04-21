@@ -1526,10 +1526,10 @@ async function main() {
       category: 'Charity & Causes',
       startDate: new Date('2023-05-07 04:00+0500'),
       endDate: new Date('2023-05-07 12:00+0500'),
-      userId: 14,
+      userId: 19,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 14
+      addressId: 19
     }
   });
   
@@ -1576,6 +1576,21 @@ async function main() {
       status: "OPEN",
       nbHelpers: 1,
       addressId: 18
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Build Ikea Dresser',
+      description: "I'm terrible at assembling Ikea stuff - can you help me put together a dresser? I have cookies!",
+      image: 'https://1.bp.blogspot.com/-qtt18mo4f-k/XitkpbTfl_I/AAAAAAAASoI/dd5H5GjhXZQVEoqJCnPoCW467O6wIsxywCNcBGAsYHQ/s1600/ikea-manual.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-04-29 19:00+0500'),
+      endDate: new Date('2023-04-30 00:00+0500'),
+      userId: 11,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 24
     }
   });
 
