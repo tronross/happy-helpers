@@ -17,10 +17,10 @@ export default function Request(props) {
   const statusStyle = `inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
 
   const handleTaskClick = () => {
-    props.onClick(props.id)
-    props.setSelectedOfferUser(null)
-  }
-  
+    props.onClick(props.id);
+    props.setSelectedOfferUser(null);
+  };
+
   return (
     <div className={className} onClick={handleTaskClick}>
       {props.nbOffers > 0 && props.status === 'OPEN' && (

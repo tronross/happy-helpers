@@ -120,7 +120,7 @@ export default function UserTasks({ userRequests, offers, user }) {
               selectedOfferUser={selectedOfferUser}
               setSelectedOfferUser={setSelectedOfferUser}
             />
-            </div>
+          </div>
           <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
             <RequestList
               requests={filteredRequests}
