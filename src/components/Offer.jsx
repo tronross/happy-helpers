@@ -8,7 +8,8 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
   const [starBox, setStarBox] = useState(false);
 
   const handleCloseRequest = function() {
-    handleRequestComplete(offer.id, offer.user.id, giveStar);
+    console.log(offer.user.id, giveStar)
+    handleRequestComplete(offer.user.id, giveStar);
   };
 
   const handleCancel = function() {
@@ -88,10 +89,10 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
               alt="Avatar"
               width="100rem"
             />
-            <div className='flex flex-col mx-2'>
+            <div className='flex flex-col mx-2 items-center'>
               <p className='uppercase text-sm font-bold mt-3'>{offer.user.firstName} {offer.user.lastName}</p>
-              <p className=' text-sm mt-1'>Skills: {offer.user.skills}</p>
-              <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-bold uppercase text-[12px] rounded px-2 py-1 hover:text-slate-50 ml-4'>
+              <p className='text-center text-sm mt-1'><b>Skills:</b> {offer.user.skills}</p>
+              <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-bold uppercase text-[12px] rounded px-2 py-1 hover:text-slate-50'>
                 View Profile
               </Link>
             </div>

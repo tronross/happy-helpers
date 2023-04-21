@@ -1410,9 +1410,6 @@ async function main() {
     }
   });
 
-
-
-
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
     data: {
@@ -1779,6 +1776,62 @@ async function main() {
       userId: 6,
       taskId: 36,
       status: 'ACCEPTED'
+    }
+  });
+
+  // Create messages -------------------------------------------------------------
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Offer of help received:',
+      message: 'Lore Winks has made an offer of help! Learn more in your MY REQUESTS page.',
+      receivedAt: new Date('2023-04-19 22:00+0500'),
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Offer of help received:',
+      message: 'Danny Khan has made an offer of help! Learn more in your MY REQUESTS page.',
+      receivedAt: new Date('2023-04-11 20:00+0500'),
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Your offer to help was accepted:',
+      message: 'Betty With A Broken Leg accepted your offer of help. Learn more in your PROFILE page.',
+      receivedAt: new Date('2023-04-18 22:00+0500'),
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Your help isn\'t required:',
+      message: 'Brad Bobbley doesn\'t need your help to fix his window after all.',
+      receivedAt: new Date('2023-04-19 16:00+0500'),
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      subject: 'Offer of help received:',
+      message: 'Hugh Jass has made an offer of help! Learn more in your MY REQUESTS page.',
+      receivedAt: new Date('2023-04-01 21:00+0500'),
+      markedRead: true,
+      active: false
     }
   });
 }
