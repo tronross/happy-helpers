@@ -21,7 +21,7 @@ async function main() {
           email: 'Anderson.Khorsandi@gmail.com',
           password: 'alligator',
           phone: '(636)313-2463',
-          stars: 0,
+          stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg',
           skills: 'Yardwork and moving stuff.'
         }
@@ -44,7 +44,7 @@ async function main() {
           email: 'K.Lunski@ferrari.it',
           password: 'aardvark',
           phone: '(416)500-1413',
-          stars: 3,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/7.jpg',
           skills: 'Safe driver and pretty good baker.'
         }
@@ -114,7 +114,8 @@ async function main() {
           password: 'sofaman',
           phone: '(306)551-8238',
           stars: 2,
-          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg'
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg',
+          skills: 'Dancing.'
         }
       }
     }
@@ -1968,8 +1969,23 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received:',
-      message: 'Lore Winks has made an offer of help! Learn more in your MY REQUESTS page.',
+      type: 'STAR',
+      cpId: 4,
+      cpName: 'Elvis Jarzynka',
+      taskName: 'Eat tacos',
+      receivedAt: new Date('2023-04-20 22:15+0500'),
+      markedRead: false,
+      active: true
+    }
+  });
+
+  await prisma.message.create({
+    data: {
+      userId: 1,
+      type: 'RECEIVED',
+      cpId: 6,
+      cpName: 'Lore Winks',
+      taskName: 'Walk dog',
       receivedAt: new Date('2023-04-19 22:00+0500'),
       markedRead: false,
       active: true
@@ -1979,8 +1995,10 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received:',
-      message: 'Danny Khan has made an offer of help! Learn more in your MY REQUESTS page.',
+      type: 'RECEIVED',
+      cpId: 16,
+      cpName: 'Danny Khan',
+      taskName: 'Burp baby',
       receivedAt: new Date('2023-04-11 20:00+0500'),
       markedRead: false,
       active: true
@@ -1990,8 +2008,10 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Your offer to help was accepted:',
-      message: 'Betty With A Broken Leg accepted your offer of help. Learn more in your PROFILE page.',
+      type: 'ACCEPTED',
+      cpId: 2,
+      cpName: 'Kayleen Lunski',
+      taskName: 'Free hostages',
       receivedAt: new Date('2023-04-18 22:00+0500'),
       markedRead: false,
       active: true
@@ -2001,8 +2021,10 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Your help isn\'t required:',
-      message: 'Brad Bobbley doesn\'t need your help to fix his window after all.',
+      type: 'DENIED',
+      cpId: 3,
+      cpName: 'Tiana Wahman',
+      taskName: 'Fix window',
       receivedAt: new Date('2023-04-19 16:00+0500'),
       markedRead: false,
       active: true
@@ -2012,8 +2034,10 @@ async function main() {
   await prisma.message.create({
     data: {
       userId: 1,
-      subject: 'Offer of help received:',
-      message: 'Hugh Jass has made an offer of help! Learn more in your MY REQUESTS page.',
+      type: 'RECEIVED',
+      cpId: 3,
+      cpName: 'Tiana Wahman',
+      taskName: 'Milk cow',
       receivedAt: new Date('2023-04-01 21:00+0500'),
       markedRead: true,
       active: false

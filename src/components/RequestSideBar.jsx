@@ -61,8 +61,7 @@ export default function RequestSideBar(props) {
         <div className='border-b-2 border-violet-300 w-2/3 py-2'></div>
       </div>
       <section>
-        {!props.selectedRequestId && <h2 className="mb-2 p-2 w-full text-violet-800 text-sm pt-5">Click a request to see the offer status.</h2>
-        }
+        {!props.selectedRequestId && <h2 className="mb-2 p-2 w-full text-violet-800 text-sm pt-5">Click a request to see the offer status.</h2>}
         {props.selectedRequestId && props.selectedOffers.length === 0 && <p className="text-sm p-2 pb-2 pt-5">Sorry, there are no volunteers for this request yet.</p>}
         {props.selectedRequestId && props.selectedOffers.length > 0 && (
           <OfferList

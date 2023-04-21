@@ -90,8 +90,8 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='full-height'>
-        <NavBar name={loggedInUser.firstName} id={userData.id}/>
+      <main className="">
+        <NavBar name={loggedInUser.firstName} id={loggedInUser.id}/>
         <div className="flex w-[100%]">
           <div >
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
