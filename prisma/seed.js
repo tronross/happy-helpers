@@ -137,7 +137,8 @@ async function main() {
           password: 'gooddog',
           phone: '(905)725-6089',
           stars: 22,
-          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/21.jpg'
+          avatar: 'https://xsgames.co/randomusers/assets/avatars/female/21.jpg',
+          skills: 'Animal care'
         }
       }
     }
