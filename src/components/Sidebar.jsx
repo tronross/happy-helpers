@@ -137,7 +137,7 @@ export default function Sidebar(props) {
         </section>
 
         <h5 className=" text-sm text-violet-900 uppercase font-bold mb-1">Distance (km):</h5>
-        <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 accent-violet-400 hover:accent-violet-400 active:accent-violet-400 rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)}/>
+        <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 border border-violet-300 border-2 accent-violet-400  rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)}/>
       </div>
         <div className="flex text-xs font-bold text-violet-900 pl-2 mb-1">
           <p className='ml-1'>1</p>
