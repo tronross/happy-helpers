@@ -700,7 +700,7 @@ async function main() {
 
   await prisma.task.create({
     data: {
-      name: 'Paint house walls.',
+      name: 'Paint house walls',
       description: 'I recently moved into a new house and need help painting the walls.',
       image: 'https://coloradopainting.com/wp-content/uploads/2021/09/how-long-does-interior-paint-last-on-the-wall.png',
       category: 'DIY',
