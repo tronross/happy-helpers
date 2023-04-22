@@ -63,6 +63,7 @@ export default function Map(props) {
     const title = task.name;
     const index = task.id;
     const addressId = task.addressId;
+    const userId = task.userId;
     const category = task.category;
     const description = task.description;
     const img = task.image;
@@ -74,6 +75,7 @@ export default function Map(props) {
       title,
       index,
       addressId,
+      userId,
       category,
       description,
       img,
@@ -96,8 +98,8 @@ export default function Map(props) {
     loader.load().then(() => {
       const google = window.google;
       map = new google.maps.Map(googlemap.current, {
-        center: { lat: 43.70536, lng: -79.45664 },
-        zoom: 12.7,
+        center: { lat: 43.68856622704429, lng: -79.43367264421084 },
+        zoom: 12.9,
         /*
         fullscreenControl: false, // remove the top-right button
         mapTypeControl: false, // remove the top-left buttons
@@ -106,12 +108,22 @@ export default function Map(props) {
         */
       });
 
-      // // Position map to be centered over "logged-in user's" location
-      // new google.maps.Marker({
-      //   position: { lat: 43.70536, lng: -79.45664 },
-      //   map,
-      //   title: "Anderson",
-      // });
+      const homeMarker = {
+        path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
+        fillOpacity: 0.8,
+        strokeWeight: 0,
+        rotation: 0,
+        scale: 2,
+        anchor: new google.maps.Point(0, 20),
+      };
+
+      // Position map to be centered over "logged-in user's" location
+      new google.maps.Marker({
+        position: { lat: 43.68739440726955, lng: -79.42498784917888 },
+        icon: homeMarker,
+        map,
+        title: "Anderson",
+      });
 
       const addressIds = [];
       // Add Markers to map for each Task
@@ -126,8 +138,8 @@ export default function Map(props) {
         const taskId = task.index;
         const img = task.img;
 
-        // Prevent overlapping markers(tasks)
-        if (!addressIds.includes(addressId)) {
+        // Prevent overlapping markers(tasks); prevent tasks overlapping home marker
+        if (!addressIds.includes(addressId) && task.userId != 1) {
           const marker = new google.maps.Marker({
             position: { lat: lat, lng: lng },
             label: {
