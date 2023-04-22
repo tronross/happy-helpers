@@ -4,14 +4,11 @@
 
 // Vendor methods
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
 
 // Helper functions
-import addCoordsToTasks from '../helpers/add-coords-to-tasks';
-import addCoordsToUser from '../helpers/add-coords-to-user'
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 import sortTasksByDistance from '../helpers/sort-tasks-by-distance';
 import sortTasksByStartTime from '../helpers/sort-tasks-by-start-time';
@@ -123,7 +120,8 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <TaskList tasks={filteredTasks} /> : <Map tasks={filteredTasks} />)
+  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-4 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> : <Map tasks={filteredTasks} />)
+
 
   // Template
   return (
@@ -136,8 +134,8 @@ export default function Home({ tasks, user }) {
       <main className='full-height'>
         <NavBar name={user.firstName}
           id={user.id} />
-          <div className="flex w-[100%] justify-start relative">
-        <div className="">
+        <div className="flex w-[100%] justify-start relative">
+          <div className="">
             <Sidebar
               sidebarOptions={sidebar}
               filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
@@ -147,11 +145,11 @@ export default function Home({ tasks, user }) {
               distances={distances}
             />
           </div>
-          <section className='flex flex-col p-2 mx-4 overflow-hidden'>
+          <div className="w-[100%] h-screen">
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
-          </section>
-        
+          </div>
+
         </div>
       </main>
       <Footer />
