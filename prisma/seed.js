@@ -1602,7 +1602,7 @@ async function main() {
     data: {
       userId: 2,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1618,7 +1618,7 @@ async function main() {
     data: {
       userId: 4,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1626,7 +1626,7 @@ async function main() {
     data: {
       userId: 5,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1818,7 +1818,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 19,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1826,7 +1826,7 @@ async function main() {
     data: {
       userId: 6,
       taskId: 19,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
