@@ -985,7 +985,7 @@ async function main() {
     data: {
       name: 'Change Curtains',
       description: 'Need help changing my curtains, they are 15ft from floor and I dont have a ladder.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.thespruce.com/thmb/qVNQXcJYNRSKozXrf1ZDvwnoqLE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/signs-time-to-replace-curtains-5525795-hero-43fd522a36d24c28b0c08fe6c4ffe5cd.jpg',
       category: 'Housework',
       startDate: new Date('2023-05-05 15:00+0500'),
       endDate: new Date('2023-05-06 15:00+0500'),
@@ -1079,7 +1079,7 @@ async function main() {
     data: {
       name: 'Watch Turtle',
       description: 'My turtle gets lonely and I am away for a week, looking for someone to watch him',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.reptileadvisor.com/wp-content/uploads/2020/02/pet-turtles.jpg',
       category: 'Housework',
       startDate: new Date('2023-04-11 15:00+0500'),
       endDate: new Date('2023-04-12 15:00+0500'),
@@ -1094,7 +1094,7 @@ async function main() {
     data: {
       name: 'Salt Walkway',
       description: 'Need someone to salt the walkway at the appartment entrance tomorrow morning as I have an appointment',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.whygoodnature.com/hs-fs/hubfs/Winter%20Salt%20Sidewalk.jpg?width=1280&name=Winter%20Salt%20Sidewalk.jpg',
       category: 'Heavy Lifting',
       startDate: new Date('2023-01-01 15:00+0500'),
       endDate: new Date('2023-01-01 15:00+0500'),
