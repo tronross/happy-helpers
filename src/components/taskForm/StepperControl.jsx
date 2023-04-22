@@ -52,9 +52,9 @@ export default function StepperControl({currentStep, setCurrentStep, formData}) 
 
   const buttonsStyle = (step) => {
     if (step === 1) {
-      return "container flex justify-end px-16 my-6 mb-10"
+      return "container flex justify-end px-16 my-6 mb-10 font-fredoka"
     } else {
-      return "container flex justify-start justify-between px-16 my-6"
+      return "container flex justify-start justify-between px-16 my-6 font-fredoka"
     }
   }
 

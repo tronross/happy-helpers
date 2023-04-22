@@ -23,7 +23,7 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
   // TEMPLATE
   return (
     <div className="flex flex-col items-center mt-3">
-      <p className="uppercase font-bold pb-3">Edit Profile:</p>
+      <p className="uppercase font-semibold pb-3">Edit Profile:</p>
       <div className="flex flex-col w-full">
       <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none"/>
 
@@ -39,16 +39,16 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
       <input type="text" id="email" name="email" placeholder="email" value={editProfileFormData.email} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
 
-      <p className="uppercase text-sm font-bold">Description:</p>
+      <p className="uppercase text-sm font-semibold">Description:</p>
       <textarea type="text" id="description" name="description" placeholder="description" value={editProfileFormData.description} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none resize-none  scrollbar form-scroll" />
 
-      <p className="uppercase text-sm font-bold">Skills:</p>
+      <p className="uppercase text-sm font-semibold">Skills:</p>
       <textarea type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required  className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none resize-none  scrollbar form-scroll" />
 
       {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
       </div>
-      <button type="submit" onClick={handleSubmit} className="w-12/3 inline-flex justify-center items-center gap-2 bg-violet-300 hover:bg-violet-400  hover:border-violet-300 hover:text-white active:bg-violet-500 border-[1.5px] border-violet-400 px-7 py-1 rounded-full text-violet-800 mt-3 uppercase font-bold text-sm">Save</button>
+      <button type="submit" onClick={handleSubmit} className="w-12/3 inline-flex justify-center items-center gap-2 bg-violet-300 hover:bg-violet-400  hover:border-violet-300 hover:text-white active:bg-violet-500 border-[1.5px] border-violet-400 px-7 py-1 rounded-full text-violet-800 mt-3 uppercase font-semibold text-sm">Save</button>
     </div >
   );
 }

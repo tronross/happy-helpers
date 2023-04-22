@@ -80,34 +80,34 @@ console.log(startDate,)
 
 
     return (
-    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800">
+    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800 font-fredoka">
      <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
+           <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="startDate">
              Start Date
            </label>
-           <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight">
+           <div className="appearance-none block w-full bg-white border border-gray-200 rounded leading-tight">
            <Datepicker asSingle="true" primaryColor="violet" value={startDate} 
-          onChange={handleStartDate} inputClassName="text-violet-800 font-normal focus:outline-none active:outline-none" useRange={false}/>
+          onChange={handleStartDate} inputClassName="text-violet-800 font-normal focus:outline-none active:outline-none p-[12px]" useRange={false}/>
           </div>
 
 
 
         </div>
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="grid-first-name">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="grid-first-name">
             End Date
           </label>
-            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight">
+            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight bg-white">
             <Datepicker asSingle="true" primaryColor={"violet"} value={endDate} 
-          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none" useRange={false}/>
+          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" useRange={false}/>
           </div>
         </div>
          
        </div>
        <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startTime">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="startTime">
             Start Time
           </label>
           
@@ -157,7 +157,7 @@ console.log(startDate,)
 
         </div>
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="endTime">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="endTime">
             End Time
           </label>
           

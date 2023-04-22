@@ -36,7 +36,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
             alt="Avatar"
             width="40rem"
           />
-          <p className='text-violet-800 uppercase font-bold text-sm'>{offer.user.firstName} {offer.user.lastName}</p>
+          <p className='text-violet-800 uppercase font-semibold text-sm'>{offer.user.firstName} {offer.user.lastName}</p>
           <div className="mb-[-15px]">
             <svg
               viewBox="0 0 1024 1024"
@@ -46,7 +46,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
             >
               <path d="M908.1 353.1l-253.9-36.9L540.7 86.1c-3.1-6.3-8.2-11.4-14.5-14.5-15.8-7.8-35-1.3-42.9 14.5L369.8 316.2l-253.9 36.9c-7 1-13.4 4.3-18.3 9.3a32.05 32.05 0 00.6 45.3l183.7 179.1-43.4 252.9a31.95 31.95 0 0046.4 33.7L512 754l227.1 119.4c6.2 3.3 13.4 4.4 20.3 3.2 17.4-3 29.1-19.5 26.1-36.9l-43.4-252.9 183.7-179.1c5-4.9 8.3-11.3 9.3-18.3 2.7-17.5-9.5-33.7-27-36.3z" />
             </svg>
-            {offer.user.stars < 10 ? <p className="relative top-[-31px] left-[16.5px] font-bold text-white ">{offer.user.stars}</p> : <p className="relative top-[-30px] left-[13px] font-bold text-white">{offer.user.stars}</p>
+            {offer.user.stars < 10 ? <p className="relative top-[-31px] left-[17px] font-semibold text-white ">{offer.user.stars}</p> : <p className="relative top-[-30px] left-[15px] font-semibold text-white">{offer.user.stars}</p>
             }
           </div>
         </div>
@@ -59,9 +59,12 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
             width="100rem"
           />
           <div>
-            <p className='text-violet-800 uppercase font-bold text-sm mt-2'>{offer.user.firstName} {offer.user.lastName}</p>
-            <p className="text-violet-800 mt-1"><b>Skills:</b> {offer.user.skills}</p>
-            <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-bold uppercase text-[12px] rounded px-2 py-1 absolute top-[4px] left-[307px] hover:text-slate-50'>
+            <p className='text-violet-800 uppercase font-semibold text-sm mt-2'>{offer.user.firstName} {offer.user.lastName}</p>
+            <div className='flex mt-1'>
+              <p className='font-semibold text-violet-800 mr-1'>Skills: </p> 
+              <p className="text-violet-800">{offer.user.skills}</p>
+            </div>
+            <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-semibold uppercase text-[12px] rounded px-2 py-1 absolute top-[4px] left-[307px] hover:text-slate-50'>
               View Profile
             </Link>
             <button className='bg-violet-500 rounded px-2 py-1 absolute top-[80px] left-[310px] hover:bg-violet-700 active:bg-violet-900' onClick={() => handleAcceptOffer(offer.id)}>
@@ -79,16 +82,17 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
       <div key={offer.id}>
 
         <div className='text-violet-900 flex flex-col items-center'>
-          <div className='flex border-[1.5px] border-violet-400 rounded-lg p-1 my-2 shadow'>
+          <div className='flex justify-around border-[1.5px] border-violet-400 rounded-lg p-1 my-2 shadow text-violet-900 w-[272px] h-[114px]'>
             <img
               src={offer.user.avatar}
-              className="rounded-full border-[2px] border-violet-300 m-1"
+              className="rounded-full border-[2px] border-violet-300"
               alt="Avatar"
               width="100rem"
+              height="100px"
             />
-            <div className='flex flex-col mx-2 items-center'>
-              <p className='uppercase text-sm font-bold mt-3'>{offer.user.firstName} {offer.user.lastName}</p>
-              <p className='text-center text-sm mt-1'><b>Skills:</b> {offer.user.skills}</p>
+            <div className='flex flex-col mx-2 items-center justify-center'>
+              <p className='uppercase text-sm font-semibold'>{offer.user.firstName} {offer.user.lastName}</p>
+              <p className='text-center text-sm mt-1'>Skills: {offer.user.skills}</p>
               <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-bold uppercase text-[12px] rounded px-2 py-1 hover:text-slate-50'>
                 View Profile
               </Link>
@@ -138,17 +142,17 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
   if (selectedRequestStatus === 'COMPLETE' && offer.status === 'ACCEPTED') {
     return (
       <div key={offer.id}>
-        <div className='flex border-[1.5px] border-violet-400 rounded-lg p-1 my-2 shadow text-violet-900'>
+        <div className='flex justify-around border-[1.5px] border-violet-400 rounded-lg p-1 my-2 shadow text-violet-900 w-[272px] h-[114px]'>
           <img
             src={offer.user.avatar}
-            className="rounded-full border-[2px] border-violet-300 m-1"
+            className="rounded-full border-[2px] border-violet-300"
             alt="Avatar"
             width="100rem"
           />
-          <div className='flex flex-col mx-2'>
-            <p className='uppercase text-sm font-bold mt-3'>{offer.user.firstName} {offer.user.lastName}</p>
-            <p className=' text-sm mt-1'>Skills: {offer.user.skills}</p>
-            <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-bold uppercase text-[12px] rounded px-2 py-1 hover:text-slate-50 ml-4'>
+          <div className='flex flex-col mx-2 items-center justify-center'>
+            <p className='uppercase text-sm font-semibold pt-1'>{offer.user.firstName} {offer.user.lastName}</p>
+            <p className=' text-sm mt-1 text-center'>Skills: {offer.user.skills}</p>
+            <Link href={`/profile-page/${offer.user.id}`} target="_blank" className='text-violet-400 font-semibold uppercase text-[12px] rounded px-2 py-1 hover:text-slate-50'>
               View Profile
             </Link>
           </div>
