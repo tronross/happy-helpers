@@ -66,7 +66,7 @@ export default function OfferList({ selectedOffers, handleAcceptOffer, handleReq
 
   const divClass = selectedRequestStatus !== "OPEN" ? "flex flex-col items-center" : "flex flex-col";
 
-  const headerClass = selectedRequestStatus !== "OPEN" ? " text-base font-bold mt-4" : " text-base font-bold mt-4 ml-2";
+  const headerClass = selectedRequestStatus !== "OPEN" ? " text-base font-semibold mt-4" : " text-base font-semibold mt-4 ml-2";
 
 
   return (

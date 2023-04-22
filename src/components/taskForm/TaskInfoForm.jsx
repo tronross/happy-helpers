@@ -3,17 +3,17 @@ export default function TaskInfo({formData, onChange}) {
   // console.log(formData.name)
 
   return (
-    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800">
+    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800 font-fredoka">
        <div className="flex flex-wrap -mx-3 mb-6">
          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="name">
+           <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="name">
              Task Name
            </label>
            <input name="name" className=" appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-violet-400" id="name" type="text" placeholder="Feed Turtle" value={formData.name} onChange={e => onChange(e)}/>
            {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
          </div>
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="category">
+            <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="category">
               Category
             </label>
           <div className="relative">
@@ -38,7 +38,7 @@ export default function TaskInfo({formData, onChange}) {
        </div>
        <div className="flex flex-wrap -mx-3 mb-6">
          <div className="w-full px-3">
-           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="description">
+           <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="description">
              Description
            </label>
            <textarea className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-violet-400 resize-none h-24" id="description" type="textarea" placeholder="Explain your task..." name="desc"  value={formData.desc} onChange={e => onChange(e)}/>
@@ -46,7 +46,7 @@ export default function TaskInfo({formData, onChange}) {
        </div>
        <div className="flex flex-wrap mb-2">
          
-           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="image">
+           <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="image">
              Photo URL
            </label>
            <input

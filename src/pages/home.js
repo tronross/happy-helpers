@@ -93,7 +93,7 @@ export default function Home({ tasks, user }) {
     if (filters.city === '') {
       tasksInCity = tasksCloserThan;
     } else {
-      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city));
+      tasksInCity = tasksCloserThan.filter(task => task.address.city.toLowerCase().includes(filters.city.toLowerCase()));
     }
 
     // Filter by category
@@ -134,7 +134,7 @@ export default function Home({ tasks, user }) {
       <main className='full-height'>
         <NavBar name={user.firstName}
           id={user.id} />
-        <div className="flex w-[100%] justify-start relative">
+        <div className="flex w-[100%] justify-start ">
           <div className="">
             <Sidebar
               sidebarOptions={sidebar}

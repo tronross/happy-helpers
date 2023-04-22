@@ -94,11 +94,11 @@ export default function Sidebar(props) {
 
 
   return (
-    <aside className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[100px] pt-4 mt-5" >
+    <aside className="rounded-3xl ml-6 p-4 shadow-xl bg-violet-200 w-[320px] text-violet-900 border-violet-300 border-2 sticky top-[100px] pt-4 mt-5 font-fredoka" >
       <div className="px-2">
         <div className='flex justify-between'>
-          <h1 className='uppercase font-bold text-base'>Sort By:</h1>
-          <p className='text-sm uppercase text-violet-400 font-bold hover:cursor-pointer hover:text-violet-500' onClick={resetFilters}>RESET</p>
+          <h1 className='uppercase font-semibold text-base'>Sort By:</h1>
+          <p className='text-sm uppercase text-violet-400 font-semibold hover:cursor-pointer hover:text-violet-500' onClick={resetFilters}>RESET</p>
         </div>
         {/* <section className="flex items-baseline space-x-4" > */}
           <section className="max-w-xs flex flex-col rounded-md space-y-0.5 mt-3">
@@ -115,7 +115,7 @@ export default function Sidebar(props) {
           }
           </div>
         </section>
-          <h1 className='uppercase font-bold text-base mt-4'>Filter By:</h1>
+          <h1 className='uppercase font-semibold text-base mt-4'>Filter By:</h1>
           <select className="block py-2 px-4 w-full bg-violet-100 border-2 rounded-full border-violet-300 appearance-none focus:outline-violet-400 hover:cursor-pointer my-4" id="category" name="category" value={clicked.category} onChange={e => dropdownSelect(e)}>
             {props.sidebarOptions.map((item, idx) => {
                 return <option key={idx}>{item}</option>
@@ -136,16 +136,16 @@ export default function Sidebar(props) {
           <input className="h-11 w-400 block w-full text-m placeholder-violet-900 rounded-full my-4 pl-4 bg-violet-100 border-2 border-violet-300 focus:outline-violet-400" name="cityFilter" type="text" placeholder="Search by City..." onChange={(e) => filterCity(e)} id="cityFilter" ></input>
         </section>
 
-        <h5 className=" text-sm text-violet-900 uppercase font-bold mb-1">Distance (km):</h5>
+        <h5 className=" text-sm text-violet-900 uppercase font-semibold mb-1">Distance (km):</h5>
         <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 border border-violet-300 border-2 accent-violet-400  rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)}/>
       </div>
-        <div className="flex text-xs font-bold text-violet-900 pl-2 mb-1">
+        <div className="flex text-xs font-semibold text-violet-900 pl-2 mb-1">
           <p className='ml-1'>1</p>
-          <p className='ml-[44px]'>5</p>
-          <p className='ml-[39px]'>10</p>
-          <p className='ml-[35px]'>25</p>
-          <p className='ml-[35px]'>50</p>
-          <p className='ml-[31px]'>ALL</p>
+          <p className='ml-[48px]'>5</p>
+          <p className='ml-[40px]'>10</p>
+          <p className='ml-[38px]'>25</p>
+          <p className='ml-[37px]'>50</p>
+          <p className='ml-[33px]'>ALL</p>
         </div>
       </aside>
   )

@@ -81,12 +81,12 @@ export default function Landing() {
         <div className="flex flex-col lg:w-[80%] md:w-[90%] mt-24">
           <article className="flex justify-center mb-36">
             <div className="w-1/2 flex flex-col justify-center">
-              <h1 className="text-teal-700 font-bold text-[42px] drop-shadow-md">
-                Find your next volunteer Opportunity
+              <h1 className="text-teal-700 font-bold text-[46px] drop-shadow-md">
+                "Great acts are made up of small deeds."
               </h1>
-              <br></br>
+              <p className='text-teal-700 drop-shadow ml-10 mb-3'>- Lao Tzu</p>
               <p className="text-2xl text-teal-700 drop-shadow-md">
-                Happy Helpers gives everyone a chance to have a nearby hand when needed most.
+              Happy Helpers makes it easy for you to volunteer your time and skills to help a neighbour or ask for a favour. Some things we can't do alone, together we build a Community. 
               </p>
             </div>
             <img src="/images/main.png" alt="main" className="w-1/2 drop-shadow-lg" />

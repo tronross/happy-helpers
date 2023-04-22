@@ -1,6 +1,6 @@
 export default function Task(props) {
   
-  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative";
+  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka";
 
   
   const getStyle = (status) => {
@@ -36,11 +36,11 @@ export default function Task(props) {
       {props.name}
     </h5>
     <section >
-    <span className="mb-2 text-sm text-teal-700">
+    <span className="mb-2 text-sm">
       {props.city}
     </span>
     </section>
-    <p className="mb-2 text-sm text-teal-700">
+    <p className="mb-2 text-sm">
       {props.startDate}
     </p>
     <p className=" text-base line-clamp-2">

@@ -90,29 +90,29 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="">
+      <main className="font-fredoka">
         <NavBar name={loggedInUser.firstName} id={loggedInUser.id}/>
         <div className="flex w-[100%]">
           <div >
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
           </div>
-            <div className="flex flex-col w-[100%] ml-4 overflow-hidden">
+            <div className="flex flex-col w-[100%] ml-4 mt-8 overflow-hidden">
               <div>
-                {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Upcoming Tasks:</h1>
+                {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Upcoming Tasks:</h1>
                 }
-                {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
+                {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
                 }
-                  <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{upcomingTasksData.length} Available</h1>
+                  <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
                   <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
               </div>
             <div className="pt-4">
-              {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">Your Past Tasks:</h1>
+              {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Past Tasks:</h1>
               }
-              {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
+              {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
               }
-                <h1 className="uppercase text-teal-600 px-10 font-bold t-lg ml-10">{pastTasksData.length} Available</h1>
+                <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{pastTasksData.length} Available</h1>
               <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
 
             </div>
