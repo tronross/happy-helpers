@@ -136,7 +136,7 @@ async function main() {
           email: 'l.winks2010@nature.com',
           password: 'gooddog',
           phone: '(905)725-6089',
-          stars: 22,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/21.jpg',
           skills: 'Animal care'
         }
@@ -149,8 +149,8 @@ async function main() {
       address: '1580 Bloor st w',
       city: 'Toronto',
       postcode: 'M6P 2B2',
-      latitude: '43.656178',
-      longitude: '-79.452746',
+      latitude: '43.656368851901895',
+      longitude: '-79.45419506042258',
       Users: {
         create: {
           firstName: 'Miriam',
@@ -159,7 +159,7 @@ async function main() {
           email: 'miriam@bakesale.ca',
           password: 'cupcake',
           phone: '(416)313-2463',
-          stars: 15,
+          stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/19.jpg',
           skills: 'Baking.'
         }
@@ -172,8 +172,8 @@ async function main() {
       address: '16 Beechborough Ave',
       city: 'York',
       postcode: 'M6M 1Y9',
-      latitude: '43.695630',
-      longitude: '-79.470593',
+      latitude: '43.69564130041031',
+      longitude: '-79.4705393739131',
       Users: {
         create: {
           firstName: 'Marcella',
@@ -182,7 +182,7 @@ async function main() {
           email: 'M.DiPiaggo@newegg.ca',
           password: 'floppyD',
           phone: '(416)313-2443',
-          stars: 11,
+          stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/17.jpg',
           skills: 'Tech'
         }
@@ -195,8 +195,8 @@ async function main() {
       address: '32 Reigate Rd',
       city: 'Etobicoke',
       postcode: 'M9A 2Y4',
-      latitude: '43.660045',
-      longitude: '-79.524124',
+      latitude: '43.659943283238',
+      longitude: '-79.52411450275048',
       Users: {
         create: {
           firstName: 'Samantha',
@@ -205,7 +205,7 @@ async function main() {
           email: 'msMeow@catlady.ca',
           password: 'floppyD',
           phone: '(647)715-2422',
-          stars: 25,
+          stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/55.jpg',
           skills: 'Animal care'
         }
@@ -218,8 +218,8 @@ async function main() {
       address: '22 Hewitt Ave',
       city: 'Toronto',
       postcode: 'M6R 1Y3',
-      latitude: '43.652541249465415',
-      longitude: '-79.45311063155081',
+      latitude: '43.65264992762798',
+      longitude: '-79.45316427576667',
       Users: {
         create: {
           firstName: 'Jania',
@@ -228,7 +228,7 @@ async function main() {
           email: 'jania@greasemonkey.ca',
           password: 'iridium',
           phone: '(647)447-2422',
-          stars: 25,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/11.jpg',
           skills: 'Driving, mechanic.'
         }
@@ -241,8 +241,8 @@ async function main() {
       address: '199 Humberside Ave',
       city: 'Toronto',
       postcode: 'M6P 1K7',
-      latitude: '43.661198101516526',
-      longitude: '-79.46449998697834',
+      latitude: '43.661324519483024',
+      longitude: '-79.46442955857052',
       Users: {
         create: {
           firstName: 'Morgan',
@@ -264,8 +264,8 @@ async function main() {
       address: '574 Briar Hill Ave',
       city: 'Toronto',
       postcode: 'M5N 1M9',
-      latitude: '43.70986677226693',
-      longitude: '-79.4196003252618',
+      latitude: '43.709956820109745',
+      longitude: '-79.41961726042047',
       Users: {
         create: {
           firstName: 'Dan',
@@ -570,6 +570,47 @@ async function main() {
       postcode: 'M6R 2Z3',
       latitude: '43.651358468886',
       longitude: '-79.46367033041',
+    }
+  });
+
+
+  await prisma.address.create({
+    data: {
+      address: '250 Winona Dr',
+      city: 'York',
+      postcode: 'M6C 3S7',
+      latitude: '43.68235545571',
+      longitude: '-79.4337266334',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '41 Eversfield Rd',
+      city: 'York',
+      postcode: 'M6E 1T6',
+      latitude: '43.686604711',
+      longitude: '-79.4491711224',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '147 Boon Ave',
+      city: 'Toronto',
+      postcode: 'M6E 3Z6',
+      latitude: '43.681058399',
+      longitude: '-79.4475478405',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '35 Whitworth Ave',
+      city: 'Etobicoke',
+      postcode: 'M8Y 3M8',
+      latitude: '43.63248758230',
+      longitude: '79.4849144928',
     }
   });
 
@@ -1164,7 +1205,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 34
     }
   });
 
@@ -1179,7 +1220,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 33
     }
   });
 
@@ -1194,7 +1235,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 32
     }
   });
 
@@ -1209,7 +1250,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 31
     }
   });
 
@@ -1224,7 +1265,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 27
     }
   });
 
