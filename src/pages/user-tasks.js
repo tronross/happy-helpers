@@ -14,6 +14,7 @@ import RequestSideBar from '@/components/RequestSideBar';
 // Custom hooks
 import filterRequests from '../helpers/filter-requests';
 
+
 export default function UserTasks({ userRequests, offers, user }) {
 
   // Hooks
@@ -121,7 +122,6 @@ export default function UserTasks({ userRequests, offers, user }) {
       </Head>
       <main className='full-height'>
         <NavBar name={user.firstName} id={user.id} />
-
         <div className="flex w-[100%] justify-start relative">
           <div className='z-20'>
             <RequestSideBar
