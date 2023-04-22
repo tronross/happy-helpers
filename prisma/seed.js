@@ -67,7 +67,7 @@ async function main() {
           email: 'TianaW@ovengloves.com',
           password: 'burntthetoast',
           phone: '(866)987-6453',
-          stars: 1,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg',
           skills: 'Incredible in the kitchen.'
         }
