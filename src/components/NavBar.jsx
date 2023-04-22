@@ -53,7 +53,7 @@ export default function NavBar(props) {
         </li>
         <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700 hover:cursor-pointer relative'>
           {unreadMessageCount > 0 && (
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-3 right-1">
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-white bg-violet-500 border-2 border-white rounded-full -top-3 right-1">
               {unreadMessageCount}
             </div>
           )}
