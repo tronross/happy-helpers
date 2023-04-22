@@ -8,7 +8,7 @@ export default function Offer({ offer, handleAcceptOffer, handleRequestComplete,
   const [starBox, setStarBox] = useState(false);
 
   const handleCloseRequest = function() {
-    console.log(offer.user.id, giveStar)
+    console.log(offer.user.id, giveStar);
     handleRequestComplete(offer.user.id, giveStar);
   };
 

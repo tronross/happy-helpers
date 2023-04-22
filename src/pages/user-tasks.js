@@ -55,13 +55,25 @@ export default function UserTasks({ userRequests, offers, user }) {
   }, []);
 
   /* When user clicks on accept offer from volunteer button:
-   * In tasks table: set task status as pending where id = selectedTask
-   * In offers table: set winning offer status as accepted where id = offer.id
-   *  & set all losing offers status as denied
+   * 1. In tasks table: set task status as pending where id = selectedTask
+   * 2. In offers table: set winning offer status as accepted where id = offer.id
+   *    and set all losing offers status as denied
+   * 3. In messages table: send accepted message to winner and denied messages to all losers
    */
   const handleAcceptOffer = async function(offerId) {
     await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {offerArray: selectedOffers});
     await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
+
+    for (const offer of selectedOffers) {
+      const params = {
+        userId: offer.user.id,
+        type:   offer.id === offerId ? 'ACCEPTED' : 'DENIED',
+        cpId:   user.id,
+        cpName: `${user.firstName} ${user.lastName}`,
+        taskName: userRequests.find(request => request.id === selectedRequestId).name
+      };
+      await axios.post(`http://localhost:3000/api/messages/`, { params });
+    }
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();
   };
@@ -70,16 +82,24 @@ export default function UserTasks({ userRequests, offers, user }) {
    * In tasks table: set task status as closed where id = selectedTask
    * There is nothing to change in the offers table
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
+   *  and send the volunteer a notification
    */
   const handleRequestComplete = async function(volunteerId, giveStar) {
     if (giveStar) {
-    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE', starred: true});
-    await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE', starred: true});
+      await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+
+      const params = {
+        userId: volunteerId,
+        type: 'STAR',
+        cpId: user.id,
+        cpName: `${user.firstName} ${user.lastName}`,
+        taskName: userRequests.find(request => request.id === selectedRequestId).name
+      };
+      await axios.post(`http://localhost:3000/api/messages/`, { params });
     } else {
       await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
     }
-
-
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();
   };

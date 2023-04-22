@@ -12,13 +12,22 @@ import addDistanceToTasks from '../../helpers/add-distance-to-tasks';
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
 
 
-  const [selectedId, setSelectedId] = useState(selectedTask.id)
+  const [selectedId, setSelectedId] = useState(selectedTask.id);
   // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
-    .then(setOffer(true))
-  }
+      .then(setOffer(true));
+
+    const params = {
+      userId: selectedUser.id,
+      type: 'RECEIVED',
+      cpId: loggedInUser.id,
+      cpName: `${loggedInUser.firstName} ${loggedInUser.lastName}`,
+      taskName: userTasks.find(task => task.id === taskId).name
+    };
+    await axios.post(`http://localhost:3000/api/messages/`, { params });
+  };
 
   const setScroll = (id, rowType) => {
     setTimeout(function () {
