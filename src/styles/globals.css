@@ -74,3 +74,71 @@ body {
 .bg-blur {
   filter: blur(300px)
 }
+
+/* Bounce Effect */
+
+/* Bounce effect for nav bar arrow */
+.bounce {
+  display: inline-block;
+  position: relative;
+  -moz-animation: bounce 0.8s infinite;
+  -o-animation: bounce 0.8s infinite;
+  -webkit-animation: bounce 0.8s infinite;
+  animation: bounce 0.8s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 0.2em;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-moz-keyframes bounce {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 0.2em;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-o-keyframes bounce {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 0.2em;
+  }
+  100% {
+    top: 0;
+  }
+}
+@-ms-keyframes bounce {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 0.2em;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes bounce {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 0.2em;
+  }
+  100% {
+    top: 0;
+  }
+}
