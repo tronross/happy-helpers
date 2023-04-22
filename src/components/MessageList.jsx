@@ -49,10 +49,10 @@ export default function MessageList({ userId, fetchUnreadMessageCount }) {
         {htmlMessages}
       </ul>
     ) : (
-      <ul className="rounded-3xl normal-case fixed top-[55px] w-[24em] h-auto max-h-[600px] right-[100px] p-2 border-4 border-violet-400 shadow-lg bg-white overflow-scroll">
-        <li className="rounded bg-neutral-100 p-1 mb-2 border-2 border-violet-200 font-normal">
+      <ul className="rounded-3xl normal-case fixed top-[55px] w-[24em] h-auto right-[190px] p-2 border-4 border-violet-400 shadow-lg bg-violet-200 overflow-scroll">
+        <li className="rounded-2xl p-4 bg-neutral-100 p-1 mb-2 bg-violet-100 border-2 border-violet-300 text-violet-900">
           <p className="font-semibold">You have no messages to display.</p>
-          <p>Messages will appear here automatically when there is a change in status of any of your tasks.</p>
+          <p className="text-xs font-normal">Messages will appear here automatically if any of your tasks or requests change status.</p>
         </li>
       </ul>
     )
