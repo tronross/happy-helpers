@@ -22,9 +22,9 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
   // TEMPLATE
   return (
-    <div className="flex flex-col mt-3">
-      <p className="uppercase font-bold self-center pb-3">Edit Profile:</p>
-      <div className="flex flex-col">
+    <div className="flex flex-col items-center mt-3">
+      <p className="uppercase font-bold pb-3">Edit Profile:</p>
+      <div className="flex flex-col w-full">
       <input type="text" id="firstName" name="firstName" placeholder="first name" value={editProfileFormData.firstName} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none"/>
 
       <input type="text" id="lastName" name="lastName" placeholder="last name" value={editProfileFormData.lastName} onChange={onChange} required className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none" />
@@ -47,8 +47,8 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
       {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
-      <button type="submit" onClick={handleSubmit} className="inline-flex justify-center items-center gap-2 bg-violet-300 border-[1.5px] border-violet-400 px-4 py-1 rounded text-violet-800 mt-3">Submit</button>
       </div>
+      <button type="submit" onClick={handleSubmit} className="w-12/3 inline-flex justify-center items-center gap-2 bg-violet-300 hover:bg-violet-400  hover:border-violet-300 hover:text-white active:bg-violet-500 border-[1.5px] border-violet-400 px-7 py-1 rounded-full text-violet-800 mt-3 uppercase font-bold text-sm">Save</button>
     </div >
   );
 }

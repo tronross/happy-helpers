@@ -119,10 +119,10 @@ export default function UserTasks({ userRequests, offers, user }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className='full-height'>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-[100%] relative">
+        <div className="flex w-[100%] justify-start relative">
           <div className='z-20'>
             <RequestSideBar
               status={status}

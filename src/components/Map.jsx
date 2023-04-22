@@ -183,9 +183,7 @@ export default function Map(props) {
   }); // function
 
   return (
-    // Display map
-    <section className="h-screen">
       <div id="map" ref={googlemap} />
-    </section>
-  );
-};
+    );
+  };
+ 
