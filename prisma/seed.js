@@ -587,7 +587,7 @@ async function main() {
       startDate: new Date('2023-05-15 00:00+0500'),
       endDate: new Date('2023-04-29 02:00+0500'),
       userId: 1,
-      status: 'OPEN',
+      status: 'PENDING',
       nbHelpers: 1,
       addressId: 1
     }
@@ -1610,7 +1610,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 1,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
