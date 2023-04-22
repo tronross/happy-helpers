@@ -97,7 +97,7 @@ export default function Map(props) {
       const google = window.google;
       map = new google.maps.Map(googlemap.current, {
         center: { lat: 43.70536, lng: -79.45664 },
-        zoom: 12,
+        zoom: 12.7,
         /*
         fullscreenControl: false, // remove the top-right button
         mapTypeControl: false, // remove the top-left buttons
@@ -146,10 +146,9 @@ export default function Map(props) {
 
           infoWindow.setContent(`
           <article>
-            <section>
+            <section style="text-align: center;">
               <img src=${img}
-                width="220"
-                height=auto
+                width=220;
               />
             </section>
             <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
@@ -183,7 +182,6 @@ export default function Map(props) {
   }); // function
 
   return (
-      <div id="map" ref={googlemap} />
-    );
-  };
- 
+    <div id="map" ref={googlemap} />
+  );
+};
