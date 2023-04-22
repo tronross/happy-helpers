@@ -3,7 +3,7 @@ export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
-  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative hover:cursor-pointer`;
+  const className = `${props.selectedClass} h-[22em] border-1 shadow-lg m-4 bg-white rounded-lg relative hover:cursor-pointer flex flex-col justify-between`;
 
   // Colour-code the status in a pill button style
   const getStatusStyle = function(status) {
@@ -14,7 +14,7 @@ export default function Request(props) {
     }
   };
   
-  const statusStyle = `inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
+  const statusStyle = `inline-block my-2 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
 
   const handleTaskClick = () => {
     props.onClick(props.id);
