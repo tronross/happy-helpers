@@ -307,16 +307,16 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '42 Bomarc Rd',
-      city: 'North York',
-      postcode: 'M2K 1V7',
-      latitude: '43.77653776492823',
-      longitude: '-79.38774184507383',
+      address: '186 Keewatin Ave',
+      city: 'Toronto',
+      postcode: 'M4P 1Z8',
+      latitude: '43.71363993190434',
+      longitude: '-79.39404860269002',
       Users: {
         create: {
           firstName: 'Dominic',
           lastName: 'Peron',
-          description: "I'm often driving around North York, I can pick things up and drop them off.",
+          description: "I'm often driving around Toronto, I can pick things up and drop them off for you.",
           email: 'dom990@saultspring.ca',
           password: 'hdfh%9t',
           phone: '(647)744-7711',
@@ -376,11 +376,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '1 Flanders Rd',
-      city: 'York',
-      postcode: 'M6C 3K5',
-      latitude: '43.697502022176835',
-      longitude: '-79.43285621809292',
+      address: '38 Woodlawn Ave W',
+      city: 'Toronto',
+      postcode: 'M4V 1G7',
+      latitude: '43.683746232929536',
+      longitude: '-79.39439672713408',
       Users: {
         create: {
           firstName: 'John',
@@ -1560,6 +1560,21 @@ async function main() {
       addressId: 30
     }
   });
+
+  await prisma.task.create({
+    data: {
+      name: 'Ride Shotgun',
+      description: "I'm picking up some donations for a charity auction. Would you like to help me pick them up and load the van?",
+      image: 'https://thumbs.dreamstime.com/b/charity-auction-alphabet-letter-blue-red-background-space-copy-212249453.jpg',
+      category: 'Other',
+      startDate: new Date('2023-05-01 02:00+0500'),
+      endDate: new Date('2023-05-03 16:00+0500'),
+      userId: 14,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 14
+    }
+  });
   
   await prisma.task.create({
     data: {
@@ -1628,12 +1643,27 @@ async function main() {
       description: "I'm having a yard sale! Do you have some stuff you want to sell too? I have a big yard, come on over!",
       image: 'https://www.newcitymovers.com/content/uploads/2018/08/Yard-Sale.jpg',
       category: 'Other',
-      startDate: new Date('2023-05 19:00+0500'),
-      endDate: new Date('2023-04-06 00:00+0500'),
+      startDate: new Date('2023-05-05 19:00+0500'),
+      endDate: new Date('2023-05-06 00:00+0500'),
       userId: 19,
       status: "OPEN",
       nbHelpers: 1,
       addressId: 19
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Top-Dress Garden',
+      description: "I need to add some soil to my garden, but my back isn't great. I'd like to give you homemade jam if you can help.",
+      image: 'https://i0.wp.com/awaytogarden.com/wp-content/uploads/2014/11/unnamed.jpg?ssl=1',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-05 22:00+0500'),
+      endDate: new Date('2023-04-06 00:00+0500'),
+      userId: 17,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 17
     }
   });
 
