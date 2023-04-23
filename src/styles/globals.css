@@ -40,6 +40,10 @@ body {
   margin-bottom: 2em;
 }
 
+.map-height {
+  min-height: calc(100vh - 212px);
+}
+
 .form-scroll {
   scrollbar-width: thin;
   scrollbar-color: #a78bfa;
