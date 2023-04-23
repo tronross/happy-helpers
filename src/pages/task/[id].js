@@ -12,13 +12,22 @@ import addDistanceToTasks from '../../helpers/add-distance-to-tasks';
 export default function TaskPage({selectedTask, selectedUser, userTasks, offers, userAddress, similarTasks, loggedInUser}) {
 
 
-  const [selectedId, setSelectedId] = useState(selectedTask.id)
+  const [selectedId, setSelectedId] = useState(selectedTask.id);
   // const [newSelectedId, setNewSelectedId] = useState(selectedTask.id)
 
   const sendOffer = async (taskId, userId, setOffer) => {
     await axios.post('http://localhost:3000/api/offers', [taskId, userId])
-    .then(setOffer(true))
-  }
+      .then(setOffer(true));
+
+    const params = {
+      userId: selectedUser.id,
+      type: 'RECEIVED',
+      cpId: loggedInUser.id,
+      cpName: `${loggedInUser.firstName} ${loggedInUser.lastName}`,
+      taskName: userTasks.find(task => task.id === taskId).name
+    };
+    await axios.post(`http://localhost:3000/api/messages/`, { params });
+  };
 
   const setScroll = (id, rowType) => {
     setTimeout(function () {
@@ -40,19 +49,19 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main>
+    <main className="font-fredoka">
     <NavBar name={loggedInUser.firstName}
                 id={loggedInUser.id}/>
     <div className="">
-      <h1 className="uppercase text-teal-600 px-10 font-bold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
-      <h1 className="uppercase text-teal-600 px-10 font-bold t-lg">{userTasks.length} Available</h1>
+      <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl">{selectedUser.firstName}&apos;s Tasks:</h1>
+      <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg">{userTasks.length} Available</h1>
       <p></p>
       <div className="">
         <DetailedTaskRow setScroll={setScroll} sendOffer={sendOffer} selectedId={selectedId} selectedUser={selectedUser} userTasks={userTasks} offers={offers} userAddress={userAddress} rowType="userTasks" setSelectedId={setSelectedId}/>
       </div>
     </div>
     <div>
-      <h1 className="uppercase text-teal-600 px-10 mt-10 font-bold text-2xl">Similar Tasks:</h1>
+      <h1 className="uppercase text-teal-600 px-10 mt-10 font-semibold text-2xl">Similar Tasks:</h1>
       <div className="">
         <TaskRow setScroll={setScroll} userTasks={similarTasks} rowType="similar" changeId={setSelectedId}/>
       </div>

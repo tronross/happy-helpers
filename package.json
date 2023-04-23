@@ -24,6 +24,7 @@
     "react-geocode": "^0.2.3",
     "react-scripts": "^5.0.1",
     "react-tailwindcss-datepicker": "^1.6.0",
+    "react-xarrows": "^2.0.2",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "description": "A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.",

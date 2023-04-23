@@ -38,7 +38,7 @@ const [currentStep, setCurrentStep] = useState(1)
 
 
     <div className="md:w-1/2 mx-auto shadow-xl rounded-md bg-violet-50 border-2 border-violet-400 mt-5 flex flex-col">
-      <div className="uppercase font-bold text-violet-800 flex justify-center p-2 mt-3 text-lg">New Task</div>
+      <div className="uppercase font-semibold text-violet-800 flex justify-center p-2 mt-3 text-lg font-fredoka">New Task</div>
       <div className="container horizontal">
         {/* <Stepper 
          steps={steps}

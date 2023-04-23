@@ -35,35 +35,35 @@ export default function NavBar(props) {
 
   // Template
   return (
-    <div className="flex items-center p-5 text-teal-600 uppercase tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-teal-50">
-      <ul className="flex w-1/2">
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+    <div className="flex items-center p-5 text-teal-600 tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-teal-50 font-fredoka font-semibold">
+      <ul className="flex w-1/2 items-center">
+        <li className='px-6 font-fredoka font-bold text-xl'>
           <Link href="/home">Happy Helpers</Link>
         </li>
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+        <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
           <Link href="/home">Home</Link>
         </li>
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+        <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
           <Link href="/new-task">New Task</Link>
         </li>
       </ul>
       <ul className="flex items-center  w-1/2 justify-end">
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+        <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
           <Link href="/user-tasks">MyHelp</Link>
         </li>
-        <li className='px-6 hover:text-teal-500 active:text-teal-700 hover:cursor-pointer relative'>
+        <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700 hover:cursor-pointer relative'>
           {unreadMessageCount > 0 && (
-            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-3 right-1">
+            <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-white bg-violet-500 border-2 border-white rounded-full -top-3 right-1">
               {unreadMessageCount}
             </div>
           )}
           <h2 onClick={handleMessages}>Notifications</h2>
         </li>
-        <li className='px-6 hover:text-teal-500 active:text-teal-700'>
+        <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
           <Link href={`/profile-page/${props.id}`}>{props.name}</Link>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
-          <Button buttonName={"LOGOUT"}/>
+          <Button buttonName={"LOGOUT"} />
         </li>
       </ul>
       {displayMessages && (<MessageList userId={props.id} fetchUnreadMessageCount={fetchUnreadMessageCount} />)}

@@ -82,20 +82,20 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
   return (
     <>
       {openRequests.length === 0 && pendingRequests.length === 0 && completeRequests.length === 0 ? (
-        <div className="ml-4 mb-2 text-lg text-teal-700 mt-5">
-          <h1 className="text-[1.5em] font-bold mb-2">There are no requests for help to show.</h1>
+        <div className="ml-10 mb-2 text-lg text-teal-600 font-fredoka mt-5">
+          <h1 className="text-[1.5em] font-semibold mb-2">There are no requests for help to show.</h1>
           <p>You can click <Link href={"/new-task1"} className="underline">here</Link> to request help, or return to the <Link href={"/home"}  className="underline">home page</Link> to volunteer for a task.
           </p>
         </div>
       ) : (
-        <div className="ml-4 mb-2 mt-5 text-lg text-teal-700">
-          <h1 className="text-[1.4em] font-bold uppercase pl-12">Your Help Requests</h1>
+        <div className="ml-10 mb-1 mt-5 text-xl text-teal-600 font-fredoka">
+          <h1 className="text-[28px] font-semibold uppercase pl-12">Your Help Requests</h1>
         </div>
       )}
       
       {openRequests.length > 0 && (
-        <div className="text-lg text-teal-700 w-[100%] flex flex-col">
-          <h1 className="ml-4 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-bold">Open requests:</h1>
+        <div className="text-lg text-teal-600 font-fredoka w-[100%] flex flex-col">
+          <h1 className="ml-10 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-semibold">Open requests:</h1>
           <div className='flex '>
             <div className=" z-10 ">
               <RowButton svg='prev' onClick={() => scrollLeft('Open')}/>
@@ -111,8 +111,8 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       )}
 
       {pendingRequests.length > 0 && (
-        <div className="text-lg text-teal-700 w-[100%] flex flex-col">
-          <h1 className="ml-4 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-bold">Pending requests:</h1>
+        <div className="text-lg text-teal-600 font-fredoka w-[100%] flex flex-col">
+          <h1 className="ml-10 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-semibold">Pending requests:</h1>
           <div className='flex '>
             <div className=" z-10 ">
               <RowButton svg='prev' onClick={() => scrollLeft('Pending')}/>
@@ -128,8 +128,8 @@ export default function RequestList({ requests, selectedRequestId, setSelectedRe
       )}
 
       {completeRequests.length > 0 && (
-        <div className="text-lg text-teal-700 w-[100%] flex flex-col">
-          <h1 className="ml-4 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-bold">Completed requests:</h1>
+        <div className="text-lg text-teal-600 font-fredoka w-[100%] flex flex-col">
+          <h1 className="ml-10 mb-2 mt-2 text-[1.2em] pl-12 uppercase font-semibold">Completed requests:</h1>
           <div className='flex '>
             <div className=" z-10 ">
               <RowButton svg='prev' onClick={() => scrollLeft('Completed')}/>
