@@ -52,8 +52,6 @@ export default function Map(props) {
     console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng, 'K'));
 
   };
-  // getDistanceFromAddresses("Centre Bell", "CN Tower");
-
 
   // Convert filteredTasks to Marker-appropriate objects
   const tasks = props.tasks;
@@ -93,19 +91,12 @@ export default function Map(props) {
       version: 'weekly',
     });
 
-    let map;
 
     loader.load().then(() => {
       const google = window.google;
-      map = new google.maps.Map(googlemap.current, {
+      const map = new google.maps.Map(googlemap.current, {
         center: { lat: 43.68856622704429, lng: -79.43367264421084 },
         zoom: 12.9,
-        /*
-        fullscreenControl: false, // remove the top-right button
-        mapTypeControl: false, // remove the top-left buttons
-        streetViewControl: false, // remove the pegman
-        zoomControl: false, // remove the bottom-right buttons
-        */
       });
 
       const homeMarker = {
@@ -127,7 +118,6 @@ export default function Map(props) {
           text: "Anderson",
           fontWeight: "bold",
           fontSize: "18px"
-          
         }
       });
 
@@ -144,7 +134,7 @@ export default function Map(props) {
         const taskId = task.index;
         const img = task.img;
 
-        // Prevent overlapping markers(tasks); prevent tasks overlapping home marker
+        // Prevent overlapping markers(tasks); prevent tasks overlapping home marker. Create markers
         if (!addressIds.includes(addressId) && task.userId != 1) {
           const marker = new google.maps.Marker({
             position: { lat: lat, lng: lng },
@@ -162,6 +152,7 @@ export default function Map(props) {
             maxWidth: 250
           })
 
+          // Define content for infoWindows
           infoWindow.setContent(`
           <article>
             <section style="text-align: center;">
