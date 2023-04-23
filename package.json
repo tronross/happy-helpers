@@ -25,7 +25,8 @@
     "react-scripts": "^5.0.1",
     "react-tailwindcss-datepicker": "^1.6.0",
     "react-xarrows": "^2.0.2",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "talkjs": "^0.15.9"
   },
   "description": "A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.",
   "main": "next.config.js",
