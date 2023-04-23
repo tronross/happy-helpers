@@ -70,7 +70,7 @@ export default function Landing() {
           <Link className="text-teal-700 text-2xl" href="/">
             <p className='drop-shadow-md'>Happy Helpers</p>
           </Link>
-          <Link href="/profile-page/1">
+          <Link href="/home">
             <button className="bg-violet-50 border-2 border-violet-300 hover:bg-violet-300 hover:text-white hover:border-violet-50 active:bg-violet-400 font-medium px-10 py-1 rounded-full text-violet-400 h-8 text-xl flex items-center justify-center drop-shadow-md">
               Login
             </button>
