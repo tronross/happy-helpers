@@ -42,10 +42,10 @@ export default function Sidebar(props) {
   const realDistance = (distance) => {
       switch(distance)  {
         case "0": return 1;
-        case "1": return 5;
-        case "2": return 10;
-        case "3": console.log('hoo');
-        case "4": return 50;
+        case "1": return 2;
+        case "2": return 5;
+        case "3": return 10;
+        case "4": return 25;
         case "5": return "all";
       }
   }
@@ -141,10 +141,10 @@ export default function Sidebar(props) {
       </div>
         <div className="flex text-xs font-semibold text-violet-900 pl-2 mb-1">
           <p className='ml-1'>1</p>
-          <p className='ml-[48px]'>5</p>
-          <p className='ml-[40px]'>10</p>
-          <p className='ml-[38px]'>25</p>
-          <p className='ml-[37px]'>50</p>
+          <p className='ml-[48px]'>2</p>
+          <p className='ml-[40px]'>5</p>
+          <p className='ml-[38px]'>10</p>
+          <p className='ml-[37px]'>25</p>
           <p className='ml-[33px]'>ALL</p>
         </div>
       </aside>

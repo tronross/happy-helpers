@@ -43,7 +43,7 @@ const sidebarOptions = [
 ];
 
 const distances = [
-  1, 5, 10, 25, 50, 'all'
+  1, 2, 5, 10, 25, 'all'
 ];
 
 /////////////////////
