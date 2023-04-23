@@ -191,6 +191,7 @@ export default function Map(props) {
   }); // function
 
   return (
-    <div id="map" ref={googlemap} />
-  );
-};
+      <div id="map" ref={googlemap} className='map-height border border-[3px] border-teal-600 rounded' />
+    );
+  };
+ 

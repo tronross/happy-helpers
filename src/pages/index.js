@@ -67,10 +67,10 @@ export default function Landing() {
           boxShadow: `rgb(0 0 0 / ${boxShadow}) 0px 0px 20px 6px`
           }}>
             <div className='flex justify-between'>
-          <Link className="text-teal-700 text-2xl" href="/">
+          <Link className="text-teal-700 text-2xl" href="/home">
             <p className='drop-shadow-md'>Happy Helpers</p>
           </Link>
-          <Link href="/profile-page/1">
+          <Link href="/home">
             <button className="bg-violet-50 border-2 border-violet-300 hover:bg-violet-300 hover:text-white hover:border-violet-50 active:bg-violet-400 font-medium px-10 py-1 rounded-full text-violet-400 h-8 text-xl flex items-center justify-center drop-shadow-md">
               Login
             </button>
@@ -82,11 +82,11 @@ export default function Landing() {
           <article className="flex justify-center mb-36">
             <div className="w-1/2 flex flex-col justify-center">
               <h1 className="text-teal-700 font-bold text-[46px] drop-shadow-md">
-                "Great acts are made up of small deeds."
+                &quot;Great acts are made up of small deeds.&quot;
               </h1>
               <p className='text-teal-700 drop-shadow ml-10 mb-3'>- Lao Tzu</p>
               <p className="text-2xl text-teal-700 drop-shadow-md">
-              Happy Helpers makes it easy for you to volunteer your time and skills to help a neighbour or ask for a favour. Some things we can't do alone, together we build a Community. 
+              Happy Helpers makes it easy for you to volunteer your time and skills to help a neighbour or ask for a favour. Some things we can&apos;t do alone, together we build a Community. 
               </p>
             </div>
             <img src="/images/main.png" alt="main" className="w-1/2 drop-shadow-lg" />
@@ -178,7 +178,7 @@ export default function Landing() {
           <article className="flex relative justify-center pb-20">
             <img src="/images/4.png" alt="4" className="w-1/2 drop-shadow-lg" />
             <p className="flex flex-col justify-center text-xl text-teal-700 drop-shadow-md w-1/2">
-              Once your task is finished don't forget to check it complete and reward your volunteer with a star if deserved. Stars show up on your profile to show others they can rely on you to get the task done.
+              Once your task is finished don&apos;t forget to check it complete and reward your volunteer with a star if deserved. Stars show up on your profile to show others they can rely on you to get the task done.
             </p>
             <div id="end-4" className='h-4 w-4 absolute top-[25%] left-[70%]'></div>
             <div id="start-5" className='h-4 w-4 absolute bottom-[45%] left-[70%]'></div>
