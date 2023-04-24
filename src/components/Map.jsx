@@ -101,8 +101,8 @@ export default function Map(props) {
 
       const homeMarker = {
         path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
-        fillOpacity: 0.7,
-        fillColor: "purple",
+        fillOpacity: 1,
+        fillColor: "#cc0000",
         strokeWeight: 0,
         rotation: 0,
         scale: 2,
@@ -111,8 +111,8 @@ export default function Map(props) {
 
       const taskMarker = {
         path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
-        fillOpacity: 1,
-        fillColor: "DarkRed",
+        fillOpacity: 0.85,
+        fillColor: "#6d28d9",
         strokeWeight: 0,
         rotation: 0,
         scale: 2,
@@ -151,7 +151,8 @@ export default function Map(props) {
             icon: taskMarker,
             label: {
               text: title,
-              fontWeight: "bold"
+              fontWeight: "bold",
+              
             },
             map,
             zIndex: task.index,
