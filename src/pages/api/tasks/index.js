@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     res.json({ tasks })
   } else if (req.method === 'POST') {
     // console.log(req.body)
-    const { name, desc, startDate, endDate, category, nbHelpers, image, address, city, postcode } = req.body
+    const { name, desc, startDate, endDate, category, image} = req.body
 
     
 
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
         startDate: startDate,
         endDate: endDate,
         category: category,
-        nbHelpers: Number(nbHelpers),
+        nbHelpers: 1,
         image: image || "https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
         addressId: addressData.id,
         userId: userData.id

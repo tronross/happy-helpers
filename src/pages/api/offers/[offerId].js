@@ -7,13 +7,41 @@ export default async function handler(req, res) {
       where: {
         id: parseInt(offerId)
       }
-    })
+    });
     console.log(offer)
     res.json({ offer })
-  } else if (req.method === 'PUT') {
-    console.log(req.body)
-    const { offerId } = req.query;
+  } else if (req.method === 'PATCH') {
+    /**
+     * Loop through all of the offers in the offer array
+     * If the offerArray offer.id === { offerId } it is the chosen offer: set offer status to ACCEPTED
+     * If the offerArray offer.id !== { offerId } the offer was rejected: set offer status to DENIED
+     */
+    const winningOfferId = parseInt(req.query.offerId);
+    const offerArray = req.body.offerArray;
+    
+    for (const offer of offerArray) {
+
+      if (offer.id === winningOfferId) {
+        await prisma.offer.update({
+          where: {
+            id: (offer.id)
+          },
+          data: {
+            status: 'ACCEPTED'
+          }
+        });
+
+      } else {
+        await prisma.offer.update({
+          where: {
+            id: (offer.id)
+          },
+          data: {
+            status: 'DENIED'
+          }
+        });
+      }
+    }
     res.status(200).send('ok');
-    console.log(`You have reached PUT api/offers/${offerId}`)
   }
 }

@@ -17,7 +17,17 @@ export default function NewTask(props) {
     image: "",
     address: "",
     city: "",
-    postcode: ""
+    postcode: "",
+    startTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    },
+    endTime: {
+      hour: "1",
+      minute: "00",
+      ampm: "PM"
+    }
   })
   return (
     <>
@@ -26,8 +36,9 @@ export default function NewTask(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <NavBar />
       <main className="full-height">
+      <NavBar name={props.user.firstName}
+                id={props.user.id}/>
         <div className="flex justify-center">
         <TaskForm formData={formData} setFormData={setFormData} user={props.user}/>
         </div>

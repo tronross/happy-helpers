@@ -5,74 +5,114 @@ export default function WhenForm({formData, setFormData}) {
   const [startDate, setStartDate] = useState(Date)
 
   const [startTime, setStartTime] = useState({
-    hour: "01",
-    minute: "00",
-    ampm: "PM"
+    hour: formData.startTime.hour,
+    minute: formData.startTime.minute,
+    ampm: formData.startTime.ampm
   })
   const [endTime, setEndTime] = useState({
-    hour: "1",
-    minute: "00",
-    ampm: "PM"
+    hour: formData.endTime.hour,
+    minute: formData.endTime.minute,
+    ampm: formData.endTime.ampm
   })
 
-  useEffect(() => {
-    const startDate = new Date(`2023-04-29 13:00:00`)
-    const endDate = new Date(`2023-04-29 13:00:00`)
-    setFormData(prev => ({...prev, startDate}))
-    setFormData(prev => ({...prev, endDate}))
-  }, [])
-  
-  
-  const updateTime = async (e) => {
+  const [startDate, setStartDate] = useState({ 
+    startDate: null
+  }); 
+
+  const [endDate, setEndDate] = useState({ 
+    endDate: null
+  }); 
+
+  const handleStartDate = (newDate) => {
+    console.log("newValue:", newDate.startDate); 
+    setStartDate(newDate); 
+  } 
+
+  const handleEndDate = (newDate) => {
+    console.log("newValue:", newDate.endDate); 
+    setEndDate(newDate); 
+  } 
+
+  const updateTime = (e) => {
     const value = e.target.value;
     const selected = e.target.id;
     const name = e.target.name;
-
-    console.log(value)
-    
+  
 
     if (name === "startTime") {
       setStartTime(prev => ({...prev, [selected]: value}))
-    } else if (name === "endTime") {
+    } else {
       setEndTime(prev => ({...prev, [selected]: value}))
     }
-    // new Date('2023-04-29 18:00+0500')
-    const startDate = new Date(`2023-04-29 ${startTime.hour}:${startTime.minute}:00`)
-    const endDate = new Date(`2023-04-29 ${endTime.hour}:${endTime.minute}:00`)
-
-    setFormData(prev => ({...prev, startDate}))
-    setFormData(prev => ({...prev, endDate}))
-    console.log(startDate, endDate)
   }
 
+  useEffect(() => {
+console.log(startDate,)
+    const AMPM = (hour, ampm) => {
+      if (ampm === "AM") {
+        return hour
+      } else {
+        switch(hour) {
+          case "1": return "13"
+          case "2": return "14"
+          case "3": return "15"
+          case "4": return "16"
+          case "5": return "17"
+          case "6": return "18"
+          case "7": return "19"
+          case "8": return "20"
+          case "9": return "21"
+          case "10": return "22"
+          case "11": return "23"
+          case "12": return "24"
+        }
+      }
+    }
 
-  return (
-    <form className="px-8 m-8 pb-0 mb-0 my-4 text-teal-600">
-       <div className="flex flex-wrap -mx-3 mb-6">
+
+    const newStartDate = new Date(`${startDate.startDate} ${AMPM(startTime.hour, startTime.ampm)}:${startTime.minute}:00`)
+
+    const newEndDate = new Date(`${endDate.endDate} ${AMPM(endTime.hour, endTime.ampm)}:${endTime.minute}:00`)
+
+    setFormData(prev => ({...prev, startDate: newStartDate}))
+    setFormData(prev => ({...prev, endDate: newEndDate}))
+  }, [startTime, endTime, startDate, endDate])
+
+
+    return (
+    <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800 font-fredoka">
+     <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-           <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startDate">
+           <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="startDate">
              Start Date
            </label>
-           {/* <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/> */}
-            
+           <div className="appearance-none block w-full bg-white border border-gray-200 rounded leading-tight">
+           <Datepicker asSingle="true" primaryColor="violet" value={startDate} 
+          onChange={handleStartDate} inputClassName="text-violet-800 font-normal focus:outline-none active:outline-none p-[12px]" useRange={false}/>
+          </div>
+
+
 
         </div>
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="grid-first-name">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="grid-first-name">
             End Date
           </label>
-          {/* <Datepicker asSingle="true" primaryColor={"teal"} className="bg-red"/> */}
+            <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight bg-white">
+            <Datepicker asSingle="true" primaryColor={"violet"} value={endDate} 
+          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" useRange={false}/>
+          </div>
         </div>
          
        </div>
        <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="startTime">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="startTime">
             Start Time
           </label>
           
           
-          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
+          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600 bg-white">
               
                 <select
                   name="startTime"
@@ -81,15 +121,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={startTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="01">1</option>
-                  <option value="02">2</option>
-                  <option value="03">3</option>
-                  <option value="04">4</option>
-                  <option value="05">5</option>
-                  <option value="06">6</option>
-                  <option value="07">7</option>
-                  <option value="08">8</option>
-                  <option value="09">9</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>
@@ -117,12 +157,12 @@ export default function WhenForm({formData, setFormData}) {
 
         </div>
         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2" htmlFor="endTime">
+          <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="endTime">
             End Time
           </label>
           
           
-          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600">
+          <div className="appearance-none block w-full  border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-teal-600 bg-white">
               
                 <select
                   name="endTime"
@@ -131,15 +171,15 @@ export default function WhenForm({formData, setFormData}) {
                   value={endTime.hour} 
                   onChange={e => updateTime(e)}
                 >
-                  <option value="01">1</option>
-                  <option value="02">2</option>
-                  <option value="03">3</option>
-                  <option value="04">4</option>
-                  <option value="05">5</option>
-                  <option value="06">6</option>
-                  <option value="07">7</option>
-                  <option value="08">8</option>
-                  <option value="09">9</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>

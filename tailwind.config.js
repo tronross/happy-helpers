@@ -5,12 +5,16 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
     "./node_modules/flowbite-react/**/*.js",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       gridTemplateColumns: {
         'auto-fill-100': 'repeat(auto-fill, minmax(100px, 1fr))',
         'auto-fit-100': 'repeat(auto-fit, minmax(100px, 1fr))',
       },
+      fontFamily: {
+        'fredoka': ['Fredoka', 'sans-serif']
+      }
     },
     screens: {
       'sm': '640px',
