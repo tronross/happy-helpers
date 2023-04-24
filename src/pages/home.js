@@ -121,7 +121,7 @@ export default function Home({ tasks, user }) {
   }
 
    
-  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} userId={user.id} /> </section> : <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} /> </section>)
+  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} userId={user.id} /> </section> : <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} userId={user.id} /> </section>)
 
 
   // Template
@@ -150,7 +150,6 @@ export default function Home({ tasks, user }) {
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </div>
-
         </div>
       </main>
       <Footer />
