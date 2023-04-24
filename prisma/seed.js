@@ -1682,6 +1682,66 @@ async function main() {
     }
   });
 
+  // New DIY tasks
+  await prisma.task.create({
+    data: {
+      name: 'Fix door',
+      description: 'I need someone to help me fix my door.',
+      image: 'https://richmondbuilding.com/wp-content/uploads/2019/06/metrie-traditional-interior-door.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-05-06 03:00+0500'),
+      endDate: new Date('2023-05-06 14:00+0500'),
+      status: 'OPEN',
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Window glass broken',
+      description: 'My window glass cracked and needs fixing.',
+      image: 'https://glassdoctor.com/sites/default/files/b8773f463e0748b50541d19b5e3982e6.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-05-10 01:00+0500'),
+      endDate: new Date('2023-05-10 12:00+0500'),
+      status: 'OPEN',
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Dining table assembly',
+      description: 'I need some help assembling a new dining table',
+      image: 'https://images2.imgix.net/p4dbimg/933/images/2456-64wm.jpg?trim=color&trimtol=5&trimcolor=FFFFFF&w=1024&h=768&fm=pjpg&auto=format',
+      category: 'DIY',
+      startDate: new Date('2023-05-15 01:00+0500'),
+      endDate: new Date('2023-05-15 12:00+0500'),
+      status: 'OPEN',
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Paint house walls',
+      description: 'I recently moved into a new house and need help painting the walls.',
+      image: 'https://coloradopainting.com/wp-content/uploads/2021/09/how-long-does-interior-paint-last-on-the-wall.png',
+      category: 'DIY',
+      startDate: new Date('2023-05-16 02:00+0500'),
+      endDate: new Date('2023-05-16 11:00+0500'),
+      status: 'OPEN',
+      userId: 1,
+      nbHelpers: 1,
+      addressId: 1
+    }
+  });
 
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({

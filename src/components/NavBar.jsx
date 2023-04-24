@@ -3,6 +3,7 @@
 //////////////////////
 import { useState, useEffect } from 'react';
 import axios from "axios";
+import { useRouter } from "next/router";
 
 // Component
 import Link from 'next/link';
@@ -14,7 +15,10 @@ export default function NavBar(props) {
 
   // Handle the display for messages
   const [displayMessages, setDisplayMessages] = useState(false);
+  const badgeToggle = true;
+  
   const handleMessages = function() {
+    badgeToggle ? !badgeToggle : badgeToggle;
     setDisplayMessages(displayMessages ? false : true);
   };
 
@@ -31,7 +35,14 @@ export default function NavBar(props) {
 
   useEffect(() => {
     fetchUnreadMessageCount();
-  }, []);
+  }, [badgeToggle]);
+
+  // Force page refresh when profile changes
+  const router = useRouter();
+  const navigate = function(url) {
+    router.replace(url)
+      .then(() => router.reload());
+  };
 
   // Template
   return (
@@ -70,7 +81,7 @@ export default function NavBar(props) {
     </svg></h2>
         </li>
         <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
-          <Link href={`/profile-page/${props.id}`}>{props.name}</Link>
+          <a onClick={() => navigate(`/profile-page/${props.id}`)}>{props.name}</a>
         </li>
         <li className='px-6 hover:text-teal-500 active:text-teal-700'>
           <Button buttonName={"LOGOUT"} />

@@ -122,7 +122,7 @@ export default function Map(props) {
       };
 
       // Position map to be centered over "logged-in user's" location
-      new google.maps.Marker({
+      const userMarker = new google.maps.Marker({
         position: { lat: 43.68739440726955, lng: -79.42498784917888 },
         icon: homeMarker,
         map,
@@ -136,6 +136,9 @@ export default function Map(props) {
         }
       });
 
+      userMarker.addListener("click", () => {
+        window.location = (`/profile-page/${props.userId}`)
+      })
       const addressIds = [];
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
