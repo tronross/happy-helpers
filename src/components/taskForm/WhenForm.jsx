@@ -23,6 +23,8 @@ export default function WhenForm({formData, setFormData}) {
     endDate: null
   }); 
 
+  
+
   const handleStartDate = (newDate) => {
     console.log("newValue:", newDate.startDate); 
     setStartDate(newDate); 
@@ -79,8 +81,28 @@ console.log(startDate,)
   }, [startTime, endTime, startDate, endDate])
 
 
+  const [check, setCheck] = useState(false);
+
+  const currentEndDate = check === true ? endDate : startDate;
+  console.log("CHECK CHECK:",check)
+
+  const handleCheck = async () => {
+    await setCheck(prev => !prev)
+    
+  }
+  
+  
+  useEffect(() => {
+  console.log("use effect:", check)
+    check === true ? setFormData(prev => ({...prev, endDate: {startDate}})) : setFormData(prev => ({...prev, endDate: ""}))
+  }, [check])
+
     return (
     <form className="px-8 m-8 pb-0 mb-0 my-4 text-violet-800 font-fredoka">
+      <div className="mb-2 flex items-center">
+        <input name="addressCheck" type="checkbox" className="w-10 accent-violet-600 ml-[-12px] mr-[-6px] hover:cursor-pointer" checked={check} onChange={(e) => handleCheck(e)}></input>
+        <label htmlFor="addressCheck" className="hover:cursor-pointer" onClick={(e) => handleCheck(e)}>Multi-Day</label>
+      </div>
      <div className="flex flex-wrap -mx-3 mb-6">
        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
            <label className="block uppercase tracking-wide text-xs font-semibold mb-2" htmlFor="startDate">
@@ -99,8 +121,8 @@ console.log(startDate,)
             End Date
           </label>
             <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight bg-white">
-            <Datepicker asSingle="true" primaryColor={"violet"} value={endDate} 
-          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" useRange={false}/>
+            <Datepicker asSingle="true" primaryColor={"violet"} value={currentEndDate} 
+          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" disabled={check === false ? true : false} useRange={false}/>
           </div>
         </div>
          

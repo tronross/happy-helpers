@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 
 export default function WhereForm({formData, onChange, user, setFormData}) {
   const [check, setCheck] = useState(true)
-  console.log(check)
 
   const handleCheck = async (e) => {
     await setCheck(prev => !prev)
