@@ -8,11 +8,11 @@ async function main() {
   // Create users with addresses ---------------------------------------------
   await prisma.address.create({
     data: {
-      address: '82 Tycos Dr',
-      city: 'North York',
-      postcode: 'M6B 1V9',
-      latitude: '43.70536',
-      longitude: '-79.45664',
+      address: '305 Wychwood Ave',
+      city: 'York',
+      postcode: 'M6C 2T6',
+      latitude: '43.68739440726955',
+      longitude: '-79.42498784917888',
       Users: {
         create: {
           firstName: 'Anderson',
@@ -34,8 +34,8 @@ async function main() {
       address: '1095 Leslie St',
       city: 'North York',
       postcode: 'M3C 2J7',
-      latitude: '43.71956',
-      longitude: '-79.34931',
+      latitude: '43.7200987753168',
+      longitude: '-79.34966223158406',
       Users: {
         create: {
           firstName: 'Kayleen',
@@ -44,7 +44,7 @@ async function main() {
           email: 'K.Lunski@ferrari.it',
           password: 'aardvark',
           phone: '(416)500-1413',
-          stars: 0,
+          stars: 1,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/7.jpg',
           skills: 'Safe driver and pretty good baker.'
         }
@@ -57,8 +57,8 @@ async function main() {
       address: '1880 Eglinton Ave E',
       city: 'Scarborough',
       postcode: 'M1L 2L1',
-      latitude: '43.72567',
-      longitude: '-79.29782',
+      latitude: '43.72667380002133',
+      longitude: '-79.2997697739118',
       Users: {
         create: {
           firstName: 'Tiana',
@@ -67,7 +67,7 @@ async function main() {
           email: 'TianaW@ovengloves.com',
           password: 'burntthetoast',
           phone: '(866)987-6453',
-          stars: 1,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg',
           skills: 'Incredible in the kitchen.'
         }
@@ -80,8 +80,8 @@ async function main() {
       address: '4274 Graham St',
       city: 'Pierrefonds-Roxboro',
       postcode: 'H9H 3S5',
-      latitude: '45.47760',
-      longitude: '-73.84980',
+      latitude: '45.47779877773197',
+      longitude: '-73.84981994602872',
       Users: {
         create: {
           firstName: 'Elvis',
@@ -90,7 +90,7 @@ async function main() {
           email: 'elvis@graceland.com',
           password: 'funnydancer',
           phone: '(514)347-3653',
-          stars: 11,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/27.jpg',
           skills: 'Woodwork and general DIY tasks.'
         }
@@ -103,8 +103,8 @@ async function main() {
       address: '1100 Broad St',
       city: 'Regina',
       postcode: 'S4R 1X8',
-      latitude: '50.46124',
-      longitude: '-104.60669',
+      latitude: '50.461381927681245',
+      longitude: '-104.60677421566696',
       Users: {
         create: {
           firstName: 'Javier',
@@ -113,7 +113,7 @@ async function main() {
           email: 'jtarc2010@karaoke.com',
           password: 'sofaman',
           phone: '(306)551-8238',
-          stars: 2,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg',
           skills: 'Dancing.'
         }
@@ -126,8 +126,8 @@ async function main() {
       address: '1805 Taunton Rd',
       city: 'Hampton',
       postcode: 'L0B 1J0',
-      latitude: '43.95273',
-      longitude: '-78.79027',
+      latitude: '43.953148795958256',
+      longitude: '-78.79096807530613',
       Users: {
         create: {
           firstName: 'Lore',
@@ -136,7 +136,7 @@ async function main() {
           email: 'l.winks2010@nature.com',
           password: 'gooddog',
           phone: '(905)725-6089',
-          stars: 22,
+          stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/21.jpg',
           skills: 'Animal care'
         }
@@ -149,8 +149,8 @@ async function main() {
       address: '1580 Bloor st w',
       city: 'Toronto',
       postcode: 'M6P 2B2',
-      latitude: '43.656178',
-      longitude: '-79.452746',
+      latitude: '43.656368851901895',
+      longitude: '-79.45419506042258',
       Users: {
         create: {
           firstName: 'Miriam',
@@ -159,7 +159,7 @@ async function main() {
           email: 'miriam@bakesale.ca',
           password: 'cupcake',
           phone: '(416)313-2463',
-          stars: 15,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/19.jpg',
           skills: 'Baking.'
         }
@@ -172,8 +172,8 @@ async function main() {
       address: '16 Beechborough Ave',
       city: 'York',
       postcode: 'M6M 1Y9',
-      latitude: '43.695630',
-      longitude: '-79.470593',
+      latitude: '43.69564130041031',
+      longitude: '-79.4705393739131',
       Users: {
         create: {
           firstName: 'Marcella',
@@ -182,7 +182,7 @@ async function main() {
           email: 'M.DiPiaggo@newegg.ca',
           password: 'floppyD',
           phone: '(416)313-2443',
-          stars: 11,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/17.jpg',
           skills: 'Tech'
         }
@@ -192,11 +192,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '32 Reigate Rd',
-      city: 'Etobicoke',
-      postcode: 'M9A 2Y4',
-      latitude: '43.660045',
-      longitude: '-79.524124',
+      address: '118 Rockwell Ave',
+      city: 'Toronto',
+      postcode: 'M6N 1P1',
+      latitude: '43.67694055846539',
+      longitude: '-79.4630017492672',
       Users: {
         create: {
           firstName: 'Samantha',
@@ -205,7 +205,7 @@ async function main() {
           email: 'msMeow@catlady.ca',
           password: 'floppyD',
           phone: '(647)715-2422',
-          stars: 25,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/55.jpg',
           skills: 'Animal care'
         }
@@ -218,8 +218,8 @@ async function main() {
       address: '22 Hewitt Ave',
       city: 'Toronto',
       postcode: 'M6R 1Y3',
-      latitude: '43.652541249465415',
-      longitude: '-79.45311063155081',
+      latitude: '43.65264992762798',
+      longitude: '-79.45316427576667',
       Users: {
         create: {
           firstName: 'Jania',
@@ -228,7 +228,7 @@ async function main() {
           email: 'jania@greasemonkey.ca',
           password: 'iridium',
           phone: '(647)447-2422',
-          stars: 25,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/11.jpg',
           skills: 'Driving, mechanic.'
         }
@@ -241,8 +241,8 @@ async function main() {
       address: '199 Humberside Ave',
       city: 'Toronto',
       postcode: 'M6P 1K7',
-      latitude: '43.661198101516526',
-      longitude: '-79.46449998697834',
+      latitude: '43.661324519483024',
+      longitude: '-79.46442955857052',
       Users: {
         create: {
           firstName: 'Morgan',
@@ -251,7 +251,7 @@ async function main() {
           email: 'morgan.dangelo@utoronto.ca',
           password: '5Q$@Qkm3o%9t',
           phone: '(647)457-2988',
-          stars: 17,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/11.jpg',
           skills: 'Tech'
         }
@@ -264,8 +264,8 @@ async function main() {
       address: '574 Briar Hill Ave',
       city: 'Toronto',
       postcode: 'M5N 1M9',
-      latitude: '43.70986677226693',
-      longitude: '-79.4196003252618',
+      latitude: '43.709956820109745',
+      longitude: '-79.41961726042047',
       Users: {
         create: {
           firstName: 'Dan',
@@ -274,7 +274,7 @@ async function main() {
           email: 'danny6000@gmail.com',
           password: '5Q$@o%9t',
           phone: '(647)744-2988',
-          stars: 10,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/45.jpg',
           skills: 'Driving, handyman'
         }
@@ -287,8 +287,8 @@ async function main() {
       address: '56A Wentworth Ave',
       city: 'North York',
       postcode: 'M2N 1T7',
-      latitude: '43.76015080914169',
-      longitude: '-79.4297336948085',
+      latitude: '43.76023249139634',
+      longitude: '-79.4297779180904',
       Users: {
         create: {
           firstName: 'Steve',
@@ -297,7 +297,7 @@ async function main() {
           email: 'steve@stevesakamoto.dev',
           password: '5Q$@ofhgkjhdfh%9t',
           phone: '(647)742-2911',
-          stars: 40,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/49.jpg',
           skills: 'Animal care, wordpress.'
         }
@@ -307,20 +307,20 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '42 Bomarc Rd',
-      city: 'North York',
-      postcode: 'M2K 1V7',
-      latitude: '43.7764958942872',
-      longitude: '-79.3877670043887',
+      address: '186 Keewatin Ave',
+      city: 'Toronto',
+      postcode: 'M4P 1Z8',
+      latitude: '43.71363993190434',
+      longitude: '-79.39404860269002',
       Users: {
         create: {
           firstName: 'Dominic',
           lastName: 'Peron',
-          description: "I'm often driving around North York, I can pick things up and drop them off.",
+          description: "I'm often driving around Toronto, I can pick things up and drop them off for you.",
           email: 'dom990@saultspring.ca',
           password: 'hdfh%9t',
           phone: '(647)744-7711',
-          stars: 10,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/55.jpg',
           skills: 'Driving, life-guard.'
         }
@@ -333,8 +333,8 @@ async function main() {
       address: '66 Forest Grove Dr',
       city: 'North York',
       postcode: 'M2K 1Z6',
-      latitude: '43.780116136577725',
-      longitude: '-79.37607698654072',
+      latitude: '43.78027661894256',
+      longitude: '-79.3761207180896',
       Users: {
         create: {
           firstName: 'Marcus',
@@ -343,7 +343,7 @@ async function main() {
           email: 'mizellbros@saultnoize.ca',
           password: 'hsdfghddfh%9t',
           phone: '(647)744-9991',
-          stars: 10,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/65.jpg',
           skills: 'DJ, animal care.'
         }
@@ -356,8 +356,8 @@ async function main() {
       address: '195 Norton Ave',
       city: 'North York',
       postcode: 'M2N 4B1',
-      latitude: '43.77471384862357',
-      longitude: '-79.40049616289224',
+      latitude: '43.77478976264135',
+      longitude: '-79.40047347390995',
       Users: {
         create: {
           firstName: 'Danny',
@@ -366,7 +366,7 @@ async function main() {
           email: '88khan@theresariver.ca',
           password: 'hsdfght',
           phone: '(647)745-8921',
-          stars: 15,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/29.jpg',
           skills: 'Musician, cooking.'
         }
@@ -376,11 +376,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '1 Flanders Rd',
-      city: 'York',
-      postcode: 'M6C 3K5',
-      latitude: '43.69739980416425',
-      longitude: '-79.43284588068727',
+      address: '38 Woodlawn Ave W',
+      city: 'Toronto',
+      postcode: 'M4V 1G7',
+      latitude: '43.683746232929536',
+      longitude: '-79.39439672713408',
       Users: {
         create: {
           firstName: 'John',
@@ -389,7 +389,7 @@ async function main() {
           email: 'boostthatoyz@pierrefronds.ca',
           password: 'hsh%9t',
           phone: '(647)747-9955',
-          stars: 10,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/14.jpg',
           skills: 'Carpenter, house repairs.'
         }
@@ -399,11 +399,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '2393 Queen St E',
+      address: '800 Euclid Ave',
       city: 'Toronto',
-      postcode: 'M4E 1H5',
-      latitude: '43.672607330457325',
-      longitude: '-79.28685648616003',
+      postcode: 'M6G 2V4',
+      latitude: '43.66823267625822',
+      longitude: '-79.41654574198648',
       Users: {
         create: {
           firstName: 'Samuel',
@@ -412,7 +412,7 @@ async function main() {
           email: 'dormand1237@gmail.com',
           password: 'hsh%9t',
           phone: '(647)788-9955',
-          stars: 12,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/39.jpg',
           skills: 'House-sitting, errands, yardwork.'
         }
@@ -422,11 +422,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '26 Juniper Ave',
+      address: '295 Westmoreland Ave',
       city: 'Toronto',
-      postcode: 'M4L 1S3',
-      latitude: '43.676853518866615',
-      longitude: '-79.30116247387848',
+      postcode: 'M6H 3A4',
+      latitude: '43.668762538937024',
+      longitude: '-79.43336157203173',
       Users: {
         create: {
           firstName: 'Anita',
@@ -435,7 +435,7 @@ async function main() {
           email: 'silversart27@me.com',
           password: 'hsh%afsdkjh5879t',
           phone: '(647)847-9445',
-          stars: 20,
+          stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/42.jpg',
           skills: 'Assembly, measurements, mounting and installation.'
         }
@@ -451,8 +451,8 @@ async function main() {
       address: '15 Ave Donegani',
       city: 'Pointe-Claire',
       postcode: 'H9R 2W0',
-      latitude: '45.45135',
-      longitude: '-73.78387',
+      latitude: '45.45153956383146',
+      longitude: '-73.78381853151393',
       Organizations: {
         create: {
           name: 'Canada Post',
@@ -468,8 +468,8 @@ async function main() {
       address: '3000 Rue du Marché',
       city: 'Dollard-des-Ormeaux',
       postcode: 'H9B 2Y3',
-      latitude: '45.48391',
-      longitude: '-73.89939',
+      latitude: '45.483930845661945',
+      longitude: '-73.79987491802059',
       Organizations: {
         create: {
           name: 'Sami Fruits',
@@ -508,8 +508,8 @@ async function main() {
       address: '20 Mervyn Ave',
       city: 'Etobicoke',
       postcode: 'M9B 1M8',
-      latitude: '-79.5385131008',
-      longitude: '43.64353364730',
+      latitude: '43.643623312924305',
+      longitude: '-79.53859506227492',
     }
   });
 
@@ -518,8 +518,8 @@ async function main() {
       address: "48 O'Hara Ave",
       city: 'Toronto',
       postcode: 'M6K 2R1',
-      latitude: '43.6428322501',
-      longitude: '-79.4350752462',
+      latitude: '43.643017062488774',
+      longitude: '-79.43502108740721',
     }
   });
 
@@ -528,38 +528,38 @@ async function main() {
       address: '257 Bellwoods Ave',
       city: 'Toronto',
       postcode: 'M6J 2R3',
-      latitude: '43.6531388762',
-      longitude: '-79.4134362639',
+      latitude: '43.65326108676507',
+      longitude: '-79.41347651809465',
     }
   });
-  
+
   await prisma.address.create({
     data: {
       address: '27 Howie Ave',
       city: 'Toronto',
       postcode: 'M4M 2H9',
-      latitude: '43.6608817745',
-      longitude: '-79.348122311',
+      latitude: '43.6611100819705',
+      longitude: '-79.34810937391445',
     }
   });
-   
+
   await prisma.address.create({
     data: {
       address: '790 Queen St W',
       city: 'Toronto',
       postcode: 'M6J 1G3',
-      latitude: '43.64739127639',
-      longitude: '-79.4137343319',
+      latitude: '43.646074133454114',
+      longitude: '-79.41418713158697',
     }
   });
- 
+
   await prisma.address.create({
     data: {
       address: '875 Dufferin St',
       city: 'Toronto',
       postcode: 'M6H 3K8',
-      latitude: '43.6567843532',
-      longitude: '-79.432771251',
+      latitude: '43.6571659004793',
+      longitude: '-79.43365648925854',
     }
   });
 
@@ -568,8 +568,49 @@ async function main() {
       address: '375 Colborne Lodge Dr',
       city: 'Toronto',
       postcode: 'M6R 2Z3',
-      latitude: '43.651358468886',
-      longitude: '-79.46367033041',
+      latitude: '43.65145890613893',
+      longitude: '-79.4634691162428',
+    }
+  });
+
+
+  await prisma.address.create({
+    data: {
+      address: '250 Winona Dr',
+      city: 'York',
+      postcode: 'M6C 3S7',
+      latitude: '43.68224764914735',
+      longitude: '-79.43360632973366',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '41 Eversfield Rd',
+      city: 'York',
+      postcode: 'M6E 1T6',
+      latitude: '43.68676297078814',
+      longitude: '-79.44918826042134',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '147 Boon Ave',
+      city: 'Toronto',
+      postcode: 'M6E 3Z6',
+      latitude: '43.681195110918566',
+      longitude: '-79.44754510274964',
+    }
+  });
+
+  await prisma.address.create({
+    data: {
+      address: '35 Whitworth Ave',
+      city: 'Etobicoke',
+      postcode: 'M8Y 3M8',
+      latitude: '43.63265663464574',
+      longitude: '-79.48490550275154',
     }
   });
 
@@ -587,7 +628,7 @@ async function main() {
       startDate: new Date('2023-05-15 00:00+0500'),
       endDate: new Date('2023-04-29 02:00+0500'),
       userId: 1,
-      status: 'OPEN',
+      status: 'PENDING',
       nbHelpers: 1,
       addressId: 1
     }
@@ -985,7 +1026,7 @@ async function main() {
     data: {
       name: 'Change Curtains',
       description: 'Need help changing my curtains, they are 15ft from floor and I dont have a ladder.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.thespruce.com/thmb/qVNQXcJYNRSKozXrf1ZDvwnoqLE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/signs-time-to-replace-curtains-5525795-hero-43fd522a36d24c28b0c08fe6c4ffe5cd.jpg',
       category: 'Housework',
       startDate: new Date('2023-05-05 15:00+0500'),
       endDate: new Date('2023-05-06 15:00+0500'),
@@ -1079,7 +1120,7 @@ async function main() {
     data: {
       name: 'Watch Turtle',
       description: 'My turtle gets lonely and I am away for a week, looking for someone to watch him',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://cdn.reptileadvisor.com/wp-content/uploads/2020/02/pet-turtles.jpg',
       category: 'Housework',
       startDate: new Date('2023-04-11 15:00+0500'),
       endDate: new Date('2023-04-12 15:00+0500'),
@@ -1094,7 +1135,7 @@ async function main() {
     data: {
       name: 'Salt Walkway',
       description: 'Need someone to salt the walkway at the appartment entrance tomorrow morning as I have an appointment',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.whygoodnature.com/hs-fs/hubfs/Winter%20Salt%20Sidewalk.jpg?width=1280&name=Winter%20Salt%20Sidewalk.jpg',
       category: 'Heavy Lifting',
       startDate: new Date('2023-01-01 15:00+0500'),
       endDate: new Date('2023-01-01 15:00+0500'),
@@ -1149,7 +1190,7 @@ async function main() {
       status: "OPEN",
       userId: 3,
       nbHelpers: 2,
-      addressId: 3
+      addressId: 29
     }
   });
 
@@ -1164,7 +1205,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 34
     }
   });
 
@@ -1179,7 +1220,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 23
     }
   });
 
@@ -1194,7 +1235,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 32
     }
   });
 
@@ -1209,7 +1250,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 31
     }
   });
 
@@ -1224,7 +1265,7 @@ async function main() {
       userId: 3,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 3
+      addressId: 27
     }
   });
 
@@ -1486,7 +1527,7 @@ async function main() {
       userId: 11,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 27
+      addressId: 11
     }
   });
 
@@ -1519,7 +1560,22 @@ async function main() {
       addressId: 30
     }
   });
-  
+
+  await prisma.task.create({
+    data: {
+      name: 'Ride Shotgun',
+      description: "I'm picking up some donations for a charity auction. Would you like to help me pick them up and load the van?",
+      image: 'https://thumbs.dreamstime.com/b/charity-auction-alphabet-letter-blue-red-background-space-copy-212249453.jpg',
+      category: 'Other',
+      startDate: new Date('2023-05-01 02:00+0500'),
+      endDate: new Date('2023-05-03 16:00+0500'),
+      userId: 14,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 14
+    }
+  });
+
   await prisma.task.create({
     data: {
       name: 'Food Drive',
@@ -1534,8 +1590,8 @@ async function main() {
       addressId: 19
     }
   });
-  
-  
+
+
   await prisma.task.create({
     data: {
       name: 'Pick up prescription',
@@ -1565,7 +1621,7 @@ async function main() {
       addressId: 28
     }
   });
-  
+
   await prisma.task.create({
     data: {
       name: 'Build Ikea Dresser',
@@ -1578,6 +1634,36 @@ async function main() {
       status: "OPEN",
       nbHelpers: 1,
       addressId: 11
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Yard Sale',
+      description: "I'm having a yard sale! Do you have some stuff you want to sell too? I have a big yard, come on over!",
+      image: 'https://www.newcitymovers.com/content/uploads/2018/08/Yard-Sale.jpg',
+      category: 'Other',
+      startDate: new Date('2023-05-05 19:00+0500'),
+      endDate: new Date('2023-05-06 00:00+0500'),
+      userId: 19,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 19
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Top-Dress Garden',
+      description: "I need to add some soil to my garden, but my back isn't great. I'd like to give you homemade jam if you can help.",
+      image: 'https://i0.wp.com/awaytogarden.com/wp-content/uploads/2014/11/unnamed.jpg?ssl=1',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-05 22:00+0500'),
+      endDate: new Date('2023-04-06 00:00+0500'),
+      userId: 17,
+      status: "OPEN",
+      nbHelpers: 1,
+      addressId: 17
     }
   });
 
@@ -1602,7 +1688,7 @@ async function main() {
     data: {
       userId: 2,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1610,7 +1696,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 1,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -1618,7 +1704,7 @@ async function main() {
     data: {
       userId: 4,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1626,7 +1712,7 @@ async function main() {
     data: {
       userId: 5,
       taskId: 1,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1818,7 +1904,7 @@ async function main() {
     data: {
       userId: 3,
       taskId: 19,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -1826,7 +1912,7 @@ async function main() {
     data: {
       userId: 6,
       taskId: 19,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
@@ -2047,10 +2133,10 @@ async function main() {
 }
 
 main()
-  .then(async() => {
+  .then(async () => {
     await prisma.$disconnect();
   })
-  .catch(async(e) => {
+  .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
     process.exit(1);

@@ -43,7 +43,7 @@ const sidebarOptions = [
 ];
 
 const distances = [
-  1, 5, 10, 25, 50, 'all'
+  1, 2, 5, 10, 25, 'all'
 ];
 
 /////////////////////
@@ -120,7 +120,7 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-4 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> : <Map tasks={filteredTasks} />)
+  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> : <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} /> </section>)
 
 
   // Template
@@ -131,7 +131,7 @@ export default function Home({ tasks, user }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='full-height'>
+      <main className=''>
         <NavBar name={user.firstName}
           id={user.id} />
         <div className="flex w-[100%] justify-start ">
@@ -145,7 +145,7 @@ export default function Home({ tasks, user }) {
               distances={distances}
             />
           </div>
-          <div className="w-[100%] h-screen">
+          <div className="w-[100%] p-2">
             <PageHeader setView={setView} city={user.address.city} category={category} />
             {currentView}
           </div>
