@@ -40,7 +40,7 @@ export default function Chat3({user}) {
     <main className='flex flex-col '>
       <NavBar name={user.firstName}
         id={user.id} />
-    <div className='chat-height px-5 flex flex-col'>
+    <div className='chat-height px-10 flex flex-col'>
       {/* <h1 className='font-fredoka text-3xl font-semibold text-teal-600 mb-3'>Inbox</h1> */}
       <ChatEngine
         height='calc(100vh - 200px)'
