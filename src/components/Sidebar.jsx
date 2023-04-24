@@ -40,20 +40,20 @@ export default function Sidebar(props) {
   const [currentDistance, setCurrentDistance] = useState(4)
 
   const realDistance = (distance) => {
-      switch(distance)  {
-        case "0": return 1;
-        case "1": return 2;
-        case "2": return 5;
-        case "3": return 10;
-        case "4": return 25;
-        case "5": return "all";
-      }
+    switch (distance) {
+      case "0": return 1;
+      case "1": return 2;
+      case "2": return 5;
+      case "3": return 10;
+      case "4": return 25;
+      case "5": return "all";
+    }
   }
 
   const closerThan = (e) => {
     const distance = e.target.value;
     setCurrentDistance(distance);
-    const newDistance = realDistance(distance);    
+    const newDistance = realDistance(distance);
     setClicked(prev => ({ ...prev, distance: newDistance }));
     props.setFilters(prev => ({ ...prev, distance: newDistance }));
   }
@@ -85,12 +85,12 @@ export default function Sidebar(props) {
       sort: 'Date'
     });
 
-    setTimeout(() => { setDateFilter( {startDate: null, endDate: null} ) }, 50)
+    setTimeout(() => { setDateFilter({ startDate: null, endDate: null }) }, 50)
   }
 
   // Call filterTasks on change of filters state
   useEffect(() => { props.filterTasks() }, [props.filters])
-  
+
 
 
   return (
@@ -101,26 +101,26 @@ export default function Sidebar(props) {
           <p className='text-sm uppercase text-violet-400 font-semibold hover:cursor-pointer hover:text-violet-500' onClick={resetFilters}>RESET</p>
         </div>
         {/* <section className="flex items-baseline space-x-4" > */}
-          <section className="max-w-xs flex flex-col rounded-md space-y-0.5 mt-3">
-            <div className='flex justify-center'>
-          {clicked.sort === 'Date' ?
-            <button className="w-2/5 bg-violet-300 px-4 py-1 rounded-full text-white border border-violet-100 border-2 inline-flex justify-center mr-2" value={'Date'} onClick={sortSelect}>Date</button>
-            :
-            <button className="w-2/5 bg-violet-100 hover:bg-violet-300  hover:text-white hover:border-violet-100 active:bg-violet-400 active:text-white px-4 py-1 border-2 border-violet-300 rounded-full text-violet-900 inline-flex justify-center mr-2" value={'Date'} onClick={sortSelect}>Date</button>
-          }
-          {clicked.sort === 'Distance' ?
-            <button type="button" className="w-2/5 bg-violet-300 px-4 py-1 rounded-full text-white border border-violet-100 border-2 inline-flex justify-center ml-2" value={'Distance'} onClick={sortSelect}>Distance</button>
-            :
-            <button type="button" className="w-2/5 bg-violet-100 hover:bg-violet-300  hover:text-white hover:border-violet-100 active:bg-violet-400 active:text-white px-4 py-1 border-2 border-violet-300 rounded-full text-violet-900 inline-flex justify-center ml-2" value={'Distance'} onClick={sortSelect}>Distance</button>
-          }
+        <section className="max-w-xs flex flex-col rounded-md space-y-0.5 mt-3">
+          <div className='flex justify-center'>
+            {clicked.sort === 'Date' ?
+              <button className="w-2/5 bg-violet-300 px-4 py-1 rounded-full text-white border border-violet-100 border-2 inline-flex justify-center mr-2" value={'Date'} onClick={sortSelect}>Date</button>
+              :
+              <button className="w-2/5 bg-violet-100 hover:bg-violet-300  hover:text-white hover:border-violet-100 active:bg-violet-400 active:text-white px-4 py-1 border-2 border-violet-300 rounded-full text-violet-900 inline-flex justify-center mr-2" value={'Date'} onClick={sortSelect}>Date</button>
+            }
+            {clicked.sort === 'Distance' ?
+              <button type="button" className="w-2/5 bg-violet-300 px-4 py-1 rounded-full text-white border border-violet-100 border-2 inline-flex justify-center ml-2" value={'Distance'} onClick={sortSelect}>Distance</button>
+              :
+              <button type="button" className="w-2/5 bg-violet-100 hover:bg-violet-300  hover:text-white hover:border-violet-100 active:bg-violet-400 active:text-white px-4 py-1 border-2 border-violet-300 rounded-full text-violet-900 inline-flex justify-center ml-2" value={'Distance'} onClick={sortSelect}>Distance</button>
+            }
           </div>
         </section>
-          <h1 className='uppercase font-semibold text-base mt-4'>Filter By:</h1>
-          <select className="block py-2 px-4 w-full bg-violet-100 border-2 rounded-full border-violet-300 appearance-none focus:outline-violet-400 hover:cursor-pointer my-4" id="category" name="category" value={clicked.category} onChange={e => dropdownSelect(e)}>
-            {props.sidebarOptions.map((item, idx) => {
-                return <option key={idx}>{item}</option>
-            })}
-          </select>
+        <h1 className='uppercase font-semibold text-base mt-4'>Filter By:</h1>
+        <select className="block py-2 px-4 w-full bg-violet-100 border-2 rounded-full border-violet-300 appearance-none focus:outline-violet-400 hover:cursor-pointer my-4" id="category" name="category" value={clicked.category} onChange={e => dropdownSelect(e)}>
+          {props.sidebarOptions.map((item, idx) => {
+            return <option key={idx}>{item}</option>
+          })}
+        </select>
         <section className='max-w-xs' >
           <Datepicker
             // displayFormat={''}
@@ -129,7 +129,7 @@ export default function Sidebar(props) {
             value={dateFilter}
             onChange={handleDateFilter}
             useRange={false}
-            inputClassName="rounded-full border-2 border-violet-300 w-full py-2 px-3 bg-violet-100 text-violet-900 focus:outline-violet-400" 
+            inputClassName="rounded-full border-2 border-violet-300 w-full py-2 px-3 bg-violet-100 text-violet-900 focus:outline-violet-400"
           />
         </section>
         <section className="max-w-xs flex flex-row space-x-1.5 items-baseline">
@@ -137,16 +137,16 @@ export default function Sidebar(props) {
         </section>
 
         <h5 className=" text-sm text-violet-900 uppercase font-semibold mb-1">Distance (km):</h5>
-        <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 border border-violet-300 border-2 accent-violet-400  rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)}/>
+        <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 border border-violet-300 border-2 accent-violet-400  rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)} />
       </div>
-        <div className="flex text-xs font-semibold text-violet-900 pl-2 mb-1">
-          <p className='ml-1'>1</p>
-          <p className='ml-[48px]'>2</p>
-          <p className='ml-[40px]'>5</p>
-          <p className='ml-[38px]'>10</p>
-          <p className='ml-[37px]'>25</p>
-          <p className='ml-[33px]'>ALL</p>
-        </div>
-      </aside>
+      <div className="flex text-xs font-semibold text-violet-900 pl-2 mb-1">
+        <p className='ml-1'>1</p>
+        <p className='ml-[48px]'>2</p>
+        <p className='ml-[40px]'>5</p>
+        <p className='ml-[38px]'>10</p>
+        <p className='ml-[37px]'>25</p>
+        <p className='ml-[33px]'>ALL</p>
+      </div>
+    </aside>
   )
 }

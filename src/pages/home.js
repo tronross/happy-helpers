@@ -120,7 +120,7 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> :  <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} /> </section>)
+  const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} /> </section> : <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} /> </section>)
 
 
   // Template

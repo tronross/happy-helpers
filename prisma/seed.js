@@ -532,7 +532,7 @@ async function main() {
       longitude: '-79.41347651809465',
     }
   });
-  
+
   await prisma.address.create({
     data: {
       address: '27 Howie Ave',
@@ -542,7 +542,7 @@ async function main() {
       longitude: '-79.34810937391445',
     }
   });
-   
+
   await prisma.address.create({
     data: {
       address: '790 Queen St W',
@@ -552,7 +552,7 @@ async function main() {
       longitude: '-79.41418713158697',
     }
   });
- 
+
   await prisma.address.create({
     data: {
       address: '875 Dufferin St',
@@ -1575,7 +1575,7 @@ async function main() {
       addressId: 14
     }
   });
-  
+
   await prisma.task.create({
     data: {
       name: 'Food Drive',
@@ -1590,8 +1590,8 @@ async function main() {
       addressId: 19
     }
   });
-  
-  
+
+
   await prisma.task.create({
     data: {
       name: 'Pick up prescription',
@@ -1621,7 +1621,7 @@ async function main() {
       addressId: 28
     }
   });
-  
+
   await prisma.task.create({
     data: {
       name: 'Build Ikea Dresser',
@@ -2133,10 +2133,10 @@ async function main() {
 }
 
 main()
-  .then(async() => {
+  .then(async () => {
     await prisma.$disconnect();
   })
-  .catch(async(e) => {
+  .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
     process.exit(1);
