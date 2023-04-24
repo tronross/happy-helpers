@@ -44,6 +44,10 @@ body {
   min-height: calc(100vh - 212px);
 }
 
+.chat-height {
+  min-height: calc(100vh - 105px);
+}
+
 .form-scroll {
   scrollbar-width: thin;
   scrollbar-color: #a78bfa;
@@ -168,3 +172,235 @@ body {
     top: 0;
   }
 }
+
+
+/* Messages Styling */
+
+.ce-wrapper {
+  background-color: #f0fdfa;
+  display: flex !important;
+}
+
+.ce-settings-column {
+  border: none !important;
+  width: 25% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-left: 8px solid #f0fdfa !important;
+}
+
+.ce-chat-feed-column {
+  width: 20% !important;
+  display: flex !important;  
+  flex-direction: column !important;
+  border: 2.5px solid #c4b5fd !important;
+}
+
+.ce-chat-list-column {
+  width: 20% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #ddd6fe !important;
+  border-radius: 24px !important;
+  border-right: 8px solid #f0fdfa !important;
+
+}
+
+.ce-my-message-bubble {
+  background-color: #ede9fe !important;
+  color: #5b21b6 !important;
+  border: 2px solid #c4b5fd !important;
+}
+
+.ce-their-message-bubble {
+  background-color:#ede9fe !important;
+  color: #5b21b6 !important;
+  border: 2px solid #c4b5fd !important;
+}
+
+.ce-chats-container {
+  background-color: #ddd6fe !important;
+  border-radius: 24px 0 0 24px !important;
+  border: 2.5px solid #c4b5fd !important;
+  }
+
+.ce-chat-form-container {
+  background-color: #ddd6fe !important;
+  border-radius: 24px 0 0 24px !important;
+  font-family: "Fredoka";
+  color: #5b21b6;
+}
+
+#ce-delete-chat-button {
+  color: #5b21b6 !important;
+  font-weight: 500 !important;
+  border-color: #a78bfa !important;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px !important;
+}
+
+
+.ce-message-date-text {
+  color: #a78bfa !important;
+}
+
+.ce-settings {
+  background-color: #ddd6fe !important;
+  border-left: none !important;
+  border-radius: 0px 24px 24px 0 !important;
+  border: 2.5px solid #c4b5fd !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.ce-settings div {
+  border-top: none !important;
+}
+
+.ce-chat-feed {
+  background-color: #ddd6fe !important;
+}
+
+.ce-chat-feed-container {
+  background-color: #ddd6fe !important;
+  
+}
+
+.ce-chat-card {
+  margin: 4px 8px 4px 8px;
+  background-color: #ede9fe !important;
+  border: 2px solid #c4b5fd !important;
+  font-family: "Fredoka";
+  color: #5b21b6;
+}
+
+.ce-primary-button {
+  background-color: #c4b5fd !important;
+  padding: 10px !important;
+  padding-top: 3px !important;
+}
+
+.ce-chat-title {
+  background-color: #ddd6fe !important;
+  opacity: 90%;
+}
+
+.ce-chat-title-container {
+  font-family: "Fredoka" !important;
+  color: #5b21b6 !important;
+}
+
+.ce-chat-subtitle-text {
+  font-size: 1em !important;
+  color: #8b5cf6 !important;
+}
+
+#ce-feed-container {
+  padding: 0 5px 0 5px !important;
+}
+
+.ce-chat-list {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.ce-message-timestamp {
+  color: #a78bfa !important;
+}
+
+.ce-input {
+  background-color: #ede9fe !important;
+  border: 1.5px solid #c4b5fd  !important;
+  border-radius: 25px;
+  padding: 10px !important;
+  color: #5b21b6;
+  font-family: "Fredoka";
+  font-weight: 500 !important;
+}
+
+.ce-section-title-container {
+  background-color: transparent !important;
+  font-family: "Fredoka";
+}
+
+.ce-section-title-container div {
+  font-weight: 400 !important;
+  background-color: #ede9fe !important;
+  color: #5b21b6;
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 30px;
+  padding: 5px 14px !important;
+  margin: 10px 0 !important;
+}
+
+#ce-options-drop-down {
+  background-color: transparent !important;
+}
+
+#ce-options-drop-down div {
+  font-weight: 500 !important;
+  background-color: #ede9fe !important;
+  color: #5b21b6 !important;
+  border: 1.5px solid #c4b5fd !important;
+  border-radius: 30px;
+  padding: 5px 14px !important;
+  margin: 10px 0 !important;
+}
+
+#ce-send-message-button {
+  background-color: #a78bfa !important;
+  margin-bottom: 8px;
+}
+
+#ce-send-message-button:hover  {
+  background-color: #c4b5fd !important;
+}
+
+.send-icon {
+  margin-left: 12px !important;
+  margin-bottom: 3px !important;
+}
+
+
+#ce-ice-breaker-text {
+  color: #5b21b6 !important;
+}
+
+.anticon-paper-clip svg {
+  color: #8b5cf6;
+  margin-bottom: 8px;
+}
+
+.anticon-left {
+  bottom: 37px !important;
+  color: #8b5cf6;
+}
+
+#ce-delete-chat-button .anticon-delete {
+  margin-right: 10px !important;
+}
+
+.ce-delete-chat button {
+  border: 1.5px solid #ede9fe !important;
+  color: #ede9fe !important;
+}
+
+.ce-autocomplete-option div{
+  /* background-color: #ddd6fe !important; */
+}
+
+.ce-social-message-form-container {
+  background-color: #ddd6fe !important;
+}
+
+.ce-chat-unread-dot {
+  background-color: #c4b5fd !important;
+}
+
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+
