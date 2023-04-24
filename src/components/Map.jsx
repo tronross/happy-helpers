@@ -102,8 +102,9 @@ export default function Map(props) {
       const homeMarker = {
         path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
         fillOpacity: 1,
-        fillColor: "#cc0000",
-        strokeWeight: 0,
+        fillColor: "#ccfbf1",
+        strokeWeight: 2,
+        strokeColor: "#0d9488",
         rotation: 0,
         scale: 2,
         labelOrigin: new google.maps.Point(12, -2)
@@ -112,8 +113,9 @@ export default function Map(props) {
       const taskMarker = {
         path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
         fillOpacity: 0.85,
-        fillColor: "#6d28d9",
-        strokeWeight: 0,
+        fillColor: "#c4b5fd",
+        strokeWeight: 2,
+        strokeColor: "#8b5cf6",
         rotation: 0,
         scale: 2,
         labelOrigin: new google.maps.Point(12, 24)
@@ -126,8 +128,11 @@ export default function Map(props) {
         map,
         label: {
           text: "Anderson",
-          fontWeight: "bold",
-          fontSize: "18px"
+          fontSize: "14px",
+          fontFamily: "Fredoka",
+          fontWeight: "500",
+          color: "#0d9488",
+          className: "bg-white rounded-full mt-[-12px] px-2 py-[1px] bg-opacity-80 border border-[1.5px] border-teal-600"
         }
       });
 
@@ -151,8 +156,11 @@ export default function Map(props) {
             icon: taskMarker,
             label: {
               text: title,
-              fontWeight: "bold",
-
+              fontFamily: "Fredoka",
+              fontSize: "13px",
+              fontWeight: "400",
+              color: "#0f766e",
+              className: "mt-5 bg-white rounded-full px-2 py-[2px] bg-opacity-80 border border-[1.5px] border-teal-600"
             },
             map,
             zIndex: task.index,
@@ -172,10 +180,10 @@ export default function Map(props) {
                 width=220;
               />
             </section>
-            <h2 style="font-weight: bold; font-size: 1.5em;">${title}</h2>
-              <h3 style="font-weight: bold; font-size: 1.2em;">${category}</h3>
-              <h4 style="font-weight: bold; font-size: 0.9em;">${date}</h4>
-            <p style="font-weight: bold; font-size: 1em;">${description}</p>
+            <h2 class="font-fredoka font-semibold text-teal-600 text-lg">${title}</h2>
+              <h3 class="font-fredoka font-normal text-teal-600 text-sm">${category}</h3>
+              <h4 class="font-fredoka font-normal text-teal-600 text-sm">${date}</h4>
+            <p class="font-fredoka font-normal text-teal-600 text-sm">${description}</p>
           </article>`
           );
 
