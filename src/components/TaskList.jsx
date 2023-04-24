@@ -3,18 +3,18 @@ import Task from '../components/Task'
 
 
 export default function TaskList(props) {
-  
+
   const onClick = (id) => {
     window.location = (`/task/${id}`)
   }
 
   const tasks = props.tasks.map(task => {
     const startDate = task.startDate || task.start_date
-    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
+    const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday: "short", year: "numeric", month: "short", day: "numeric", hour: '2-digit', minute: '2-digit' }));
 
     // Provide more meaningful description for distance, where it is less than 1km (also helps with rounding errors)
     const calcDistanceProp = function (distance) {
-      if (props.userId === task.userId ) {
+      if (props.userId === task.userId) {
         return 'Me';
       } else if (distance <= 1) {
         return 'nearby';
