@@ -14,7 +14,10 @@ export default function NavBar(props) {
 
   // Handle the display for messages
   const [displayMessages, setDisplayMessages] = useState(false);
+  const badgeToggle = true;
+  
   const handleMessages = function() {
+    badgeToggle ? !badgeToggle : badgeToggle;
     setDisplayMessages(displayMessages ? false : true);
   };
 
@@ -31,7 +34,7 @@ export default function NavBar(props) {
 
   useEffect(() => {
     fetchUnreadMessageCount();
-  }, []);
+  }, [badgeToggle]);
 
   // Template
   return (
