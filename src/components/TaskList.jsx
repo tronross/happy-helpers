@@ -9,13 +9,14 @@ export default function TaskList(props) {
   }
 
   const tasks = props.tasks.map(task => {
-    // console.log(task)
     const startDate = task.startDate || task.start_date
     const startDateString = (new Date(startDate).toLocaleDateString('en-us', { weekday:"short", year:"numeric", month:"short", day:"numeric", hour:'2-digit', minute: '2-digit'})); 
 
     // Provide more meaningful description for distance, where it is less than 1km (also helps with rounding errors)
     const calcDistanceProp = function (distance) {
-      if (distance <= 1) {
+      if (props.userId === task.userId ) {
+        return 'Me';
+      } else if (distance <= 1) {
         return 'nearby';
       } else {
         return `${distance}km`
