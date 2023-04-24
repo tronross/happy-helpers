@@ -44,11 +44,6 @@ export default function TaskPage({selectedTask, selectedUser, userTasks, offers,
 
   return (
     <>
-    <Head>
-      <title>Happy Helpers</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
     <main className="font-fredoka">
     <NavBar name={loggedInUser.firstName}
                 id={loggedInUser.id}/>
