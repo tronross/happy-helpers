@@ -140,11 +140,11 @@ export default function Sidebar(props) {
         <input id="minmax-range" type="range" min="0" max="5" value={currentDistance} className="w-full h-2 bg-violet-50 border border-violet-300 border-2 accent-violet-400  rounded-lg appearance-none cursor-pointer" onChange={(e) => closerThan(e)} />
       </div>
       <div className="flex text-xs font-semibold text-violet-900 pl-2 mb-1">
-        <p className='ml-1'>1</p>
-        <p className='ml-[48px]'>2</p>
-        <p className='ml-[40px]'>5</p>
-        <p className='ml-[38px]'>10</p>
-        <p className='ml-[37px]'>25</p>
+        <p className='ml-[6px]'>1</p>
+        <p className='ml-[45px]'>2</p>
+        <p className='ml-[43px]'>5</p>
+        <p className='ml-[41px]'>10</p>
+        <p className='ml-[38px]'>25</p>
         <p className='ml-[33px]'>ALL</p>
       </div>
     </aside>
