@@ -1769,7 +1769,7 @@ async function main() {
       status: 'OPEN',
       userId: 13,
       nbHelpers: 1,
-      addressId: 13
+      addressId: 6
     }
   });
 
@@ -1777,14 +1777,14 @@ async function main() {
     data: {
       name: 'Move Tires',
       description: "I need to put my summer tires in the trunk so the shop can put them on my car, but they're too heavy for me to lift.",
-      image: 'https://w7.pngwing.com/pngs/863/178/png-transparent-car-aa-mot-centre-snow-tire-motor-vehicle-service-tyre-stack-truck-automobile-repair-shop.png',
+      image: 'https://blog.tiremart.com/wp-content/uploads/2022/09/tm-blog-tire-ratings-three-peak-mountain-snowflake-vs.-ms-tires-480x297-1.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-03 03:00+0500'),
       endDate: new Date('2023-05-04 11:00+0500'),
       status: 'OPEN',
       userId: 13,
       nbHelpers: 1,
-      addressId: 13
+      addressId: 25
     }
   });
 
