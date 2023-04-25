@@ -1258,7 +1258,7 @@ async function main() {
     data: {
       name: 'Fix Garden Box',
       description: 'My garden box is starting to rot, need to support it so it does not cave in',
-      image: 'https://m.media-amazon.com/images/I/71ZN2rx5CGL._AC_SX522_.jpg',
+      image: 'https://platthillnursery.com/wp-content/uploads/2021/05/platt-hill-nursery-start-raised-bed-garden-with-tools.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-05-05 03:00+0500'),
       endDate: new Date('2023-05-05 20:00+0500'),
@@ -1717,7 +1717,7 @@ async function main() {
     data: {
       name: 'Dining table assembly',
       description: 'I need some help assembling a new dining table',
-      image: 'https://images2.imgix.net/p4dbimg/933/images/2456-64wm.jpg?trim=color&trimtol=5&trimcolor=FFFFFF&w=1024&h=768&fm=pjpg&auto=format',
+      image: 'https://jayscustomcreations.com/wp-content/uploads/2016/04/dining-table-35-746x420.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-15 01:00+0500'),
       endDate: new Date('2023-05-15 12:00+0500'),
@@ -1732,7 +1732,7 @@ async function main() {
     data: {
       name: 'Paint house walls',
       description: 'I recently moved into a new house and need help painting the walls.',
-      image: 'https://coloradopainting.com/wp-content/uploads/2021/09/how-long-does-interior-paint-last-on-the-wall.png',
+      image: 'https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/featured-image-interior-paint.jpeg.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-16 02:00+0500'),
       endDate: new Date('2023-05-16 11:00+0500'),
