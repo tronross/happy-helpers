@@ -20,11 +20,14 @@
     "next": "13.2.4",
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
+    "react-chat-engine": "^1.11.28",
     "react-dom": "18.2.0",
     "react-geocode": "^0.2.3",
     "react-scripts": "^5.0.1",
     "react-tailwindcss-datepicker": "^1.6.0",
-    "tailwind-scrollbar-hide": "^1.1.7"
+    "react-xarrows": "^2.0.2",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "talkjs": "^0.15.9"
   },
   "description": "A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.",
   "main": "next.config.js",

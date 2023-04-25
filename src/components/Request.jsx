@@ -3,7 +3,7 @@ export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
   const startDate = new Date(props.startDate);
-  const className = `${props.selectedClass} border-1 shadow-lg m-4 bg-white rounded-lg relative hover:cursor-pointer`;
+  const className = `${props.selectedClass} h-[19.5em] border-1 shadow-lg m-4 bg-white rounded-lg relative hover:cursor-pointer flex flex-col justify-between`;
 
   // Colour-code the status in a pill button style
   const getStatusStyle = function(status) {
@@ -14,12 +14,17 @@ export default function Request(props) {
     }
   };
   
-  const statusStyle = `inline-block my-4 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
+  const statusStyle = `inline-block my-2 min-w-[6em] max-w-[8em] h-[2em] leading-none ${getStatusStyle(props.status)} rounded-full font-semibold uppercase tracking-wide text-xs text-center flex justify-center items-center`;
+
+  const handleTaskClick = () => {
+    props.onClick(props.id);
+    props.setSelectedOfferUser(null);
+  };
 
   return (
-    <div className={className} onClick={() => props.onClick(props.id)}>
+    <div className={className} onClick={handleTaskClick}>
       {props.nbOffers > 0 && props.status === 'OPEN' && (
-        <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-bold text-white bg-violet-500 border-2 border-white rounded-full -top-2 -right-2">
+        <div className="absolute inline-flex items-center justify-center w-8 h-8 text-xs font-semibold text-white bg-violet-500 border-2 border-white rounded-full -top-2 -right-2">
           {props.nbOffers}
         </div>
       )}
@@ -38,13 +43,12 @@ export default function Request(props) {
         </svg>
       )}
       <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
-      <section className="px-4 text-teal-700 text-base">
+      <section className="px-4 text-teal-600 text-base">
         <h5 className="mb-1 text-xl leading-tight line-clamp-1">{props.name}</h5>
-        <p className="mb-1 font-bold">{props.category}</p>
         <p className="text-sm">
           {startDate.toLocaleString('en-us', {weekday:"long", year:"numeric", month:"short", day:"numeric"})}
         </p>
-        <p className="mb-1 text-sm font-bold">
+        <p className="mb-1 text-sm font-normal">
           {startDate.toLocaleString('en-us', {hour:'2-digit', minute: '2-digit'})}
         </p>
         <div>
@@ -52,7 +56,7 @@ export default function Request(props) {
             {props.description}
           </p>
         </div>
-        <div className="my-4 flex justify-between items-center">
+        <div className="my-2 flex justify-between items-center">
           <div className={statusStyle}>
             <p className="p-3">{props.status}</p>
           </div>

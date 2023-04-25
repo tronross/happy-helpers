@@ -7,7 +7,8 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
   const user = selectedUser;
   const buttonName =  offerSent ? 'Offer Sent' :`Help ${user.firstName}`;
 
-  const buttonStyle = offerSent ? "bg-gray-500" : "bg-teal-600 bg-teal-600 hover:bg-teal-700 active:bg-teal-800";
+  const buttonColor = type === "fake" ? "bg-violet-500 hover:bg-violet-700 active:bg-violet-900 font-semibold" : "bg-teal-600 hover:bg-teal-700 active:bg-teal-800 font-semibold"
+  const buttonStyle = offerSent ? "bg-gray-500 font-semibold" : `${buttonColor}`;
   const disabled = offerSent;
 
 
@@ -27,20 +28,21 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
     }
   }
   
+  
   const statusColor = getStyle(task.status)
 
-
+  const taskClass = type === "fake" ?  "flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-violet-800 w-[40em] h-[20em] border-2 border-violet-400 font-fredoka" : "flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600 font-fredoka"
   return (
-    <div className=" flex flex-col justify-between border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[40em] h-[20em] border-2 border-teal-600" id={taskId}>
+    <div className={taskClass} id={taskId}>
       <div className="flex p-3"> 
         <div className="max-w-[16em] w-2/7">
           <img src={task.image} alt={task.name} className="rounded-lg w-[20em]"></img>
         </div>
         <div className="flex flex-col  pl-5 w-5/6 mt-3">
-            <h5 className=" text-xl leading-tight mb-1">
+            <h5 className=" text-xl font-semibold leading-tight mb-1">
             {task.name}
             </h5>
-            <p className="mb-2 text-base text-teal-700">
+            <p className="mb-2 text-base">
             {task.city}
             </p>
             <p className=" text-base">

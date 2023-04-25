@@ -29,6 +29,7 @@ export default function UserTasks({ userRequests, offers, user }) {
     handleCategoryChange,
     handleStatusChange
   } = filterRequests(userRequests, setSelectedRequestId);
+  const [selectedOfferUser, setSelectedOfferUser] = useState(null);
 
   // Used to force render page (all state is lost)
   const router = useRouter();
@@ -54,13 +55,25 @@ export default function UserTasks({ userRequests, offers, user }) {
   }, []);
 
   /* When user clicks on accept offer from volunteer button:
-   * In tasks table: set task status as pending where id = selectedTask
-   * In offers table: set winning offer status as accepted where id = offer.id
-   *  & set all losing offers status as denied
+   * 1. In tasks table: set task status as pending where id = selectedTask
+   * 2. In offers table: set winning offer status as accepted where id = offer.id
+   *    and set all losing offers status as denied
+   * 3. In messages table: send accepted message to winner and denied messages to all losers
    */
   const handleAcceptOffer = async function(offerId) {
     await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {offerArray: selectedOffers});
     await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
+
+    for (const offer of selectedOffers) {
+      const params = {
+        userId: offer.user.id,
+        type:   offer.id === offerId ? 'ACCEPTED' : 'DENIED',
+        cpId:   user.id,
+        cpName: `${user.firstName} ${user.lastName}`,
+        taskName: userRequests.find(request => request.id === selectedRequestId).name
+      };
+      await axios.post(`http://localhost:3000/api/messages/`, { params });
+    }
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();
   };
@@ -69,14 +82,24 @@ export default function UserTasks({ userRequests, offers, user }) {
    * In tasks table: set task status as closed where id = selectedTask
    * There is nothing to change in the offers table
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
+   *  and send the volunteer a notification
    */
   const handleRequestComplete = async function(volunteerId, giveStar) {
-    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
-
     if (giveStar) {
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE', starred: true});
       await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
-    }
 
+      const params = {
+        userId: volunteerId,
+        type: 'STAR',
+        cpId: user.id,
+        cpName: `${user.firstName} ${user.lastName}`,
+        taskName: userRequests.find(request => request.id === selectedRequestId).name
+      };
+      await axios.post(`http://localhost:3000/api/messages/`, { params });
+    } else {
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
+    }
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();
   };
@@ -91,39 +114,37 @@ export default function UserTasks({ userRequests, offers, user }) {
 
   return (
     <>
-      <Head>
-        <title>Happy Helpers - My help requests</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
+      <main className='full-height'>
         <NavBar name={user.firstName} id={user.id} />
 
-        <div className="flex w-full overflow-hidden">
-        <section className=' flex w-[243m]'>
-          <RequestSideBar
-            status={status}
-            category={category}
-            resetFilters={resetFilters}
-            handleStatusChange={handleStatusChange}
-            statusFilter={statusFilter}
-            handleCategoryChange={handleCategoryChange}
-            categoryFilter={categoryFilter}
-            selectedOffers={selectedOffers}
-            handleAcceptOffer={handleAcceptOffer}
-            selectedRequestId={selectedRequestId}
-            selectedRequestStatus={selectedRequestStatus}
-            handleRequestComplete={handleRequestComplete}
-          />
-          </section>
-          <section className='flex flex-col pl-5 w-[74%]'>
+        <div className="flex w-[100%] justify-start relative">
+          <div className='z-20'>
+            <RequestSideBar
+              status={status}
+              category={category}
+              resetFilters={resetFilters}
+              handleStatusChange={handleStatusChange}
+              statusFilter={statusFilter}
+              handleCategoryChange={handleCategoryChange}
+              categoryFilter={categoryFilter}
+              selectedOffers={selectedOffers}
+              handleAcceptOffer={handleAcceptOffer}
+              selectedRequestId={selectedRequestId}
+              selectedRequestStatus={selectedRequestStatus}
+              handleRequestComplete={handleRequestComplete}
+              selectedOfferUser={selectedOfferUser}
+              setSelectedOfferUser={setSelectedOfferUser}
+            />
+          </div>
+          <div className='flex flex-col w-[100%] ml-4 overflow-hidden'>
             <RequestList
               requests={filteredRequests}
               selectedRequestId={selectedRequestId}
               setSelectedRequestId={setSelectedRequestId}
               offers={offers}
+              setSelectedOfferUser={setSelectedOfferUser}
             />
-          </section>
+          </div>
         </div>
       </main>
       <Footer />
@@ -147,8 +168,8 @@ export const getServerSideProps = async function() {
       address: true
     },
     orderBy: {
-      startDate: 'desc',
-    },
+      startDate: 'desc'
+    }
   });
 
   /** Capture offers with volunteer's user info:

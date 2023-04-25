@@ -15,7 +15,7 @@ console.log(formData)
 console.log(formData)
   return (
     <div className="flex flex-col w-1/2 items-center self-center">
-    <div className="text-teal-600">Is everything correct?</div>
+    <div className="text-violet-800">Is everything correct?</div>
     <DetailedTask 
       status="OPEN"
       selectedUser={user}

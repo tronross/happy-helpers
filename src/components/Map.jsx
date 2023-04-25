@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Loader } from '@googlemaps/js-api-loader'; // https://www.npmjs.com/package/@googlemaps/js-api-loader
 import Geocode from "react-geocode"; // https://www.npmjs.com/package/react-geocode
-import axios from 'axios';
 
 export default function Map(props) {
 
@@ -53,8 +52,6 @@ export default function Map(props) {
     console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng, 'K'));
 
   };
-  // getDistanceFromAddresses("Centre Bell", "CN Tower");
-
 
   // Convert filteredTasks to Marker-appropriate objects
   const tasks = props.tasks;
@@ -63,17 +60,24 @@ export default function Map(props) {
     const lng = task.address.longitude;
     const title = task.name;
     const index = task.id;
+    const addressId = task.addressId;
     const userId = task.userId;
     const category = task.category;
     const description = task.description;
+    const img = task.image;
+    const date = new Date(task.startDate).toISOString().substring(0, 10);
+
     return {
       lat,
       lng,
       title,
       index,
+      addressId,
       userId,
       category,
-      description
+      description,
+      img,
+      date
     }
   })
 
@@ -87,63 +91,103 @@ export default function Map(props) {
       version: 'weekly',
     });
 
-    let map;
 
     loader.load().then(() => {
       const google = window.google;
-      map = new google.maps.Map(googlemap.current, {
-        center: { lat: 43.70536, lng: -79.45664 },
-        zoom: 12,
-        /*
-        fullscreenControl: false, // remove the top-right button
-        mapTypeControl: false, // remove the top-left buttons
-        streetViewControl: false, // remove the pegman
-        zoomControl: false, // remove the bottom-right buttons
-        */
+      const map = new google.maps.Map(googlemap.current, {
+        center: { lat: 43.68856622704429, lng: -79.43367264421084 },
+        zoom: 12.9,
       });
+
+      const homeMarker = {
+        path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
+        fillOpacity: 1,
+        fillColor: "#ccfbf1",
+        strokeWeight: 2,
+        strokeColor: "#0d9488",
+        rotation: 0,
+        scale: 2,
+        labelOrigin: new google.maps.Point(12, -2)
+      };
+
+      const taskMarker = {
+        path: "m12 2c-3.9 0-7 3.1-7 7 0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7m2.5 11-2.5-1.5-2.5 1.5.7-2.8-2.2-1.9 2.9-.2 1.1-2.7 1.1 2.6 2.9.3-2.2 1.9z",
+        fillOpacity: 0.85,
+        fillColor: "#c4b5fd",
+        strokeWeight: 2,
+        strokeColor: "#8b5cf6",
+        rotation: 0,
+        scale: 2,
+        labelOrigin: new google.maps.Point(12, 24)
+      };
 
       // Position map to be centered over "logged-in user's" location
-      new google.maps.Marker({
-        position: { lat: 43.70536, lng: -79.45664 },
+      const userMarker = new google.maps.Marker({
+        position: { lat: 43.68739440726955, lng: -79.42498784917888 },
+        icon: homeMarker,
         map,
-        title: "Anderson",
+        label: {
+          text: "Anderson",
+          fontSize: "14px",
+          fontFamily: "Fredoka",
+          fontWeight: "500",
+          color: "#0d9488",
+          className: "bg-white rounded-full mt-[-12px] px-2 py-[1px] bg-opacity-80 border border-[1.5px] border-teal-600"
+        }
       });
 
-      const userIds = [];
+      userMarker.addListener("click", () => {
+        window.location = (`/profile-page/${props.userId}`)
+      })
+      const addressIds = [];
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
-        const userId = task.userId;
+        const addressId = task.addressId;
         const lat = Number(task.lat);
         const lng = Number(task.lng);
+        const title = task.title;
         const category = task.category;
+        const date = task.date;
         const description = task.description;
         const taskId = task.index;
-        const title = task.title;
-        
-        // Prevent overlapping markers(tasks)
-        if (!userIds.includes(userId)) {
+        const img = task.img;
+
+        // Prevent overlapping markers(tasks); prevent tasks overlapping home marker. Create markers
+        if (!addressIds.includes(addressId) && task.userId != 1) {
           const marker = new google.maps.Marker({
             position: { lat: lat, lng: lng },
+            icon: taskMarker,
             label: {
               text: title,
-              fontWeight: "bold"
+              fontFamily: "Fredoka",
+              fontSize: "13px",
+              fontWeight: "400",
+              color: "#0f766e",
+              className: "mt-5 bg-white rounded-full px-2 py-[2px] bg-opacity-80 border border-[1.5px] border-teal-600"
             },
             map,
             zIndex: task.index,
             taskId
           });
-          
+
           const infoWindow = new google.maps.InfoWindow({
             ariaLabel: title,
             maxWidth: 250
           })
-          
-        infoWindow.setContent(`
-          <div>
-            <h2 className="text-l font-bold"><b>${title}</b></h2>
-            <h3 className="text-m font-bold">${category}</h6>
-            <p><b>${description}</b></p>
-          </div>`
+
+          // Define content for infoWindows
+          infoWindow.setContent(`
+          <article>
+            <section style="text-align: center;">
+              <img src=${img}
+                width=220;
+              />
+            </section>
+            <h2 class="font-fredoka font-semibold text-teal-600 text-lg">${title}</h2>
+              <h3 class="font-fredoka font-normal text-teal-600 text-sm">${category}</h3>
+              <h4 class="font-fredoka font-normal text-teal-600 text-sm">${date}</h4>
+            <p class="font-fredoka font-normal text-teal-600 text-sm">${description}</p>
+          </article>`
           );
 
           // Marker event handlers for show/hide infoWindows and click-throughs to tasks
@@ -153,7 +197,7 @@ export default function Map(props) {
               map,
             });
           })
-          
+
           marker.addListener("mouseout", () => {
             infoWindow.close()
           })
@@ -163,16 +207,14 @@ export default function Map(props) {
           })
 
           // Array of userIds to prevent multiple markers rendered over one another at the same location
-          !userIds.includes(userId) && userIds.push(userId);
+          !addressIds.includes(addressId) && addressIds.push(addressId);
         }
       })
     }); // useEffect
   }); // function
 
   return (
-    // Display map
-    <section className="h-screen">
-      <div id="map" ref={googlemap} />
-    </section>
+    <div id="map" ref={googlemap} className='map-height border border-[3px] border-teal-600 rounded focus:outline-none' />
   );
 };
+
