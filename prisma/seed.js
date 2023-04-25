@@ -1752,9 +1752,9 @@ async function main() {
       startDate: new Date('2023-05-02 02:00+0500'),
       endDate: new Date('2023-05-04 11:00+0500'),
       status: 'OPEN',
-      userId: 10,
+      userId: 2,
       nbHelpers: 1,
-      addressId: 10
+      addressId: 2
     }
   });
 
@@ -1767,9 +1767,9 @@ async function main() {
       startDate: new Date('2023-05-02 03:00+0500'),
       endDate: new Date('2023-05-04 11:00+0500'),
       status: 'OPEN',
-      userId: 16,
+      userId: 2,
       nbHelpers: 1,
-      addressId: 16
+      addressId: 2
     }
   });
 
@@ -1782,11 +1782,58 @@ async function main() {
       startDate: new Date('2023-05-03 03:00+0500'),
       endDate: new Date('2023-05-04 11:00+0500'),
       status: 'OPEN',
-      userId: 13,
+      userId: 2,
       nbHelpers: 1,
-      addressId: 25
+      addressId: 2
     }
   });
+
+  await prisma.task.create({
+    data: {
+      name: 'Fill Deep Hole',
+      description: "I need to fill a hole in my yard that was dug last year, it is a hazard now but I am not strong enough to do it.",
+      image: 'https://t4.ftcdn.net/jpg/02/83/10/03/360_F_283100352_2DpKkkevHbI6aJ6hrhihYIuRwoRq1y1t.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-07 09:00+0500'),
+      endDate: new Date('2023-05-08 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Set Up Pool',
+      description: "I have a new pool fo the kids, I need a hand setting it up as there are many parts.",
+      image: 'https://images.clubpiscine.ca/post/95/22611/1000-600-Pineconcrete_MOD_Final.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-09 09:00+0500'),
+      endDate: new Date('2023-05-10 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Remove Shed',
+      description: "I have a shed that needs to come down, it is old but still in good shape, its yours if you want",
+      image: 'https://plasticinehouse.com/wp-content/uploads/2020/03/FEATURED-Moving-Shed.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-11 09:00+0500'),
+      endDate: new Date('2023-05-12 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+
 
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
@@ -2095,7 +2142,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 1,
+      userId: 3,
       taskId: 29,
       status: 'ACCEPTED'
     }
@@ -2103,7 +2150,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 30,
       status: 'ACCEPTED'
     }
@@ -2151,11 +2198,12 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 6,
+      userId: 3,
       taskId: 36,
       status: 'ACCEPTED'
     }
   });
+
 
   // Create messages -------------------------------------------------------------
   await prisma.message.create({
