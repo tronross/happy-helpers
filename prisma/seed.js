@@ -353,11 +353,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '195 Norton Ave',
-      city: 'North York',
-      postcode: 'M2N 4B1',
-      latitude: '43.77478976264135',
-      longitude: '-79.40047347390995',
+      address: '1229 Bathurst St',
+      city: 'Toronto',
+      postcode: 'M5R 3H3',
+      latitude: '43.67591901680771',
+      longitude: '-79.41515425407692',
       Users: {
         create: {
           firstName: 'Danny',
@@ -1767,9 +1767,9 @@ async function main() {
       startDate: new Date('2023-05-02 03:00+0500'),
       endDate: new Date('2023-05-04 11:00+0500'),
       status: 'OPEN',
-      userId: 13,
+      userId: 16,
       nbHelpers: 1,
-      addressId: 6
+      addressId: 16
     }
   });
 
