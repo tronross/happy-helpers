@@ -60,22 +60,6 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
 
   // ROWS 
   const[selectedId, setSelectedId] = useState(null)
-  const setScroll = (id, rowType) => {
-    setTimeout(function () {
-      if (!selectedId) {
-        return
-      }
-      
-      if (typeof window !== "undefined") {
-        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
-        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
-        
-        scrollBox.scrollLeft = (scrollPos - 200);
-        console.log(scrollPos)
-        console.log(scrollBox.scrollLeft)
-      }
-    }, 100);
-  }
   
   
 
@@ -98,7 +82,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
                 }
                   <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
-                  <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+                  <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId}/>
 
               </div>
             <div className="pt-4">
@@ -107,7 +91,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
               {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
               }
                 <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{pastTasksData.length} Available</h1>
-              <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId} setScroll={setScroll}/>
+              <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId}/>
 
             </div>
           </div>
