@@ -1633,7 +1633,7 @@ async function main() {
       userId: 11,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 11
+      addressId: 33
     }
   });
 
@@ -1740,6 +1740,51 @@ async function main() {
       userId: 1,
       nbHelpers: 1,
       addressId: 1
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Change Fan Belt',
+      description: 'I need to replace the serpentine belt in my car. I need four hands but only have two.   ;)',
+      image: 'https://www.popsautoelectric.com/wp-content/uploads/2014/06/Serpentine-Belt-1-1024x585.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-05-02 02:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 10,
+      nbHelpers: 1,
+      addressId: 10
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Hold Ladder',
+      description: "Can you hold an extension ladder for me while I change a fire alarm battery? It's in a really hard to reach spot.",
+      image: 'https://media.istockphoto.com/id/1006243960/photo/businessman-climbing-ladder.jpg?s=612x612&w=0&k=20&c=OFmIeaQevSnfrWbyLNLBkfENm3H0R7CQHrHqD9c5l7E=',
+      category: 'DIY',
+      startDate: new Date('2023-05-02 03:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 13,
+      nbHelpers: 1,
+      addressId: 13
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Move Tires',
+      description: "I need to put my summer tires in the trunk so the shop can put them on my car, but they're too heavy for me to lift.",
+      image: 'https://w7.pngwing.com/pngs/863/178/png-transparent-car-aa-mot-centre-snow-tire-motor-vehicle-service-tyre-stack-truck-automobile-repair-shop.png',
+      category: 'DIY',
+      startDate: new Date('2023-05-03 03:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 13,
+      nbHelpers: 1,
+      addressId: 13
     }
   });
 
