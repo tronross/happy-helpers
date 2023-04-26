@@ -169,70 +169,29 @@ finals
 
 ## Contributors
 
-<div class="cont-div">
- <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px" class="cont-img" />
- <div class="name">
- <h4>John Ross</h4>
- </div>
-  <a href="https://www.linkedin.com/in/john-ross-9a3345274/" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="90px" class="badge" /></a>
-  <a href="https://github.com/tronross" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" class="badge" /></a>
- </div>
+ <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px"/>
 
-<div class="cont-div">
+  John Ross
+
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/john-ross-9a3345274/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tronross)
+
+
  <img src="https://avatars.githubusercontent.com/u/10466420?v=4" width="50px" class="cont-img" />
- <div class="name">
+
  <h4>Sarah Campbell</h4>
- </div>
-  <a href="https://www.linkedin.com/in/sarah-campbell-805569a7/" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="90px" class="badge" /></a>
-  <a href="https://github.com/campbell46" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" class="badge" /></a>
- </div>
 
- <div class="cont-div">
+ [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarah-campbell-805569a7/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/campbell46)
+
+
  <img src="https://media.licdn.com/dms/image/C5603AQFZ0woGB_yERg/profile-displayphoto-shrink_400_400/0/1517598557473?e=1687996800&v=beta&t=Ww8xfryCML0GswV1c8x5BqsHKQvvh5E4rmrakj3Bqes" width="50px" class="cont-img" />
- <div class="name">
+
  <h4>Alric Fernandes</h4>
- </div>
-  <a href="https://www.linkedin.com/in/alric-fernandes-63968a64/" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="90px" class="badge" /></a>
-  <a href="https://github.com/alricf" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" class="badge" /></a>
- </div>
 
- <div class="cont-div">
+ [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alric-fernandes-63968a64/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alricf)
+
+
  <img src="https://avatars.githubusercontent.com/u/109972253?v=4" width="50px" class="cont-img" />
- <div class="name">
+
  <h4>Mike Dalton</h4>
- </div>
-  <a href="https://www.linkedin.com/in/mike-dalton-4a002224" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="90px" class="badge" /></a>
-  <a href="https://github.com/mikedaltonmtl" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="90px" class="badge" /></a>
- </div>
 
-
-  <!-- <style>
-.cont-img {
-  border-radius: 50%;
-}
-.cont-div {
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-}
-.name {
-  background: #0d9488;
-  color: white;
-  height: 26px;
-  padding-top: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-left: 15px;
-  margin-right: 5px;
-}
-.badge {
-  height: 26px;
-  width: 98px;
-  margin-top: 2px;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-.a {
-  margin-top: 4px;
-}
-            </style>   -->
+  [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mike-dalton-4a002224) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mikedaltonmtl)
