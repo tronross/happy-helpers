@@ -95,23 +95,23 @@ Chat with your volunteer or requester to make sure everything's in place before 
 
 ## Dependencies
 
-- next: 13.2.4
-- react: 18.2.0
-- prisma/client
-- tailwindcss
-- axios
-- dayjs
-- eslint
-- flowbite
-- googlemaps/js-api-loader
-- normalize.css
-- react-chat-engine
-- react-dom
-- react-geocode
-- react-scripts
-- react-tailwindcss-datepicker
-- react-xarrows
-- tailwind-scrollbar-hide
+![next: 13.2.4](https://img.shields.io/badge/-next%3A%2013.2.4-%230D9488)
+![react: 18.2.0](https://img.shields.io/badge/-react%3A%2018.2.0-%230D9488)
+![react-chat-engine](https://img.shields.io/badge/-react--chat--engine-%230D9488)
+![react-dom](https://img.shields.io/badge/-react--dom-%230D9488)
+![react-geocode](https://img.shields.io/badge/-react--geocode-%230D9488)
+![react-scripts](https://img.shields.io/badge/-react--scripts-%230D9488)
+![react-tailwindcss-datepicker](https://img.shields.io/badge/-react--tailwindcss--datepicker-%230D9488)
+![react-xarrows](https://img.shields.io/badge/-react--xarrows-%230D9488)
+![prisma/client](https://img.shields.io/badge/-prisma%2Fclient-%230D9488)
+![tailwindcss](https://img.shields.io/badge/-tailwindcss-%230D9488)
+![tailwind-scrollbar-hide](https://img.shields.io/badge/-tailwind--scrollbar--hide-%230D9488)
+![axios](https://img.shields.io/badge/-axios-%230D9488)
+![dayjs](https://img.shields.io/badge/-dayjs-%230D9488)
+![eslint](https://img.shields.io/badge/-eslint-%230D9488)
+![flowbite](https://img.shields.io/badge/-flowbite-%230D9488)
+![googlemaps/js-api-loader](https://img.shields.io/badge/-googlemaps%2Fjs--api--loader-%230D9488)
+![normalize.css](https://img.shields.io/badge/-normalize.css-%230D9488)
 
 ## Project Directory Structure
 ```
