@@ -1,0 +1,36 @@
+.cont-img {
+  border-radius: 50%;
+}
+
+.cont-div {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.name {
+  background: #0d9488;
+  color: white;
+  height: 26px;
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+!GitHub {
+  margin-left: 20px;
+}
+
+.badge {
+  height: 26px;
+  width: 98px;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.a {
+  margin-top: 4px;
+}

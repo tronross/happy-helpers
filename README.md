@@ -206,5 +206,3 @@ finals
   <a href="https://www.linkedin.com/in/mike-dalton-4a002224" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
   <a href="https://github.com/mikedaltonmtl" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
  </div>
-
-<img src="header.svg" width="800" height="400">
