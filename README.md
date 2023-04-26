@@ -40,8 +40,9 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 - Create a new PostgreSQL database using `CREATE DATABASE finals`.
 
 - Seed the test data using the Prisma commands:
+
   `> npx prisma db push --force-reset`
-  
+
   `> npx prisma db seed`
 
 - Type `> npm run dev` to run the development server.
