@@ -3,8 +3,6 @@
 </p>
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
 
----
-
 <details>
   <summary>Table of Contents</summary>
   <ol>
