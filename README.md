@@ -63,3 +63,26 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 - react-xarrows
 - tailwind-scrollbar-hide
 
+## Project Directory Structure
+
+finals
+├── planning
+└──  prisma
+    ├── migrations
+    ├── public/images
+    └── src
+        ├── components
+        │   └── taskForm
+        ├── helpers
+        ├── pages
+        │   ├── api
+        │   │   ├── addresses
+        │   │   ├── messages
+        │   │   ├── offers
+        │   │   ├── organizations
+        │   │   ├── tasks
+        │   │   ├── offers
+        │   │   └── users
+        │   └── profile-page
+        │   └── task
+        └── styles
