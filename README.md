@@ -1,9 +1,40 @@
-<p align="center" width="100%">
+<svg fill="none" viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <style>
+.cont-img {
+  border-radius: 50%;
+}
+.cont-div {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.name {
+  background: #0d9488;
+  color: white;
+  height: 26px;
+  padding-top: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+.badge {
+  height: 26px;
+  width: 98px;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.a {
+  margin-top: 4px;
+}
+            </style>           
+            <p align="center" width="100%">
     <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png">
 </p>
-
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
-
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -206,3 +237,8 @@ finals
   <a href="https://www.linkedin.com/in/mike-dalton-4a002224" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
   <a href="https://github.com/mikedaltonmtl" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
  </div>
+
+
+        </div>
+    </foreignObject>
+</svg>
