@@ -1,6 +1,6 @@
 export default function Task(props) {
   
-  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] h-[23em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka";
+  const taskStyle = props.row === true ? "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 w-[15em] min-h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka" : "border-1 shadow-lg m-4 bg-white rounded-lg text-teal-600 min-h-[24em] flex flex-col justify-between hover:cursor-pointer max-w-[290px] relative font-fredoka";
 
   
   const getStyle = (status) => {
@@ -30,7 +30,7 @@ export default function Task(props) {
         </svg>
       )}
     <div>
-    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg "></img>
+    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg h-48 w-96"></img>
     <section className="px-4">
       <h5 className=" text-xl leading-tight line-clamp-1 mb-1">
       {props.name}

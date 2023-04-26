@@ -1151,7 +1151,7 @@ async function main() {
     data: {
       name: 'Game Booth Volunteer',
       description: 'Need someone to man the game booth at our upcoming festival, duties include making sure each kid gets a turn and a prize',
-      image: 'https://tipjunkie.com/wp-content/uploads/cache/de/84/de84b9df831f3cc7af7522695c9da6b5.jpg',
+      image: 'https://www.partyworksinteractive.com/wp-content/uploads/2019/06/game-booth.jpg',
       category: 'Charity & Causes',
       startDate: new Date('2023-03-01 15:00+0500'),
       endDate: new Date('2023-03-10 15:00+0500'),
@@ -1490,7 +1490,7 @@ async function main() {
     data: {
       name: 'Drive my Mom',
       description: "My mom has a dentist's appointment. Can you drive her there and I can pick her up? (about a half hour away)",
-      image: 'https://www.vectornator.io/blog/content/images/2022/09/Cover-How-to-draw-a-car.png',
+      image: 'https://cdn.jdpower.com/ArticleImages/how%20to%20test%20drive%20a%20car.jpg',
       category: 'Driving',
       startDate: new Date('2023-04-29 00:00+0500'),
       endDate: new Date('2023-04-29 13:00+0500'),
