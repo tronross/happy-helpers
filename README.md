@@ -20,42 +20,49 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 ## Tech Stack
 
-<img src='./public/images/iconNextJS.png' alt='NextJS' height='20px' />
-<img src='./public/images/iconReact.png' alt='React' height='20px' />
-<img src='./public/images/iconPrisma.png' alt='Prisma' height='24px' />
-<p float="left">
-  <img src='./public/images/iconPostgreSQL.png' alt='PostgreSQL icon' height='20px' />
-  <img src='./public/images/fontPostgreSQL.png' alt='PostgreSQL' height='20px' />
-</p>
-<img src='./public/images/iconTailwindCSS.png' alt='Tailwind CSS' height='20px' />
+
+[![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/)
+[![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
+[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
 ## Screenshots
 
-The landing page:
+### The landing page
+Find out how the site is designed to bring people together in their communities and either login or sign up for an account:
 
 ![Landing Page](./planning/screenshots/landing.gif)
 
-The home page:
+### The home page
+View requests for help in your local area.  Filter and search by category, dates or the distance from your door:
 
 ![Home Page](./planning/screenshots/home.gif)
 
-The new task page:
+### The new task page
+Need a hand? You can easily add a request for help with the New Task form:
 
 ![New Task Page](./planning/screenshots/form.gif)
 
-The task page:
+### The task page
+View all of a user's requests for help and other similar requests to help you decide which tasks to volunteer for.
+At the click of a button, you can make a difference:
 
 ![Profile Page](./planning/screenshots/task.gif)
 
-The myHelp page:
+### The myHelp page
+Choose a volunteer from the offers of help for your own requests. Once completed, give the volunteer a star recommendation for a job well done:
 
 ![MyHelp Page](./planning/screenshots/myHelp.gif)
 
-The profile page:
+### The profile page
+Update your profile as your life changes or you learn new skills. Keep an eye on all of your upcoming tasks and see your history of completed tasks:
 
 ![Profile Page](./planning/screenshots/profile.gif)
 
-The messages page:
+### The messages page
+Chat with your volunteer or requester to make sure everything's in place before the job begins. Then maybe send a message of gratidude after the work has been done:
 
 ![Messages Page](./planning/screenshots/messages.gif)
 
