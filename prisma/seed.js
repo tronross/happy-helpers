@@ -1535,7 +1535,7 @@ async function main() {
     data: {
       name: 'Free Jigsaw',
       description: "I just got a new jigsaw for my birthday. Would you like my other one? It's in great shape, but I don't need two!",
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO4zauTkSODYG8LJaI4FX5QIRSsD_2gHT7TRsoGwbzFtwED9Lc2hWD7ZdO8dEwpVTMRl8&usqp=CAU',
+      image: 'https://reviewed-com-res.cloudinary.com/image/fetch/s--D-RYCaVu--/b_white,c_limit,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_792/https://reviewed-production.s3.amazonaws.com/attachment/b5a319ab796d49be/DewaltJigsaw.jpg',
       category: 'Giving',
       startDate: new Date('2023-04-29 03:00+0500'),
       endDate: new Date('2023-04-29 16:00+0500'),
@@ -1611,7 +1611,7 @@ async function main() {
     data: {
       name: 'Record Fair',
       description: "I'm organizing a record sale in Trinity Bellwoods! Come on out if you want to Buy, Sell, or Trade any records!",
-      image: 'https://static.ebayinc.com/static/assets/Uploads/Stories/Articles/_resampled/FillWzY4OCwzNDRd/vinyl.jpg',
+      image: 'https://www.uship.com/blog/wp-content/uploads/2018/02/Record-Collection-Vinyl-Frontier-1024x683.jpg',
       category: 'Other',
       startDate: new Date('2023-05-06 00:00+0500'),
       endDate: new Date('2023-05-07 12:00+0500'),

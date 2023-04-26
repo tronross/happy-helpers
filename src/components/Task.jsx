@@ -30,7 +30,7 @@ export default function Task(props) {
         </svg>
       )}
     <div>
-    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg h-48 w-96"></img>
+    <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg h-48 w-96 object-cover"></img>
     <section className="px-4">
       <h5 className=" text-xl leading-tight line-clamp-1 mb-1">
       {props.name}
