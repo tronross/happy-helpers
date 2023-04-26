@@ -1,15 +1,34 @@
 import ProfileTask from "./ProfileTask";
 import Task from "./Task";
 import RowButton from "./RowButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function ProfileTaskRow({selectedId, selectedUser, tasks ,userAddress, rowType, setSelectedId, setScroll}) {
-  
+export default function ProfileTaskRow({tasks, rowType}) {
+
+  const[selectedId, setSelectedId] = useState(null)
+
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
   const taskId = `scroll-pos-${selectedId}`;
 
 
+
+  const setScroll = (id, rowType) => {
+    setTimeout(function () {
+      if (!selectedId) {
+        return
+      }
+      
+      if (typeof window !== "undefined") {
+        const scrollBox = document.querySelector(`#scrollbox${rowType}`);
+        const scrollPos = document.querySelector(`#${id}`).offsetLeft;
+        
+        scrollBox.scrollLeft = (scrollPos - 200);
+        console.log(scrollPos)
+        console.log(scrollBox.scrollLeft)
+      }
+    }, 100);
+  }
 
   useEffect(() => {
     setScroll(taskId, rowType)
