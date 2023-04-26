@@ -42,7 +42,7 @@ export default function Request(props) {
           />
         </svg>
       )}
-      <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg"></img>
+      <img src={props.image} alt={props.name} className="mb-2 rounded-t-lg h-48 w-96"></img>
       <section className="px-4 text-teal-600 text-base">
         <h5 className="mb-1 text-xl leading-tight line-clamp-1">{props.name}</h5>
         <p className="text-sm">
