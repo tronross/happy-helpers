@@ -1,4 +1,4 @@
-<svg fill="none" viewBox="0 0 800 400" width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+<svg fill="none" viewBox="0 0 600 300" width="600" height="300" xmlns="http://www.w3.org/2000/svg">
   <foreignObject width="100%" height="100%">
     <div xmlns="http://www.w3.org/1999/xhtml">
       <style>
@@ -30,43 +30,20 @@
         .a {
           margin-top: 4px;
         }
-
       </style>
 
       <div class="container">
         <p align="center" width="100%">
-    <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png" ><img>
+    <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png" />
 </p>
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#how-it-works" style="color: #0d9488">How It Works</a>
-    </li>
-     <li>
-      <a href="#purpose" style="color: #0d9488">Purpose</a>
-    </li>
-    <li>
-      <a href="#tech-stack" style="color: #0d9488">Tech Stack</a>
-    </li>
-    <li>
-      <a href="#screenshots" style="color: #0d9488">Screenshots</a>
-    </li>
-    <li>
-    <a href="#setup" style="color: #0d9488">Setup</a>
-    </li>
-    <li>
-    <a href="#dependencies" style="color: #0d9488">Dependencies</a>
-    </li>
-    <li>
-    <a href="#project-directory-structure" style="color: #0d9488">Project Directory</a>
-    </li>
-    <li>
-    <a href="#contributors" style="color: #0d9488">Contributors</a>
-    </li>
-  </ol>
-</details>
+
+
+
+
+
+
+
 
 
 <div class="cont-div">
