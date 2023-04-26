@@ -1,3 +1,5 @@
+<img src="header.svg" width="800" height="400">
+
 <p align="center" width="100%">
     <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png">
 </p>
@@ -33,6 +35,7 @@
     </li>
   </ol>
 </details>
+
 ## How it Works?
 
 - Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.
@@ -193,7 +196,7 @@ finals
  <div class="name">
  <p>Alric Fernandes</p>
  </div>
-  <a href="" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://www.linkedin.com/in/alric-fernandes-63968a64/" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
   <a href="https://github.com/alricf" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
  </div>
 
@@ -202,50 +205,6 @@ finals
  <div class="name">
  <p>Mike Dalton</p>
  </div>
-  <a href="" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://www.linkedin.com/in/mike-dalton-4a002224" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
   <a href="https://github.com/mikedaltonmtl" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
  </div>
-
-
- 
-
-
-
-<style>
-  .cont-img {
-    border-radius: 50%;
-  }
-
-  .cont-div {
-    display: flex;
-    align-items: center;
-    margin-top: 15px;
-  }
-
-  .name {
-    background: #0d9488;
-    color: white;
-    height: 26px;
-    padding-top: 2px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 15px;
-    margin-right: 5px;
-  }
-  
-  !GitHub {
-    margin-left: 20px;
-  }
-
-  .badge {
-    height: 26px;
-    width: 98px;
-    margin-top: 2px;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .a {
-    margin-top: 4px;
-  }
-  </style>
