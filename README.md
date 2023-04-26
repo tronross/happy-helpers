@@ -4,6 +4,35 @@
 
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
 
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#how-it-works" style="color: #0d9488">How It Works</a>
+    </li>
+     <li>
+      <a href="#purpose" style="color: #0d9488">Purpose</a>
+    </li>
+    <li>
+      <a href="#tech-stack" style="color: #0d9488">Tech Stack</a>
+    </li>
+    <li>
+      <a href="#screenshots" style="color: #0d9488">Screenshots</a>
+    </li>
+    <li>
+    <a href="#setup" style="color: #0d9488">Setup</a>
+    </li>
+    <li>
+    <a href="#dependencies" style="color: #0d9488">Dependencies</a>
+    </li>
+    <li>
+    <a href="#project-directory-structure" style="color: #0d9488">Project Directory</a>
+    </li>
+    <li>
+    <a href="#contributors" style="color: #0d9488">Contributors</a>
+    </li>
+  </ol>
+</details>
 ## How it Works?
 
 - Users can post a task they need help with or browse upcoming tasks which can be filtered by location, category and date.
@@ -138,3 +167,85 @@ finals
         │   └── task
         └── styles
 ```
+
+## Contributors
+
+<div class="cont-div">
+ <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px" class="cont-img" />
+ <div class="name">
+ <p>John Ross</p>
+ </div>
+  <a href="" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://github.com/tronross" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
+ </div>
+
+<div class="cont-div">
+ <img src="https://avatars.githubusercontent.com/u/10466420?v=4" width="50px" class="cont-img" />
+ <div class="name">
+ <p>Sarah Campbell</p>
+ </div>
+  <a href="https://www.linkedin.com/in/sarah-campbell-805569a7/" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://github.com/campbell46" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
+ </div>
+
+ <div class="cont-div">
+ <img src="https://avatars.githubusercontent.com/u/22061153?v=4" width="50px" class="cont-img" />
+ <div class="name">
+ <p>Alric Fernandes</p>
+ </div>
+  <a href="" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://github.com/alricf" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
+ </div>
+
+ <div class="cont-div">
+ <img src="https://avatars.githubusercontent.com/u/109972253?v=4" width="50px" class="cont-img" />
+ <div class="name">
+ <p>Mike Dalton</p>
+ </div>
+  <a href="" class="a"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" width="50px" class="badge" /></a>
+  <a href="https://github.com/mikedaltonmtl" class="a"><img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" width="50px" class="badge" /></a>
+ </div>
+
+
+ 
+
+
+
+<style>
+  .cont-img {
+    border-radius: 50%;
+  }
+
+  .cont-div {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  .name {
+    background: #0d9488;
+    color: white;
+    height: 26px;
+    padding-top: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 15px;
+    margin-right: 5px;
+  }
+  
+  !GitHub {
+    margin-left: 20px;
+  }
+
+  .badge {
+    height: 26px;
+    width: 98px;
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .a {
+    margin-top: 4px;
+  }
+  </style>
