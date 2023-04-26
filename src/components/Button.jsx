@@ -2,10 +2,6 @@
 // Button Component
 //////////////////////
 
-// Stylesheet
-
-// Component
-
 export default function Button(props) {
 
   const logout = props.buttonName === "LOGOUT" ? "bg-teal-600 hover:bg-teal-700 active:bg-teal-800": "";

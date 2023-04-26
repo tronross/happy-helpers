@@ -46,11 +46,8 @@ export default function Map(props) {
   };
 
   const getDistanceFromAddresses = async function (origin, destination) {
-
     const originCoords = await getCoordinates(origin);
     const destinationCoords = await getCoordinates(destination);
-    console.log('Kilometers', getDistance(originCoords.lat, originCoords.lng, destinationCoords.lat, destinationCoords.lng, 'K'));
-
   };
 
   // Convert filteredTasks to Marker-appropriate objects
@@ -82,7 +79,7 @@ export default function Map(props) {
   })
 
 
-  // This code displays google maps on the page
+  // Generate and display Map, Markers, Labels and infoWindows
   const googlemap = useRef(null);
 
   useEffect(() => {
@@ -94,6 +91,7 @@ export default function Map(props) {
 
     loader.load().then(() => {
       const google = window.google;
+      // Position map to be centered over "logged-in user's" location
       const map = new google.maps.Map(googlemap.current, {
         center: { lat: 43.68856622704429, lng: -79.43367264421084 },
         zoom: 12.9,
@@ -121,7 +119,7 @@ export default function Map(props) {
         labelOrigin: new google.maps.Point(12, 24)
       };
 
-      // Position map to be centered over "logged-in user's" location
+      // Generate marker for "logged-in user's" location
       const userMarker = new google.maps.Marker({
         position: { lat: 43.68739440726955, lng: -79.42498784917888 },
         icon: homeMarker,
@@ -139,7 +137,10 @@ export default function Map(props) {
       userMarker.addListener("click", () => {
         window.location = (`/profile-page/${props.userId}`)
       })
+
+      // addressIds: Array of userIds to prevent multiple markers rendering over one another at the same location (conditional logic pushes at end of forEach loop)
       const addressIds = [];
+
       // Add Markers to map for each Task
       taskMarkers.forEach(task => {
         const addressId = task.addressId;
@@ -206,7 +207,7 @@ export default function Map(props) {
             window.location = (`/task/${taskId}`)
           })
 
-          // Array of userIds to prevent multiple markers rendered over one another at the same location
+          // Array of addressIds to prevent multiple markers rendering over one another at the same location
           !addressIds.includes(addressId) && addressIds.push(addressId);
         }
       })

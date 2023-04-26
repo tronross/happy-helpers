@@ -3,23 +3,22 @@ import FormButton from "./FormButton"
 import axios from "axios"
 import { useRouter } from "next/router";
 
-export default function StepperControl({currentStep, setCurrentStep, formData}) {
+export default function StepperControl({ currentStep, setCurrentStep, formData }) {
 
   const router = useRouter();
 
   const onClick = async (name) => {
     if (name === "Next") {
-      // console.log(currentStep)
 
       setCurrentStep((prev) => prev + 1)
-      
+
     } else if (name === "Back") {
       setCurrentStep((prev) => prev - 1)
     } else if (name === "Add Task") {
       await axios.post('http://localhost:3000/api/tasks', formData)
         .then(() => {
-        router.push(`user-tasks`)
-      })
+          router.push(`user-tasks`)
+        })
     }
   }
 
@@ -29,25 +28,25 @@ export default function StepperControl({currentStep, setCurrentStep, formData}) 
 
 
   const buttons = (step) => {
-    switch(step) {
-      case 1: 
-      return <FormButton buttonName="Next" onClick={onClick}/>
+    switch (step) {
+      case 1:
+        return <FormButton buttonName="Next" onClick={onClick} />
       case 2:
         return <>
-              <FormButton buttonName="Back" onClick={onClick}/>
-              <FormButton buttonName="Next" onClick={onClick}/>
-            </>
+          <FormButton buttonName="Back" onClick={onClick} />
+          <FormButton buttonName="Next" onClick={onClick} />
+        </>
       case 3:
         return <>
-              <FormButton buttonName="Back" onClick={onClick}/>
-              <FormButton buttonName="Next" onClick={onClick}/>
-            </>
+          <FormButton buttonName="Back" onClick={onClick} />
+          <FormButton buttonName="Next" onClick={onClick} />
+        </>
       case 4:
         return <>
-        <FormButton buttonName="Back" onClick={onClick}/>
-        <FormButton buttonName="Add Task" onClick={onClick}/>
-      </>
-      }
+          <FormButton buttonName="Back" onClick={onClick} />
+          <FormButton buttonName="Add Task" onClick={onClick} />
+        </>
+    }
   }
 
   const buttonsStyle = (step) => {
@@ -59,7 +58,7 @@ export default function StepperControl({currentStep, setCurrentStep, formData}) 
   }
 
 
-  return (  
+  return (
     <div className={buttonsStyle(currentStep)}>
       {buttons(currentStep)}
     </div>
