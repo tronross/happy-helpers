@@ -6,28 +6,28 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#how-it-works" style="color: #0d9488">How It Works</a>
+      <a href="#how-it-works">How It Works</a>
     </li>
      <li>
-      <a href="#purpose" style="color: #0d9488">Purpose</a>
+      <a href="#purpose">Purpose</a>
     </li>
     <li>
-      <a href="#tech-stack" style="color: #0d9488">Tech Stack</a>
+      <a href="#tech-stack">Tech Stack</a>
     </li>
     <li>
-      <a href="#screenshots" style="color: #0d9488">Screenshots</a>
+      <a href="#screenshots">Screenshots</a>
     </li>
     <li>
-    <a href="#setup" style="color: #0d9488">Setup</a>
+    <a href="#setup">Setup</a>
     </li>
     <li>
-    <a href="#dependencies" style="color: #0d9488">Dependencies</a>
+    <a href="#dependencies">Dependencies</a>
     </li>
     <li>
-    <a href="#project-directory-structure" style="color: #0d9488">Project Directory</a>
+    <a href="#project-directory-structure">Project Directory</a>
     </li>
     <li>
-    <a href="#contributors" style="color: #0d9488">Contributors</a>
+    <a href="#contributors">Contributors</a>
     </li>
   </ol>
 </details>
