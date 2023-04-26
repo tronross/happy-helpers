@@ -20,12 +20,43 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 <img src='./public/images/iconNextJS.png' alt='NextJS' height='20px' />
 <img src='./public/images/iconReact.png' alt='React' height='20px' />
-<img src='./public/images/iconPrisma.png' alt='Prisma' height='22px' />
+<img src='./public/images/iconPrisma.png' alt='Prisma' height='24px' />
 <p float="left">
   <img src='./public/images/iconPostgreSQL.png' alt='PostgreSQL icon' height='20px' />
   <img src='./public/images/fontPostgreSQL.png' alt='PostgreSQL' height='20px' />
 </p>
 <img src='./public/images/iconTailwindCSS.png' alt='Tailwind CSS' height='20px' />
+
+## Screenshots
+
+The landing page:
+
+![Landing Page](./planning/screenshots/landing.gif)
+
+The home page:
+
+![Home Page](./planning/screenshots/home.gif)
+
+The new task page:
+
+![New Task Page](./planning/screenshots/form.gif)
+
+The task page:
+
+![Profile Page](./planning/screenshots/task.gif)
+
+The myHelp page:
+
+![MyHelp Page](./planning/screenshots/myHelp.gif)
+
+The profile page:
+
+![Profile Page](./planning/screenshots/profile.gif)
+
+The messages page:
+
+![Messages Page](./planning/screenshots/messages.gif)
+
 
 ## Setup
 
