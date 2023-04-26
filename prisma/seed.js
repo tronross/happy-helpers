@@ -1585,7 +1585,7 @@ async function main() {
       startDate: new Date('2023-05-07 04:00+0500'),
       endDate: new Date('2023-05-07 12:00+0500'),
       userId: 19,
-      status: "OPEN",
+      status: "COMPLETE",
       nbHelpers: 1,
       addressId: 19
     }
@@ -1676,7 +1676,7 @@ async function main() {
       startDate: new Date('2023-04-29 19:00+0500'),
       endDate: new Date('2023-04-30 00:00+0500'),
       userId: 18,
-      status: "OPEN",
+      status: "PENDING",
       nbHelpers: 1,
       addressId: 18
     }
@@ -1958,7 +1958,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 1,
       taskId: 11,
       status: 'ACCEPTED'
     }
@@ -2006,7 +2006,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 4,
+      userId: 1,
       taskId: 15,
       status: 'ACCEPTED'
     }
@@ -2086,17 +2086,17 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 22,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 24,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -2134,7 +2134,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 4,
+      userId: 1,
       taskId: 28,
       status: 'ACCEPTED'
     }
@@ -2200,6 +2200,22 @@ async function main() {
     data: {
       userId: 3,
       taskId: 36,
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 69,
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 63,
       status: 'ACCEPTED'
     }
   });
