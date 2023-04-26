@@ -64,7 +64,7 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 - tailwind-scrollbar-hide
 
 ## Project Directory Structure
-
+```
 finals
 ├── planning
 └──  prisma
@@ -83,6 +83,7 @@ finals
         │   │   ├── tasks
         │   │   ├── offers
         │   │   └── users
-        │   └── profile-page
+        │   ├── profile-page
         │   └── task
         └── styles
+```
