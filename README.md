@@ -18,7 +18,7 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 ## Tech Stack
 
-- NextJS
+- NextJS ![NextJS](./public/images/iconNextJS.png)
 - React
 - Prisma
 - PostgreSQL
@@ -76,7 +76,8 @@ finals
 ├── planning
 └──  prisma
     ├── migrations
-    ├── public/images
+    ├── public
+    │   └── images
     └── src
         ├── components
         │   └── taskForm
