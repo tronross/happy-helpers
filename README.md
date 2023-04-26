@@ -20,14 +20,12 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 ## Tech Stack
 
-<img src='./public/images/iconNextJS.png' alt='NextJS' height='20px' />
-<img src='./public/images/iconReact.png' alt='React' height='20px' />
-<img src='./public/images/iconPrisma.png' alt='Prisma' height='24px' />
-<p float="left">
-  <img src='./public/images/iconPostgreSQL.png' alt='PostgreSQL icon' height='20px' />
-  <img src='./public/images/fontPostgreSQL.png' alt='PostgreSQL' height='20px' />
-</p>
-<img src='./public/images/iconTailwindCSS.png' alt='Tailwind CSS' height='20px' />
+
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Screenshots
 
