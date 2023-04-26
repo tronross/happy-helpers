@@ -32,11 +32,6 @@ export default function Chat3({user}) {
   return (
 
     <>
-    <Head>
-      <title>Happy Helpers</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
     <main className='flex flex-col '>
       <NavBar name={user.firstName}
         id={user.id} />

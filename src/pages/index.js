@@ -50,11 +50,6 @@ export default function Landing() {
   // Template
   return (
     <>
-      <Head>
-        <title>Happy Helpers</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />   
-      </Head>
       <main className='font-fredoka flex flex-col items-center w-full'>
         <div className='absolute inset-0 flex justify-between'>
           <div className='bg-shape bg-teal-300 opacity-50 bg-blur'></div>
@@ -215,9 +210,12 @@ export default function Landing() {
             <br></br>
             <div className="flex justify-center">
               <div className="w-1/2 border-solid border-teal-700 drop-shadow-md border-r-2 px-10">
+                <div className='flex items-center'>
+                  <img src="/images/favicon.png" alt="logo" className="w-[70px] drop-shadow-lg mr-4" />
                 <h1 className="text-teal-700 drop-shadow-md text-3xl font-semibold">
                   Happy Helpers
                 </h1>
+                </div>
                 <br></br>
                 <p className="text-teal-700 drop-shadow-md text-xl">A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.</p>
               </div>

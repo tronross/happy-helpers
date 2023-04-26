@@ -114,11 +114,6 @@ export default function UserTasks({ userRequests, offers, user }) {
 
   return (
     <>
-      <Head>
-        <title>Happy Helpers - My help requests</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <main className='full-height'>
         <NavBar name={user.firstName} id={user.id} />
 

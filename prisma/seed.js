@@ -353,11 +353,11 @@ async function main() {
 
   await prisma.address.create({
     data: {
-      address: '195 Norton Ave',
-      city: 'North York',
-      postcode: 'M2N 4B1',
-      latitude: '43.77478976264135',
-      longitude: '-79.40047347390995',
+      address: '1229 Bathurst St',
+      city: 'Toronto',
+      postcode: 'M5R 3H3',
+      latitude: '43.67591901680771',
+      longitude: '-79.41515425407692',
       Users: {
         create: {
           firstName: 'Danny',
@@ -1258,7 +1258,7 @@ async function main() {
     data: {
       name: 'Fix Garden Box',
       description: 'My garden box is starting to rot, need to support it so it does not cave in',
-      image: 'https://m.media-amazon.com/images/I/71ZN2rx5CGL._AC_SX522_.jpg',
+      image: 'https://platthillnursery.com/wp-content/uploads/2021/05/platt-hill-nursery-start-raised-bed-garden-with-tools.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-05-05 03:00+0500'),
       endDate: new Date('2023-05-05 20:00+0500'),
@@ -1585,7 +1585,7 @@ async function main() {
       startDate: new Date('2023-05-07 04:00+0500'),
       endDate: new Date('2023-05-07 12:00+0500'),
       userId: 19,
-      status: "OPEN",
+      status: "COMPLETE",
       nbHelpers: 1,
       addressId: 19
     }
@@ -1633,7 +1633,7 @@ async function main() {
       userId: 11,
       status: "OPEN",
       nbHelpers: 1,
-      addressId: 11
+      addressId: 33
     }
   });
 
@@ -1676,7 +1676,7 @@ async function main() {
       startDate: new Date('2023-04-29 19:00+0500'),
       endDate: new Date('2023-04-30 00:00+0500'),
       userId: 18,
-      status: "OPEN",
+      status: "PENDING",
       nbHelpers: 1,
       addressId: 18
     }
@@ -1717,7 +1717,7 @@ async function main() {
     data: {
       name: 'Dining table assembly',
       description: 'I need some help assembling a new dining table',
-      image: 'https://images2.imgix.net/p4dbimg/933/images/2456-64wm.jpg?trim=color&trimtol=5&trimcolor=FFFFFF&w=1024&h=768&fm=pjpg&auto=format',
+      image: 'https://jayscustomcreations.com/wp-content/uploads/2016/04/dining-table-35-746x420.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-15 01:00+0500'),
       endDate: new Date('2023-05-15 12:00+0500'),
@@ -1732,7 +1732,7 @@ async function main() {
     data: {
       name: 'Paint house walls',
       description: 'I recently moved into a new house and need help painting the walls.',
-      image: 'https://coloradopainting.com/wp-content/uploads/2021/09/how-long-does-interior-paint-last-on-the-wall.png',
+      image: 'https://thumbor.forbes.com/thumbor/fit-in/x/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/featured-image-interior-paint.jpeg.jpg',
       category: 'DIY',
       startDate: new Date('2023-05-16 02:00+0500'),
       endDate: new Date('2023-05-16 11:00+0500'),
@@ -1742,6 +1742,98 @@ async function main() {
       addressId: 1
     }
   });
+
+  await prisma.task.create({
+    data: {
+      name: 'Change Fan Belt',
+      description: 'I need to replace the serpentine belt in my car. I need four hands but only have two.   ;)',
+      image: 'https://www.popsautoelectric.com/wp-content/uploads/2014/06/Serpentine-Belt-1-1024x585.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-05-02 02:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Hold Ladder',
+      description: "Can you hold an extension ladder for me while I change a fire alarm battery? It's in a really hard to reach spot.",
+      image: 'https://media.istockphoto.com/id/1006243960/photo/businessman-climbing-ladder.jpg?s=612x612&w=0&k=20&c=OFmIeaQevSnfrWbyLNLBkfENm3H0R7CQHrHqD9c5l7E=',
+      category: 'DIY',
+      startDate: new Date('2023-05-02 03:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Move Tires',
+      description: "I need to put my summer tires in the trunk so the shop can put them on my car, but they're too heavy for me to lift.",
+      image: 'https://blog.tiremart.com/wp-content/uploads/2022/09/tm-blog-tire-ratings-three-peak-mountain-snowflake-vs.-ms-tires-480x297-1.jpg',
+      category: 'DIY',
+      startDate: new Date('2023-05-03 03:00+0500'),
+      endDate: new Date('2023-05-04 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Fill Deep Hole',
+      description: "I need to fill a hole in my yard that was dug last year, it is a hazard now but I am not strong enough to do it.",
+      image: 'https://t4.ftcdn.net/jpg/02/83/10/03/360_F_283100352_2DpKkkevHbI6aJ6hrhihYIuRwoRq1y1t.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-07 09:00+0500'),
+      endDate: new Date('2023-05-08 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Set Up Pool',
+      description: "I have a new pool fo the kids, I need a hand setting it up as there are many parts.",
+      image: 'https://images.clubpiscine.ca/post/95/22611/1000-600-Pineconcrete_MOD_Final.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-09 09:00+0500'),
+      endDate: new Date('2023-05-10 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+  await prisma.task.create({
+    data: {
+      name: 'Remove Shed',
+      description: "I have a shed that needs to come down, it is old but still in good shape, its yours if you want",
+      image: 'https://plasticinehouse.com/wp-content/uploads/2020/03/FEATURED-Moving-Shed.jpg',
+      category: 'Yard Work',
+      startDate: new Date('2023-05-11 09:00+0500'),
+      endDate: new Date('2023-05-12 11:00+0500'),
+      status: 'OPEN',
+      userId: 2,
+      nbHelpers: 1,
+      addressId: 2
+    }
+  });
+
+
 
   // Create offers ---------------------------------------------------------------
   await prisma.offer.create({
@@ -1866,7 +1958,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 1,
       taskId: 11,
       status: 'ACCEPTED'
     }
@@ -1914,7 +2006,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 4,
+      userId: 1,
       taskId: 15,
       status: 'ACCEPTED'
     }
@@ -1994,17 +2086,17 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 22,
-      status: 'OPEN'
+      status: 'DENIED'
     }
   });
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 24,
-      status: 'OPEN'
+      status: 'ACCEPTED'
     }
   });
 
@@ -2042,7 +2134,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 4,
+      userId: 1,
       taskId: 28,
       status: 'ACCEPTED'
     }
@@ -2050,7 +2142,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 1,
+      userId: 3,
       taskId: 29,
       status: 'ACCEPTED'
     }
@@ -2058,7 +2150,7 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 5,
+      userId: 3,
       taskId: 30,
       status: 'ACCEPTED'
     }
@@ -2106,11 +2198,28 @@ async function main() {
 
   await prisma.offer.create({
     data: {
-      userId: 6,
+      userId: 3,
       taskId: 36,
       status: 'ACCEPTED'
     }
   });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 69,
+      status: 'ACCEPTED'
+    }
+  });
+
+  await prisma.offer.create({
+    data: {
+      userId: 3,
+      taskId: 63,
+      status: 'ACCEPTED'
+    }
+  });
+
 
   // Create messages -------------------------------------------------------------
   await prisma.message.create({
