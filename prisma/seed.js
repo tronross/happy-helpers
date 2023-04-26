@@ -17,13 +17,13 @@ async function main() {
         create: {
           firstName: 'Anderson',
           lastName: 'Khorsandi',
-          description: 'Expert in mowing grass hills.',
+          description: 'Expert in mowing grass hills, and a great handyman around the house.',
           email: 'Anderson.Khorsandi@gmail.com',
           password: 'alligator',
           phone: '(636)313-2463',
           stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg',
-          skills: 'Yardwork and moving stuff.'
+          skills: 'Yard Work, Heavy Lifting, Mowing.'
         }
       }
     }
@@ -69,7 +69,7 @@ async function main() {
           phone: '(866)987-6453',
           stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg',
-          skills: 'Incredible in the kitchen.'
+          skills: 'Chef, Baker, DIYer, Building Things'
         }
       }
     }
