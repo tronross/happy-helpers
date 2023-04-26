@@ -1,4 +1,3 @@
-
 export default function addCoordsToTasks(tasks, addresses) {
   addresses.sort((a, b) => a.id - b.id);
 
@@ -8,13 +7,10 @@ export default function addCoordsToTasks(tasks, addresses) {
     const latitude = taskAddress.latitude;
     const longitude = taskAddress.longitude;
     const city = taskAddress.city
-    console.log(latitude, longitude, city)
 
     task.latitude = `${latitude}`;
     task.longitude = `${longitude}`;
     task.city = city;
-    // console.log(task)
-    console.log(`Task test: Task Name: ${task.name} ID: ${task.id} city ${task.city}`)
   }
 }
 

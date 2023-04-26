@@ -1,6 +1,4 @@
 import { useState } from "react"
-import axios from "axios";
-import Stepper from "./taskForm/Stepper";
 import StepperControl from "./taskForm/StepperControl";
 
 import TaskInfoForm from "./taskForm/TaskInfoForm";
