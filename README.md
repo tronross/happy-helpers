@@ -2,6 +2,9 @@
     <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png">
 </p>
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
+
+---
+
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -169,29 +172,21 @@ finals
 
 ## Contributors
 
- <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px"/>
-
-  John Ross
+ <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px"/>    **John Ross**
 
 [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/john-ross-9a3345274/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tronross)
 
 
- <img src="https://avatars.githubusercontent.com/u/10466420?v=4" width="50px" class="cont-img" />
-
- <h4>Sarah Campbell</h4>
+ <img src="https://avatars.githubusercontent.com/u/10466420?v=4" width="50px" class="cont-img" /> **Sarah Campbell**
 
  [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarah-campbell-805569a7/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/campbell46)
 
 
- <img src="https://media.licdn.com/dms/image/C5603AQFZ0woGB_yERg/profile-displayphoto-shrink_400_400/0/1517598557473?e=1687996800&v=beta&t=Ww8xfryCML0GswV1c8x5BqsHKQvvh5E4rmrakj3Bqes" width="50px" class="cont-img" />
-
- <h4>Alric Fernandes</h4>
+ <img src="https://media.licdn.com/dms/image/C5603AQFZ0woGB_yERg/profile-displayphoto-shrink_400_400/0/1517598557473?e=1687996800&v=beta&t=Ww8xfryCML0GswV1c8x5BqsHKQvvh5E4rmrakj3Bqes" width="50px" class="cont-img" />  **Alric Fernandes**
 
  [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alric-fernandes-63968a64/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alricf)
 
 
- <img src="https://avatars.githubusercontent.com/u/109972253?v=4" width="50px" class="cont-img" />
-
- <h4>Mike Dalton</h4>
+ <img src="https://avatars.githubusercontent.com/u/109972253?v=4" width="50px" class="cont-img" /> **Mike Dalton**
 
   [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mike-dalton-4a002224) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mikedaltonmtl)
