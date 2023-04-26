@@ -30,13 +30,6 @@ export default function Sidebar(props) {
     }));
   }
 
-  // const clearCityFilter = () => {
-  //   const cityFilter = document.getElementById('cityFilter');
-  //   cityFilter.value = '';
-  //   props.setFilters(prev => ({ ...prev, city: '' }));
-  //   setClicked({ distance: 50 })
-  // }
-
   const [currentDistance, setCurrentDistance] = useState(4)
 
   const realDistance = (distance) => {
@@ -100,7 +93,6 @@ export default function Sidebar(props) {
           <h1 className='uppercase font-semibold text-base'>Sort By:</h1>
           <p className='text-sm uppercase text-violet-400 font-semibold hover:cursor-pointer hover:text-violet-500' onClick={resetFilters}>RESET</p>
         </div>
-        {/* <section className="flex items-baseline space-x-4" > */}
         <section className="max-w-xs flex flex-col rounded-md space-y-0.5 mt-3">
           <div className='flex justify-center'>
             {clicked.sort === 'Date' ?
@@ -123,7 +115,6 @@ export default function Sidebar(props) {
         </select>
         <section className='max-w-xs' >
           <Datepicker
-            // displayFormat={''}
             primaryColor={"violet"}
             asSingle={true}
             value={dateFilter}

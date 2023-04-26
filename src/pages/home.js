@@ -2,8 +2,7 @@
 // Home Page
 ///////////////
 
-// Vendor methods
-import Head from 'next/head';
+// Vendor method
 import { useState } from 'react';
 import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
@@ -52,13 +51,12 @@ export default function Home({ tasks, user }) {
 
   // Hooks
   const [fetchTasks, setFetchTasks] = useState([...tasks]);
-  const [sidebar, setSidebar] = useState(sidebarOptions);
   const [view, setView] = useState("List");
   const [filteredTasks, setFilteredTasks] = useState([...tasks]);
 
   const tasksToFilter = [...fetchTasks];
   const [taskFilters, setTaskFilters] = useState({
-    distance: 50,
+    distance: 25,
     category: 'All Categories',
     sort: 'Date',
     dateFilter: null,
@@ -120,7 +118,7 @@ export default function Home({ tasks, user }) {
     setFilteredTasks(sortedFilteredTasks)
   }
 
-   
+
   const currentView = (view === "List" ? <section className='flex flex-col p-2 mx-2 overflow-hidden'>  <TaskList tasks={filteredTasks} userId={user.id} /> </section> : <section className='flex flex-col p-2 overflow-hidden'><Map tasks={filteredTasks} userId={user.id} /> </section>)
 
 
@@ -133,7 +131,7 @@ export default function Home({ tasks, user }) {
         <div className="flex w-[100%] justify-start ">
           <div className="">
             <Sidebar
-              sidebarOptions={sidebar}
+              sidebarOptions={sidebarOptions}
               filterTasks={() => filterTasks(tasksToFilter, taskFilters)}
               filters={taskFilters}
               setFilters={setTaskFilters}
@@ -179,7 +177,6 @@ export async function getServerSideProps() {
   })
 
   const user = userFetch[0];
-  console.log(user)
 
   // Add distance between user and task to tasks, order by ascending start time
   addDistanceToTasks(tasks, user);
