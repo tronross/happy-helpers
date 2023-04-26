@@ -31,14 +31,17 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 - Install dependencies with `npm install`.
 
 - Create a `.env.local` file and add your Google Maps Api public key in the form:
+
   `NEXT_PUBLIC_API_KEY=<your key here`.
   - If needed, you can sign up for a free development account at:
+
     <https://developers.google.com/maps/documentation/javascript/get-api-key>.
 
 - Create a new PostgreSQL database using `CREATE DATABASE finals`.
 
 - Seed the test data using the Prisma commands:
   `> npx prisma db push --force-reset`
+  
   `> npx prisma db seed`
 
 - Type `> npm run dev` to run the development server.
