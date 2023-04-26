@@ -1,13 +1,16 @@
 import ProfileTask from "./ProfileTask";
 import Task from "./Task";
 import RowButton from "./RowButton";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function ProfileTaskRow({selectedId, tasks, rowType, setSelectedId}) {
+export default function ProfileTaskRow({tasks, rowType}) {
+
+  const[selectedId, setSelectedId] = useState(null)
 
   const scrollboxId = `scrollbox${rowType}`
   const buttonsId = `buttonsId${rowType}`
   const taskId = `scroll-pos-${selectedId}`;
+
 
 
   const setScroll = (id, rowType) => {

@@ -59,7 +59,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
   // }, [userOrganizations]);
 
   // ROWS 
-  const[selectedId, setSelectedId] = useState(null)
+
   
   
 
@@ -82,7 +82,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
                 }
                   <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
-                  <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData}  selectedId={selectedId} setSelectedId={setSelectedId}/>
+                  <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData} />
 
               </div>
             <div className="pt-4">
@@ -91,7 +91,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
               {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
               }
                 <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{pastTasksData.length} Available</h1>
-              <ProfileTaskRow rowType="past" tasks={pastTasksData}  selectedId={selectedId} setSelectedId={setSelectedId}/>
+              <ProfileTaskRow rowType="past" tasks={pastTasksData} />
 
             </div>
           </div>
