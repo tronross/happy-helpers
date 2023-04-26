@@ -1041,7 +1041,7 @@ async function main() {
     data: {
       name: 'Pick up Pet Food',
       description: 'Need someone to pick up pet food at mailbox, there are 4 10lb bags.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/06/dog-food-1296x728-header.jpg?w=1155&h=1528',
       category: 'Heavy Lifting',
       startDate: new Date('2023-06-01 15:00+0500'),
       endDate: new Date('2023-06-01 15:00+0500'),
@@ -1071,7 +1071,7 @@ async function main() {
     data: {
       name: 'Remove Ice',
       description: 'Need someone to remove the large hanging icicles as they are melting and getting dangerous to walk under.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://www.kissner.com/wp-content/uploads/2016/02/Deice-Driveway.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-06-05 15:00+0500'),
       endDate: new Date('2023-06-06 15:00+0500'),
@@ -1166,7 +1166,7 @@ async function main() {
     data: {
       name: 'Remove Stump',
       description: 'Need help moving stump, was dug out last year and would like it gone by end of month.',
-      image: 'https://images.unsplash.com/photo-1635614986085-bf0d7a4ae4da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+      image: 'https://deniseosullivanceramics.com/wp-content/uploads/stump_remove-1392x800.jpg',
       category: 'Yard Work',
       startDate: new Date('2023-04-01 15:00+0500'),
       endDate: new Date('2023-04-01 20:00+0500'),
