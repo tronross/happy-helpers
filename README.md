@@ -32,7 +32,7 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 - Create a `.env.local` file and add your Google Maps Api public key in the form:
 
-  `NEXT_PUBLIC_API_KEY=<your key here`.
+  `NEXT_PUBLIC_API_KEY="your key here"`.
   - If needed, you can sign up for a free development account at:
 
     <https://developers.google.com/maps/documentation/javascript/get-api-key>.
