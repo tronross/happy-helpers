@@ -1,5 +1,5 @@
 <p align="center" width="100%">
-    <img width="50%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/public/images/favicon.png">
+    <img width="20%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/public/images/favicon.png">
 </p>
 
 # Happy Helpers
