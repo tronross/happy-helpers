@@ -190,7 +190,7 @@ finals
  </div>
 
  <div class="cont-div">
- <img src="https://avatars.githubusercontent.com/u/22061153?v=4" width="50px" class="cont-img" />
+ <img src="https://media.licdn.com/dms/image/C5603AQFZ0woGB_yERg/profile-displayphoto-shrink_400_400/0/1517598557473?e=1687996800&v=beta&t=Ww8xfryCML0GswV1c8x5BqsHKQvvh5E4rmrakj3Bqes" width="50px" class="cont-img" />
  <div class="name">
  <p>Alric Fernandes</p>
  </div>
