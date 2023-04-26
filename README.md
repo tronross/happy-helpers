@@ -1,10 +1,8 @@
 <p align="center" width="100%">
-    <img width="20%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/public/images/favicon.png">
+    <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png">
 </p>
 
-# Happy Helpers
-
-A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.
+<p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
 
 ## How it Works?
 
