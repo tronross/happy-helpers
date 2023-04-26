@@ -16,18 +16,25 @@ export default function WhenForm({formData, setFormData}) {
   })
 
   const [startDate, setStartDate] = useState({ 
-    startDate: null
+    startDate: undefined
   }); 
 
   const [endDate, setEndDate] = useState({ 
-    endDate: null
+    endDate: undefined
   }); 
 
+  const [check, setCheck] = useState(false);
   
 
   const handleStartDate = (newDate) => {
     console.log("newValue:", newDate.startDate); 
-    setStartDate(newDate); 
+
+    if (!check) {
+      setStartDate(newDate); 
+      setEndDate(newDate)
+    } else {
+      setStartDate(newDate);
+    }
   } 
 
   const handleEndDate = (newDate) => {
@@ -40,9 +47,8 @@ export default function WhenForm({formData, setFormData}) {
     const selected = e.target.id;
     const name = e.target.name;
   
-
     if (name === "startTime") {
-      setStartTime(prev => ({...prev, [selected]: value}))
+        setStartTime(prev => ({...prev, [selected]: value}))
     } else {
       setEndTime(prev => ({...prev, [selected]: value}))
     }
@@ -81,20 +87,20 @@ console.log(startDate,)
   }, [startTime, endTime, startDate, endDate])
 
 
-  const [check, setCheck] = useState(false);
+  
 
   const currentEndDate = check === true ? endDate : startDate;
   console.log("CHECK CHECK:",check)
 
   const handleCheck = async () => {
     await setCheck(prev => !prev)
-    
   }
   
   
   useEffect(() => {
   console.log("use effect:", check)
-    check === true ? setFormData(prev => ({...prev, endDate: {startDate}})) : setFormData(prev => ({...prev, endDate: ""}))
+  console.log(formData)
+    check === !true ? setFormData(prev => ({...prev, endDate: startDate})) : setFormData(prev => ({...prev, endDate: endDate}))
   }, [check])
 
     return (
@@ -122,7 +128,7 @@ console.log(startDate,)
           </label>
             <div className="appearance-none block w-full  border border-gray-200 rounded leading-tight bg-white">
             <Datepicker asSingle="true" primaryColor={"violet"} value={currentEndDate} 
-          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" disabled={check === false ? true : false} useRange={false}/>
+          onChange={handleEndDate} inputClassName="text-violet-800 font-normal active:outline-none focus:outline-none active:outline-none p-[12px]" disabled={!check} useRange={false}/>
           </div>
         </div>
          

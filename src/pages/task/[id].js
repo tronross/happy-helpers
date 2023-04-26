@@ -101,7 +101,7 @@ export async function getServerSideProps(context) {
   //all offers of logged in user
   const offers = await prisma.offer.findMany({
     where: {
-      userId: 2
+      userId: 1
     }
   })
 

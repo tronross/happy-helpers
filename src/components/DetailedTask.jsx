@@ -16,7 +16,7 @@ export default function DetailedTask({selectedUser, task, sendOffer, offerTaskId
     if (type === "fake") {
       return
     } else {
-        sendOffer(task.id, 2, setOfferSent)
+        sendOffer(task.id, 1, setOfferSent)
     }
   }
 

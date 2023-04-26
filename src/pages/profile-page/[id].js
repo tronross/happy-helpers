@@ -74,7 +74,7 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
           <div >
           <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
           </div>
-            <div className="flex flex-col w-[100%] ml-4 mt-8 overflow-hidden">
+            <div className="flex flex-col w-[100%] ml-4 mr-8 mt-8 overflow-hidden">
               <div>
                 {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Upcoming Tasks:</h1>
                 }
