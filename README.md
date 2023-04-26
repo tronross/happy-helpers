@@ -83,7 +83,7 @@ finals
         │   │   ├── tasks
         │   │   ├── offers
         │   │   └── users
-        │   └── profile-page
+        │   ├── profile-page
         │   └── task
         └── styles
 ```
