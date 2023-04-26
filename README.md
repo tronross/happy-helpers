@@ -26,7 +26,7 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
   <img src='./public/images/fontPostgreSQL.png' alt='PostgreSQL' height='20px' />
 </p>
 <img src='./public/images/iconTailwind.png' alt='Tailwind CSS' height='20px' />
-
+blurhg
 
 ## Setup
 
