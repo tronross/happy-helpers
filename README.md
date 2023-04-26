@@ -31,31 +31,39 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 ## Screenshots
 
-The landing page:
+### The landing page
+Find out how the site is designed to bring people together in their communities and either login or sign up for an account:
 
 ![Landing Page](./planning/screenshots/landing.gif)
 
-The home page:
+### The home page
+View requests for help in your local area.  Filter and search by categories, dates or the distance from your door:
 
 ![Home Page](./planning/screenshots/home.gif)
 
-The new task page:
+### The new task page
+Need a hand? You can easily add a request for help to the site with the New Task form:
 
 ![New Task Page](./planning/screenshots/form.gif)
 
-The task page:
+### The task page
+View all of a user's requests for help and other similar requests to help you decide which tasks to volunteer for.
+At the click of a button, you can make a difference:
 
 ![Profile Page](./planning/screenshots/task.gif)
 
-The myHelp page:
+### The myHelp page
+Choose a volunteer from the offers of help for your own requests. Once completed, give the volunteer a star recommendation for a job well done:
 
 ![MyHelp Page](./planning/screenshots/myHelp.gif)
 
-The profile page:
+### The profile page
+Update your profile as your life changes or you learn new skills. Keep an eye on all of your upcoming tasks and see your history of completed tasks:
 
 ![Profile Page](./planning/screenshots/profile.gif)
 
-The messages page:
+### The messages page
+Chat with your volunteer or requester to make sure everything's in place before the job begins. Then maybe send a message of gratidude after the work has been done:
 
 ![Messages Page](./planning/screenshots/messages.gif)
 
