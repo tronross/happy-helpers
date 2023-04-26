@@ -37,12 +37,12 @@ Find out how the site is designed to bring people together in their communities 
 ![Landing Page](./planning/screenshots/landing.gif)
 
 ### The home page
-View requests for help in your local area.  Filter and search by categories, dates or the distance from your door:
+View requests for help in your local area.  Filter and search by category, dates or the distance from your door:
 
 ![Home Page](./planning/screenshots/home.gif)
 
 ### The new task page
-Need a hand? You can easily add a request for help to the site with the New Task form:
+Need a hand? You can easily add a request for help with the New Task form:
 
 ![New Task Page](./planning/screenshots/form.gif)
 
