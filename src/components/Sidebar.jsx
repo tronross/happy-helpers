@@ -7,7 +7,7 @@ export default function Sidebar(props) {
 
   // Button state
   const [clicked, setClicked] = useState({
-    distance: 50,
+    distance: 25,
     category: 'All Categories',
     sort: 'Date'
   });
@@ -72,7 +72,7 @@ export default function Sidebar(props) {
 
   const resetFilters = () => {
     props.setFilters({
-      distance: 50,
+      distance: 25,
       category: 'All Categories',
       sort: 'Date',
       dateFilter: null,
@@ -80,10 +80,12 @@ export default function Sidebar(props) {
     });
 
     setClicked({
-      distance: 50,
+      distance: 25,
       category: 'All Categories',
       sort: 'Date'
     });
+
+    setCurrentDistance(4);
 
     setTimeout(() => { setDateFilter({ startDate: null, endDate: null }) }, 50)
   }

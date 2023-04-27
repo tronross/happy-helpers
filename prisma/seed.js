@@ -2240,7 +2240,7 @@ async function main() {
       userId: 1,
       type: 'RECEIVED',
       cpId: 6,
-      cpName: 'Lore Winks',
+      cpName: 'Tiana Wahman',
       taskName: 'Need Ride to Airport',
       receivedAt: new Date('2023-04-19 22:00+0500'),
       markedRead: false,
