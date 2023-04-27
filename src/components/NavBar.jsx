@@ -50,7 +50,7 @@ export default function NavBar(props) {
     <div className="flex items-center p-5 text-teal-600 tracking-wide text-sm font-bold mb-2 fixed sticky top-0 z-50 bg-teal-50 font-fredoka font-semibold">
       <ul className="flex w-1/2 items-center">
         <li className='px-6 pb-1 font-fredoka font-bold text-xl drop-shadow-sm'>
-          <Link href="/home">Happy Helpers</Link>
+          <Link href="/">Happy Helpers</Link>
         </li>
         <li className='px-6 uppercase hover:text-teal-500 active:text-teal-700'>
           <Link href="/home">Home</Link>

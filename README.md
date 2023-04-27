@@ -1,8 +1,37 @@
 <p align="center" width="100%">
     <img width="30%" src="https://raw.githubusercontent.com/tronross/happy-helpers/master/planning/logo.png">
 </p>
-
 <p align="center" >A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid. Whether you need a cup of milk from a neighbor, or help to fix a broken door; Happy Helpers can provide you with a volunteer.</p>
+
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#how-it-works">How It Works</a>
+    </li>
+     <li>
+      <a href="#purpose">Purpose</a>
+    </li>
+    <li>
+      <a href="#tech-stack">Tech Stack</a>
+    </li>
+    <li>
+      <a href="#screenshots">Screenshots</a>
+    </li>
+    <li>
+    <a href="#setup">Setup</a>
+    </li>
+    <li>
+    <a href="#dependencies">Dependencies</a>
+    </li>
+    <li>
+    <a href="#project-directory-structure">Project Directory</a>
+    </li>
+    <li>
+    <a href="#contributors">Contributors</a>
+    </li>
+  </ol>
+</details>
 
 ## How it Works?
 
@@ -95,23 +124,23 @@ Chat with your volunteer or requester to make sure everything's in place before 
 
 ## Dependencies
 
-- next: 13.2.4
-- react: 18.2.0
-- prisma/client
-- tailwindcss
-- axios
-- dayjs
-- eslint
-- flowbite
-- googlemaps/js-api-loader
-- normalize.css
-- react-chat-engine
-- react-dom
-- react-geocode
-- react-scripts
-- react-tailwindcss-datepicker
-- react-xarrows
-- tailwind-scrollbar-hide
+![next: 13.2.4](https://img.shields.io/badge/-next%3A%2013.2.4-%230D9488)
+![react: 18.2.0](https://img.shields.io/badge/-react%3A%2018.2.0-%230D9488)
+![react-chat-engine](https://img.shields.io/badge/-react--chat--engine-%230D9488)
+![react-dom](https://img.shields.io/badge/-react--dom-%230D9488)
+![react-geocode](https://img.shields.io/badge/-react--geocode-%230D9488)
+![react-scripts](https://img.shields.io/badge/-react--scripts-%230D9488)
+![react-tailwindcss-datepicker](https://img.shields.io/badge/-react--tailwindcss--datepicker-%230D9488)
+![react-xarrows](https://img.shields.io/badge/-react--xarrows-%230D9488)
+![prisma/client](https://img.shields.io/badge/-prisma%2Fclient-%230D9488)
+![tailwindcss](https://img.shields.io/badge/-tailwindcss-%230D9488)
+![tailwind-scrollbar-hide](https://img.shields.io/badge/-tailwind--scrollbar--hide-%230D9488)
+![axios](https://img.shields.io/badge/-axios-%230D9488)
+![dayjs](https://img.shields.io/badge/-dayjs-%230D9488)
+![eslint](https://img.shields.io/badge/-eslint-%230D9488)
+![flowbite](https://img.shields.io/badge/-flowbite-%230D9488)
+![googlemaps/js-api-loader](https://img.shields.io/badge/-googlemaps%2Fjs--api--loader-%230D9488)
+![normalize.css](https://img.shields.io/badge/-normalize.css-%230D9488)
 
 ## Project Directory Structure
 ```
@@ -138,3 +167,24 @@ finals
         │   └── task
         └── styles
 ```
+
+## Contributors
+
+ <img src="https://avatars.githubusercontent.com/u/101600481?v=4" width="50px"/>    **John Ross**
+
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/john-ross-9a3345274/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/tronross)
+
+
+ <img src="https://avatars.githubusercontent.com/u/10466420?v=4" width="50px" class="cont-img" /> **Sarah Campbell**
+
+ [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarah-campbell-805569a7/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/campbell46)
+
+
+ <img src="https://media.licdn.com/dms/image/C5603AQFZ0woGB_yERg/profile-displayphoto-shrink_400_400/0/1517598557473?e=1687996800&v=beta&t=Ww8xfryCML0GswV1c8x5BqsHKQvvh5E4rmrakj3Bqes" width="50px" class="cont-img" />  **Alric Fernandes**
+
+ [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alric-fernandes-63968a64/) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/alricf)
+
+
+ <img src="https://avatars.githubusercontent.com/u/109972253?v=4" width="50px" class="cont-img" /> **Mike Dalton**
+
+  [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mike-dalton-4a002224) [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mikedaltonmtl)

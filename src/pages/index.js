@@ -204,11 +204,10 @@ export default function Landing() {
 
           <article className="border-violet-100 relative bg-opacity-[40%] shadow-xl border-[3px] p-10 rounded-3xl bg-violet-50">
           <div id="end-5" className='h-4 w-4 absolute top-[-10%] left-[49%]'></div>
-            <h1 className="flex justify-center text-teal-700 drop-shadow-md font-medium text-3xl mb-4">
+            <h1 className="flex justify-center text-teal-700 drop-shadow-md font-medium text-3xl mb-10">
               Sign Up and Join Our Community
             </h1>
-            <br></br>
-            <div className="flex justify-center">
+            <div className="flex ">
               <div className="w-1/2 border-solid border-teal-700 drop-shadow-md border-r-2 px-10">
                 <div className='flex items-center'>
                   <img src="/images/favicon.png" alt="logo" className="w-[70px] drop-shadow-lg mr-4" />
@@ -216,14 +215,13 @@ export default function Landing() {
                   Happy Helpers
                 </h1>
                 </div>
-                <br></br>
-                <p className="text-teal-700 drop-shadow-md text-xl">A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.</p>
+                <p className="text-teal-700 drop-shadow-md text-xl mt-5">A crowd-sourcing volunteering app with a focus on building community through in-person interactions and mutual aid.</p>
               </div>
-              <form className="flex flex-col content-center justify-center w-1/2 px-10">
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5" type="text" id="firstName" name="firstName" placeholder="First Name" />
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5" type="text" id="lastName" name="lastName" placeholder="Last Name" />
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5" type="text" id="email" name="email" placeholder="Email" />
-                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md" type="text" id="password" name="password" placeholder="Password" />
+              <form className="flex flex-col items-center justify-center w-1/2 px-10 opacity-70">
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5 w-2/3" type="text" id="firstName" name="firstName" placeholder="First Name" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5  w-2/3" type="text" id="lastName" name="lastName" placeholder="Last Name" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md mb-5  w-2/3" type="text" id="email" name="email" placeholder="Email" />
+                <input className="rounded-full border-violet-300 border-solid border-2 pl-5 text-lg placeholder-violet-800 bg-violet-50 focus:outline-violet-300 drop-shadow-md  w-2/3" type="text" id="password" name="password" placeholder="Password" />
               </form>
             </div>
             <div className="flex justify-center pt-10">

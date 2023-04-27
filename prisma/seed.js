@@ -17,13 +17,13 @@ async function main() {
         create: {
           firstName: 'Anderson',
           lastName: 'Khorsandi',
-          description: 'Expert in mowing grass hills.',
+          description: 'Expert in mowing grass hills, and a great handyman around the house.',
           email: 'Anderson.Khorsandi@gmail.com',
           password: 'alligator',
           phone: '(636)313-2463',
           stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/34.jpg',
-          skills: 'Yardwork and moving stuff.'
+          skills: 'Yard Work, Heavy Lifting, Mowing.'
         }
       }
     }
@@ -69,7 +69,7 @@ async function main() {
           phone: '(866)987-6453',
           stars: 2,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/female/27.jpg',
-          skills: 'Incredible in the kitchen.'
+          skills: 'Chef, Baker, DIYer, Building Things'
         }
       }
     }
@@ -115,7 +115,7 @@ async function main() {
           phone: '(306)551-8238',
           stars: 0,
           avatar: 'https://xsgames.co/randomusers/assets/avatars/male/21.jpg',
-          skills: 'Dancing.'
+          skills: 'Dancing, Singing.'
         }
       }
     }
@@ -2240,8 +2240,8 @@ async function main() {
       userId: 1,
       type: 'RECEIVED',
       cpId: 6,
-      cpName: 'Lore Winks',
-      taskName: 'Walk dog',
+      cpName: 'Tiana Wahman',
+      taskName: 'Need Ride to Airport',
       receivedAt: new Date('2023-04-19 22:00+0500'),
       markedRead: false,
       active: true
@@ -2267,7 +2267,7 @@ async function main() {
       type: 'ACCEPTED',
       cpId: 2,
       cpName: 'Kayleen Lunski',
-      taskName: 'Free hostages',
+      taskName: 'Boat Driver Required',
       receivedAt: new Date('2023-04-18 22:00+0500'),
       markedRead: false,
       active: true
@@ -2292,13 +2292,27 @@ async function main() {
       userId: 1,
       type: 'RECEIVED',
       cpId: 3,
-      cpName: 'Tiana Wahman',
-      taskName: 'Milk cow',
+      cpName: 'Morgan D`Angelo',
+      taskName: 'Fence Painter',
       receivedAt: new Date('2023-04-01 21:00+0500'),
       markedRead: true,
-      active: false
+      active: true
     }
   });
+
+
+await prisma.message.create({
+  data: {
+    userId: 1,
+    type: 'STAR',
+    cpId: 3,
+    cpName: 'Tiana Wahman',
+    taskName: 'Milk cow',
+    receivedAt: new Date('2023-04-26 16:00+0500'),
+    markedRead: true,
+    active: false
+  }
+});
 }
 
 main()
