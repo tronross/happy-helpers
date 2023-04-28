@@ -3,13 +3,9 @@ import prisma from "../../../../prisma/.db";
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     const tasks = await prisma.task.findMany()
-    // console.log(tasks)
     res.json({ tasks })
   } else if (req.method === 'POST') {
-    // console.log(req.body)
     const { name, desc, startDate, endDate, category, image} = req.body
-
-    
 
     const userData = await prisma.user.findUnique({
       where: {

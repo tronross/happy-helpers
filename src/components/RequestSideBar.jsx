@@ -1,4 +1,3 @@
-// @refresh reset
 import OfferList from '../components/OfferList';
 
 /**

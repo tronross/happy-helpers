@@ -8,7 +8,6 @@ export default async function handler(req, res) {
         id: parseInt(taskId)
       }
     })
-    console.log(task)
     res.json({ task })
   } if (req.method === 'PATCH') {
 
@@ -26,7 +25,6 @@ export default async function handler(req, res) {
       }
     });
 
-    // console.log('updateTaskStatus: ', updateTaskStatus);
     res.status(200).send('ok');
   }
 }

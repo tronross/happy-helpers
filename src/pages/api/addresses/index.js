@@ -3,7 +3,6 @@ import prisma from "../../../../prisma/.db";
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     const addresses = await prisma.address.findMany()
-    // console.log(addresses)
     res.json({ addresses })
   } else if (req.method === 'POST') {
     console.log(req.body)

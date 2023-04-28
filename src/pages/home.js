@@ -1,17 +1,11 @@
-///////////////
-// Home Page
-///////////////
-
-// Vendor method
+// Vendor methods
 import { useState } from 'react';
-import { Inter } from 'next/font/google';
 import prisma from '../../prisma/.db';
 
 // Helper functions
 import addDistanceToTasks from '../helpers/add-distance-to-tasks';
 import sortTasksByDistance from '../helpers/sort-tasks-by-distance';
 import sortTasksByStartTime from '../helpers/sort-tasks-by-start-time';
-
 
 // Component dependencies
 import TaskList from '@/components/TaskList';
@@ -22,7 +16,6 @@ import PageHeader from '@/components/PageHeader';
 import Map from '@/components/Map';
 
 // Global variables
-const inter = Inter({ subsets: ['latin'] });
 const sidebarOptions = [
   'All Categories',
   'Animal Care',

@@ -1,7 +1,5 @@
 import Task from '../components/Task'
 
-
-
 export default function TaskList(props) {
 
   const onClick = (id) => {

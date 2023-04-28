@@ -1,16 +1,9 @@
-//////////////////////
-// Profile Page
-//////////////////////
-
-import Head from "next/head";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import prisma from "../../../prisma/.db";
 
 // Component dependencies
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import TaskList from "@/components/TaskList";
-import EditProfileForm from "@/components/EditProfileForm";
 
 // Helper function dependencies
 import addCoordsToTasks from "@/helpers/add-coords-to-tasks";
@@ -34,7 +27,6 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
     city: userData.address.city,
     postcode: userData.address.postcode,
     skills: userData.skills,
-    // organizations: userData.organizations,
   });
 
   const [upcomingTasksData, setUpcomingTasksData] = useState(upcomingData);
@@ -45,52 +37,32 @@ export default function ProfilePage({ user, upcomingData, pastData, loggedInUser
     setShowEditProfileForm(!showEditProfileForm);
   };
 
-  // let [orgString, setOrgString] = useState("");
-  // useEffect(() => {
-  //   let orgStr = "";
-  //   userOrganizations.forEach((org, index) => {
-  //     if (userOrganizations.length - 1 === index) {
-  //       orgStr += `${org.name}.`;
-  //     } else {
-  //       orgStr += `${org.name}, `;
-  //     }
-  //   });
-  //   setOrgString(orgStr);
-  // }, [userOrganizations]);
-
-  // ROWS 
-
-  
-  
-
   // TEMPLATE
-
-  
   return (
     <>
       <main className="font-fredoka">
-        <NavBar name={loggedInUser.firstName} id={loggedInUser.id}/>
+        <NavBar name={loggedInUser.firstName} id={loggedInUser.id} />
         <div className="flex w-[100%]">
           <div >
-          <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData}/>
+            <ProfileSidebar userData={userData} showEditProfileForm={showEditProfileForm} toggleEditProfileForm={toggleEditProfileForm} editProfileFormData={editProfileFormData} setEditProfileFormData={setEditProfileFormData} />
           </div>
-            <div className="flex flex-col w-[100%] ml-4 mr-8 mt-8 overflow-hidden">
-              <div>
-                {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Upcoming Tasks:</h1>
-                }
-                {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
-                }
-                  <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{upcomingTasksData.length} Available</h1>
+          <div className="flex flex-col w-[100%] ml-4 mr-8 mt-8 overflow-hidden">
+            <div>
+              {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Upcoming Tasks:</h1>
+              }
+              {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Upcoming Tasks:</h1>
+              }
+              <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{upcomingTasksData.length} Available</h1>
 
-                  <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData} />
+              <ProfileTaskRow rowType="upcoming" tasks={upcomingTasksData} />
 
-              </div>
+            </div>
             <div className="pt-4">
               {user.id === 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">Your Past Tasks:</h1>
               }
               {user.id !== 1 && <h1 className="uppercase text-teal-600 px-10 font-semibold text-2xl ml-10">{user.firstName}&apos;s Past Tasks:</h1>
               }
-                <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{pastTasksData.length} Available</h1>
+              <h1 className="uppercase text-teal-600 px-10 font-semibold t-lg ml-10">{pastTasksData.length} Available</h1>
               <ProfileTaskRow rowType="past" tasks={pastTasksData} />
 
             </div>
@@ -116,7 +88,6 @@ export async function getServerSideProps(context) {
     },
     include: {
       address: true,
-      // Organizations: true,
     }
   });
 
@@ -148,9 +119,7 @@ export async function getServerSideProps(context) {
   const tasksData = userPastOffersComplete.map((item) => {
     return item.task;
   });
-  
-  // console.log(tasksData);
-  // console.log(user)
+
   const addresses = await prisma.address.findMany();
 
   // Add city, latitude, longitude to tasksData
@@ -162,21 +131,15 @@ export async function getServerSideProps(context) {
   // Add distance to tasksData
   addDistanceToTasks(tasksData, user);
 
-  // console.log(tasksData);
-  // console.log(user)
-
-  
   // Extract upcoming tasks data
   const upcomingData = tasksData.filter(item => {
     return item.status === 'PENDING';
   });
-  // console.log(upcomingData, 'upcomingData');
 
   // Extract past tasks data
   const pastData = tasksData.filter(item => {
     return item.status === 'COMPLETE';
   });
-  // console.log(pastData, 'pastData');
 
   return {
     props: {

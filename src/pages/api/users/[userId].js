@@ -1,7 +1,6 @@
 import prisma from "../../../../prisma/.db";
 
 export default async function handler(req, res) {
-  // console.log('user api');
 
   if (req.method === 'GET') {
 
@@ -56,7 +55,6 @@ export default async function handler(req, res) {
           stars: { increment: 1 }
         }
       });
-      // console.log('updateStarStatus: ', updateStarStatus);
     }
 
     res.status(200).send('ok');

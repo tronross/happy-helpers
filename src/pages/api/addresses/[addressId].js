@@ -11,7 +11,6 @@ export default async function handler(req, res) {
     console.log(address);
     res.json({ address });
   } else if (req.method === 'PATCH') {
-    console.log(req.body);
     const { addressId } = req.query;
     console.log(`You have reached PUT api/addresses/${addressId}`);
     res.status(200).send('ok');

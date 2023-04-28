@@ -1,4 +1,3 @@
-// @refresh reset
 export default function Request(props) {
 
   // Dates are sent as strings through props, so need to be formatted
