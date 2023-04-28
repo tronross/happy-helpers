@@ -1,4 +1,3 @@
-import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation"
 
@@ -41,8 +40,6 @@ export default function EditProfileForm({ userId, userAddressId, editProfileForm
 
       <p className="uppercase text-sm font-semibold">Skills:</p>
       <textarea type="text" id="skills" name="skills" placeholder="skills" value={editProfileFormData.skills} onChange={onChange} required  className="bg-violet-200 border-b-[1.5px] border-violet-400 mb-3 pb- focus:outline-none resize-none  scrollbar form-scroll" />
-
-      {/* <input type="text" id="organizations" name="organizations" placeholder="organizations" value={editProfileFormData.organizations} onChange={onChange} required /> */}
 
       </div>
       <button type="submit" onClick={handleSubmit} className="w-12/3 inline-flex justify-center items-center gap-2 bg-violet-300 hover:bg-violet-400  hover:border-violet-300 hover:text-white active:bg-violet-500 border-[1.5px] border-violet-400 px-7 py-1 rounded-full text-violet-800 mt-3 uppercase font-semibold text-sm">Save</button>
