@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Footer from '@/components/Footer'
 import NavBar from '@/components/NavBar'
 import TaskForm from '@/components/TaskForm'
@@ -32,14 +31,14 @@ export default function NewTask(props) {
   return (
     <>
       <main className="full-height">
-      <NavBar name={props.user.firstName}
-                id={props.user.id}/>
+        <NavBar name={props.user.firstName}
+          id={props.user.id} />
         <div className="flex justify-center">
-        <TaskForm formData={formData} setFormData={setFormData} user={props.user}/>
+          <TaskForm formData={formData} setFormData={setFormData} user={props.user} />
         </div>
       </main>
 
-      <Footer/>
+      <Footer />
     </>
   )
 }
@@ -54,10 +53,9 @@ export async function getServerSideProps() {
       address: true
     }
   })
-  
 
   return {
-    props:  { 
+    props: {
       user: JSON.parse(JSON.stringify(user)),
     }
   }

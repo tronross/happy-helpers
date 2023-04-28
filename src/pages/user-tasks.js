@@ -1,5 +1,4 @@
 // @refresh reset
-import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import prisma from '../../prisma/.db';
 import axios from "axios";
@@ -60,15 +59,15 @@ export default function UserTasks({ userRequests, offers, user }) {
    *    and set all losing offers status as denied
    * 3. In messages table: send accepted message to winner and denied messages to all losers
    */
-  const handleAcceptOffer = async function(offerId) {
-    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, {offerArray: selectedOffers});
-    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'PENDING'});
+  const handleAcceptOffer = async function (offerId) {
+    await axios.patch(`http://localhost:3000/api/offers/${offerId}`, { offerArray: selectedOffers });
+    await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, { newStatus: 'PENDING' });
 
     for (const offer of selectedOffers) {
       const params = {
         userId: offer.user.id,
-        type:   offer.id === offerId ? 'ACCEPTED' : 'DENIED',
-        cpId:   user.id,
+        type: offer.id === offerId ? 'ACCEPTED' : 'DENIED',
+        cpId: user.id,
         cpName: `${user.firstName} ${user.lastName}`,
         taskName: userRequests.find(request => request.id === selectedRequestId).name
       };
@@ -84,10 +83,10 @@ export default function UserTasks({ userRequests, offers, user }) {
    * If the volunteer has received a star, add it to their user where user.id = offers.user_id
    *  and send the volunteer a notification
    */
-  const handleRequestComplete = async function(volunteerId, giveStar) {
+  const handleRequestComplete = async function (volunteerId, giveStar) {
     if (giveStar) {
-      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE', starred: true});
-      await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, {field: 'stars'});
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, { newStatus: 'COMPLETE', starred: true });
+      await axios.patch(`http://localhost:3000/api/users/${volunteerId}`, { field: 'stars' });
 
       const params = {
         userId: volunteerId,
@@ -98,7 +97,7 @@ export default function UserTasks({ userRequests, offers, user }) {
       };
       await axios.post(`http://localhost:3000/api/messages/`, { params });
     } else {
-      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, {newStatus: 'COMPLETE'});
+      await axios.patch(`http://localhost:3000/api/tasks/${selectedRequestId}`, { newStatus: 'COMPLETE' });
     }
     localStorage.setItem("selectedRequestId", selectedRequestId);
     router.refresh();
@@ -152,7 +151,7 @@ export default function UserTasks({ userRequests, offers, user }) {
   );
 }
 
-export const getServerSideProps = async function() {
+export const getServerSideProps = async function () {
 
   /** Capture tasks with addresses:
    *  SELECT tasks.*, addresses.* FROM tasks
