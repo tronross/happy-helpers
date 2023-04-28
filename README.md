@@ -45,7 +45,7 @@
 
 ## Purpose
 
-Happy Helpers has been created by Web Development students John Ross, Sarah Campbell, Alric Fernandes, and Mike Dalton for the Finals project at Lighthouse Labs.
+Happy Helpers has been created by Web Development students [John Ross](https://github.com/tronross), [Sarah Campbell](https://github.com/campbell46), [Alric Fernandes](https://github.com/alricf), and [Mike Dalton](https://github.com/mikedaltonmtl) for the Finals project at [Lighthouse Labs(https://www.lighthouselabs.ca/)].
 
 ## Tech Stack
 
@@ -59,22 +59,22 @@ Happy Helpers has been created by Web Development students John Ross, Sarah Camp
 
 ## Screenshots
 
-### The landing page
+### The Landing page
 Find out how the site is designed to bring people together in their communities and either login or sign up for an account:
 
 ![Landing Page](./planning/screenshots/landing.gif)
 
-### The home page
+### The Home page
 View requests for help in your local area.  Filter and search by category, dates or the distance from your door:
 
 ![Home Page](./planning/screenshots/home.gif)
 
-### The new task page
+### The New Task page
 Need a hand? You can easily add a request for help with the New Task form:
 
 ![New Task Page](./planning/screenshots/form.gif)
 
-### The task page
+### The Task page
 View all of a user's requests for help and other similar requests to help you decide which tasks to volunteer for.
 At the click of a button, you can make a difference:
 
@@ -85,12 +85,12 @@ Choose a volunteer from the offers of help for your own requests. Once completed
 
 ![MyHelp Page](./planning/screenshots/myHelp.gif)
 
-### The profile page
+### The Profile page
 Update your profile as your life changes or you learn new skills. Keep an eye on all of your upcoming tasks and see your history of completed tasks:
 
 ![Profile Page](./planning/screenshots/profile.gif)
 
-### The messages page
+### The Messages page
 Chat with your volunteer or requester to make sure everything's in place before the job begins. Then maybe send a message of gratidude after the work has been done:
 
 ![Messages Page](./planning/screenshots/messages.gif)
@@ -102,14 +102,16 @@ Chat with your volunteer or requester to make sure everything's in place before 
 
 - Install dependencies with `npm install`.
 
-- Create a `.env.local` file and add your Google Maps Api public key in the form:
+- Create a `.env` file and follow the `.env.example` to add:
 
-  `NEXT_PUBLIC_API_KEY="your key here"`.
-  - If needed, you can sign up for a free development account at:
+  - Your Prisma database path in the form: `DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=SCHEMA"`
+
+  - Your Google Maps Api public key in the form: `NEXT_PUBLIC_API_KEY="your key here"`.
+    - If needed, you can sign up for a free development account at:
 
     <https://developers.google.com/maps/documentation/javascript/get-api-key>.
 
-- Create a new PostgreSQL database using `CREATE DATABASE finals`.
+- Create a new PostgreSQL database using `CREATE DATABASE finals;`.
 
 - Seed the test data using the Prisma commands:
 
